@@ -1,0 +1,40 @@
+{
+  "name": "D8-Starter",
+  "version": "1.0.0",
+  "private": true,
+  "autoprefixer": {
+    "browsers": [
+      "last 3 versions",
+      "IE 11"
+    ]
+  },
+  "paths": {
+    "theme": "./web/themes/custom/drup_theme",
+    "theme_admin": "./web/themes/custom/drup_admin",
+    "images": "images",
+    "js": "js",
+    "styles": "styles",
+    "translations": "languages"
+  },
+  "pxtorem": {
+    "replace": true,
+    "unitPrecision": 3,
+    "propList": [
+      "font-size"
+    ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.1.5",
+    "gulp": "^3.9.1",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-pixrem": "^1.0.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.1",
+    "postcss-pxtorem": "^4.0.1"
+  },
+  "dependencies": {
+    "gettext-parser": "^2.0.0",
+    "map-stream": "^0.0.7"
+  }
+}
