@@ -1,0 +1,101 @@
+######
+# Drupal 8 1.1
+# @see https://docs.devwithlando.io/tutorials/drupal8.html
+# @see https://github.com/lando/lando/blob/master/examples/drupal8/.lando.yml
+# @see https://docs.devwithlando.io/tutorials/setup-additional-services.html
+######
+
+
+# Name
+name: pileje
+
+
+# Recipe used
+recipe: drupal8
+config:
+  webroot: web
+  php: '7.2'
+  via: apache
+  database: mariadb
+  #drush: global:9.*
+
+
+# Commands on events
+events:
+  post-start:
+  - appserver: cd $LANDO_WEBROOT && chown $LANDO_WEBROOT_USER:$LANDO_WEBROOT_GROUP -R .
+  #- appserver: cd $LANDO_MOUNT && composer install
+  - appserver: echo "alias ll='ls -la'" > ~/.bashrc
+  post-db-import:
+  - appserver: cd $LANDO_WEBROOT && drush cr -y
+
+
+# Access
+proxy:
+  appserver:
+  - pileje.lndo.site
+  - international.pileje.lndo.site
+  - swiss.pileje.lndo.site
+  - italy.pileje.lndo.site
+  - sweden.pileje.lndo.site
+  - spain.pileje.lndo.site
+  - belgium.pileje.lndo.site
+  mailhog:
+  - mail.pileje.lndo.site
+  pma:
+  - pma.pileje.lndo.site
+
+
+# Additional services
+services:
+  appserver:
+    composer:
+      deployer/deployer: '4.3.0'
+  node:
+    type: node:latest
+    globals:
+      gulp-cli: "latest"
+  mailhog:
+    type: mailhog
+    hogfrom:
+    - appserver
+  pma:
+    type: phpmyadmin
+#    hosts:
+#      - database
+#      - db_international
+#      - db_suisse
+#      - db_starter
+#  db_international:
+#    type: mariadb
+#    creds:
+#      user: db_international
+#      password: db_international
+#      database: db_international
+#  db_suisse:
+#    type: mariadb
+#    creds:
+#      user: db_suisse
+#      password: db_suisse
+#      database: db_suisse
+#  db_starter:
+#    type: mariadb
+#    creds:
+#      user: db_starter
+#      password: db_starter
+#      database: db_starter
+
+
+# Additionnal commands line "lando XXX"
+tooling:
+  npm:
+    service: node
+  node:
+    service: node
+  yarn:
+    service: node
+  gulp:
+    service: node
+  dep:
+    service: appserver
+    description: "Deploy app with deploy.php"
