@@ -7,8 +7,7 @@
 
 
 # Name
-name: pileje
-
+name: d8-starter
 
 # Recipe used
 recipe: drupal8
@@ -17,34 +16,23 @@ config:
   php: '7.2'
   via: apache
   database: mariadb
-  #drush: global:9.*
-
 
 # Commands on events
 events:
   post-start:
   - appserver: cd $LANDO_WEBROOT && chown $LANDO_WEBROOT_USER:$LANDO_WEBROOT_GROUP -R .
-  #- appserver: cd $LANDO_MOUNT && composer install
   - appserver: echo "alias ll='ls -la'" > ~/.bashrc
   post-db-import:
   - appserver: cd $LANDO_WEBROOT && drush cr -y
 
-
 # Access
 proxy:
   appserver:
-  - pileje.lndo.site
-  - international.pileje.lndo.site
-  - swiss.pileje.lndo.site
-  - italy.pileje.lndo.site
-  - sweden.pileje.lndo.site
-  - spain.pileje.lndo.site
-  - belgium.pileje.lndo.site
+  - d8-starter.lndo.site
   mailhog:
-  - mail.pileje.lndo.site
+  - mail.d8-starter.lndo.site
   pma:
-  - pma.pileje.lndo.site
-
+  - pma.d8-starter.lndo.site
 
 # Additional services
 services:
@@ -61,30 +49,6 @@ services:
     - appserver
   pma:
     type: phpmyadmin
-#    hosts:
-#      - database
-#      - db_international
-#      - db_suisse
-#      - db_starter
-#  db_international:
-#    type: mariadb
-#    creds:
-#      user: db_international
-#      password: db_international
-#      database: db_international
-#  db_suisse:
-#    type: mariadb
-#    creds:
-#      user: db_suisse
-#      password: db_suisse
-#      database: db_suisse
-#  db_starter:
-#    type: mariadb
-#    creds:
-#      user: db_starter
-#      password: db_starter
-#      database: db_starter
-
 
 # Additionnal commands line "lando XXX"
 tooling:
