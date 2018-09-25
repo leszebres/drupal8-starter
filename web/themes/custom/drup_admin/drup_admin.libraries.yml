@@ -1,0 +1,7 @@
+theme:
+  version: '0.1'
+  css:
+    theme:
+      styles/dist/theme.css: {}
+  dependencies:
+    - core/jquery

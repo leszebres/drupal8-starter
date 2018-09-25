@@ -1,0 +1,27 @@
+name: Drup Admin
+type: theme
+description: 'Overrides admin theme'
+package: Drup
+core: 8.x
+version: '8.x-1.0'
+libraries:
+  - drup_admin/theme
+
+base theme: adminimal_theme
+
+
+regions:
+  header: 'Header'
+  pre_content: 'Pre-content'
+  breadcrumb: Breadcrumb
+  highlighted: Highlighted
+  help: Help
+  content: Content
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  sidebar_first: 'First sidebar'
+regions_hidden:
+  - sidebar_first
+
+'interface translation project': drup_admin
+'interface translation server pattern': modules/custom/example_module/translations/%project.%language.po

@@ -1,0 +1,226 @@
+/**
+ * Admin menu
+ */
+.toolbar-tray-horizontal .toolbar-menu-administration > .toolbar-menu > .menu-item {
+  z-index: 2;
+  background-color: transparent; }
+  .toolbar-tray-horizontal .toolbar-menu-administration > .toolbar-menu > .menu-item > a:hover,
+  .toolbar-tray-horizontal .toolbar-menu-administration > .toolbar-menu > .menu-item:hover > a {
+    color: #fff;
+    text-decoration: underline;
+    background-color: transparent; }
+  .toolbar-tray-horizontal .toolbar-menu-administration > .toolbar-menu > .menu-item ul.toolbar-menu {
+    -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); }
+  .toolbar-tray-horizontal .toolbar-menu-administration > .toolbar-menu > .menu-item li.menu-item {
+    border-left: 0; }
+  .toolbar-tray-horizontal .toolbar-menu-administration > .toolbar-menu > .menu-item li.menu-item--expanded {
+    background-position: center right 5px; }
+
+.toolbar-tray-horizontal ul li.menu-item--expanded .menu-item.hover-intent ul {
+  margin-left: 200px; }
+
+.toolbar-tray-horizontal .menu-item .menu-item {
+  background-color: #f5f5f2; }
+
+/**
+ * Page title
+ */
+.adminimal h1,
+.adminimal .heading-a {
+  margin: 15px 0 30px; }
+
+/**
+ * User Role
+ */
+body:not(.role--super-admin) .js-form-item-roles-super-admin {
+  display: none; }
+
+/**
+ * Layout node
+ */
+.layout-region-node-main,
+.layout-region-node-footer {
+  width: 75%; }
+
+.layout-region-node-secondary {
+  width: 25%; }
+
+/* ==========================================================================
+   Form
+   ========================================================================== */
+.taxonomy-term-form details,
+.layout-region-node-main details {
+  margin: 2em 0; }
+
+.taxonomy-term-form .form-wrapper,
+.layout-region-node-main .form-wrapper {
+  margin: 15px 0 30px; }
+
+.taxonomy-term-form details.horizontal-tabs-pane,
+.layout-region-node-main details.horizontal-tabs-pane {
+  margin: 15px 0 0;
+  padding: 0; }
+
+.taxonomy-term-form td > .form-wrapper,
+.layout-region-node-main td > .form-wrapper {
+  margin: 0; }
+
+.taxonomy-term-form .form-item:not(.form-type-checkbox):not(.form-type-radio),
+.layout-region-node-main .form-item:not(.form-type-checkbox):not(.form-type-radio) {
+  margin: 0 0 15px; }
+
+.taxonomy-term-form input.form-autocomplete,
+.taxonomy-term-form input.form-text,
+.taxonomy-term-form input.form-tel,
+.taxonomy-term-form input.form-email,
+.taxonomy-term-form input.form-url,
+.taxonomy-term-form input.form-search,
+.taxonomy-term-form input.form-number,
+.taxonomy-term-form input.form-color,
+.taxonomy-term-form input.form-file,
+.taxonomy-term-form input.form-date,
+.taxonomy-term-form input.form-time,
+.taxonomy-term-form textarea.form-textarea,
+.layout-region-node-main input.form-autocomplete,
+.layout-region-node-main input.form-text,
+.layout-region-node-main input.form-tel,
+.layout-region-node-main input.form-email,
+.layout-region-node-main input.form-url,
+.layout-region-node-main input.form-search,
+.layout-region-node-main input.form-number,
+.layout-region-node-main input.form-color,
+.layout-region-node-main input.form-file,
+.layout-region-node-main input.form-date,
+.layout-region-node-main input.form-time,
+.layout-region-node-main textarea.form-textarea {
+  padding-top: .6em;
+  padding-bottom: .6em; }
+
+.taxonomy-term-form label,
+.layout-region-node-main label {
+  margin-bottom: 6px; }
+
+.taxonomy-term-form .paragraph-top,
+.layout-region-node-main .paragraph-top {
+  margin: 0 0 -15px; }
+  .taxonomy-term-form .paragraph-top > *,
+  .layout-region-node-main .paragraph-top > * {
+    margin: 0; }
+
+.taxonomy-term-form .paragraphs-subform,
+.layout-region-node-main .paragraphs-subform {
+  margin-top: 30px; }
+
+.details-description {
+  margin-bottom: 7.5px; }
+
+.form-composite > legend {
+  margin-bottom: 5px; }
+
+.draggable a.tabledrag-handle {
+  height: auto; }
+
+/**
+ * Paragraphs
+ */
+.js .field--widget-paragraphs .field-multiple-drag {
+  vertical-align: middle; }
+
+/* ==========================================================================
+   CKEditor
+   ========================================================================== */
+.adminimal .filter-wrapper {
+  display: none; }
+
+.adminimal .field-config-form .filter-wrapper {
+  display: block; }
+
+/* ==========================================================================
+   Tabs
+   ========================================================================== */
+.horizontal-tabs ul.horizontal-tabs-list li a,
+.horizontal-tabs ul.horizontal-tabs-list li.selected a {
+  padding: 15px 20px; }
+
+.horizontal-tabs .horizontal-tab-button {
+  padding: 0; }
+  .horizontal-tabs .horizontal-tab-button a {
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s; }
+    .horizontal-tabs .horizontal-tab-button a:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 5;
+      width: 100%;
+      height: 0;
+      -webkit-transition: height .3s;
+      -o-transition: height .3s;
+      transition: height .3s; }
+    .horizontal-tabs .horizontal-tab-button a:hover, .horizontal-tabs .horizontal-tab-button a:focus {
+      background: #fff; }
+      .horizontal-tabs .horizontal-tab-button a:hover:after, .horizontal-tabs .horizontal-tab-button a:focus:after {
+        height: 3px;
+        background: #0071b8; }
+
+.horizontal-tabs .form-radios > .form-item,
+.horizontal-tabs .form-checkboxes > .form-item {
+  display: inline-block;
+  margin-top: 8px;
+  margin-right: 12px; }
+
+.horizontal-tabs details.horizontal-tabs-pane {
+  margin: 0;
+  border: 0; }
+
+.field--widget-link-default .form-type-entity-autocomplete label,
+.field--widget-link-default .description {
+  display: none; }
+
+.field--widget-link-default div.form-type-textfield {
+  margin-top: 8px; }
+  .field--widget-link-default div.form-type-textfield label,
+  .field--widget-link-default div.form-type-textfield input {
+    display: inline-block; }
+
+/* ==========================================================================
+   ENTITY BROWSER
+   ========================================================================== */
+form.entity-browser-form .description br {
+  display: none; }
+
+form.entity-browser-form .field--name-revision-log-message {
+  display: none; }
+
+.form-wrapper .entities-list {
+  margin: 0; }
+  .form-wrapper .entities-list .rendered-entity {
+    position: relative; }
+    .form-wrapper .entities-list .rendered-entity .media--type-image img {
+      max-width: 60%; }
+    .form-wrapper .entities-list .rendered-entity .media--type-image ~ .button {
+      position: absolute;
+      z-index: 20;
+      top: 30px;
+      right: 30px; }
+    .form-wrapper .entities-list .rendered-entity .media--type-image ~ .remove-button {
+      top: 80px; }
+    .form-wrapper .entities-list .rendered-entity[id*="document"] {
+      margin: 0 30px 15px 0; }
+
+/* ==========================================================================
+   Field push
+   ========================================================================== */
+.field--type-push table tr td .form-item {
+  margin: 8px 0; }
+
+.field--type-push .push-link .form-wrapper > legend,
+.field--type-push .push-link .form-wrapper > .fieldset-wrapper,
+.field--type-push .push-link .form-item > label,
+.field--type-push .push-link .form-item > input,
+.field--type-push .push-link .description {
+  display: inline-block;
+  margin-right: 8px; }
