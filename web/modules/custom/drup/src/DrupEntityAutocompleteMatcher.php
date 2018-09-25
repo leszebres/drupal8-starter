@@ -40,7 +40,7 @@ class DrupEntityAutocompleteMatcher extends \Drupal\Core\Entity\EntityAutocomple
                     
                     $status = '';
                     if ($entity->getEntityType()->id() == 'node') {
-                        if (!DrupSite::isNodeAllowed($entity)) {
+                        if (!DrupCommon::isNodeTranslated($entity)) {
                             continue;
                         }
                         $status = ($entity->isPublished()) ? "published" : "unpublished";

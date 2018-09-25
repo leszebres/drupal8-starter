@@ -1,0 +1,243 @@
+.cke_editable {
+    padding: $grid--gutter-width;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+#skip-link {
+    margin: 0;
+}
+
+// Remove Drupal ajax views spinner
+.ajax-progress {
+    display: none;
+}
+
+
+/* ==========================================================================
+    TABS PRIMARY + SECONDARY
+   ========================================================================== */
+.tabs--primary,
+.tabs--secondary {
+    margin-bottom: $v-align/2;
+    overflow: hidden;
+    font-size: 14px;
+    @include font(primary);
+    list-style: none;
+
+    li {
+        float: left;
+
+        a {
+            display: block;
+            padding: 10px 24px;
+            color: $table--color;
+            background-color: $tabs--background;
+
+            &.is-active {
+                color: $tabs--color-active
+            }
+            &:hover {
+                color: $tabs--color-active
+            }
+        }
+    }
+}
+.tabs--primary {
+    border-bottom: 1px solid $tabs--border;
+
+    .is-logged-in & {
+        position: fixed;
+        z-index: $zindex--big + $zindex--small;
+        left: 0;
+        bottom: 0;
+        margin-bottom: 0;
+        border-bottom: 0;
+    }
+
+    li {
+        margin-bottom: -1px;
+
+        a {
+            border: 1px solid $tabs--border;
+
+            &.active {
+                background-color: darken($tabs--background, 6%);
+            }
+        }
+
+        & + li {
+            a {
+                border-left: none;
+            }
+        }
+    }
+}
+.tabs--secondary {
+    float: right;
+    margin-top: -$v-align / 2;
+    border-top: none;
+}
+
+
+/* ==========================================================================
+   UI MODAL
+   ========================================================================== */
+.ui-widget.ui-widget-content {
+    border: 0;
+}
+.ui-dialog {
+    z-index: 3000;
+    padding: 0;
+    border: 0;
+
+    .ui-dialog-titlebar-close {
+        right: 10px;
+    }
+
+    .ui-dialog-titlebar {
+        border: 0;
+        background-color: $color--primary;
+        color: #fff;
+        border-radius: 0;
+    }
+    .ui-dialog-content {
+        padding: 30px;
+
+        form {
+            margin-bottom: 0;
+        }
+    }
+    .ui-dialog-buttonpane {
+        display: none;
+    }
+}
+.ui-widget-overlay {
+    background: #000;
+}
+
+/* ==========================================================================
+   UI AUTOCOMPLETE
+   ========================================================================== */
+.ui-autocomplete {
+    transform: translateY(3px);
+    background-color: #fff;
+    max-width: 380px;
+    font-size: $fontsize--small;
+
+    &.ui-widget-content {
+        border: 1px solid $color--border;
+        border-top: 0;
+    }
+
+    .ui-menu-item-wrapper {
+        padding: 4px 10px;
+        border: 0;
+        border-top: 1px solid $color--border;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .ui-state-focus,
+    .ui-state-active {
+        margin: 0;
+        color: $color--primary;
+        background: none;
+        border-color: $color--border;
+    }
+}
+
+
+/* ==========================================================================
+   BLOC ADMIN
+   ========================================================================== */
+.block-form {
+    .form-item-settings-admin-label,
+    .form-item-settings-label,
+    .form-item-settings-label-display,
+    .js-form-type-vertical-tabs,
+    .js-form-type-machine-name,
+    .form-item-region {
+        display: none;
+    }
+    .form-wrapper .form-wrapper {
+        background-color: $color--background;
+    }
+    details.form-wrapper {
+        border: 1px solid $color--border;
+        border-radius: 4px;
+
+
+        summary {
+            padding: 10px $grid--gutter-width;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color .2s;
+        }
+        &[open] summary {
+            margin-bottom: 10px;
+        }
+        &[open] summary,
+        summary:hover {
+            background-color: $color--background;
+        }
+        > .form-item {
+            margin-left: $grid--gutter-width;
+            margin-right: $grid--gutter-width;
+        }
+    }
+}
+.btn--block-admin:after {
+    @include font-icon(edit);
+    font-size: $fontsize--small;
+}
+/*
+.block-admin {
+    .block-is-empty {
+        text-align: center;
+    }
+
+    div.contextual-links-wrapper {
+        font-size: 1em;
+        top: auto;
+        right: auto;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+
+        & > a {
+            display: none !important;
+        }
+        ul.contextual-links {
+            position: relative;
+            display: block;
+            top: auto;
+            padding: 0;
+            border: none;
+            transition: opacity .3s;
+
+            a {
+                margin: 0;
+                padding: $grid--gutter-width/2;
+                background-color: rgba(#000, .7);
+                color: #fff !important;
+                transition: .3s;
+
+                &:hover {
+                    background-color: $color--secondary;
+                }
+            }
+        }
+    }
+}
+*/
+
+/* ==========================================================================
+   DEBUG DRUPAL
+   ========================================================================== */
+pre.sf-dump,
+pre.sf-dump
+.sf-dump-default {
+    text-align: left;
+    z-index: 0;
+}

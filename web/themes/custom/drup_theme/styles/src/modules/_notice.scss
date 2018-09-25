@@ -1,0 +1,98 @@
+// Styleguide Notices
+
+/*
+Markup: <div class="messages $modifierClass">Ce texte est mon message mis en forme selon le niveau de notice.</div>
+
+.messages--status - Message de succès
+.messages-warning.warning - Message de mise en garde
+.messages-error.error   - Message d'erreur
+
+Styleguide Notices - 1.messages
+*/
+.messages {
+    position: relative;
+    z-index: $zindex--default;
+    width: 100%;
+    //margin: $v-align--medium 0;
+    margin: 0 auto $v-align;
+    padding: 60px $grid--gutter-width $v-align--medium;
+    color: $notice--color;
+    font-size: $notice--fontsize;
+    border-top: 4px solid $color--primary;
+    text-align: center;
+    background: $notice--background;
+    box-sizing: border-box;
+
+    a {
+        color: inherit;
+        text-decoration: underline;
+    }
+    li {
+        list-style: none;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 15px;
+        left: 50%;
+        z-index: 5;
+        width: 30px;
+        height: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+        transform: translateX(-50%);
+        border-radius: 50%;
+    }
+
+    .krumo-root {
+        text-align: left;
+    }
+}
+
+.messages--status {
+    border-top-color: $notice--success-color;
+
+    &:before {
+        background-color: $notice--success-color;
+        background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjAiIHk9IjAiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiPgogICAgPHBhdGggc3R5bGU9ImZpbGw6ICNmZmY7IiBkPSJNMjU2LDUwQzE0Mi4yMjksNTAsNTAsMTQyLjIyOSw1MCwyNTZzOTIuMjI5LDIwNiwyMDYsMjA2czIwNi05Mi4yMjksMjA2LTIwNlMzNjkuNzcxLDUwLDI1Niw1MHpNMjIwLjk1MywzNjYuOTU5bC05Ny4zMjYtOTcuMzUybDQxLjQ0LTQxLjQ0OGw1NS44ODQsNTUuODk5bDEyOS4wMTgtMTI5LjAxOGw0MS40NTksNDEuNDMxTDIyMC45NTMsMzY2Ljk1OXoiIC8+Cjwvc3ZnPg==");
+    }
+}
+.messages--warning {
+    border-top-color: $notice--warning-color;
+
+    &:before {
+        background-color: $notice--warning-color;
+        background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjAiIHk9IjAiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiPgogICAgPHBhdGggc3R5bGU9ImZpbGw6ICNmZmY7IiBkPSJNMzQxLjMyOCw1MEgxNzAuNjcyTDUwLDE3MC42NzJ2MTcwLjY1NkwxNzAuNjcyLDQ2MmgxNzAuNjU2TDQ2MiwzNDEuMzI4VjE3MC42NzJMMzQxLjMyOCw1MHpNMjU2LDM5OC45OTljLTE2LjQwNywwLTI5LjcwOC0xMy4zMDItMjkuNzA4LTI5LjcwOGMwLTE2LjQwOCwxMy4zMDEtMjkuNzA4LDI5LjcwOC0yOS43MDhzMjkuNzA4LDEzLjMsMjkuNzA4LDI5LjcwOEMyODUuNzA4LDM4NS42OTcsMjcyLjQwNywzOTguOTk5LDI1NiwzOTguOTk5eiBNMjc1LjUsMzA4Ljc5MWgtMzlsLTIwLTE4NC45OTloNzlMMjc1LjUsMzA4Ljc5MXoiLz4KPC9zdmc+");
+    }
+}
+.messages--error {
+    border-top-color: $notice--error-color;
+
+    &:before {
+        background-color: $notice--error-color;
+        background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjAiIHk9IjAiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiPgogICAgPHBhdGggc3R5bGU9ImZpbGw6ICNmZmY7IiBkPSJNMzQxLjMyOCw1MEgxNzAuNjcyTDUwLDE3MC42NzJ2MTcwLjY1NkwxNzAuNjcyLDQ2MmgxNzAuNjU2TDQ2MiwzNDEuMzI4VjE3MC42NzJMMzQxLjMyOCw1MHpNMzI0LjI3NiwzNjEuNDA4bC02Ny4yNzUtNjcuMjcxbC02Ny4yNzMsNjcuMjhsLTM2LjEzNi0zNi4xNTVsNjcuMjYxLTY3LjI3MWwtNjcuMjY5LTY3LjI2NWwzNi4xNTYtMzYuMTM1bDY3LjI1Nyw2Ny4yNDlsNjcuMjQ2LTY3LjI1N2wzNi4xNjYsMzYuMTQxbC02Ny4yNTgsNjcuMjYzbDY3LjI2Niw2Ny4yNTdMMzI0LjI3NiwzNjEuNDA4eiIvPgo8L3N2Zz4=");
+    }
+}
+
+
+/*
+Message pour les navigateurs non optimisés
+
+Markup: url()->find(.notice--browser)
+
+Styleguide Notices - 1.notice--browser
+*/
+.notice--browser {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $zindex--big;
+    padding: 350px 15%;
+    @include font(primary, bold);
+    text-align: center;
+    background: $color--background url("../../images/logo.png") no-repeat center 200px;
+    background-size: 250px auto;
+}

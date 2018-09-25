@@ -1,0 +1,24 @@
+.map {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    min-height: 300px;
+    background-color: $color--background-secondary;
+    box-sizing: border-box;
+
+    &[class*="leaflet"] {
+        font: inherit;
+    }
+}
+.map-container,
+.map-inner {
+    position: relative;
+    width: 100%;
+}
+
+
+.map-marker {
+}
+
+.map-popup {
+}

@@ -1,0 +1,33 @@
+@function media-breakpoint-get($breakpoint) {
+    @if (type_of($breakpoint) == "number") {
+       @return $breakpoint;
+    } @else {
+        $min: map-get($breakpoints, $breakpoint);
+        @return if($min != 0, $min, null);
+    }
+    @return null;
+}
+
+@mixin media-breakpoint-max($breakpoint) {
+    $max: media-breakpoint-get($breakpoint);
+    @if $max {
+        @media (max-width: $max) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+@mixin media-breakpoint-min($breakpoint) {
+    $min: media-breakpoint-get($breakpoint);
+    @if $min {
+        @media (min-width: ($min + 1px)) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+

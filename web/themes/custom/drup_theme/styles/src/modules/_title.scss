@@ -1,0 +1,54 @@
+// Styleguide Titres
+
+/*
+.title--h1 - H1
+.title--h2 - H2
+.title--h3 - H3
+.title--h4 - H4
+
+Markup: <span class="$modifierClass">Titre</span>
+
+Styleguide Titres - 1.title
+*/
+h1,
+.title--h1,
+h2,
+.title--h2,
+h3,
+.title--h3,
+h4,
+.title--h4 {
+    margin: 0 0 1em;
+    line-height: $title--lineheight;
+}
+
+h1,
+.title--h1,
+.content-title {
+    margin-bottom: $v-align;
+    @include font(primary, bold);
+    color: $title--h1-color;
+    font-size: $title--h1-fontsize;
+}
+
+h2,
+.title--h2 {
+    @include font(primary, light);
+    color: $title--h2-color;
+    font-size: $title--h2-fontsize;
+}
+
+h3,
+.title--h3 {
+    @include font(primary, semibold);
+    color: $title--h3-color;
+    font-size: $title--h3-fontsize;
+}
+
+h4,
+.title--h4 {
+    @include font(primary);
+    color: $title--h4-color;
+    font-size: $title--h4-fontsize;
+}
+

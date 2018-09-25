@@ -1,0 +1,226 @@
+/* ==========================================================================
+   TEXT & FONTS
+   ========================================================================== */
+
+@mixin font($name, $weight: 'regular') {
+    $fontName: map-get($font-families, $name);
+    $fontVersion: map-get($fontName, $weight);
+
+    font-weight: $body--fontweight;
+    font-family: $fontVersion, $font--fallback;
+}
+
+@mixin font-icon($icon: null) {
+    position: relative;
+    font-family: $font--icon-name;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    @if ($icon != null) {
+        @extend .icon--#{$icon}:before;
+    }
+}
+
+
+/* ==========================================================================
+   VISIBILITY
+   ========================================================================== */
+/*
+ * Only display content to screen readers
+ */
+@mixin sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+    border: 0;
+}
+/*
+ * Use in conjunction with .sr-only to only display content when it's focused.
+ */
+@mixin sr-only-focusable {
+    &:active,
+    &:focus {
+        position: static;
+        width: auto;
+        height: auto;
+        overflow: visible;
+        clip: auto;
+        white-space: normal;
+        clip-path: none;
+    }
+}
+
+
+/* ==========================================================================
+   COLORS
+   ========================================================================== */
+
+// Horizontal gradient, from left to right
+@mixin gradient-x($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%, $orientation: to right) {
+    background-image: linear-gradient($orientation, $start-color $start-percent, $end-color $end-percent);
+    background-repeat: repeat-x;
+}
+
+// Vertical gradient, from top to bottom
+@mixin gradient-y($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+    background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent);
+    background-repeat: repeat-x;
+}
+
+//@mixin input-placeholder($color) {
+//    &::-webkit-input-placeholder {
+//        color: $color;
+//    }
+//    &:-moz-placeholder {
+//        color: $color;
+//    }
+//    &::-moz-placeholder {
+//        color: $color;
+//    }
+//    &:-ms-input-placeholder {
+//        color: $color;
+//    }
+//}
+@mixin input-placeholder() {
+    &::-webkit-input-placeholder {
+        @content;
+    }
+    &:-moz-placeholder {
+        @content;
+    }
+    &::-moz-placeholder {
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
+}
+
+
+/* ==========================================================================
+   LAYOUT
+   ========================================================================== */
+
+@mixin clearfix() {
+    &::after {
+        display: block;
+        clear: both;
+        content: "";
+    }
+}
+/* ==========================================================================
+   ALIGNMENT
+   ========================================================================== */
+
+/// Vertically centers the element inside of its first non-static parent,
+/// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
+@mixin vertical-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/// Horizontally centers the element inside of its first non-static parent,
+/// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
+@mixin horizontal-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/// Absolutely centers the element inside of its first non-static parent,
+/// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
+@mixin absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* ==========================================================================
+   FROM PHOTOSHOP
+   ========================================================================== */
+
+@mixin photoshop-to-boxshadow() {
+
+}
+
+/* ==========================================================================
+   OTHER
+   ========================================================================== */
+
+/// Creates a CSS triangle, which can be used for dropdown arrows, dropdown pips, and more. Use this mixin inside a `&::before` or `&::after` selector, to attach the triangle to an existing element.
+@mixin css-triangle($size, $color, $direction) {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border: inset $size;
+
+    @if ($direction == down) {
+        border-bottom-width: 0;
+        border-top-style: solid;
+        border-color: $color transparent transparent;
+    }
+    @if ($direction == up) {
+        border-top-width: 0;
+        border-bottom-style: solid;
+        border-color: transparent transparent $color;
+    }
+    @if ($direction == right) {
+        border-right-width: 0;
+        border-left-style: solid;
+        border-color: transparent transparent transparent $color;
+    }
+    @if ($direction == left) {
+        border-left-width: 0;
+        border-right-style: solid;
+        border-color: transparent $color transparent transparent;
+    }
+}
+
+
+
+/* ==========================================================================
+    ROUNDED
+   ========================================================================== */
+@mixin make-circle($s: 50px, $background: $color--primary, $color: #fff, $fontsize: auto)
+{
+    width: $s;
+    height: $s;
+
+    @if ($fontsize == auto) {
+        //font-size: 60%;
+    } @else {
+        font-size: $fontsize;
+    }
+
+    line-height: $s;
+    text-align: center;
+    color: $color;
+    border-radius: 50%;
+
+    @if ($background != null) {
+        //background-color: $background;
+        background: $background;
+    }
+
+    box-sizing: border-box;
+
+    &:before {
+        vertical-align: top;
+        top: 1px;
+    }
+}

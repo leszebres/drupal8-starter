@@ -1,0 +1,38 @@
+/* ==========================================================================
+   Global
+   ========================================================================== */
+.alignleft {
+    float: left;
+    margin: 0 25px 25px 0;
+}
+.alignright {
+    float: right;
+    margin: 0 0 25px 25px;
+}
+.aligncenter {
+    margin: $v-align auto;
+}
+.alignnone {
+    margin: $v-align 0;
+}
+
+
+/* Iframe
+   ========================================================================== */
+.iframe-container {
+    position: relative;
+    overflow: hidden;
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &.l-responsive {
+        height: 0;
+        padding-bottom: 56.25%;
+    }
+}

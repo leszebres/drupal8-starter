@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Contenu
+   ========================================================================== */
+.node-body {
+
+    /* Medias
+      ========================================================================== */
+    img {
+        display: block;
+    }
+
+    blockquote {
+    }
+
+    /* Listes
+    ========================================================================== */
+    ul:not([class]),
+    ol:not([class]) {
+        ul,
+        ol {
+            margin: 15px 0 15px 20px;
+        }
+        li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: .5em;
+
+            &:before {
+                position: absolute;
+                top: $fontsize--default/2 - 1px;
+                left: 0;
+                line-height: $fontsize--default;
+                color: $color--primary;
+                font-size: .8em;
+                font-weight: bold;
+            }
+        }
+    }
+    ul:not([class]) {
+        list-style: disc inside;
+
+        li {
+            list-style: none;
+
+            &:before {
+                content: "■";
+                margin-top: -2px;
+            }
+        }
+    }
+    ol:not([class]) {
+        list-style: none;
+        counter-reset: decimal;
+
+        & > li {
+            counter-increment: decimal;
+
+            &:before {
+                content: counter(decimal)".";
+            }
+        }
+    }
+}
+
+
+.node-body .item-body { // .item-body = sub element of paragraph
+
+    /* Texte
+       ========================================================================== */
+    a:not(.btn) {
+        text-decoration: underline;
+    }
+
+    h2,
+    h3,
+    h4 {
+        &:not(:first-child) {
+            margin-top: $v-align*0.75;
+        }
+    }
+}
+
+
+.paragraph {
+    margin-bottom: $v-align;
+}

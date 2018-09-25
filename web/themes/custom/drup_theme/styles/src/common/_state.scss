@@ -1,0 +1,19 @@
+.clearfix {
+    @include clearfix();
+}
+
+.is-visuallyHidden,
+.sr-only {
+    @include sr-only();
+}
+
+.sr-only-focusable {
+    @include sr-only-focusable();
+}
+
+
+.is-mobile {
+    @include media-breakpoint-min(smartphone) {
+        display: none !important;
+    }
+}

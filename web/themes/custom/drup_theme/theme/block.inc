@@ -18,13 +18,6 @@ function drup_theme_preprocess_block(array &$variables) {
             'nav--' . $derivativeId,
         ];
         $variables['attributes']['id'] = 'nav-' . $derivativeId;
-        
-        if ($derivativeId === 'footer') {
-            $currentYear = date('Y');
-            $siteConfig = \Drupal::config('system.site');
-            $siteName = $siteConfig->get('name');
-            $variables['block_after'] = '© '.$currentYear.' '.$siteName.'. '.t('All rights reserved').'.';
-        }
     }
     // Custom Blocs
     elseif (strpos('drup_', $pluginId) !== false) {

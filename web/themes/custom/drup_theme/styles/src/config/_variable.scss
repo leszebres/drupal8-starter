@@ -1,0 +1,200 @@
+/* ==========================================================================
+   COLORS
+   ========================================================================== */
+$color--primary: #f2653d;
+$color--secondary: #1f2e3c;
+$color--tertiary: #4eb9eb;
+
+$color--text: #333;
+$color--text-lighter: #888686;
+$color--text-darker: #000;
+
+
+$color--link: $color--primary;
+$color--link-hover: $color--text-darker;
+
+
+$color--background: #fff;
+$color--background-secondary: #f3f3f3;
+
+$color--border: #c0c0c0;
+
+
+$color--twitter: #55acee;
+$color--facebook: #4267b2;
+$color--linkedin: #007ab9;
+$color--youtube: #ff0400;
+
+
+/* ==========================================================================
+   TEXT
+   ========================================================================== */
+$fontsize--tiny: 12px;
+$fontsize--small: 14px;
+$fontsize--default: 16px;
+$fontsize--big: 18px;
+$fontsize--huge: 20px;
+
+$body--fontweight: normal;
+
+$body--fontsize: $fontsize--default;
+$body--lineheight: 1.6;
+
+
+/* ==========================================================================
+   FONT
+   ========================================================================== */
+$font-families: (
+    "primary": (
+        "light": 'Open Sans Light',
+        "regular": 'Open Sans Regular',
+        "bold": 'Open Sans Bold',
+    ),
+    "secondary": (
+        "regular": 'Lora Regular',
+    )
+);
+$font--fallback: Arial, sans-serif;
+
+$font--icon-name: FontIcon;
+$font--icon-version: 1;
+
+
+/* ==========================================================================
+   TITLE
+   ========================================================================== */
+$title--h1-color: $color--primary;
+$title--h2-color: $color--primary;
+$title--h3-color: $color--secondary;
+$title--h4-color: $color--text-lighter;
+
+$title--h1-fontsize: 48px;
+$title--h2-fontsize: 36px;
+$title--h3-fontsize: 24px;
+$title--h4-fontsize: 20px;
+
+$title--lineheight: 1.2;
+
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+$breakpoints: (
+        "screen": 1260px,
+        "screen-small": 1020px,
+        "tablet": 1023px,
+        "smartphone": 767px,
+        "smartphone-small": 499px
+);
+
+$row--normal: map_get($breakpoints, "screen");
+$row--medium: 1140px;
+$row--small: map_get($breakpoints, "screen-small");
+
+
+/* ==========================================================================
+   GRID
+   ========================================================================== */
+$grid--columns-nb: 12;
+
+$grid--gutter-width: 30px;
+
+$v-align: 48px;
+$v-align--medium: $v-align/2;
+$v-align--big: $v-align*1.5;
+
+$padding--vertical: 15px;
+$padding--horizontal: 32px;
+
+
+/* ==========================================================================
+   ZINDEX
+   ========================================================================== */
+$zindex--default: 5;
+$zindex--small: 25;
+$zindex--medium: 50;
+$zindex--big: 100;
+
+
+/* ==========================================================================
+   BTN
+   ========================================================================== */
+$btn--color: $color--text;
+$btn--border: $color--border;
+$btn--border-radius: 0;
+$btn--background: $color--background-secondary;
+$btn--fontsize: $fontsize--small;
+$btn--padding-horizontal: $padding--horizontal;
+$btn--padding-vertical: $padding--vertical;
+$btn--height: $btn--padding-vertical*2 + $btn--fontsize + 1px*2 + 2px;
+
+
+/* ==========================================================================
+   INPUT
+   ========================================================================== */
+$input--padding-horizontal: $padding--horizontal/2;
+$input--padding-vertical: $padding--vertical;
+$input--color: $color--text;
+$input--fontsize: $fontsize--default;
+$input--border-color: $color--border;
+$input--border-width: 1px;
+$input--border-radius: 6px;
+$input--background: $color--background-secondary;
+
+$input--height: $input--padding-vertical*2 + $input--fontsize + $input--border-width*2 + 2px;
+
+
+/* ==========================================================================
+   TABLE
+   ========================================================================== */
+$table--color: $color--text;
+$table--border: $color--background;
+$table--fontsize: $fontsize--small;
+$table--background-thead: $color--primary;
+$table--background-odd: $color--background;
+$table--background-even: $color--background-secondary;
+$table--padding-horizontal: $padding--horizontal;
+$table--padding-vertical: $padding--vertical;
+
+
+/* ==========================================================================
+   NOTICE
+   ========================================================================== */
+$notice--color: $color--text;
+$notice--fontsize: $fontsize--default;
+$notice--background: $color--background-secondary;
+$notice--info-color: #5bc0de;
+$notice--success-color: #5cb85c;
+$notice--error-color: #d9534f;
+$notice--warning-color: #f0ad4e;
+
+
+$notice-cookie--color-background: #000;
+$notice-cookie--color: #fff;
+$notice-cookie--gutter-width: $grid--gutter-width;
+$notice-cookie--font-size: $fontsize--small;
+$notice-cookie--padding-vertical: $btn--padding-vertical;
+$notice-cookie--padding-horizontal: $btn--padding-horizontal;
+
+$notice-cookie-modal--color: $color--text;
+$notice-cookie-modal--color-primary: #868395;
+
+
+/* ==========================================================================
+   TABS
+   ========================================================================== */
+$tabs--background: $color--background-secondary;
+$tabs--color: $color--text-lighter;
+$tabs--border: $color--border;
+$tabs--color-active: $color--primary;
+
+
+/* ==========================================================================
+   PATH
+   ========================================================================== */
+$path-theme: "/sites/default/themes/child";
+
+
+/* ==========================================================================
+   CUSTOM
+   ========================================================================== */

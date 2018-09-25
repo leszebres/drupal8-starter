@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Formulaires
+   ========================================================================== */
+form {
+    position: relative;
+    margin-bottom: $v-align;
+    @include font(primary);
+
+    &:focus {
+        outline: 0;
+    }
+}
+.form-group,
+.form-item,
+.form-wrapper {
+    margin-bottom: $v-align--medium;
+}
+
+label,
+legend,
+.form-group-title {
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: .3em;
+    @include font(primary, bold);
+}
+
+label.js-form-required,
+.fieldset-custom[required="required"] .fieldset-legend {
+    &:after {
+        content: ' *';
+        color: red;
+    }
+}
+
+
+form {
+    input,
+    select,
+    textarea {
+        &[disabled],
+        &[readonly],
+        &:disabled {
+            opacity: .5;
+            cursor: default;
+        }
+
+        &:not([readonly]):focus {
+            outline: 0;
+            border-color: $color--primary;
+        }
+    }
+}
+.form-text,
+.form-email,
+.form-select,
+.form-search,
+.form-textarea {
+    display: block;
+    width: 100%;
+    height: $input--height;
+    padding: $input--padding-vertical $input--padding-horizontal;
+    color: $input--color;
+    font-family: inherit;
+    background-color: $input--background;
+    border: $input--border-width solid $input--border-color;
+    border-radius: $input--border-radius;
+    box-sizing: border-box;
+    transition: border-color .3s;
+}
+.form-textarea {
+    height: auto; // use #rows
+    resize: vertical;
+}
+.description {
+    font-size: $fontsize--tiny;
+}
+.form-type-radio,
+.form-type-checkbox {
+    label {
+        display: inline;
+        vertical-align: middle;
+        margin-left: .5em;
+    }
+}
+.form-checkboxes {
+    &.checkboxes-inline {
+        .form-item {
+            display: inline;
+            margin-right: $grid--gutter-width;
+        }
+    }
+}
+.js-form-type-radio,
+.js-form-type-checkbox {
+    .form-item & {
+        margin-bottom: 0;
+    }
+
+    label {
+        @include font(primary, light);
+    }
+}
+.webform-options-display-side-by-side > div {
+    vertical-align: top;
+    margin-right: 1.5em;
+}
+
+.captcha {
+     margin: $v-align--medium 0;
+ }
+.g-recaptcha {
+    & > div {
+        margin-left: auto;
+    }
+}
+
+/* Placeholders
+   ========================================================================== */
+.form-text,
+.form-search {
+    @include input-placeholder() {
+        font-size: $fontsize--small;
+        @include font(primary, light);
+    }
+}
+
+
+/* Submit
+   ========================================================================== */
+.form-actions {
+    text-align: right;
+}
+.form-submit {
+}
+
+
+/* ==========================================================================
+   WEBFORMS
+   ========================================================================== */
+.form--webform {
+
+}
+
+
+
+/* ==========================================================================
+   Views Forms exposed
+   ========================================================================== */
+.views-exposed-form {
+
+}

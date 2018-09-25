@@ -1,0 +1,154 @@
+// Styleguide Navigation
+
+.nav {
+    .nav-menu {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    p,
+    ul,
+    ol {
+        margin: 0;
+    }
+    li {
+        list-style: none;
+    }
+
+    a {
+        position: relative;
+        display: block;
+    }
+
+    .active {
+        color: inherit;
+    }
+}
+
+
+/*
+Navigation principale
+
+Markup: url()->find(.nav--main)
+
+Styleguide Navigation - 1.nav--main
+*/
+.nav--main {
+
+}
+
+/*
+Navigation secondaire
+
+Markup: url()->find(.nav--secondary)
+
+Styleguide Navigation - 1.nav--secondary
+*/
+.nav--secondary {
+}
+
+
+/*
+Navigation footer
+
+Markup: url()->find(.nav--footer)
+
+Styleguide Navigation - 1.nav--footer
+*/
+.nav--footer {
+
+}
+
+
+/*
+Fil d'ariane
+
+Markup: url()->find(.nav--breadcrumb)
+
+Styleguide Navigation - 1.nav--breadcrumb
+*/
+.nav--breadcrumb {
+    margin-bottom: $v-align--medium;
+    font-size: $fontsize--tiny;
+
+    a {
+        display: inline;
+        padding: 5px 0;
+        color: inherit;
+        @include customHover();
+    }
+
+    .item-separator {
+        margin: 0 .4em 0 .5em;
+        font-size: .7em;
+        color: $color--primary;
+    }
+    li:last-of-type {
+        @include font(primary, bold);
+    }
+}
+
+
+
+/*
+Pagination classique
+
+Markup: url()->find(.nav--pager)
+
+Styleguide Navigation - 1.nav--pager
+*/
+.nav--pager {
+    margin: $v-align--medium auto;
+    text-align: center;
+
+    a {
+        display: inline-block;
+    }
+}
+
+
+
+/*
+Social items
+
+Markup: url()->find(.nav--social)
+
+Styleguide Navigation - 1.nav--social
+*/
+.nav--social {
+    font-size: 26px;
+
+    .nav-menu {
+        margin-left: -10px;
+    }
+    li {
+        display: inline-block;
+        vertical-align: top;
+    }
+    a {
+        padding: 5px 10px;
+        line-height: 1;
+    }
+}
+
+/*
+Social share items
+
+Markup: url()->find(.nav--social-share)
+
+Styleguide Navigation - 1.nav--social-share
+*/
+.nav--social-share {
+    font-size: $fontsize--big;
+
+    //.icon--linkedin:before {
+    //    color: $color--linkedin;
+    //}
+    //.icon--twitter:before {
+    //    color: $color--twitter;
+    //}
+    //.icon--facebook:before {
+    //    color: $color--facebook;
+    //}
+}

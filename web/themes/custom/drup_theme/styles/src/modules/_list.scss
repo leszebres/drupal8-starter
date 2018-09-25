@@ -1,0 +1,86 @@
+// Styleguide Listes
+
+.list {
+    margin: 0;
+    list-style: none;
+}
+.list-item {
+    position: relative;
+
+    & > a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: inherit;
+        font-family: inherit;
+        user-select: none;
+        background: no-repeat center;
+        background-size: cover;
+        box-sizing: border-box;
+
+        &:hover {
+        }
+    }
+
+    .item-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .item-media {
+        position: relative;
+        margin-bottom: $grid--gutter-width;
+        overflow: hidden;
+        background-color: $color--background;
+
+        img {
+            display: block;
+        }
+    }
+
+    .item-footer,
+    .item-content {
+        padding: 0 $grid--gutter-width;
+    }
+    .item-content {
+        position: relative;
+    }
+
+    .item-title {
+        margin-bottom: $grid--gutter-width;
+        color: inherit;
+        @include font(primary, bold);
+    }
+    .item-body {
+        margin-bottom: $v-align--medium;
+        font-size: $fontsize--small;
+        line-height: normal;
+        box-sizing: border-box;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+
+/*
+Liste primaire
+
+Markup: url()->find(.list--primary)
+
+Styleguide Listes - 1.list--primary
+*/
+.list--primary {
+    @include grid-wrapper();
+
+    .list-item {
+        @include grid-col-init(true);
+    }
+}

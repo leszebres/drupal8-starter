@@ -1,0 +1,63 @@
+// Styleguide Blocs
+.block {
+    position: relative;
+    z-index: 1;
+    margin-bottom: $v-align;
+    padding-top: $v-align;
+    padding-bottom: $v-align;
+    box-sizing: border-box;
+
+    &.l-narrow {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+.block-inner {
+
+}
+
+.block-header {
+    text-align: center;
+}
+.block-title {
+    margin-bottom: $v-align--medium;
+    @include font(primary, bold);
+    text-align: center;
+
+    span {
+        display: block;
+    }
+}
+.block-content {
+    margin-bottom: $v-align;
+}
+.block-footer {
+    margin-top: $v-align;
+    margin-bottom: $v-align--medium;
+    text-align: center;
+}
+
+.block-admin-btn {
+    margin-bottom: $v-align--medium;
+    text-align: center;
+}
+
+/* ==========================================================================
+   Variantes globales
+   ========================================================================== */
+.block--view {
+    padding: 0;
+
+    .block-title {
+    }
+}
+
+
+/*
+Markup: url()->find(.block--primary)
+
+Styleguide Blocs - 1.block--primary
+*/
+.block--primary {
+
+}

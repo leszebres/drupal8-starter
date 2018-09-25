@@ -1,0 +1,29 @@
+.slider {
+    position: relative;
+    z-index: 5;
+    background-color: $color--primary;
+
+    .slider-item {
+        position: relative;
+        width: 100%;
+        background: no-repeat center;
+        background-size: cover;
+
+        img {
+            width: auto;
+        }
+    }
+}
+
+/*
+Slider HP
+
+Markup: url()->find(.slider--primary)
+
+Styleguide Slider - 1.slider--primary
+*/
+.slider--primary {
+    .slider-item {
+
+    }
+}

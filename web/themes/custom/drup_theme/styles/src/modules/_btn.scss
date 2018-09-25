@@ -1,0 +1,90 @@
+// Styleguide Boutons
+
+/*
+:hover    - Bouton au survol
+:disabled - Bouton désactivé
+.btn--primary - Principal
+
+Markup: <button class="btn $modifierClass">Bouton</button>
+
+Styleguide Boutons - 1.btn
+ */
+button,
+.btn {
+    position: relative;
+    display: inline-block;
+    padding: $btn--padding-vertical $btn--padding-horizontal;
+    vertical-align: middle;
+    color: $btn--color;
+    @include font(primary);
+    font-size: $btn--fontsize;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: $btn--background;
+    border: 2px solid $btn--border;
+    border-radius: $btn--border-radius;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: .3s;
+}
+.btn {
+    & + & {
+        margin-left: $btn--padding-horizontal/2;
+    }
+
+    &:focus,
+    &:active,
+    &.is-active,
+    &:hover,
+    a:hover & {
+        color: #fff;
+        border-color: $color--primary;
+        background-color: $color--primary;
+
+        &:after {
+            left: 3px;
+        }
+    }
+    &:focus {
+        outline: 0;
+    }
+
+    &.is-disabled,
+    &:disabled {
+        opacity: .5;
+        cursor: default;
+    }
+
+    /* Sizes
+       ========================================================================== */
+    .btn--small {
+
+    }
+}
+
+button {
+    height: $btn--height + 6px;
+}
+
+
+/*
+Btn primary (bg gradient)
+
+Markup: url()->find(.btn--primary)
+
+Styleguide Boutons - 1.btn--primary
+*/
+.btn--primary {
+    color: #fff;
+    background-color: $color--primary;
+    border-color: $color--primary;
+
+    &.is-active,
+    &:hover,
+    a:hover &,
+    &:focus {
+        background-color: $color--secondary;
+        border-color: $color--secondary;
+    }
+}

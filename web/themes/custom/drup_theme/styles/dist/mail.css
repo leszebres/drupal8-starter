@@ -1,0 +1,172 @@
+table {
+  width: 100%;
+}
+table td,
+table th {
+  padding: 0;
+}
+
+#outlook a {
+  padding: 0;
+}
+.ExternalClass {
+  width: 100%;
+}
+.ExternalClass, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+  line-height: 100%;
+}
+.mobile,
+.aAU br,
+.ExternalClass br {
+  display: none !important;
+}
+.ExternalClass img,
+img {
+  border: 0 !important;
+}
+p,
+.aAU p,
+.ExternalClass p,
+.aAU span p,
+.ExternalClass span p,
+span p {
+  margin: 0;
+  padding: 0;
+  margin-bottom:0;
+  margin-top:0;
+}
+.mail-mainBody {
+  margin: 0;
+  padding:0;
+  width: 100% !important;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #efefef;
+}
+#backgroundTable {
+  margin: 0;
+  padding: 0;
+  width: 100% !important;
+  line-height: 100% !important;
+}
+.mail-table.mail-vertical-spacer td {
+  height: 15px;
+}
+.mail-table {
+  margin: 0;
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border: 0;
+}
+.mail-table.mail-container {
+  margin: 0 auto;
+  width: 650px;
+}
+.mail-table.mail-body .mail-table.mail-container {
+  background: #FFFFFF;
+}
+.mail-table td {
+  padding: 0;
+  text-align: left;
+  vertical-align: top;
+  border-collapse: collapse;
+}
+.mail-image {
+  display: block;
+  margin: 0;
+  outline: none;
+  text-decoration: none;
+  -ms-interpolation-mode: bicubic;
+  max-width: 100% !important;
+}
+.mail-link {
+  text-decoration: none;
+}
+.mail-link .mail-image {
+  border: 0;
+}
+.mail-text {
+  display: block;
+  padding: 0;
+  width: 100%;
+  min-height: inherit;
+  line-height: 120%;
+  color: #020303;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+.mail-text strong,
+.mail-text br,
+.mail-text span {
+  line-height: 120%;
+}
+.mail-text a {
+  color: #020303;
+  text-decoration: underline;
+}
+
+.mail-message-text {
+  text-align: center;
+}
+.mail-message-text .mail-text {
+  display: inline-block;
+}
+.mail-message-text .mail-text,
+.mail-message-text a {
+  color: #999999;
+  line-height: 14px;
+  font-size: 12px;
+}
+.mail-message-text a {
+  text-decoration: underline;
+}
+
+.mail-border-primary {
+  background: #114D7E;
+}
+.mail-border-secondary {
+  background: #E7E7E9;
+}
+
+.mail-label font {
+  font-weight: bold;
+}
+
+.mail-group .mail-label {
+  padding: 15px 10px;
+  background-color: #E7E7E9;
+}
+
+
+/* HEADER */
+.mail-header td {
+  text-align: center;
+}
+.mail-header td .mail-image {
+  display: inline-block;
+  color: #00ADA9;
+  font-size: 22px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.mail-site-baseline .mail-text {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* FOOTER */
+.mail-footer {
+  background: #454545;
+}
+.mail-footer td {
+  text-align: right;
+}
+.mail-footer .mail-text,
+.mail-footer .mail-text a {
+  color: #FFFFFF;
+}

@@ -1,0 +1,174 @@
+
+/* ==========================================================================
+   GLOBAL
+   ========================================================================== */
+html {
+}
+
+html,
+body { // Fix iPad container
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    color: $color--text;
+    @include font(primary);
+    font-size: $body--fontsize;
+    line-height: $body--lineheight;
+    background-color: $color--background;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* ==========================================================================
+   INLINE
+   ========================================================================== */
+a {
+    color: $color--link;
+    text-decoration: none;
+    transition: .2s;
+
+    &:hover,
+    &:focus {
+        color: $color--link-hover;
+    }
+}
+strong,
+b {
+    @include font(primary, bold);
+}
+
+
+/* ==========================================================================
+   TEXT
+   ========================================================================== */
+p,
+blockquote,
+form,
+ul,
+ol,
+fieldset {
+    margin: 0 0 $v-align--medium;
+}
+blockquote {
+    margin: $v-align auto;
+
+    p:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+
+/* ==========================================================================
+   LISTING
+   ========================================================================== */
+li {
+    margin: 0;
+}
+ul,
+ol {
+    padding: 0;
+    list-style-position: inside;
+}
+ul {
+
+}
+
+
+/* ==========================================================================
+   MEDIA
+   ========================================================================== */
+img {
+    max-width: 100%;
+    height: auto;
+}
+iframe {
+    max-width: 100%;
+    border: 0;
+}
+figure {
+    margin: 0;
+}
+figcaption {
+
+}
+hr {
+    height: 1px;
+    margin: $v-align auto;
+    background: $color--border;
+    border: 0;
+}
+fieldset {
+    min-width: 0;
+    padding: $grid--gutter-width;
+    border: 1px solid $color--border;
+}
+
+
+/* ==========================================================================
+   TABLE
+   ========================================================================== */
+table {
+    width: 100% !important;
+    max-width: 100%;
+    margin: $v-align auto;
+    border: 1px solid $color--border;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: $table--fontsize;
+    overflow: hidden;
+
+    p {
+        margin: 0;
+    }
+
+    caption {
+        margin-bottom: $v-align--medium;
+        font-style: italic;
+    }
+}
+th,
+td {
+    vertical-align: middle;
+    padding: $table--padding-vertical $table--padding-horizontal;
+
+    & + & {
+        border-left: 1px solid $table--border;
+    }
+}
+th {
+    color: #fff;
+    vertical-align: bottom;
+}
+td {
+
+}
+thead {
+    @include font(primary, bold);
+    color: #fff;
+
+    &,
+    a {
+        color: #fff;
+    }
+
+    tr {
+        background-color: $table--background-thead;
+    }
+    th,
+    td {
+        border: 1px solid $table--background-thead;
+    }
+}
+tbody {
+    background-color: $table--background-odd;
+
+    tr:nth-of-type(even) {
+        background-color: $table--background-even;
+    }
+    td {
+        border: 1px solid $color--border;
+    }
+}

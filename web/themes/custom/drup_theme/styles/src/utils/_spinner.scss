@@ -1,0 +1,53 @@
+// Global
+.spinner--overlay {
+    position: relative;
+}
+.spinner-wrapper {
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1001;
+    pointer-events: none;
+
+    .is-loading & {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+}
+
+// overlay
+.spinner--overlay {
+    .spinner-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,.2);
+        transition: opacity .3s;
+    }
+    .spinner-wrapperInner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: $zindex--default;
+        padding: 15px;
+        margin: -30px;
+        width: 44px;
+        height: 44px;
+        box-shadow: 0 5px 15px rgba(#000, .25);
+    }
+
+    &.l-spinner {
+        .spinner-wrapperInner {
+            background: no-repeat center $color--primary;
+            border-radius: 50%;
+        }
+
+        &.is-loading {
+            .spinner-wrapperInner {
+                background-image: url("../../images/spinner.svg");
+            }
+        }
+    }
+}

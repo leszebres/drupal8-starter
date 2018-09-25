@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "935ab786794d12475c294580b2c05138",
+    "content-hash": "6c1ea90ebd77a452adf32de5a97f7c7b",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -4251,6 +4251,9 @@
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
                     }
+                },
+                "patches_applied": {
+                    "Support CSS inlining": "https://www.drupal.org/files/issues/2018-07-10/swiftmailer.css_inliner.2843327-49.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",

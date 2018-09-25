@@ -1,0 +1,26 @@
+// Styleguide Icones
+
+/*
+.icon---name - \unicode
+
+Markup: <span class="icon $modifierClass"></span>
+
+Styleguide Icones - 1.icon
+*/
+.icon {
+    &:before {
+        @include font-icon;
+    }
+}
+.btn.icon,
+p.icon {
+    &:before {
+        top: -1px;
+        vertical-align: middle;
+        margin-right: .6em;
+    }
+}
+
+.icon--edit:before {
+    content: '';
+}

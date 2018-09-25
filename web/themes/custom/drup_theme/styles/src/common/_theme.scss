@@ -1,0 +1,30 @@
+
+/* ==========================================================================
+   Background primary
+   ========================================================================== */
+.theme--bg-primary {
+    background-color: $color--primary;
+
+    &,
+    a {
+        color: #fff;
+    }
+}
+
+/* ==========================================================================
+   Background secondary
+   ========================================================================== */
+.theme--bg-secondary {
+    background-color: $color--secondary;
+
+    &,
+    a {
+        color: #fff;
+    }
+}
+
+/* Background gray
+   ========================================================================== */
+.theme--bg-muted {
+    background-color: $color--background-secondary;
+}

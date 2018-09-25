@@ -1,0 +1,34 @@
+/*
+Tag par défaut
+
+Markup: url()->find(.tag)
+
+Styleguide  - 1.tag
+ */
+.tag {
+    position: relative;
+    display: inline-block;
+    padding: 4px 10px 5px;
+    color: #fff;
+    @include font(primary);
+    font-size: $fontsize--small;
+    font-style: italic;
+    line-height: 1.2;
+    background: $color--primary;
+    border-radius: 6px;
+    transition: .3s;
+}
+a.tag {
+    text-decoration: none;
+}
+
+/*
+Tag
+
+Markup: url()->find(.tag--primary)
+
+Styleguide Tag - 10.tag--primary
+*/
+.tag--primary {
+
+}
