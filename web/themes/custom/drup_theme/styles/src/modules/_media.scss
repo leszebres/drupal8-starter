@@ -3,11 +3,11 @@
    ========================================================================== */
 .alignleft {
     float: left;
-    margin: 0 25px 25px 0;
+    margin: 0 $v-align $v-align 0;
 }
 .alignright {
     float: right;
-    margin: 0 0 25px 25px;
+    margin: 0 0 $v-align $v-align;
 }
 .aligncenter {
     margin: $v-align auto;
