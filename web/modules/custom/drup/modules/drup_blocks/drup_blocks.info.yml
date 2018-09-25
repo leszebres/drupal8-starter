@@ -1,0 +1,5 @@
+name: 'Drup Blocks'
+type: module
+description: 'Generate Blocks'
+core: 8.x
+package: 'Drup'

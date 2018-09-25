@@ -1,0 +1,5 @@
+toolbar.tree:
+  css:
+    theme:
+      assets/styles/toolbar.admin.css:
+        weight: 50

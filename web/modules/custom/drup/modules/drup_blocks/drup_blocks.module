@@ -1,0 +1,70 @@
+<?php
+
+/**
+ * @file
+ * Contains drup_blocks.module.
+ */
+
+use Drupal\block\Entity\Block;
+use Drupal\Core\Access\AccessResult;
+
+use Drupal\drup_blocks\DrupBlock;
+
+/**
+ * Implements hook_theme().
+ */
+function drup_blocks_theme() {
+    $themes = [
+//        'drup_blocks_admin_expertise_pushes' => [
+//            'variables' => [
+//                'items' => []
+//            ]
+//        ],
+    ];
+    
+    DrupBlock::format($themes);
+    
+    return $themes;
+}
+
+/**
+ * @param \Drupal\block\Entity\Block $block
+ * @param $operation
+ * @param \Drupal\Core\Session\AccountInterface $account
+ *
+ * @return mixed
+ */
+function drup_blocks_block_access(\Drupal\block\Entity\Block $block, $operation, \Drupal\Core\Session\AccountInterface $account) {
+    $drupRouter = \Drupal::service('drup_router.router');
+    $currentRoute = $drupRouter->getName();
+    $entity = \Drupal\drup\DrupCommon::getPageEntity();
+    $isFront = \Drupal::service('path.matcher')->isFrontPage();
+    $args = \Drupal::routeMatch()->getParameters()->all();
+
+    if ($operation === 'view') {
+        switch ($block->getPluginId()) {
+            /*
+            * Content before
+            */
+            
+            /*
+             * Content
+             */
+
+            /**
+             * Content views
+             */
+//            case 'views_block:news-list_all':
+//                return AccessResult::forbiddenIf($currentRoute !== 'news')->addCacheableDependency($block);
+//                break;
+
+            /**
+             * Content after
+             */
+//            case 'push_newsletter_block':
+//                return AccessResult::forbiddenIf($currentRoute === 'newsletter')->addCacheableDependency($block);
+//                break;
+            
+        }
+    }
+}

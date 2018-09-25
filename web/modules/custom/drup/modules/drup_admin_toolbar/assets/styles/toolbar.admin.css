@@ -1,0 +1,35 @@
+.toolbar-icon-drup-admin-toolbar-drup-settings:before {
+  background-image: url("/core/misc/icons/787878/wrench.svg");
+}
+
+body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/config"] {
+  display: none;
+}
+
+/*
+!* ==========================================================================
+   Admin Toolbar
+   ========================================================================== *!
+.adminimal.adminimal-admin-toolbar.toolbar-tray-open.toolbar-fixed.toolbar-horizontal,
+.adminimal-admin-toolbar.toolbar-tray-open.toolbar-fixed.toolbar-horizontal {
+    padding-top: 78px !important;
+}
+.adminimal.adminimal-admin-toolbar.toolbar-tray-open.toolbar-fixed.toolbar-horizontal.toolbar-loading,
+.adminimal-admin-toolbar.toolbar-tray-open.toolbar-fixed.toolbar-horizontal.toolbar-loading {
+     padding-top: 0 !important;
+}
+.adminimal-admin-toolbar .toolbar .toolbar-bar {
+    min-height: 39px;
+}
+.adminimal-admin-toolbar .toolbar .toolbar-bar .toolbar-tray {
+    box-shadow: none;
+    border: 0;
+}
+.adminimal-admin-toolbar .toolbar .toolbar-bar .toolbar-tray .toolbar-lining > .toolbar-menu > .menu-item {
+    border: 0 !important;
+}
+.adminimal-admin-toolbar .toolbar .toolbar-bar .toolbar-tray .menu-item a.is-active,
+.adminimal-admin-toolbar .toolbar .toolbar-bar .toolbar-tray .menu-item a:focus {
+    color: #fff;
+    background: #333;
+}*/
