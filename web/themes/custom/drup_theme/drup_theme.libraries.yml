@@ -1,0 +1,105 @@
+togglemenu:
+  version: '0.1'
+  js:
+    js/libs/togglemenu/togglemenu.min.js: {}
+    js/libs/togglemenu/togglemenu-hover.min.js: {}
+    js/libs/togglemenu/togglemenu-push.min.js: {}
+  dependencies:
+  - core/jquery
+
+customform:
+  version: '0.1'
+  js:
+    js/libs/customform/customform.min.js: {}
+    js/libs/customform/customform-select.min.js: {}
+    js/libs/customform/customform-check.min.js: {}
+  dependencies:
+  - core/jquery
+
+customform-check:
+  version: '0.1'
+  js:
+    js/libs/customform/customform.min.js: {}
+    js/libs/customform/customform-check.min.js: {}
+  dependencies:
+  - core/jquery
+
+customform-select:
+  version: '0.1'
+  js:
+    js/libs/customform/customform.min.js: {}
+    js/libs/customform/customform-select.min.js: {}
+  dependencies:
+  - core/jquery
+
+cookienotice:
+  version: '0.1'
+  js:
+    js/libs/cookienotice/cookienotice.min.js: {}
+  dependencies:
+  - core/jquery
+
+scroller:
+  version: '0.1'
+  js:
+    js/libs/scroller.min.js: {}
+  dependencies:
+  - core/jquery
+
+fixer:
+  version: '0.1'
+  js:
+    js/libs/fixer.min.js: {}
+  dependencies:
+  - core/jquery
+
+leaflet:
+  version: '1.3-dev'
+  js:
+    js/libs/leaflet/leaflet.js: {}
+  css:
+    theme:
+      js/libs/leaflet/leaflet.css: {}
+  dependencies:
+  - core/jquery
+
+masonry:
+  version: '4.2.2'
+  js:
+    js/libs/masonry/imagesloaded.min.js: {}
+    js/libs/masonry/masonry.min.js: {}
+  dependencies:
+  - core/jquery
+
+main-libs:
+  version: '0.1'
+  js:
+    js/libs/spinner.min.js: {}
+    js/libs/devicedetect.min.js: {}
+  dependencies:
+  - core/jquery
+
+swiftmailer:
+  css:
+    theme:
+      styles/dist/mail.css: {}
+
+theme:
+  version: '0.1'
+  css:
+    theme:
+      styles/dist/theme.css: {}
+  js:
+    js/theme.js: {}
+    js/theme/all.js: {}
+  dependencies:
+  - core/jquery
+  - core/drupal.ajax
+  - core/drupalSettings
+
+theme-contact:
+  version: '0.1'
+  js:
+    js/theme/contact.js: {}
+  dependencies:
+  - drup_theme/customform

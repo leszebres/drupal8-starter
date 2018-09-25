@@ -1,0 +1,14 @@
+<nav class="nav nav--social nav--social-share">
+    <ul class="nav-menu">
+        {% for id, item in items %}
+            {% if item.url %}
+                <li class="nav-item">
+                    <a href="{{ item.url }}" title="{{ "Share this article on @media"|t({'@media': id|capitalize}) }}" target="_blank">
+                        <span class="sr-only">{{ item.title }}</span>
+                        <span class="icon icon--{{ id }}"></span>
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</nav>

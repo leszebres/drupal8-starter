@@ -1,0 +1,13 @@
+{% if admin_url %}
+    {% if btnTitle is empty %}
+        {% set btnTitle = 'Configure this block'|t %}
+    {% endif %}
+
+    <div class="block-admin-btn">
+        {{ link(btnTitle, admin_url, {
+            'class': ['use-ajax', 'btn', 'btn--block-admin'],
+            'data-dialog-type': 'modal',
+            'data-dialog-options': '{"height":"80%","width":"80%"}'
+        }) }}
+    </div>
+{% endif %}

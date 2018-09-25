@@ -1,0 +1,29 @@
+name: 'Drup Theme'
+type: theme
+package: 'Drup'
+core: 8.x
+version: '8.x-1.0'
+libraries:
+  - drup_theme/main-libs
+  - drup_theme/cookienotice
+  - drup_theme/togglemenu
+  - drup_theme/theme
+ckeditor_stylesheets:
+  - styles/dist/theme.css
+
+base theme: false
+
+regions:
+  header: Header
+  navigation: Navigation
+  content_before: Content before
+  content: Content
+  sidebar_first: 'First sidebar'
+  content_views: Content views
+  content_after: Content after
+  footer: Footer
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+
+'interface translation project': drup_theme
+'interface translation server pattern': modules/custom/example_module/translations/%project.%language.po

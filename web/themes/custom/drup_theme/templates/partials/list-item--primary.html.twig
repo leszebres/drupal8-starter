@@ -1,0 +1,31 @@
+{#
+    Partial d'un item de liste
+
+    @vars
+        row.content
+        row.attribute
+
+    @see theme/view.inc
+#}
+<li {{ row.attributes }}>
+    <a href="{{ row.content.url }}">
+        <article class="item-wrapper">
+            <div class="item-media l-image">
+                {{ row.content.media }}
+            </div>
+
+            <div class="item-content">
+                {% set titleTag = (row.content.tagTitle) ? row.content.tagTitle : 'h3' %}
+                <{{ titleTag }} class="item-title">{{ row.content.title }}</{{ titleTag }}>
+
+                <div class="item-body">
+                    {{ row.content.body|raw }}
+                </div>
+
+                <p class="item-more">
+                    {{ "Read article"|t }}
+                </p>
+            </div>
+        </article>
+    </a>
+</li>

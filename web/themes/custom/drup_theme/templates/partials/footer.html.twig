@@ -1,0 +1,9 @@
+<footer class="mainFooter">
+    <div class="mainFooter-inner row">
+        {{ page.footer }}
+    </div>
+</footer>
+
+{% if cookies_datas %}
+    {% include directory ~ '/templates/partials/cookie-notice.html.twig' %}
+{% endif %}

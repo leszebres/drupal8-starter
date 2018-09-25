@@ -1,0 +1,19 @@
+{#
+/**
+ * Liste des contenus de type "Article revue santé"
+ *
+ * @see theme/view.inc
+ */
+#}
+
+{% if rows %}
+    <ul{{ rows_attributes }}>
+        {% for row in rows %}
+            {% if row.content.partial  %}
+                {% include theme.path ~ '/list-item--' ~ row.content.partial|clean_class ~ '.html.twig' %}
+            {% else %}
+                {% include theme.path ~ '/list-item--' ~ theme.partial|clean_class ~ '.html.twig' %}
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endif %}
