@@ -170,3 +170,31 @@ function drup_preprocess_swiftmailer(&$variables) {
 //    echo '</pre>';
 //    die;
 }
+    
+    
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function drup_page_attachments_alter(array &$attachments) {
+    DrupCommon::removeHeaderLinks($attachments);
+}
+
+/**
+ * Implements hook_entity_view_alter().
+ */
+function drup_entity_view_alter(array &$build, Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
+    if ($build['#view_mode'] == 'full' && $entity Instanceof NodeInterface) {
+        DrupCommon::removeHeaderLinks($build);
+    }
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function drup_module_implements_alter(&$implementations, $hook) {
+    if ($hook === 'page_attachments_alter') {
+        $group = $implementations['drup'];
+        unset($implementations['drup']);
+        $implementations['drup'] = $group;
+    }
+}

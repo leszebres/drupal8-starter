@@ -4,7 +4,6 @@ namespace Drupal\drup;
 
 use Drupal\Core\Menu\MenuLinkInterface;
 use Drupal\menu_link_content\Plugin\Menu\MenuLinkContent;
-use Drupal\Core\Language\LanguageInterface;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\node\Entity\Node;
 use Symfony\Component\HttpFoundation\Request;
@@ -133,13 +132,14 @@ abstract class DrupCommon {
      *
      * @return bool
      */
-    public static function isNodeTranslated($node) {
+    public static function isNodeTranslated(Node $node) {
         $isAllowed = true;
-        
-        $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
-        
+    
+        $languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
+        $nodeTranslations = $node->getTranslationLanguages();
+    
         // Node untranslated
-        if (!$node->hasTranslation($langcode)) {
+        if (!$node->hasTranslation($languageId) && !isset($nodeTranslations['und'])) {
             $isAllowed = false;
         }
         
@@ -183,8 +183,7 @@ abstract class DrupCommon {
      * @param $path
      * @param $datas
      */
-    public static function addFavicons(&$variables, $datas = [], $version = 1, $path = null)
-    {
+    public static function addFavicons(&$variables, $datas = [], $version = 1, $path = null) {
         if (empty($path)) {
             $path = '/' . \Drupal::theme()->getActiveTheme()->getPath() . '/images/favicons';
         }
@@ -329,7 +328,7 @@ abstract class DrupCommon {
     /**
      * @param $nid
      */
-    public static function getNodeChildren($nid, $menu_name = 'main') {
+    public static function getNodeChildren($nid, $menuName = 'main') {
         $navItems = [];
     
         $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
@@ -388,13 +387,14 @@ abstract class DrupCommon {
                 }
                 
                 $term = Term::load($term['target_id']);
-                if (($term instanceof Term) && $term->hasTranslation($languageId)) {
-                    $translatedTerm = \Drupal::service('entity.repository')
-                        ->getTranslationFromContext($term, $languageId);
-
+                if ($term instanceof Term) {
+                    if ($term->hasTranslation($languageId)) {
+                        $term = \Drupal::service('entity.repository')
+                            ->getTranslationFromContext($term, $languageId);
+                    }
                     $items[] = (object) [
-                        'name' => $translatedTerm->getName(),
-                        'uri' => 'internal:/taxonomy/term/' . $translatedTerm->id()
+                        'name' => $term->getName(),
+                        'uri' => 'internal:/taxonomy/term/' . $term->id()
                     ];
                 }
             }
@@ -441,5 +441,42 @@ abstract class DrupCommon {
         $adminContext = \Drupal::service('router.admin_context');
 
         return $adminContext->isAdminRoute();
+    }
+    
+    
+    /**
+     * Remove some head metas that invalidate W3C
+     * @param $attachments
+     */
+    public static function removeHeaderLinks(&$attachments) {
+        if (!isset($attachments['#attached']['html_head_link'])) {
+            return;
+        }
+        // Array to unset.
+        $unset_html_head_link = [
+            'delete-form',
+            'edit-form',
+            'version-history',
+            'revision',
+            'display',
+            'drupal:content-translation-overview',
+            'drupal:content-translation-add',
+            'drupal:content-translation-edit',
+            'drupal:content-translation-delete',
+            'devel-load',
+            'devel-render',
+            'devel-definition',
+            'clone-form',
+            'token-devel',
+            'delete-multiple-form'
+            //'shortlink',
+            //'canonical'
+        ];
+        // Unset loop.
+        foreach ($attachments['#attached']['html_head_link'] as $key => $value) {
+            if (isset($value[0]['rel']) && in_array($value[0]['rel'], $unset_html_head_link)) {
+                unset($attachments['#attached']['html_head_link'][$key]);
+            }
+        }
     }
 }
