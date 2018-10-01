@@ -34,7 +34,7 @@
  */
 #}
 {% set heading_id = attributes.id ~ '-menu'|clean_id %}
-<nav {{ attributes|without('role', 'aria-labelledby') }} role="navigation">
+<nav {{ attributes|without('role', 'aria-labelledby') }}>
 
     {% if block_before %}
         {{ block_before }}

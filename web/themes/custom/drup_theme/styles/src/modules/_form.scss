@@ -148,5 +148,9 @@ form {
    Views Forms exposed
    ========================================================================== */
 .views-exposed-form {
-
+    &[data-bef-auto-submit-full-form] {
+        .form-actions {
+            @include sr-only();
+        }
+    }
 }
