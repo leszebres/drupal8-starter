@@ -81,13 +81,19 @@ function drup_theme_theme_suggestions_page_alter(array &$suggestions, array $var
 //        }
 //    }
 }
-
-/**
+    
+    /**
  * Implements hook_preprocess_page_title().
  * @param array $variables
  */
 function drup_theme_preprocess_page_title(array &$variables) {
+    $entity = \Drupal\drup\DrupCommon::getPageEntity(true);
+    
     $variables['title_attributes'] = new Attribute([
         'class' => ['content-title']
     ]);
+    
+    if ($entity->type === 'taxonomy_term') {
+        $variables['title'] = strip_tags($variables['title']->__toString(), 'span');
+    }
 }
