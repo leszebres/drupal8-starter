@@ -11,8 +11,19 @@ function drup_theme_preprocess_block(array &$variables) {
     $pluginId = $variables['base_plugin_id'];
     $derivativeId = $variables['derivative_plugin_id'];
     
+    // Logo
+    if ($pluginId === 'system_branding_block') {
+        $drupSettings = \Drupal::service('drup_settings.variables');
+        $variables['site_alt_logo'] = $drupSettings->getValue('site_logo_alt');
+        $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+    }
+    // Breadcrumb
+    elseif ($pluginId === 'system_breadcrumb_block') {
+        $variables['elements']['#cache']['max-age'] = $variables['#cache']['max-age'] = 0;
+    }
+    
     // Main menu
-    if (in_array($pluginId, ['system_menu_block', 'menu_block'])) {
+    elseif (in_array($pluginId, ['system_menu_block', 'menu_block'])) {
         $variables['attributes']['class'] = [
             'nav',
             'nav--' . $derivativeId,
