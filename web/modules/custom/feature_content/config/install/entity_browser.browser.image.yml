@@ -1,0 +1,41 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - views.view.mediatheque
+  module:
+    - entity_browser_entity_form
+    - views
+name: image
+label: 'Médiathèque Images'
+display: iframe
+display_configuration:
+  width: '900'
+  height: '600'
+  link_text: 'Sélectionner des médias'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  4918082b-0e92-41d5-9005-59957fd823fb:
+    settings:
+      view: mediatheque
+      view_display: entity_browser_image
+      submit_text: Insérer
+      auto_select: false
+    uuid: 4918082b-0e92-41d5-9005-59957fd823fb
+    weight: 1
+    label: 'Liste des médias'
+    id: view
+  8cb88ca3-e144-48e4-a064-22fed4a9e5c0:
+    settings:
+      entity_type: media
+      bundle: image
+      form_mode: default
+      submit_text: Enregistrer
+    uuid: 8cb88ca3-e144-48e4-a064-22fed4a9e5c0
+    weight: 2
+    label: 'Ajouter un média'
+    id: entity_form

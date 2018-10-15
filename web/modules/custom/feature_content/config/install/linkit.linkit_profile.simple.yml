@@ -1,0 +1,19 @@
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: simple
+label: 'Profil Simple'
+description: ''
+matchers:
+  2538edea-c7cb-4f7e-bc1e-3e13652e85f5:
+    uuid: 2538edea-c7cb-4f7e-bc1e-3e13652e85f5
+    id: 'entity:node'
+    weight: 0
+    settings:
+      include_unpublished: false
+      metadata: ''
+      bundles: {  }
+      group_by_bundle: true
+      substitution_type: canonical

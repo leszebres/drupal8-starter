@@ -1,0 +1,14 @@
+langcode: fr
+status: true
+dependencies:
+  module:
+    - imageapi_optimize_resmushit
+name: default
+label: 'Par défaut (reSmushit)'
+processors:
+  e612e27c-746f-4c9b-9898-98aeee9a86d1:
+    uuid: e612e27c-746f-4c9b-9898-98aeee9a86d1
+    id: resmushit
+    weight: 1
+    data:
+      quality: 75

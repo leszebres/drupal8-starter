@@ -1,0 +1,41 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - views.view.mediatheque
+  module:
+    - entity_browser_entity_form
+    - views
+name: document
+label: Documents
+display: iframe
+display_configuration:
+  width: '900'
+  height: '600'
+  link_text: 'Sélectionner des médias'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  fd70cc22-2bbf-46d8-9e4f-77539363e079:
+    settings:
+      view: mediatheque
+      view_display: entity_browser_document
+      submit_text: Insérer
+      auto_select: false
+    uuid: fd70cc22-2bbf-46d8-9e4f-77539363e079
+    weight: 1
+    label: 'Liste des documents'
+    id: view
+  2a1625e3-aa02-4419-967d-60e78b047422:
+    settings:
+      entity_type: media
+      bundle: document
+      form_mode: default
+      submit_text: Enregistrer
+    uuid: 2a1625e3-aa02-4419-967d-60e78b047422
+    weight: 2
+    label: 'Ajouter un document'
+    id: entity_form
