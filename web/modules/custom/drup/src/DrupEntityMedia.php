@@ -1,91 +1,144 @@
 <?php
-    
-    namespace Drupal\drup;
-    
-    use Drupal\media\Entity\Media;
-    use Drupal\file\Entity\File;
+
+namespace Drupal\drup;
+
+use Drupal\media\Entity\Media;
+use Drupal\file\Entity\File;
+
+/**
+ * Class DrupEntityMedia.
+ */
+class DrupEntityMedia {
     
     /**
-     * Class DrupEntityMedia.
+     * Media entities list
+     * @var array
      */
-    class DrupEntityMedia {
+    public $mediasList;
+    
+    /**
+     * Datas for each medias
+     * @var
+     */
+    public $mediasDatas;
+    
+    /**
+     * Media type (ex : Image or File)
+     * @var
+     */
+    public $type;
+    
+    /**
+     * Media entity field representing File entity
+     * @var
+     */
+    public $filesField;
+    
+    /**
+     * Current language id
+     * @var string
+     */
+    public $langcode;
+    
+    /**
+     * DrupEntityMedia constructor.
+     *
+     * @param $medias array/int of Media id(s) or Media entity(es)
+     * @param $fileField
+     *
+     * @throws \Drupal\Core\TypedData\Exception\MissingDataException
+     */
+    public function __construct($medias, $fileField = null) {
+        $this->langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
         
-        public $mediaType;
+        $this->mediasList = $this->formatMedias($medias);
+        $this->filesField = $this->formatFieldName($fileField);
         
-        public $fieldDatas;
+        $this->mediasDatas = $this->getDatas();
+    }
+    
+    /**
+     * Standardize media sources into array of media entities
+     * @param $medias
+     */
+    protected function formatMedias($medias) {
+        $entities = [];
         
-        public $fieldName;
-        
-        public $medias;
-        
-        
-        /**
-         * DrupEntityMedia constructor.
-         *
-         * @param $fieldDatas
-         *
-         * @throws \Drupal\Core\TypedData\Exception\MissingDataException
-         */
-        public function __construct($fieldDatas, $fieldName = NULL) {
-            $this->fieldDatas = $fieldDatas;
-            $this->fieldName = $this->formatFieldName($fieldName);
-            $this->medias = $this->getFieldMedias();
+        if (!is_array($medias)) {
+            $medias = [$medias];
         }
         
-        /**
-         * @return mixed
-         */
-        protected function getFieldDatas() {
-            return $this->fieldDatas;
+        foreach ($medias as $media) {
+            $entity = ($media instanceof Media) ? $media : self::loadMedia($media);
+            if ($entity !== null) {
+                $entities[] = \Drupal::service('entity.repository')->getTranslationFromContext($entity, $this->langcode);
+            }
         }
         
-        /**
-         * @return array
-         * @throws \Drupal\Core\TypedData\Exception\MissingDataException
-         */
-        protected function getFieldMedias() {
-            $medias = [];
-            $languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
-            
-            if (!empty($this->fieldDatas)) {
-                foreach ($this->fieldDatas as $mediaReferenced) {
-                    if (is_int($mediaReferenced) || is_string($mediaReferenced)) {
-                        $mediaEntity = Media::load($mediaReferenced);
-                    } else {
-                        $mediaReferencedId = $mediaReferenced->getValue();
-                        $mediaEntity = Media::load($mediaReferencedId['target_id']);
-                    }
+        return $entities;
+    }
+    
+    /**
+     * Get Media's file entities
+     * @return array|object
+     */
+    protected function getDatas() {
+        $datas = [];
+        
+        if (!empty($this->mediasList)) {
+            foreach ($this->mediasList as $mediaEntity) {
+                
+                if ($mediaEntity->hasField($this->filesField)) {
+                    $fileReferenced = $mediaEntity->get($this->filesField)->first();
                     
-                    if (empty($mediaEntity)) {
-                        return false;
-                    }
-                    
-                    $mediaEntity = \Drupal::service('entity.repository')->getTranslationFromContext($mediaEntity, $languageId);
-                    
-                    if ($mediaEntity instanceof Media) {
-                        $fileReferenced = $mediaEntity->get($this->fieldName)->first();
-                        $fileReferencedId = $fileReferenced->getValue();
-                        $fileEntity = File::load($fileReferencedId['target_id']);
-                        //$fileEntity = \Drupal::service('entity.repository')->getTranslationFromContext($fileEntity, $languageId);
-                        
-                        if ($fileEntity instanceof File) {
-                            $medias[] = (object) [
+                    if (!$fileReferenced->isEmpty() && ($fileDatas = $fileReferenced->getValue())) {
+                        if (isset($fileDatas['target_id']) && ($fileEntity = File::load($fileDatas['target_id']))) {
+                            $datas[] = (object) [
                                 'mediaEntity' => $mediaEntity,
                                 'fileEntity' => $fileEntity,
-                                'fileReferenced' => $fileReferenced,
+                                'fileReferenced' => $fileReferenced
                             ];
                         }
                     }
                 }
             }
-            
-            return $medias;
         }
         
-        /**
-         * @return string
-         */
-        protected function formatFieldName($fieldName) {
-            return ($fieldName !== null) ? $fieldName : 'field_media_' . $this->mediaType;
-        }
+        return $datas;
     }
+    
+    /**
+     * @param $mid
+     * @return \Drupal\Core\Entity\EntityInterface|Media|null
+     */
+    protected function loadMedia($mid) {
+        if ($mediaEntity = Media::load($mid)) {
+            if ($mediaEntity instanceof Media) {
+                return $mediaEntity;
+            }
+        }
+        
+        return null;
+    }
+    
+    /**
+     * @param $fid
+     * @return \Drupal\Core\Entity\EntityInterface|Media|null
+     */
+    protected function loadFile($fid) {
+        if ($fileEntity = Media::load($fid)) {
+            if ($fileEntity instanceof File) {
+                return $fileEntity;
+            }
+        }
+        
+        return null;
+    }
+    
+    /**
+     * @return string
+     */
+    protected function formatFieldName($fieldName) {
+        return ($fieldName !== null) ? $fieldName : 'field_media_' . $this->type;
+    }
+}

@@ -1,182 +1,192 @@
 <?php
-    
-    namespace Drupal\drup;
-    
-    use Drupal\image\Entity\ImageStyle;
+
+namespace Drupal\drup;
+
+use Drupal\image\Entity\ImageStyle;
+
+/**
+ * Class DrupEntityImage
+ *
+ * @package Drupal\drup
+ */
+class DrupEntityImage extends DrupEntityMedia {
     
     /**
-     * Class DrupEntityImage
-     *
-     * @package Drupal\drup
+     * DrupEntityImage constructor.
+     * @param $medias
+     * @param null $fileField
+     * @throws \Drupal\Core\TypedData\Exception\MissingDataException
      */
-    class DrupEntityImage extends DrupEntityMedia {
+    public function __construct($medias, $fileField = null) {
+        $this->type = 'image';
+        parent::__construct($medias, $fileField);
+    }
+    
+    /**
+     * @param $style
+     * @param array $attributes
+     * @return array
+     */
+    public function renderMedias($style, $attributes = []) {
+        $medias = [];
         
-        /**
-         * DrupEntityImage constructor.
-         *
-         * @param $fieldDatas
-         */
-        public function __construct($fieldDatas) {
-            $this->mediaType = 'image';
-            parent::__construct($fieldDatas);
+        if (!empty($this->mediasDatas)) {
+            foreach ($this->mediasDatas as $index => $media) {
+                $medias[] = $this->renderMedia($style, $index, $attributes);
+            }
         }
         
-        /**
-         * @param $style
-         * @param int $index
-         */
-        public function renderMedia($style, $index = 0, $attributes = []) {
-            if (!empty($this->medias)) {
-                if (isset($this->medias[$index]) && ($fileUri = $this->medias[$index]->fileEntity->getFileUri())) {
-                    
-                    // Check if image still exists
-                    $image = \Drupal::service('image.factory')->get($fileUri);
-                    if (!$image->isValid()) {
-                        return false;
-                    }
-                    
-                    $rendererOptions = [
-                        '#uri' => $fileUri,
-                        '#attributes' => [
-                            'alt' => $this->medias[$index]->fileReferenced->get('alt')->getString(),
-                            'title' => $this->medias[$index]->mediaEntity->getName()
-                        ],
-                        '#width' => $image->getWidth(),
-                        '#height' => $image->getHeight()
+        return $medias;
+    }
+    
+    /**
+     * @param $style
+     * @return array
+     */
+    public function getMediasUrl($style) {
+        $urls = [];
+        
+        foreach ($this->mediasDatas as $index => $media) {
+            $urls[] = $this->getMediaUrl($style, $index);
+        }
+        
+        return $urls;
+    }
+    
+    /**
+     * @param $style
+     * @param array $attributes
+     * @return array
+     */
+    public function getMediasDatas($style, $attributes = []) {
+        $datas = [];
+        
+        foreach ($this->mediasDatas as $index => $media) {
+            $datas[] = $this->getMediaDatas($style, $index, $attributes);
+        }
+        
+        return $datas;
+    }
+    
+    
+    /**
+     * @param $style
+     * @param int $index
+     * @param array $attributes
+     * @return bool
+     */
+    protected function renderMedia($style, $index = 0, $attributes = []) {
+        if (isset($this->mediasDatas[$index]) && ($fileUri = $this->mediasDatas[$index]->fileEntity->getFileUri())) {
+            
+            // Check if image still exists
+            $image = \Drupal::service('image.factory')->get($fileUri);
+            if (!$image->isValid()) {
+                return false;
+            }
+            
+            $rendererOptions = [
+                '#uri' => $fileUri,
+                '#attributes' => [
+                    'alt' => $this->mediasDatas[$index]->fileReferenced->get('alt')->getString(),
+                    'title' => $this->mediasDatas[$index]->mediaEntity->getName()
+                ],
+                '#width' => $image->getWidth(),
+                '#height' => $image->getHeight()
+            ];
+            
+            // Render as image style
+            if ($style !== null) {
+                if ($imageStyle = $this->checkImageStyle($style)) {
+                    $rendererOptions += [
+                        '#theme' => 'image_style',
+                        '#style_name' => $style
                     ];
-                    
-                    // Render as image style
-                    if ($style !== null) {
-                        if ($imageStyle = $this->checkImageStyle($style)) {
-                            $rendererOptions += [
-                                '#theme' => 'image_style',
-                                '#style_name' => $style
-                            ];
-                        } else {
-                            \Drupal::messenger()
-                                ->addMessage('Le style d\'image ' . $style . ' n\'existe pas', 'error');
-                            return false;
-                        }
-                    }
-                    // Render original image
-                    else {
-                        $rendererOptions += [
-                            '#theme' => 'image'
-                        ];
-                    }
-                    
-                    if (!empty($attributes)) {
-                        $rendererOptions['#attributes'] = array_merge_recursive($rendererOptions['#attributes'], $attributes);
-                    }
-                    
-                    $renderer = \Drupal::service('renderer');
-                    return $renderer->render($rendererOptions);
+                } else {
+                    \Drupal::messenger()
+                        ->addMessage('Le style d\'image ' . $style . ' n\'existe pas', 'error');
+                    return false;
                 }
             }
-            
-            return false;
-        }
-        
-        /**
-         * @param $style
-         */
-        public function renderMedias($style) {
-            $medias = [];
-            
-            if (!empty($this->medias)) {
-                foreach ($this->medias as $index => $media) {
-                    $medias[] = $this->renderMedia($style, $index);
-                }
-            }
-            
-            return $medias;
-        }
-        
-        /**
-         * @param $style
-         * @param int $index
-         *
-         * @return bool
-         */
-        public function getMediaUri($style, $index = 0) {
-            $croppedUri = false;
-            
-            if (!empty($this->medias)) {
-                $fileUri = $this->medias[$index]->fileEntity->getFileUri();
-                
-                if ($fileUri) {
-                    if ($style !== null) {
-                        if ($imageStyle = $this->checkImageStyle($style)) {
-                            $croppedUri = $imageStyle->buildUrl($fileUri);
-                        } else {
-                            \Drupal::messenger()->addMessage('Le style d\'image ' . $style . ' n\'existe pas', 'error');
-                        }
-                    } else {
-                        $croppedUri = file_create_url($fileUri);
-                    }
-                }
-            }
-            
-            return $croppedUri;
-        }
-        
-        /**
-         * @param $style
-         *
-         * @return array
-         */
-        public function getMediasUri($style) {
-            $uris = [];
-            
-            foreach ($this->medias as $index => $media) {
-                $uris[] = $this->getMediaUri($style, $index);
-            }
-            
-            return $uris;
-        }
-        
-        /**
-         * @param $style
-         * @param int $index
-         */
-        public function getMediaDatas($style, $index = 0, $attributes = []) {
-            $datas = [];
-            if (isset($this->medias[$index]) && ($fileUri = $this->medias[$index]->fileEntity->getFileUri())) {
-                $datas = [
-                    'url' => $this->getMediaUri($style, $index),
-                    'alt' => $this->medias[$index]->fileReferenced->get('alt')
-                        ->getString(),
-                    'title' => $this->medias[$index]->fileReferenced->get('title')
-                        ->getString(),
-                    'name' => $this->medias[$index]->mediaEntity->getName(),
+            // Render original image
+            else {
+                $rendererOptions += [
+                    '#theme' => 'image'
                 ];
             }
             
-            return $datas;
-        }
-        
-        /**
-         * @param $style
-         *
-         * @return array
-         */
-        public function getMediasDatas($style) {
-            $datas = [];
-            
-            foreach ($this->medias as $index => $media) {
-                $datas[] = $this->getMediaDatas($style, $index);
+            if (!empty($attributes)) {
+                $rendererOptions['#attributes'] = array_merge_recursive($rendererOptions['#attributes'], $attributes);
             }
             
-            return $datas;
+            $renderer = \Drupal::service('renderer');
+            return $renderer->render($rendererOptions);
         }
         
-        /**
-         * @param $imageStyle
-         *
-         * @return bool
-         */
-        protected function checkImageStyle($style) {
-            $imageStyle = ImageStyle::load($style);
-            return ($imageStyle instanceof ImageStyle) ? $imageStyle : NULL;
-        }
+        return false;
     }
+    
+    /**
+     * @param $style
+     * @param int $index
+     * @return bool|string
+     */
+    protected function getMediaUrl($style, $index = 0) {
+        $croppedUrl = false;
+        
+        if (!empty($this->mediasDatas)) {
+            $fileUri = $this->mediasDatas[$index]->fileEntity->getFileUri();
+            
+            if ($fileUri) {
+                if ($style !== null) {
+                    if ($imageStyle = $this->checkImageStyle($style)) {
+                        $croppedUrl = $imageStyle->buildUrl($fileUri);
+                    } else {
+                        \Drupal::messenger()->addMessage('Le style d\'image ' . $style . ' n\'existe pas', 'error');
+                    }
+                } else {
+                    $croppedUrl = file_create_url($fileUri);
+                }
+            }
+        }
+        
+        return $croppedUrl;
+    }
+    
+    /**
+     * @param $style
+     * @param int $index
+     * @param array $attributes
+     * @return array
+     */
+    protected function getMediaDatas($style, $index = 0, $attributes = []) {
+        $datas = [];
+        
+        if (isset($this->mediasDatas[$index]) && ($fileUri = $this->mediasDatas[$index]->fileEntity->getFileUri())) {
+            $image = \Drupal::service('image.factory')->get($fileUri);
+            if (!$image->isValid()) {
+                return false;
+            }
+            
+            $datas = [
+                'url' => $this->getMediaUrl($style, $index),
+                'alt' => $this->mediasDatas[$index]->fileReferenced->get('alt')
+                    ->getString(),
+                'title' => $this->mediasDatas[$index]->fileReferenced->get('title')
+                    ->getString(),
+                'name' => $this->mediasDatas[$index]->mediaEntity->getName()
+            ];
+        }
+        
+        return $datas;
+    }
+    
+    /**
+     * @param $imageStyle
+     *
+     * @return bool
+     */
+    protected function checkImageStyle($style) {
+        $imageStyle = ImageStyle::load($style);
+        return ($imageStyle instanceof ImageStyle) ? $imageStyle : NULL;
+    }
+}
