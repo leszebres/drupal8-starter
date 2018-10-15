@@ -1,3 +1,56 @@
+# CONTRIB
+fancybox:
+  version: '3.5.2'
+  css:
+    theme:
+      js/libs/fancybox/jquery.fancybox.min.css: {}
+  js:
+    js/libs/fancybox/jquery.fancybox.min.js: {}
+  dependencies:
+  - core/jquery
+
+imagesloaded:
+  version: '4.1.4'
+  js:
+    js/libs/imagesloaded.pkgd.min.js: {}
+  dependencies:
+  - core/jquery
+
+flickity:
+  version: '2.1.2'
+  css:
+    theme:
+      js/libs/flickity/flickity.css: {}
+  js:
+    js/libs/flickity/flickity.pkgd.min.js: {}
+  dependencies:
+  - core/jquery
+  - drup_theme/imagesloaded
+
+masonry:
+  version: '4.2.2'
+  js:
+    js/libs/masonry.pkgd.min.js: {}
+  dependencies:
+  - core/jquery
+  - drup_theme/imagesloaded
+
+leaflet:
+  version: '1.3-dev'
+  js:
+    js/libs/leaflet/leaflet.js: {}
+  css:
+    theme:
+      js/libs/leaflet/leaflet.css: {}
+  dependencies:
+  - core/jquery
+
+swiftmailer:
+  css:
+    theme:
+      styles/dist/mail.css: {}
+
+# CUSTOM
 togglemenu:
   version: '2.1.5'
   js:
@@ -19,7 +72,7 @@ customform:
 cookienotice:
   version: '3.0.1'
   js:
-    js/libs/cookienotice/cookienotice.min.js: {}
+    js/libs/cookienotice.min.js: {}
   dependencies:
   - core/jquery
 
@@ -30,58 +83,29 @@ fixer:
   dependencies:
   - core/jquery
 
-fancybox:
-  version: '3.5.2'
-  css:
-    theme:
-      js/libs/fancybox/jquery.fancybox.min.css: {}
-  js:
-    js/libs/fancybox/jquery.fancybox.min.js: {}
-  dependencies:
-  - core/jquery
-
-flickity:
-  version: '2.1.2'
-  css:
-    theme:
-      js/libs/flickity/flickity.css: {}
-  js:
-    js/libs/flickity/flickity.pkgd.min.js: {}
-  dependencies:
-  - core/jquery
-
-desandro:
-  version: '4.2.2'
-  js:
-    js/libs/imagesloaded/imagesloaded.pkgd.min.js: {}
-    js/libs/masonry/masonry.pkgd.min.js: {}
-  dependencies:
-  - core/jquery
-
-leaflet:
-  version: '1.3-dev'
-  js:
-    js/libs/leaflet/leaflet.js: {}
-  css:
-    theme:
-      js/libs/leaflet/leaflet.css: {}
-  dependencies:
-  - core/jquery
-
-main-libs:
-  version: '0.1'
+spinner:
+  version: '2.2.0'
   js:
     js/libs/spinner.min.js: {}
+  dependencies:
+  - core/jquery
+
+devicedetect:
+  version: '2.1.1'
+  js:
     js/libs/devicedetect.min.js: {}
+  dependencies:
+  - core/jquery
+
+responsivetable:
+  version: '1.0.0'
+  js:
     js/libs/responsive-table.min.js: {}
   dependencies:
   - core/jquery
+  - drup_theme/devicedetect
 
-swiftmailer:
-  css:
-    theme:
-      styles/dist/mail.css: {}
-
+# THEME
 theme:
   version: '0.1'
   css:
@@ -94,6 +118,11 @@ theme:
   - core/jquery
   - core/drupal.ajax
   - core/drupalSettings
+  - drup_theme/devicedetect
+  - drup_theme/responsivetable
+  - drup_theme/cookienotice
+  - drup_theme/spinner
+  - drup_theme/togglemenu
 
 theme-contact:
   version: '0.1'

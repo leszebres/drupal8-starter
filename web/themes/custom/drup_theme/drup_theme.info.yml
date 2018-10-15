@@ -4,9 +4,6 @@ package: 'Drup'
 core: 8.x
 version: '8.x-1.0'
 libraries:
-  - drup_theme/main-libs
-  - drup_theme/cookienotice
-  - drup_theme/togglemenu
   - drup_theme/theme
 ckeditor_stylesheets:
   - styles/dist/theme.css

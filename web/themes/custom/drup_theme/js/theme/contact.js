@@ -9,26 +9,26 @@
         this.elements = {
             webform: $('form.form--webform')
         };
+
+        // Variables
+        this.customForm;
+        this.customFormCheckboxes;
+        this.customFormRadios;
+        this.customFormSelects;
     };
 
     Theme.contact.prototype = {
-        load: function () {
-            var self = this;
-
-            if (self.elements.webform.length) {
-                // LAYOUT
-                self.customFormHandler();
-            }
+        init: function () {
+            this.customFormHandler();
         },
 
         /**
-         *
+         * Gestionnaire de CustomForm
          */
         customFormHandler: function () {
             var self = this;
 
-            if (typeof $.fn.customForm !== 'undefined') {
-
+            if (typeof $.fn.customForm !== 'undefined' && self.elements.webform.length) {
                 // Init
                 self.customForm = self.elements.webform.customForm();
 
