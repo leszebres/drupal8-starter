@@ -4,7 +4,6 @@
   "private": true,
   "autoprefixer": {
     "browsers": [
-      "last 3 versions",
       "IE 11"
     ]
   },
@@ -24,7 +23,7 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^9.1.5",
+    "autoprefixer": "^9.2.0",
     "gulp": "^3.9.1",
     "gulp-load-plugins": "^1.5.0",
     "gulp-pixrem": "^1.0.0",
