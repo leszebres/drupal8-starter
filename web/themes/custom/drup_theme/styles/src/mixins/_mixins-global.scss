@@ -196,13 +196,12 @@
 /* ==========================================================================
     ROUNDED
    ========================================================================== */
-@mixin make-circle($s: 50px, $background: $color--primary, $color: #fff, $fontsize: auto)
-{
+@mixin make-circle($s: 50px, $background: $color--primary, $color: #fff, $fontsize: auto) {
     width: $s;
     height: $s;
 
     @if ($fontsize == auto) {
-        //font-size: 60%;
+
     } @else {
         font-size: $fontsize;
     }
@@ -213,7 +212,6 @@
     border-radius: 50%;
 
     @if ($background != null) {
-        //background-color: $background;
         background: $background;
     }
 

@@ -20,7 +20,6 @@ button,
     font-size: $btn--fontsize;
     text-decoration: none;
     text-transform: uppercase;
-    text-align: center;
     background-color: $btn--background;
     border: 1px solid $btn--border;
     border-radius: $btn--border-radius;
@@ -58,7 +57,7 @@ button,
 
     /* Sizes
        ========================================================================== */
-    .btn--small {
+    &.l-small {
 
     }
 }

@@ -5,6 +5,7 @@ $color--primary: #f2653d;
 $color--secondary: #1f2e3c;
 $color--tertiary: #4eb9eb;
 
+
 $color--text: #333;
 $color--text-lighter: #888686;
 $color--text-darker: #000;
@@ -16,6 +17,7 @@ $color--link-hover: $color--text-darker;
 
 $color--background: #fff;
 $color--background-secondary: #f3f3f3;
+
 
 $color--border: #c0c0c0;
 
@@ -46,12 +48,12 @@ $body--lineheight: 1.6;
    ========================================================================== */
 $font-families: (
     "primary": (
-        "light": 'Open Sans Light',
-        "regular": 'Open Sans Regular',
-        "bold": 'Open Sans Bold',
+        "light": 'Arial',
+        "regular": 'Arial',
+        "bold": 'Arial',
     ),
     "secondary": (
-        "regular": 'Lora Regular',
+        "regular": 'Arial',
     )
 );
 $font--fallback: Arial, sans-serif;
@@ -80,16 +82,15 @@ $title--lineheight: 1.2;
    RESPONSIVE
    ========================================================================== */
 $breakpoints: (
-        "screen": 1260px,
-        "screen-small": 1020px,
-        "tablet": 1023px,
-        "smartphone": 767px,
-        "smartphone-small": 499px
+    "screen": 1279px,
+    "screen-small": 1139px,
+    "tablet": 1023px,
+    "smartphone": 767px,
+    "smartphone-small": 499px
 );
 
-$row--normal: map_get($breakpoints, "screen");
-$row--medium: 1140px;
-$row--small: map_get($breakpoints, "screen-small");
+$row--normal: map_get($breakpoints, "screen") + 1px;
+$row--small: map_get($breakpoints, "screen-small") + 1px;
 
 
 /* ==========================================================================

@@ -2,12 +2,20 @@
    Global
    ========================================================================== */
 .alignleft {
-    float: left;
-    margin: 0 $v-align $v-align 0;
+    margin-bottom: $v-align--medium;
+
+    @include media-breakpoint-min(smartphone) {
+        float: left;
+        margin: 0 $grid--gutter-width $v-align--medium 0;
+    }
 }
 .alignright {
-    float: right;
-    margin: 0 0 $v-align $v-align;
+    margin-bottom: $v-align--medium;
+
+    @include media-breakpoint-min(smartphone) {
+        float: right;
+        margin: 0 0 $v-align--medium $grid--gutter-width;
+    }
 }
 .aligncenter {
     margin: $v-align auto;

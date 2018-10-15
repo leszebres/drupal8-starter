@@ -789,7 +789,7 @@ body {
 body {
   color: #333;
   font-weight: normal;
-  font-family: "Open Sans Regular", Arial, sans-serif;
+  font-family: "Arial", Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   background-color: #fff;
@@ -811,7 +811,7 @@ a {
 strong,
 b {
   font-weight: normal;
-  font-family: "Open Sans Bold", Arial, sans-serif; }
+  font-family: "Arial", Arial, sans-serif; }
 
 /* ==========================================================================
    TEXT
@@ -900,7 +900,7 @@ th {
 
 thead {
   font-weight: normal;
-  font-family: "Open Sans Bold", Arial, sans-serif;
+  font-family: "Arial", Arial, sans-serif;
   color: #fff; }
   thead,
   thead a {
@@ -924,7 +924,7 @@ tbody {
 .row {
   position: relative;
   width: 100%;
-  max-width: 1260px;
+  max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 30px;
@@ -937,9 +937,6 @@ tbody {
     content: ""; }
 
 .row--small {
-  max-width: 1020px; }
-
-.row--medium {
   max-width: 1140px; }
 
 .row--full {
@@ -1086,32 +1083,6 @@ tbody {
           flex: 0 0 auto;
   max-width: 100%; }
 
-.l-table {
-  display: table;
-  width: 100%;
-  height: 100%; }
-
-.l-tableCell {
-  display: table-cell;
-  vertical-align: middle; }
-
-.l-inlineWrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
-
-.l-inline {
-  margin: 0;
-  -ms-flex-preferred-size: 0;
-      flex-basis: 0;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  max-width: 100%; }
-
 .l-sidebar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1165,13 +1136,13 @@ tbody {
   position: relative;
   max-width: 1920px;
   margin: 0 auto;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   -webkit-transition: -webkit-transform .3s;
   transition: -webkit-transform .3s;
   -o-transition: transform .3s;
   transition: transform .3s;
-  transition: transform .3s, -webkit-transform .3s; }
+  transition: transform .3s, -webkit-transform .3s;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
 
 /* ==========================================================================
    Header
@@ -1257,28 +1228,28 @@ h1,
 .content-title {
   margin-bottom: 48px;
   font-weight: normal;
-  font-family: "Open Sans Bold", Arial, sans-serif;
+  font-family: "Arial", Arial, sans-serif;
   color: #f2653d;
   font-size: 3rem; }
 
 h2,
 .title--h2 {
   font-weight: normal;
-  font-family: "Open Sans Light", Arial, sans-serif;
+  font-family: "Arial", Arial, sans-serif;
   color: #f2653d;
   font-size: 2.25rem; }
 
 h3,
 .title--h3 {
   font-weight: normal;
-  font-family: Arial, sans-serif;
+  font-family: "Arial", Arial, sans-serif;
   color: #1f2e3c;
   font-size: 1.5rem; }
 
 h4,
 .title--h4 {
   font-weight: normal;
-  font-family: "Open Sans Regular", Arial, sans-serif;
+  font-family: "Arial", Arial, sans-serif;
   color: #888686;
   font-size: 1.25rem; }
 
@@ -1286,12 +1257,18 @@ h4,
    Global
    ========================================================================== */
 .alignleft {
-  float: left;
-  margin: 0 48px 48px 0; }
+  margin-bottom: 24px; }
+  @media (min-width: 768px) {
+    .alignleft {
+      float: left;
+      margin: 0 30px 24px 0; } }
 
 .alignright {
-  float: right;
-  margin: 0 0 48px 48px; }
+  margin-bottom: 24px; }
+  @media (min-width: 768px) {
+    .alignright {
+      float: right;
+      margin: 0 0 24px 30px; } }
 
 .aligncenter {
   margin: 48px auto; }
@@ -1335,11 +1312,10 @@ button,
   vertical-align: middle;
   color: #333;
   font-weight: normal;
-  font-family: "Open Sans Regular", Arial, sans-serif;
+  font-family: "Arial", Arial, sans-serif;
   font-size: 0.875rem;
   text-decoration: none;
   text-transform: uppercase;
-  text-align: center;
   background-color: #f3f3f3;
   border: 1px solid #c0c0c0;
   border-radius: 0;
@@ -1401,7 +1377,7 @@ Styleguide  - 1.tag
   padding: 4px 10px 5px;
   color: #fff;
   font-weight: normal;
-  font-family: "Open Sans Regular", Arial, sans-serif;
+  font-family: "Arial", Arial, sans-serif;
   font-size: 0.875rem;
   font-style: italic;
   line-height: 1.2;
@@ -1444,7 +1420,7 @@ form {
   position: relative;
   margin-bottom: 48px;
   font-weight: normal;
-  font-family: "Open Sans Regular", Arial, sans-serif; }
+  font-family: "Arial", Arial, sans-serif; }
   form:focus {
     outline: 0; }
 
@@ -1460,7 +1436,7 @@ legend,
   vertical-align: top;
   margin-bottom: .3em;
   font-weight: normal;
-  font-family: "Open Sans Bold", Arial, sans-serif; }
+  font-family: "Arial", Arial, sans-serif; }
 
 label.js-form-required:after,
 .fieldset-custom[required="required"] .fieldset-legend:after {
@@ -1527,7 +1503,7 @@ form textarea:not([readonly]):focus {
 .js-form-type-radio label,
 .js-form-type-checkbox label {
   font-weight: normal;
-  font-family: "Open Sans Light", Arial, sans-serif; }
+  font-family: "Arial", Arial, sans-serif; }
 
 .webform-options-display-side-by-side > div {
   vertical-align: top;
@@ -1545,25 +1521,25 @@ form textarea:not([readonly]):focus {
 .form-search::-webkit-input-placeholder {
   font-size: 0.875rem;
   font-weight: normal;
-  font-family: "Open Sans Light", Arial, sans-serif; }
+  font-family: "Arial", Arial, sans-serif; }
 
 .form-text:-moz-placeholder,
 .form-search:-moz-placeholder {
   font-size: 0.875rem;
   font-weight: normal;
-  font-family: "Open Sans Light", Arial, sans-serif; }
+  font-family: "Arial", Arial, sans-serif; }
 
 .form-text::-moz-placeholder,
 .form-search::-moz-placeholder {
   font-size: 0.875rem;
   font-weight: normal;
-  font-family: "Open Sans Light", Arial, sans-serif; }
+  font-family: "Arial", Arial, sans-serif; }
 
 .form-text:-ms-input-placeholder,
 .form-search:-ms-input-placeholder {
   font-size: 0.875rem;
   font-weight: normal;
-  font-family: "Open Sans Light", Arial, sans-serif; }
+  font-family: "Arial", Arial, sans-serif; }
 
 /* Submit
    ========================================================================== */
@@ -1631,7 +1607,7 @@ form textarea:not([readonly]):focus {
     margin-bottom: 30px;
     color: inherit;
     font-weight: normal;
-    font-family: "Open Sans Bold", Arial, sans-serif; }
+    font-family: "Arial", Arial, sans-serif; }
   .list-item .item-body {
     margin-bottom: 24px;
     font-size: 0.875rem;
@@ -1759,7 +1735,7 @@ Styleguide Navigation - 1.nav--breadcrumb
     color: #f2653d; }
   .nav--breadcrumb li:last-of-type {
     font-weight: normal;
-    font-family: "Open Sans Bold", Arial, sans-serif; }
+    font-family: "Arial", Arial, sans-serif; }
 
 /*
 Pagination classique
@@ -1899,7 +1875,7 @@ Styleguide Notices - 1.notice--browser
   z-index: 100;
   padding: 350px 15%;
   font-weight: normal;
-  font-family: "Open Sans Bold", Arial, sans-serif;
+  font-family: "Arial", Arial, sans-serif;
   text-align: center;
   background: #fff url("../../images/logo.png") no-repeat center 200px;
   background-size: 250px auto; }
@@ -1922,7 +1898,7 @@ Styleguide Notices - 1.notice--browser
 .block-title {
   margin-bottom: 24px;
   font-weight: normal;
-  font-family: "Open Sans Bold", Arial, sans-serif;
+  font-family: "Arial", Arial, sans-serif;
   text-align: center; }
   .block-title span {
     display: block; }
@@ -2031,7 +2007,7 @@ Styleguide Blocs - 1.block--primary
   overflow: hidden;
   font-size: 0.875rem;
   font-weight: normal;
-  font-family: "Open Sans Regular", Arial, sans-serif;
+  font-family: "Arial", Arial, sans-serif;
   list-style: none; }
   .tabs--primary li,
   .tabs--secondary li {
@@ -2173,46 +2149,6 @@ Styleguide Blocs - 1.block--primary
   -moz-osx-font-smoothing: grayscale;
   font-size: 0.875rem; }
 
-/*
-.block-admin {
-    .block-is-empty {
-        text-align: center;
-    }
-
-    div.contextual-links-wrapper {
-        font-size: 1em;
-        top: auto;
-        right: auto;
-        left: 50%;
-        bottom: 0;
-        transform: translateX(-50%);
-
-        & > a {
-            display: none !important;
-        }
-        ul.contextual-links {
-            position: relative;
-            display: block;
-            top: auto;
-            padding: 0;
-            border: none;
-            transition: opacity .3s;
-
-            a {
-                margin: 0;
-                padding: $grid--gutter-width/2;
-                background-color: rgba(#000, .7);
-                color: #fff !important;
-                transition: .3s;
-
-                &:hover {
-                    background-color: $color--secondary;
-                }
-            }
-        }
-    }
-}
-*/
 /* ==========================================================================
    DEBUG DRUPAL
    ========================================================================== */

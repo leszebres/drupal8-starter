@@ -166,8 +166,7 @@
     details.form-wrapper {
         border: 1px solid $color--border;
         border-radius: 4px;
-
-
+        
         summary {
             padding: 10px $grid--gutter-width;
             font-weight: bold;
@@ -181,7 +180,7 @@
         summary:hover {
             background-color: $color--background;
         }
-        > .form-item {
+        & > .form-item {
             margin-left: $grid--gutter-width;
             margin-right: $grid--gutter-width;
         }
@@ -191,46 +190,6 @@
     @include font-icon(edit);
     font-size: $fontsize--small;
 }
-/*
-.block-admin {
-    .block-is-empty {
-        text-align: center;
-    }
-
-    div.contextual-links-wrapper {
-        font-size: 1em;
-        top: auto;
-        right: auto;
-        left: 50%;
-        bottom: 0;
-        transform: translateX(-50%);
-
-        & > a {
-            display: none !important;
-        }
-        ul.contextual-links {
-            position: relative;
-            display: block;
-            top: auto;
-            padding: 0;
-            border: none;
-            transition: opacity .3s;
-
-            a {
-                margin: 0;
-                padding: $grid--gutter-width/2;
-                background-color: rgba(#000, .7);
-                color: #fff !important;
-                transition: .3s;
-
-                &:hover {
-                    background-color: $color--secondary;
-                }
-            }
-        }
-    }
-}
-*/
 
 /* ==========================================================================
    DEBUG DRUPAL

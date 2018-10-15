@@ -40,7 +40,7 @@ h2,
 
 h3,
 .title--h3 {
-    @include font(primary, semibold);
+    @include font(primary, bold);
     color: $title--h3-color;
     font-size: $title--h3-fontsize;
 }

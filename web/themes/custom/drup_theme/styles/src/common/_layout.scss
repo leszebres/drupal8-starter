@@ -12,12 +12,8 @@
     box-sizing: border-box;
     @include clearfix();
 }
-
 .row--small {
     max-width: $row--small;
-}
-.row--medium {
-    max-width: $row--medium;
 }
 .row--full {
     max-width: none;
@@ -56,26 +52,6 @@
     @include grid-col-init();
     @include grid-col-set(default, 12);
 }
-.l-table {
-    display: table;
-    width: 100%;
-    height: 100%;
-}
-.l-tableCell {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.l-inlineWrapper {
-    display: flex;
-    align-items: center;
-}
-.l-inline {
-    margin: 0;
-    flex-basis: 0;
-    flex-grow: 1;
-    max-width: 100%;
-}
 
 .l-sidebar {
     @include grid-wrapper();
@@ -104,8 +80,8 @@
     position: relative;
     max-width: 1920px;
     margin: 0 auto;
-    box-sizing: border-box;
     transition: transform .3s;
+    box-sizing: border-box;
 }
 
 /* ==========================================================================
