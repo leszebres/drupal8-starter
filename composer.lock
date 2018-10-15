@@ -4334,7 +4334,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/simple_sitemap",
-                "reference": "03761aaedb17c3ff8d59abbf1905fe2b90c5cb09"
+                "reference": "935fdb628d2ba8d241f44b099670bbfba4498527"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -4346,7 +4346,7 @@
                 },
                 "drupal": {
                     "version": "8.x-3.x-dev",
-                    "datestamp": "1538479966",
+                    "datestamp": "1538481485",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -4382,7 +4382,7 @@
                 "issues": "https://drupal.org/project/issues/simple_sitemap",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2018-10-02T11:53:21+00:00"
+            "time": "2018-10-15T12:12:23+00:00"
         },
         {
             "name": "drupal/swiftmailer",
@@ -10242,6 +10242,17 @@
         {
             "name": "webflo/drupal-core-require-dev",
             "version": "8.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webflo/drupal-core-require-dev.git",
+                "reference": "75f73363165a450e9a2f9f1ce3930f148184c964"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webflo/drupal-core-require-dev/zipball/75f73363165a450e9a2f9f1ce3930f148184c964",
+                "reference": "75f73363165a450e9a2f9f1ce3930f148184c964",
+                "shasum": ""
+            },
             "require": {
                 "behat/mink": "1.7.x-dev",
                 "behat/mink-goutte-driver": "^1.2",
