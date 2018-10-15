@@ -16,7 +16,7 @@
     background: rgba($notice-cookie--color-background, .75);
     transform: translateY(100%);
     visibility: hidden;
-    transition: transform .3s;
+    transition: .3s;
     box-sizing: border-box;
 
     .is-cookienotice-notice-open & {
