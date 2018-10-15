@@ -5,6 +5,8 @@ namespace Drupal\drup;
 use Drupal\Core\Entity\Entity\EntityFormDisplay;
 use Drupal\Core\Field\FieldDefinitionInterface;
 
+use Drupal\drup\DrupCommon;
+
 /**
  * Class DrupEntityField
  *
@@ -69,6 +71,30 @@ class DrupEntityField {
             return $data;
         }
 
+        return [];
+    }
+    
+    /**
+     * @param $field
+     * @return array
+     */
+    public function getReferencedNodes($field) {
+        if ($values = self::getValues($field)) {
+            return DrupCommon::getReferencedNodes($values);
+        }
+        
+        return [];
+    }
+    
+    /**
+     * @param $field
+     * @return array
+     */
+    public function getReferencedTerms($field) {
+        if ($values = self::getValues($field)) {
+            return DrupCommon::getReferencedTerms($values);
+        }
+        
         return [];
     }
 

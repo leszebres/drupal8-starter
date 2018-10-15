@@ -393,6 +393,7 @@ abstract class DrupCommon {
                             ->getTranslationFromContext($term, $languageId);
                     }
                     $items[] = (object) [
+                        'id' => $term->id(),
                         'name' => $term->getName(),
                         'uri' => 'internal:/taxonomy/term/' . $term->id()
                     ];
@@ -420,12 +421,13 @@ abstract class DrupCommon {
                 
                 $node = Node::load($node['target_id']);
                 if (($node instanceof Node) && $node->hasTranslation($languageId)) {
-                    $translatedNode = \Drupal::service('entity.repository')
+                    $node = \Drupal::service('entity.repository')
                         ->getTranslationFromContext($node, $languageId);
 
                     $items[] = (object) [
-                        'name' => $translatedNode->getTitle(),
-                        'uri' => 'internal:/node/' . $translatedNode->id()
+                        'id' => $node->id(),
+                        'name' => $node->getTitle(),
+                        'uri' => 'internal:/node/' . $node->id()
                     ];
                 }
             }
