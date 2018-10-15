@@ -1,5 +1,5 @@
 togglemenu:
-  version: '0.1'
+  version: '2.1.5'
   js:
     js/libs/togglemenu/togglemenu.min.js: {}
     js/libs/togglemenu/togglemenu-hover.min.js: {}
@@ -8,48 +8,53 @@ togglemenu:
   - core/jquery
 
 customform:
-  version: '0.1'
+  version: '4.6.0'
   js:
     js/libs/customform/customform.min.js: {}
     js/libs/customform/customform-select.min.js: {}
     js/libs/customform/customform-check.min.js: {}
-  dependencies:
-  - core/jquery
-
-customform-check:
-  version: '0.1'
-  js:
-    js/libs/customform/customform.min.js: {}
-    js/libs/customform/customform-check.min.js: {}
-  dependencies:
-  - core/jquery
-
-customform-select:
-  version: '0.1'
-  js:
-    js/libs/customform/customform.min.js: {}
-    js/libs/customform/customform-select.min.js: {}
   dependencies:
   - core/jquery
 
 cookienotice:
-  version: '0.1'
+  version: '3.0.1'
   js:
     js/libs/cookienotice/cookienotice.min.js: {}
   dependencies:
   - core/jquery
 
-scroller:
-  version: '0.1'
+fixer:
+  version: '2.2.1'
   js:
-    js/libs/scroller.min.js: {}
+    js/libs/fixer.min.js: {}
   dependencies:
   - core/jquery
 
-fixer:
-  version: '0.1'
+fancybox:
+  version: '3.5.2'
+  css:
+    theme:
+      js/libs/fancybox/jquery.fancybox.min.css: {}
   js:
-    js/libs/fixer.min.js: {}
+    js/libs/fancybox/jquery.fancybox.min.js: {}
+  dependencies:
+  - core/jquery
+
+flickity:
+  version: '2.1.2'
+  css:
+    theme:
+      js/libs/flickity/flickity.css: {}
+  js:
+    js/libs/flickity/flickity.pkgd.min.js: {}
+  dependencies:
+  - core/jquery
+
+desandro:
+  version: '4.2.2'
+  js:
+    js/libs/imagesloaded/imagesloaded.pkgd.min.js: {}
+    js/libs/masonry/masonry.pkgd.min.js: {}
   dependencies:
   - core/jquery
 
@@ -60,14 +65,6 @@ leaflet:
   css:
     theme:
       js/libs/leaflet/leaflet.css: {}
-  dependencies:
-  - core/jquery
-
-masonry:
-  version: '4.2.2'
-  js:
-    js/libs/masonry/imagesloaded.min.js: {}
-    js/libs/masonry/masonry.min.js: {}
   dependencies:
   - core/jquery
 
