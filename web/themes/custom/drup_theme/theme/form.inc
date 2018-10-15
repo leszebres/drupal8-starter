@@ -57,6 +57,17 @@ function drup_theme_preprocess_form(array &$variables) {
 function drup_theme_preprocess_select(array &$variables) {
     //$variables['attributes']['class'][] = 'select-chosen';
 }
+    
+/**
+ * Implements hook_preprocess_input().
+ */
+function drup_theme_preprocess_input(array &$variables) {
+    if (!empty($variables['attributes'])) {
+        if (isset($variables['attributes']['size'])) {
+            unset($variables['attributes']['size']);
+        }
+    }
+}
 
 function drup_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
     
