@@ -413,7 +413,6 @@ template {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.2);
   -webkit-transition: opacity .3s;
-  -o-transition: opacity .3s;
   transition: opacity .3s; }
 
 .spinner--overlay .spinner-wrapperInner {
@@ -455,11 +454,9 @@ template {
   color: #fff;
   background: rgba(0, 0, 0, 0.75);
   -webkit-transform: translateY(100%);
-      -ms-transform: translateY(100%);
           transform: translateY(100%);
   visibility: hidden;
   -webkit-transition: .3s;
-  -o-transition: .3s;
   transition: .3s;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -467,7 +464,6 @@ template {
        ========================================================================== */ }
   .is-cookienotice-notice-open .notice--cookie {
     -webkit-transform: translateY(0);
-        -ms-transform: translateY(0);
             transform: translateY(0);
     visibility: visible; }
   .notice--cookie p {
@@ -494,7 +490,6 @@ template {
     border-radius: 20px;
     cursor: pointer;
     -webkit-transition: .3s;
-    -o-transition: .3s;
     transition: .3s;
     white-space: nowrap; }
     .notice--cookie button + button {
@@ -550,7 +545,6 @@ template {
           box-sizing: border-box;
   -webkit-transition: opacity .3s, -webkit-transform .3s;
   transition: opacity .3s, -webkit-transform .3s;
-  -o-transition: opacity .3s, transform .3s;
   transition: opacity .3s, transform .3s;
   transition: opacity .3s, transform .3s, -webkit-transform .3s;
   /* Responsive
@@ -567,14 +561,12 @@ template {
       top: 0;
       left: 0;
       -webkit-transform: none;
-          -ms-transform: none;
               transform: none;
       height: 100vh;
       max-height: none;
       border-radius: 0; }
       .is-cookienotice-modal-open .modal--cookie {
         -webkit-transform: none;
-            -ms-transform: none;
                 transform: none; } }
 
 /* Overlay
@@ -592,7 +584,6 @@ template {
   pointer-events: none;
   overflow: auto;
   -webkit-transition: opacity .3s;
-  -o-transition: opacity .3s;
   transition: opacity .3s;
   /* Responsive
      ========================================================================== */ }
@@ -621,7 +612,6 @@ template {
   border-radius: 50%;
   cursor: pointer;
   -webkit-transition: background-color .3s;
-  -o-transition: background-color .3s;
   transition: background-color .3s; }
   .cookienotice-modal-close:hover, .cookienotice-modal-close:focus {
     background-color: #333; }
@@ -637,14 +627,11 @@ template {
     height: 2px;
     background: #333;
     -webkit-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
             transform: rotate(-45deg);
     -webkit-transition: background-color .3s;
-    -o-transition: background-color .3s;
     transition: background-color .3s; }
   .cookienotice-modal-close:after {
     -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
             transform: rotate(45deg); }
 
 /* Header
@@ -733,7 +720,6 @@ template {
   border-radius: 15px;
   cursor: pointer;
   -webkit-transition: .3s;
-  -o-transition: .3s;
   transition: .3s;
   white-space: nowrap; }
   .cookienotice-service-action + .cookienotice-service-action {
@@ -801,7 +787,6 @@ a {
   color: #f2653d;
   text-decoration: none;
   -webkit-transition: .2s;
-  -o-transition: .2s;
   transition: .2s; }
   a:hover, a:focus {
     color: #000; }
@@ -1135,7 +1120,6 @@ tbody {
   margin: 0 auto;
   -webkit-transition: -webkit-transform .3s;
   transition: -webkit-transform .3s;
-  -o-transition: transform .3s;
   transition: transform .3s;
   transition: transform .3s, -webkit-transform .3s;
   -webkit-box-sizing: border-box;
@@ -1320,7 +1304,6 @@ button,
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   -webkit-transition: .3s;
-  -o-transition: .3s;
   transition: .3s; }
 
 .btn {
@@ -1381,7 +1364,6 @@ Styleguide  - 1.tag
   background: #f2653d;
   border-radius: 6px;
   -webkit-transition: .3s;
-  -o-transition: .3s;
   transition: .3s; }
 
 a.tag {
@@ -1473,7 +1455,6 @@ form textarea:not([readonly]):focus {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   -webkit-transition: border-color .3s;
-  -o-transition: border-color .3s;
   transition: border-color .3s; }
 
 .form-textarea {
@@ -1709,22 +1690,17 @@ Styleguide Navigation - 1.nav--breadcrumb
       height: 1px;
       background: #f2653d;
       -webkit-transform: scaleX(0);
-          -ms-transform: scaleX(0);
               transform: scaleX(0);
       -webkit-transform-origin: 100% 50%;
-          -ms-transform-origin: 100% 50%;
               transform-origin: 100% 50%;
       -webkit-transition: -webkit-transform .2s ease-out;
       transition: -webkit-transform .2s ease-out;
-      -o-transition: transform .2s ease-out;
       transition: transform .2s ease-out;
       transition: transform .2s ease-out, -webkit-transform .2s ease-out; }
     .nav--breadcrumb a:not(.active):hover:after {
       -webkit-transform: scaleX(1);
-          -ms-transform: scaleX(1);
               transform: scaleX(1);
       -webkit-transform-origin: 0 50%;
-          -ms-transform-origin: 0 50%;
               transform-origin: 0 50%; }
   .nav--breadcrumb .item-separator {
     margin: 0 .6em 0 .4em;
@@ -1832,7 +1808,6 @@ Styleguide Notices - 1.messages
     background-repeat: no-repeat;
     background-position: center;
     -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
             transform: translateX(-50%);
     border-radius: 50%; }
   .messages .krumo-root {
@@ -1884,7 +1859,7 @@ Styleguide Notices - 1.notice--browser
 
    ========================================================================== */
 /* ==========================================================================
-
+    
    ========================================================================== */
 .paragraph--type--document div {
   display: inline-block; }
@@ -2093,7 +2068,6 @@ Styleguide Blocs - 1.block--primary
    ========================================================================== */
 .ui-autocomplete {
   -webkit-transform: translateY(3px);
-      -ms-transform: translateY(3px);
           transform: translateY(3px);
   background-color: #fff;
   max-width: 380px;
@@ -2107,8 +2081,7 @@ Styleguide Blocs - 1.block--primary
     border-top: 1px solid #c0c0c0;
     white-space: nowrap;
     overflow: hidden;
-    -o-text-overflow: ellipsis;
-       text-overflow: ellipsis; }
+    text-overflow: ellipsis; }
   .ui-autocomplete .ui-state-focus,
   .ui-autocomplete .ui-state-active {
     margin: 0;
@@ -2138,7 +2111,6 @@ Styleguide Blocs - 1.block--primary
     font-weight: bold;
     cursor: pointer;
     -webkit-transition: background-color .2s;
-    -o-transition: background-color .2s;
     transition: background-color .2s; }
   .block-form details.form-wrapper[open] summary {
     margin-bottom: 10px; }
