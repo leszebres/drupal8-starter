@@ -21,9 +21,9 @@ abstract class DrupCommon {
      * @return array|null
      */
     public static function getPageEntity($loadEntity = false) {
-        $args = (in_array(\Drupal::routeMatch()->getRouteName(), ['views.ajax', 'search.view_node_search', 'entity.node.preview']))
-          ? self::getPreviousRouteParameters()
-          : \Drupal::routeMatch()->getParameters()->all();
+        $args = (in_array(\Drupal::routeMatch()->getRouteName(), ['views.ajax', 'entity.node.preview']))
+            ? self::getPreviousRouteParameters()
+            : \Drupal::routeMatch()->getParameters()->all();
         
         $data = (object) [
             'type' => null,
@@ -31,30 +31,30 @@ abstract class DrupCommon {
             'id' => null,
             'entity' => null
         ];
-
+        
         if (!empty($args)) {
             $entityType = current(array_keys($args));
-
-            if (!empty($entityType) && ($entityType !== 'entity')) {
+            
+            if (!empty($entityType) && (!in_array($entityType, ['entity', 'uid']))) {
                 $entity = $args[$entityType];
                 $data->type = $entityType;
-
+                
                 if (is_object($entity)) {
                     $data->bundle = (method_exists($entity, 'bundle')) ? $entity->bundle() : null;
                     $data->id = (method_exists($entity, 'id')) ? $entity->id() : null;
                 } else {
                     $data->id = (int) $entity;
                 }
-
+                
                 if ($loadEntity === true && !empty($data->id) && (!empty($entityType))) {
                     $data->entity = \Drupal::entityTypeManager()->getStorage($entityType)->load($data->id);
                 }
             }
         }
-
+        
         return $data;
     }
-
+    
     /**
      * Récupère les paramètres de l'url précédente
      *
@@ -64,11 +64,11 @@ abstract class DrupCommon {
         $previousUrl = \Drupal::request()->server->get('HTTP_REFERER');
         $fakeRequest = \Symfony\Component\HttpFoundation\Request::create($previousUrl);
         $url = \Drupal::service('path.validator')->getUrlIfValid($fakeRequest->getRequestUri());
-
+        
         if ($url) {
             return $url->getRouteParameters();
         }
-
+        
         return [];
     }
 
