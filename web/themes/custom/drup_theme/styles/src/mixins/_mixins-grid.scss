@@ -4,11 +4,6 @@
  */
 @mixin grid-wrapper($gutter: $grid--gutter-width, $center-v: start, $center-h: start) {
     display: flex;
-
-    /**
-     * Retour à la ligne autorisé
-     * @see https://developer.mozilla.org/fr/docs/Web/CSS/flex-wrap
-     */
     flex-wrap: wrap;
 
     @if ($gutter > 0) {
@@ -20,7 +15,6 @@
         align-items: $center-v;
     }
     @if ($center-h != 'start') {
-        //box-pack: $center-h;
         justify-content: $center-h;
     }
 }
@@ -52,23 +46,17 @@
     padding-right: $gutter-right/2;
 
     @if ($columns == 'auto') {
-        /**
-         * détermine la base de flexibilité utilisée comme taille initiale principale (sauf si box-sizing)
-         */
-        //flex-basis: 0;
-        /**
-         * facteur de grossissement d'un élément par rapport aux autres
-         */
         flex: 1;
-        //max-width: 100%;
 
     } @elseif (type-of($columns) == 'number') {
-        /**
-         * (raccourci) définit la capacité d'un élément flexible à modifier ses dimensions afin de remplir l'espace disponible de son conteneur
-         * flex-grow (agrandissement) | flex-shrink (rétressissement) | flex-basis
-         */
-        flex: 0 0 percentage($columns / $grid--columns-nb);
-        max-width: percentage($columns / $grid--columns-nb);
+        $percent: percentage($columns / $grid--columns-nb);
+
+        @if ($percent == 0 or $percent == 50 or $percent == 100) {
+            flex: 0 0 auto;
+        } @else {
+            flex: 0 0 $percent;
+        }
+        max-width: $percent;
     }
 
     @if ($center-v != 'start') {
@@ -97,14 +85,4 @@
     } @else {
         @include grid-col-generate($columns, $gutter-left, $gutter-right, $margin-b, $center-v);
     }
-}
-
-
-/*
-
- */
-@mixin grid-col-order($order) {
-    -webkit-box-ordinal-group: ($order + 1);
-    -ms-flex-order: $order;
-    order: $order;
 }

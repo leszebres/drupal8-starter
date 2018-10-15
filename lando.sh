@@ -18,6 +18,7 @@ function maj {
     dump
     lando composer update
     lando drush updatedb -y
+    trans
     lando drush locale-update -y
     lando drush cr -y
 }
