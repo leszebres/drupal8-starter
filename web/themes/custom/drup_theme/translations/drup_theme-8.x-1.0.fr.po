@@ -9,6 +9,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 
+msgid "By continuing your visit to this site, you accept the use of cookies... (see more)"
+msgstr "En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies ... (voir plus)"
+
+msgid "By continuing your visit to this site, you accept the use of cookies or similar tracing technologies to offer you the best browsing experience: keep your preferences, establish attendance statistics, offer you offers and content tailored to your needs. interests including third party partners. To learn more and set cookies, read our <a href=\"@link\">privacy policy</a>."
+msgstr "En poursuivant votre navigation sur ce site, vous acceptez l'utilisation de cookies ou technologies similaires de traçage permettant de vous offrir la meilleure expérience de navigation : conserver vos préférences, établir des statistiques de fréquentation, vous proposer des offres et des contenus adaptés à vos centres d'intérêt y compris de partenaires tiers. Pour en savoir plus et paramétrer les cookies, <a href=\"@link\">consultez notre politique de confidentialité</a>."
+
+msgid "I understand"
+msgstr "J'ai compris"
+
 msgid "You may have followed a broken link, or tried to view a page that no longer exists."
 msgstr "Vous avez peut-être suivi un mauvais lien, ou essayé d'afficher une page qui n'existe plus."
 

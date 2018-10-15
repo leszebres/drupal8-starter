@@ -1,50 +1,50 @@
 <?php
-
-namespace Drupal\drup\CookieNotice;
-
-/**
- * Class Service
- *
- * @package CookieNotice
- */
-abstract class Service
-{
+    
+    namespace Drupal\drup\CookieNotice;
     
     /**
-     * Détermine si un service est autorisé par l'utilisateur
+     * Class Service
      *
-     * @param $service
+     * @package CookieNotice
      */
-    public static function isAllowed($service)
+    abstract class Service
     {
-        return (self::getState($service) === true);
-    }
-    
-    /**
-     * Retourne l'état du service. Si le choix n'a pas été fait, l'état retourné est "undefined"
-     *
-     * @param $service
-     */
-    public static function getState($service)
-    {
-        if (self::hasConsent()) {
-            $services = json_decode($_COOKIE['cookienotice']);
-            
-            if (isset($services->{$service})) {
-                return $services->{$service};
-            }
+        
+        /**
+         * Détermine si un service est autorisé par l'utilisateur
+         *
+         * @param $service
+         */
+        public static function isAllowed($service)
+        {
+            return (self::getState($service) === true);
         }
         
-        return 'undefined';
+        /**
+         * Retourne l'état du service. Si le choix n'a pas été fait, l'état retourné est "undefined"
+         *
+         * @param $service
+         */
+        public static function getState($service)
+        {
+            if (self::hasConsent()) {
+                $services = json_decode($_COOKIE['cookienotice']);
+                
+                if (isset($services->{$service})) {
+                    return $services->{$service};
+                }
+            }
+            
+            return 'undefined';
+        }
+        
+        /**
+         * Détermine si il y a eu un consentement (accepté ou non)
+         *
+         * @return boolean
+         */
+        public static function hasConsent()
+        {
+            return (isset($_COOKIE['cookienotice']));
+        }
     }
-    
-    /**
-     * Détermine si il y a eu un consentement (accepté ou non)
-     *
-     * @return boolean
-     */
-    public static function hasConsent()
-    {
-        return (isset($_COOKIE['cookienotice']));
-    }
-}
