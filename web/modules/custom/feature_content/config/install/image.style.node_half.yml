@@ -1,0 +1,15 @@
+langcode: fr
+status: true
+dependencies: {  }
+name: node_half
+label: 'Node half (640)'
+effects:
+  9b0ec28b-30ec-4eba-9f07-1d34d59a22eb:
+    uuid: 9b0ec28b-30ec-4eba-9f07-1d34d59a22eb
+    id: image_scale
+    weight: 1
+    data:
+      width: 640
+      height: null
+      upscale: false
+pipeline: default

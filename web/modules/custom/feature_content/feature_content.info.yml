@@ -24,6 +24,7 @@ dependencies:
   - paragraphs
   - path
   - pathauto
+  - responsive_image
   - text
   - user
   - views

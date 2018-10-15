@@ -1,0 +1,33 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - image.style.node_full
+    - image.style.node_half
+  theme:
+    - drup_theme
+id: node_image
+label: 'Node image full'
+image_style_mappings:
+  -
+    breakpoint_id: drup_theme.screen
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: node_full
+  -
+    breakpoint_id: drup_theme.tablet
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: node_full
+  -
+    breakpoint_id: drup_theme.smartphone
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: node_full
+  -
+    breakpoint_id: drup_theme.smartphone_small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: node_half
+breakpoint_group: drup_theme
+fallback_image_style: node_half

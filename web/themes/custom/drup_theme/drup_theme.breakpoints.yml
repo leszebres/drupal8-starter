@@ -1,0 +1,19 @@
+drup_theme.smartphone_small:
+  label: 'Smartphone small'
+  mediaQuery: '(min-width: 0px)'
+  weight: 0
+
+drup_theme.smartphone:
+  label: 'Smartphone'
+  mediaQuery: '(min-width: 767px)'
+  weight: 1
+
+drup_theme.tablet:
+  label: 'Tablet'
+  mediaQuery: '(min-width: 1023px)'
+  weight: 2
+
+drup_theme.screen:
+  label: 'Screen'
+  mediaQuery: '(min-width: 1279px)'
+  weight: 3

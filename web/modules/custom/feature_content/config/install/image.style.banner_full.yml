@@ -1,0 +1,15 @@
+langcode: fr
+status: true
+dependencies: {  }
+name: banner_full
+label: 'Bannière full width (1920x400)'
+effects:
+  d141f324-8e67-4ee7-a613-69d33e8cfdeb:
+    uuid: d141f324-8e67-4ee7-a613-69d33e8cfdeb
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1920
+      height: 400
+      anchor: center-center
+pipeline: default

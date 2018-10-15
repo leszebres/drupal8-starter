@@ -1,0 +1,15 @@
+langcode: fr
+status: true
+dependencies: {  }
+name: banner_responsive_mobile
+label: 'Bannière responsive (768x280)'
+effects:
+  94113ffa-9de2-4244-b232-6bba78003ae2:
+    uuid: 94113ffa-9de2-4244-b232-6bba78003ae2
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 768
+      height: 280
+      anchor: center-center
+pipeline: default

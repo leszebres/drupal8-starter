@@ -1,0 +1,15 @@
+langcode: fr
+status: true
+dependencies: {  }
+name: node_full
+label: 'Node full (1200)'
+effects:
+  2761ac34-d144-4d70-b1bd-20779eda69ff:
+    uuid: 2761ac34-d144-4d70-b1bd-20779eda69ff
+    id: image_scale
+    weight: 1
+    data:
+      width: 1200
+      height: null
+      upscale: false
+pipeline: default

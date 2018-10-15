@@ -15,6 +15,7 @@ function drup_theme_theme_suggestions_field_alter(array &$suggestions, array $va
  */
 function drup_theme_preprocess_field(array &$variables, $hook) {
     switch ($variables['element']['#field_name']) {
+        case 'field_image':
         case 'field_image_file':
             $variables['attributes']['class'][] = 'item-media';
             $variables['attributes']['class'][] = 'l-image';
