@@ -73,6 +73,7 @@ main-libs:
   js:
     js/libs/spinner.min.js: {}
     js/libs/devicedetect.min.js: {}
+    js/libs/responsive-table.min.js: {}
   dependencies:
   - core/jquery
 
