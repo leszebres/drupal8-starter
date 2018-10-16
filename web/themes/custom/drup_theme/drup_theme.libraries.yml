@@ -52,7 +52,7 @@ swiftmailer:
 
 # CUSTOM
 togglemenu:
-  version: '2.1.5'
+  version: '2.1.6'
   js:
     js/libs/togglemenu/togglemenu.min.js: {}
     js/libs/togglemenu/togglemenu-hover.min.js: {}
@@ -61,7 +61,7 @@ togglemenu:
   - core/jquery
 
 customform:
-  version: '4.6.0'
+  version: '4.6.1'
   js:
     js/libs/customform/customform.min.js: {}
     js/libs/customform/customform-select.min.js: {}
@@ -70,7 +70,7 @@ customform:
   - core/jquery
 
 cookienotice:
-  version: '3.0.1'
+  version: '3.0.2'
   js:
     js/libs/cookienotice.min.js: {}
   dependencies:
