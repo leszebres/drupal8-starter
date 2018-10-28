@@ -61,7 +61,7 @@ function drup_theme_preprocess_page(array &$variables) {
         $node = $variables['node'];
         $nodeType = $node->getType();
         $drupField = new DrupEntityField($node);
-    
+        
     } elseif (\Drupal::request()->attributes->get('_route') === 'system.404') {
         $variables['page']['content'] = DrupSite::get404Content();
     }
@@ -87,12 +87,12 @@ function drup_theme_theme_suggestions_page_alter(array &$suggestions, array $var
  * @param array $variables
  */
 function drup_theme_preprocess_page_title(array &$variables) {
-    $entity = \Drupal\drup\DrupCommon::getPageEntity(true);
-    
     $variables['title_attributes'] = new Attribute([
         'class' => ['content-title']
     ]);
+    $variables['tag'] = 'h1';
     
+    $entity = \Drupal\drup\DrupCommon::getPageEntity(true);
     if ($entity->type === 'taxonomy_term') {
         $variables['title'] = strip_tags($variables['title']->__toString(), 'span');
     }
