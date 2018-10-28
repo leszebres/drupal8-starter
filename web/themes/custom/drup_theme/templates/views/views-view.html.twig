@@ -58,22 +58,25 @@
                 {{ display_total_rows_count }}
             </p>
         {% endif %}
-        {{ custom_view_header_btn|raw }}
     </div>
 
-    {{ rows }}
+    <div class="view-content">
+        {{ rows }}
 
-    {% if empty %}
-        <p class="empty">{{ empty }}</p>
-    {% endif %}
+        {% if empty %}
+            <p class="view-empty">{{ empty }}</p>
+        {% endif %}
 
-    {{ pager }}
+        <div class="view-pager">
+            {{ pager }}
+        </div>
 
-    {{ attachment_after }}
-    {{ more }}
+        {{ attachment_after }}
+        {{ more }}
+    </div>
 
     {% if footer %}
-        <footer>
+        <footer class="view-footer">
             {{ footer }}
         </footer>
     {% endif %}

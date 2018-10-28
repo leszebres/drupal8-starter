@@ -13,7 +13,7 @@
             {% for i, item in breadcrumb %}
                 {% if item.url %}
                     <li class="nav-item">
-                        <a href="{{ item.url }}">{{ item.text }}</a>
+                        <a href="{{ item.url }}">{{ item.text|raw }}</a>
                         <span class="item-separator icon icon--arrow">&nbsp;</span>
                     </li>
                 {% else %}

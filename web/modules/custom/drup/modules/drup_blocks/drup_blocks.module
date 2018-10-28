@@ -26,6 +26,23 @@ function drup_blocks_theme() {
     
     return $themes;
 }
+    
+/**
+ * Hook build alter
+ *
+ * @param array $build
+ * @param \Drupal\Core\Block\BlockPluginInterface $block
+ */
+function drup_block_build_alter(array &$build, \Drupal\Core\Block\BlockPluginInterface $block) {
+    // Désactivation du cache pour certains blockId
+    $disableCacheBlockId = [
+        'system_branding_block'
+    ];
+    
+    if (in_array($block->getPluginId(), $disableCacheBlockId)) {
+        $build['#cache']['max-age'] = 0;
+    }
+}
 
 /**
  * @param \Drupal\block\Entity\Block $block
