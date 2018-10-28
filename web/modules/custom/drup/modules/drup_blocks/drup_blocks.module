@@ -35,8 +35,7 @@ function drup_blocks_theme() {
  * @return mixed
  */
 function drup_blocks_block_access(\Drupal\block\Entity\Block $block, $operation, \Drupal\Core\Session\AccountInterface $account) {
-    $drupRouter = \Drupal::service('drup_router.router');
-    $currentRoute = $drupRouter->getName();
+    $currentRoute = \Drupal::service('drup_router.router')->getName();
     $entity = \Drupal\drup\DrupCommon::getPageEntity();
     $isFront = \Drupal::service('path.matcher')->isFrontPage();
     $args = \Drupal::routeMatch()->getParameters()->all();

@@ -1,41 +1,49 @@
 <?php
-
-namespace Drupal\drup_blocks;
-
-/**
- * Class DrupBlocks
- * @package Drupal\drup_blocks
- */
-abstract class DrupBlock {
+    
+    namespace Drupal\drup_blocks;
     
     /**
-     * Format block theme
-     * @param $themes
-     * @param array $options
+     * Class DrupBlocks
+     * @package Drupal\drup_blocks
      */
-    public static function format(&$themes, $options = []) {
-        $options = array_merge([
-            'type' => 'blocks'
-        ], $options);
-    
-        $themePath = '/' . drupal_get_path('theme', 'drup_theme');
-        $themePathBlocks = $themePath . '/templates/' . $options['type'];
-    
-        foreach ($themes as $themeID => &$theme) {
-            if (strpos($themeID, 'drup_' . $options['type']) !== false) {
+    abstract class DrupBlock {
+        
+        /**
+         * Format block theme
+         * @param $themes
+         * @param array $options
+         */
+        public static function format(&$themes, $options = []) {
+            $options = array_merge([
+                'type' => 'blocks'
+            ], $options);
             
-                // Admin
-                if (strpos($themeID, 'drup_' . $options['type'] . '_admin') !== false) {
-                    $template = str_replace('drup_' . $options['type'] . '_admin_', '', $themeID);
-                    $theme['variables']['admin_url'] = null;
-                } else {
-                    $template = str_replace('drup_' . $options['type'] . '_', '', $themeID);
+            $themePath = '/' . drupal_get_path('theme', 'drup_theme');
+            $themePathBlocks = $themePath . '/templates/' . $options['type'];
+            
+            foreach ($themes as $themeID => &$theme) {
+                if (strpos($themeID, 'drup_' . $options['type']) !== false) {
+                    
+                    // Admin
+                    if (strpos($themeID, 'drup_' . $options['type'] . '_admin') !== false) {
+                        $template = str_replace('drup_' . $options['type'] . '_admin_', '', $themeID);
+                        $theme['variables']['admin_url'] = null;
+                    } else {
+                        $template = str_replace('drup_' . $options['type'] . '_', '', $themeID);
+                    }
+                    
+                    $theme['path'] = $themePathBlocks;
+                    $theme['template'] = str_replace('_', '-', strtolower($template));
+                    $theme['variables']['theme_path'] = $themePath;
                 }
-            
-                $theme['path'] = $themePathBlocks;
-                $theme['template'] = str_replace('_', '-', strtolower($template));
-                $theme['variables']['theme_path'] = $themePath;
             }
         }
+        
+        /**
+         * Cache invalidation if following entities are updated
+         * @return array
+         */
+        public static function getDefaultCacheTags() {
+            return ['node_list', 'taxonomy_term_list', 'media_list', 'config:system'];
+        }
     }
-}
