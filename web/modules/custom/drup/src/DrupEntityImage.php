@@ -3,6 +3,7 @@
 namespace Drupal\drup;
 
 use Drupal\image\Entity\ImageStyle;
+use Drupal\responsive_image\Entity\ResponsiveImageStyle;
 
 /**
  * Class DrupEntityImage
@@ -70,6 +71,7 @@ class DrupEntityImage extends DrupEntityMedia {
     
     
     /**
+     * Render an image with simple image style, responsive image style or as original
      * @param $style
      * @param int $index
      * @param array $attributes
@@ -87,20 +89,26 @@ class DrupEntityImage extends DrupEntityMedia {
             $rendererOptions = [
                 '#uri' => $fileUri,
                 '#attributes' => [
-                    'alt' => $this->mediasDatas[$index]->fileReferenced->get('alt')->getString(),
-                    'title' => $this->mediasDatas[$index]->mediaEntity->getName()
+                    'alt' => $this->mediasDatas[$index]->fileReferenced->get('alt')->getString()
                 ],
                 '#width' => $image->getWidth(),
                 '#height' => $image->getHeight()
             ];
             
             // Render as image style
-            if ($style !== null) {
-                if ($imageStyle = $this->checkImageStyle($style)) {
-                    $rendererOptions += [
-                        '#theme' => 'image_style',
-                        '#style_name' => $style
-                    ];
+            if (!empty($style)) {
+                if ($imageStyle = $this->getImageStyleEntity($style, true)) {
+                    if ($imageStyle instanceof ResponsiveImageStyle) {
+                        $rendererOptions += [
+                            '#theme' => 'responsive_image',
+                            '#responsive_image_style_id' => $style
+                        ];
+                    } else {
+                        $rendererOptions += [
+                            '#theme' => 'image_style',
+                            '#style_name' => $style
+                        ];
+                    }
                 } else {
                     \Drupal::messenger()
                         ->addMessage('Le style d\'image ' . $style . ' n\'existe pas', 'error');
@@ -119,6 +127,8 @@ class DrupEntityImage extends DrupEntityMedia {
             }
             
             $renderer = \Drupal::service('renderer');
+            $renderer->addCacheableDependency($rendererOptions, $this->mediasDatas[$index]->fileEntity);
+            
             return $renderer->render($rendererOptions);
         }
         
@@ -138,7 +148,7 @@ class DrupEntityImage extends DrupEntityMedia {
             
             if ($fileUri) {
                 if ($style !== null) {
-                    if ($imageStyle = $this->checkImageStyle($style)) {
+                    if ($imageStyle = $this->getImageStyleEntity($style)) {
                         $croppedUrl = $imageStyle->buildUrl($fileUri);
                     } else {
                         \Drupal::messenger()->addMessage('Le style d\'image ' . $style . ' n\'existe pas', 'error');
@@ -164,7 +174,7 @@ class DrupEntityImage extends DrupEntityMedia {
         if (isset($this->mediasDatas[$index]) && ($fileUri = $this->mediasDatas[$index]->fileEntity->getFileUri())) {
             $image = \Drupal::service('image.factory')->get($fileUri);
             if (!$image->isValid()) {
-                return false;
+                return $datas;
             }
             
             $datas = [
@@ -181,12 +191,19 @@ class DrupEntityImage extends DrupEntityMedia {
     }
     
     /**
-     * @param $imageStyle
-     *
-     * @return bool
+     * @param $style
+     * @return \Drupal\Core\Entity\EntityInterface|ImageStyle|ResponsiveImageStyle|null
      */
-    protected function checkImageStyle($style) {
+    protected function getImageStyleEntity($style, $allowResponsiveImageStyle = false) {
         $imageStyle = ImageStyle::load($style);
-        return ($imageStyle instanceof ImageStyle) ? $imageStyle : NULL;
+        if ($imageStyle instanceof ImageStyle) {
+            return $imageStyle;
+            
+        } elseif (($allowResponsiveImageStyle === true) && ($responsiveImageStyle = ResponsiveImageStyle::load($style))) {
+            if ($responsiveImageStyle instanceof ResponsiveImageStyle) {
+                return $responsiveImageStyle;
+            }
+        }
+        return null;
     }
 }
