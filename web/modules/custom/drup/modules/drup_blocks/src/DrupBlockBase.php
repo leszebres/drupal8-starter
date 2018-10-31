@@ -7,7 +7,7 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Class DrupBlockAdminBase
+ * Class DrupBlockBase
  * @package Drupal\drup_blocks
  */
 abstract class DrupBlockBase extends BlockBase {
@@ -20,25 +20,9 @@ abstract class DrupBlockBase extends BlockBase {
     }
     
     /**
-     * {@inheritdoc}
-     */
-    public function blockForm($form, FormStateInterface $form_state) {
-        parent::blockForm($form, $form_state);
-    }
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function blockSubmit($form, FormStateInterface $form_state) {
-
-    }
-    
-    /**
      * @return array|void
      */
-    public function build() {
-
-    }
+    public function build() {}
     
     /**
      * @param array $parameters
