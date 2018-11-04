@@ -11,7 +11,7 @@ use Drupal\taxonomy\Entity\Term;
 /**
  * Class RouterForm.
  */
-class AdminForm extends ConfigFormBase {
+class DrupRouterForm extends ConfigFormBase {
 
     /**
      * {@inheritdoc}
