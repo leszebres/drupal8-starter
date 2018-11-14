@@ -24,7 +24,7 @@
                 // Configuration du bandeau notice
                 'notice' => [
                     // Contenu de la notice
-                    'description' => t('By continuing your visit to this site, you accept the use of cookies or similar tracing technologies to offer you the best browsing experience: keep your preferences, establish attendance statistics, offer you offers and content tailored to your needs. interests including third party partners. To learn more and set cookies, read our <a href="@link">privacy policy</a>.', ['@link' => $drupRouter->getPath('privacy')]),
+                    'description' => t('By continuing your visit to this site, you accept the use of cookies or similar tracing technologies to offer you the best browsing experience: keep your preferences, establish attendance statistics, offer you offers and content tailored to your needs. interests including third party partners. To learn more and set cookies, read our <a href="@link">privacy policy</a>.', ['@link' => $drupRouter->getPath('legal-terms')]),
                     // Résumé de la notice affichée en version mobile
                     'summary' => t('By continuing your visit to this site, you accept the use of cookies... (see more)'),
                     // Label du bouton pour personnaliser les services
