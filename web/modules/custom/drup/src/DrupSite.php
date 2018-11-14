@@ -33,12 +33,12 @@ class DrupSite {
      * @return array
      */
     public static function getSocialLinks($forceLoad = true) {
-        $socialNetworks = ['facebook', 'twitter', 'linkedin', 'viadeo', 'youtube'];
+        $socialNetworks = ['facebook', 'twitter', 'linkedin', 'youtube'];
         $drupSettings = \Drupal::service('drup_settings.variables');
         
         $links = [];
         foreach ($socialNetworks as $socialNetwork) {
-            $url = $drupSettings->getValue('site_'.$socialNetwork);
+            $url = $drupSettings->getValue('site_' . $socialNetwork);
             
             if ($forceLoad === false && empty($url)) {
                 continue;

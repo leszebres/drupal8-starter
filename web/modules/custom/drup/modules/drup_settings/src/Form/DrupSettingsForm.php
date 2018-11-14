@@ -32,44 +32,70 @@ class DrupSettingsForm extends ConfigFormBase {
      * {@inheritdoc}
      */
     public function buildForm(array $form, FormStateInterface $form_state) {
-        $drupSettingsVariables = \Drupal::service('drup_settings.variables');
-
-        /*
-         * @info All form field ids must be prefixed by site_
-         */
+        $drupSettings = \Drupal::service('drup_settings.variables');
+        
         $form['site_information'] = array(
             '#type' => 'details',
-            '#title' => t('Site details'),
+            '#title' => $this->t('Site details'),
             '#open' => TRUE,
         );
         $form['site_information']['site_name'] = [
             '#type' => 'textfield',
-            '#title' => t('Site name'),
-            '#default_value' => $drupSettingsVariables->getValue('site_name'),
+            '#title' => $this->t('Site name'),
+            '#default_value' => $drupSettings->getValue('site_name'),
             '#required' => TRUE
         ];
         $form['site_information']['site_slogan'] = [
             '#type' => 'textfield',
-            '#title' => t('Slogan'),
-            '#default_value' => $drupSettingsVariables->getValue('site_slogan')
+            '#title' => $this->t('Slogan'),
+            '#default_value' => $drupSettings->getValue('site_slogan')
+        ];
+    
+        $form['site_seo'] = array(
+            '#type' => 'details',
+            '#title' => $this->t('Référencement global'),
+            '#open' => TRUE,
+        );
+        $form['site_seo']['site_logo_alt'] = [
+            '#type' => 'textfield',
+            '#title' => $this->t('Attribut alt du logo'),
+            '#default_value' => $drupSettings->getValue('site_logo_alt')
+        ];
+        $form['site_seo']['site_tag_manager'] = [
+            '#type' => 'textfield',
+            '#title' => $this->t('ID Google Tag Manager'),
+            '#default_value' => $drupSettings->getValue('site_tag_manager')
         ];
         
     
-        $form['subcountry_information'] = [
-            '#type' => 'fieldset',
-            '#title' => t('Fonctionnalités')
-        ];
-        $form['subcountry_information']['site_tag_manager'] = [
+        $form['home_seo'] = array(
+            '#type' => 'details',
+            '#title' => $this->t('Référencement de la page d\'accueil'),
+            '#open' => TRUE,
+        );
+        $form['home_seo']['home_meta_title'] = [
             '#type' => 'textfield',
-            '#title' => t('ID Google Tag Manager'),
-            '#default_value' => $drupSettingsVariables->getValue('site_tag_manager')
+            '#title' => $this->t('Meta Title'),
+            '#default_value' => $drupSettings->getValue('home_meta_title')
         ];
+        $form['home_seo']['home_meta_desc'] = [
+            '#type' => 'textfield',
+            '#title' => $this->t('Meta Description'),
+            '#maxlength' => 250,
+            '#default_value' => $drupSettings->getValue('home_meta_desc')
+        ];
+        $form['home_seo']['home_h1'] = [
+            '#type' => 'textfield',
+            '#title' => $this->t('Titre principal H1'),
+            '#default_value' => $drupSettings->getValue('home_h1')
+        ];
+        
     
         $socialNetworks = \Drupal\drup\DrupSite::getSocialLinks();
         $form['social_networks'] = [
-            '#type' => 'fieldset',
-            '#title' => t('Social networks'),
-            '#description' => t('Links present in site footer')
+            '#type' => 'details',
+            '#title' => $this->t('URLs des réseaux sociaux'),
+            '#open' => true
         ];
         foreach ($socialNetworks as $socialNetworkID => $socialNetwork) {
             $form['social_networks']['site_'.$socialNetworkID] = [
@@ -80,13 +106,14 @@ class DrupSettingsForm extends ConfigFormBase {
         }
         
         $form['contact_infos'] = [
-            '#type' => 'fieldset',
-            '#title' => t('Informations de contact')
+            '#type' => 'details',
+            '#title' => t('Informations de contact'),
+            '#open' => true
         ];
         $form['contact_infos']['contact_infos_phone_number'] = [
             '#type' => 'textfield',
             '#title' => t('N° téléphone'),
-            '#default_value' => $drupSettingsVariables->getValue('contact_infos_phone_number')
+            '#default_value' => $drupSettings->getValue('contact_infos_phone_number')
         ];
         
         return parent::buildForm($form, $form_state);
