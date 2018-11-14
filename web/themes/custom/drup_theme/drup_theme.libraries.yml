@@ -36,7 +36,7 @@ masonry:
   - drup_theme/imagesloaded
 
 leaflet:
-  version: '1.3-dev'
+  version: '1.3.4'
   js:
     js/libs/leaflet/leaflet.js: {}
   css:
