@@ -23,19 +23,17 @@
          * Gestionnaire de la navigation principale
          */
         navMainHandler: function () {
-            var self = this;
-
             // Nav Main
-            if (self.elements.navMain.length) {
-                self.togglemenu = new $.ToggleMenu();
+            if (this.elements.navMain.length) {
+                this.togglemenu = new $.ToggleMenu();
 
-                self.togglemenu.setOptions('hover', {
+                this.togglemenu.setOptions('hover', {
                     elements: {
-                        menu: self.elements.navMain
+                        menu: this.elements.navMain
                     },
                     interval: 300
                 });
-                self.togglemenu.setDisplay('hover');
+                this.togglemenu.setDisplay('hover');
             }
         }
     };

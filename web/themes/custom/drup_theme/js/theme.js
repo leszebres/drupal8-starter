@@ -45,7 +45,7 @@ var Theme = {};
             if (options !== undefined) {
                 $.each(options, function(className, condition) {
                     if (self.elements.body.is(condition)) {
-                        return self.load(className).load();
+                        return self.load(className).init();
                     }
                 });
 
@@ -159,7 +159,7 @@ var Theme = {};
                 context = $(context);
 
                 if (context.length) {
-                    // if (context.hasClass('block--articles-term')) {
+                    // if (context.is('.block--articles-term')) {
                     //     var thematic = Drupal.Theme.load('thematic');
                     //     thematic.customFormHandler();
                     // }

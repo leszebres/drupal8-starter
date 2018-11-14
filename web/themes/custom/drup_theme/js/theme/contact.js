@@ -7,7 +7,7 @@
 
         // Éléments
         this.elements = {
-            webform: $('form.form--webform')
+            form: $('form.form--webform')
         };
 
         // Variables
@@ -26,15 +26,12 @@
          * Gestionnaire de CustomForm
          */
         customFormHandler: function () {
-            var self = this;
-
-            if (typeof $.fn.customForm !== 'undefined' && self.elements.webform.length) {
+            if (typeof $.fn.customForm !== 'undefined' && this.elements.form.length) {
                 // Init
-                self.customForm = self.elements.webform.customForm();
-
-                self.customFormCheckboxes = self.customForm.setSupport('checkbox');
-                self.customFormRadios = self.customForm.setSupport('radio');
-                self.customFormSelects = self.customForm.setSupport('select');
+                this.customForm = this.elements.form.customForm();
+                this.customFormCheckboxes = this.customForm.setSupport('checkbox');
+                this.customFormRadios = this.customForm.setSupport('radio');
+                this.customFormSelects = this.customForm.setSupport('select');
             }
         },
     };
