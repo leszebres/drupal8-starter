@@ -24,40 +24,40 @@
  */
 #}
 {%
-  set classes = [
+    set classes = [
     'js-form-item',
     'form-item',
     'js-form-wrapper',
     'form-wrapper',
-  ]
+]
 %}
-<div{{ attributes.addClass(classes) }}>
-  {%
-    set legend_span_classes = [
-      'fieldset-legend',
-      required ? 'js-form-required',
-      required ? 'form-required',
+<div{{ attributes.addClass(classes)|without('required', 'aria-required') }}>
+    {%
+        set legend_span_classes = [
+        'fieldset-legend',
+        required ? 'js-form-required',
+        required ? 'form-required',
     ]
-  %}
-  {#  Always wrap fieldset legends in a <span> for CSS positioning. #}
-  <div{{ legend.attributes.addClass('form-group-title') }}>
-    <span{{ legend_span.attributes.addClass(legend_span_classes) }}>{{ legend.title }}</span>
-  </div>
-  <div class="fieldset-wrapper">
-    {% if errors %}
-      <div>
-        {{ errors }}
-      </div>
-    {% endif %}
-    {% if prefix %}
-      <span class="field-prefix">{{ prefix }}</span>
-    {% endif %}
-    {{ children }}
-    {% if suffix %}
-      <span class="field-suffix">{{ suffix }}</span>
-    {% endif %}
-    {% if description.content %}
-      <div{{ description.attributes.addClass('description') }}>{{ description.content }}</div>
-    {% endif %}
-  </div>
+    %}
+    {#  Always wrap fieldset legends in a <span> for CSS positioning. #}
+    <div{{ legend.attributes.addClass('form-group-title') }}>
+        <span{{ legend_span.attributes.addClass(legend_span_classes) }}>{{ legend.title }}</span>
+    </div>
+    <div class="fieldset-wrapper">
+        {% if errors %}
+            <div>
+                {{ errors }}
+            </div>
+        {% endif %}
+        {% if prefix %}
+            <span class="field-prefix">{{ prefix }}</span>
+        {% endif %}
+        {{ children }}
+        {% if suffix %}
+            <span class="field-suffix">{{ suffix }}</span>
+        {% endif %}
+        {% if description.content %}
+            <div{{ description.attributes.addClass('description') }}>{{ description.content }}</div>
+        {% endif %}
+    </div>
 </div>
