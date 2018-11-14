@@ -67,12 +67,11 @@ class AdminExample extends DrupBlockAdminBase {
             $items = array_chunk($countries, $nbCountriesPerColumn);
         }
 
-        $build = [
+        $build = $this->mergeBuildParameters([
             '#theme' => 'drup_blocks_admin_distributor_countries',
             '#items' => $items,
             '#contact_email' => (isset($this->drupValues[$this->container]['contact'])) ? $this->drupValues[$this->container]['contact'] : null,
-            '#admin_url' => DrupBlockAdmin::getAdminConfigUrl($this->configuration['id'])
-        ];
+        ]);
         
         return $build;
     }

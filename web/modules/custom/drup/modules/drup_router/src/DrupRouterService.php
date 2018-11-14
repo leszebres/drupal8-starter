@@ -118,7 +118,7 @@ class DrupRouterService {
             $entityType = $this->getEntity()->type;
         }
         
-        if (!empty($entityId)) {
+        if (!empty($entityId) && !empty($this->routes)) {
             foreach ($this->routes as $route) {
                 if (($route['targetType'] === $entityType) && ($entityId === $route[$language])) {
                     return $route['routeName'];
