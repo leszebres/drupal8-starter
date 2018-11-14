@@ -1,7 +1,8 @@
+
 /* ==========================================================================
    Background primary
    ========================================================================== */
-.theme--bg-primary {
+.theme-bg-primary {
     background-color: $color--primary;
 
     &,
@@ -13,7 +14,7 @@
 /* ==========================================================================
    Background secondary
    ========================================================================== */
-.theme--bg-secondary {
+.theme-bg-secondary {
     background-color: $color--secondary;
 
     &,
@@ -24,6 +25,6 @@
 
 /* Background gray
    ========================================================================== */
-.theme--bg-muted {
+.theme-bg-muted {
     background-color: $color--background-secondary;
 }
