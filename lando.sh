@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 
-# sh lando.sh <arg>
-# ex : sh lando.sh maj
+#
+# Local custom actions with lando
+#
+# @use "sh lando.sh <arg>"
+# @example "sh lando.sh up"
+#
 
-argAction=$1
+
 exportFolder="./_sql"
+
 
 # Export database with lando
 function dump {
@@ -13,37 +18,36 @@ function dump {
     cd -
 }
 
-# Maj Drupal with composer
-function maj {
+# Fully update Drupal
+function up {
     dump
     lando composer update
     lando drush updatedb -y
     trans
     lando drush locale-update -y
     lando drush cr -y
+    dump
 }
 
+# Import custom themes translations
 function trans {
     lando drush langimp themes/custom/drup_theme/translations/drup_theme-8.x-1.0.fr.po
     lando drush langimp themes/custom/drup_admin/translations/drup_admin-8.x-1.0.fr.po
 }
 
-function fra {
-    lando drush fra
-    lando drush cr -y
-}
-
+# Shell prompt
 function readUser {
-    echo "----- COMMANDS"
-    echo "1) Export de la BDD dans $exportFolder"
-    echo "2) Mise à jour Drupal 8 via composer"
-    echo "3) Mise à jour des traductions des thèmes custom"
-    echo "4) Mise à jour des features"
+    echo "----- Welcome :"
+    echo "1) Database export in $exportFolder"
+    echo "2) Drupal update (composer, db update, translations, cache rebuild)"
+    echo "3) Custom themes translations import"
+    echo "----------------------------"
 
-    read -p "Que voulez-vous faire ? : " action
+    read -p "Make your choice : " action
+    echo "----------------------------"
     if [ "action" == "" ]
     then
-        echo "Une autre fois peut-être ..."
+        echo "Maybe another time ..."
         exit
     fi
 
@@ -51,21 +55,20 @@ function readUser {
         1)
             dump;;
         2)
-            maj;;
+            up;;
         3)
             trans;;
-        4)
-            fra;;
         *)
-            echo "Rien ne correspond"
+            echo "Nothing matches :("
             exit 1
     esac
 }
 
 
+
+argAction=$1
 if [ -z $argAction ];
 then
-    # Utilisation du prompt pour lister les fonctions
     readUser
 else
     # Launch command directly
