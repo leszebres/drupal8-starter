@@ -20,15 +20,15 @@ label,
 legend,
 .form-group-title {
     display: inline-block;
-    vertical-align: top;
     margin-bottom: .3em;
+    vertical-align: top;
     @include font(primary, bold);
 }
 
 label.js-form-required,
 .fieldset-custom[required="required"] .fieldset-legend {
     &:after {
-        content: ' *';
+        content: " *";
         color: red;
     }
 }
@@ -53,13 +53,14 @@ form {
 }
 .form-text,
 .form-email,
+.form-tel,
 .form-select,
 .form-search,
 .form-textarea {
     display: block;
+    padding: $input--padding-vertical $input--padding-horizontal;
     width: 100%;
     height: $input--height;
-    padding: $input--padding-vertical $input--padding-horizontal;
     color: $input--color;
     font-family: inherit;
     background-color: $input--background;
@@ -79,8 +80,8 @@ form {
 .form-type-checkbox {
     label {
         display: inline;
-        vertical-align: middle;
         margin-left: .5em;
+        vertical-align: middle;
     }
 }
 .form-checkboxes {
@@ -102,8 +103,8 @@ form {
     }
 }
 .webform-options-display-side-by-side > div {
-    vertical-align: top;
     margin-right: 1.5em;
+    vertical-align: top;
 }
 
 .captcha {
@@ -120,8 +121,8 @@ form {
 .form-text,
 .form-search {
     @include input-placeholder() {
-        font-size: $fontsize--small;
         @include font(primary, light);
+        font-size: $fontsize--small;
     }
 }
 
