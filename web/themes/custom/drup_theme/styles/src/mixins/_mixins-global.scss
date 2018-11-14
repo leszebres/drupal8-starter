@@ -1,7 +1,6 @@
 /* ==========================================================================
    TEXT & FONTS
    ========================================================================== */
-
 @mixin font($name, $weight: 'regular') {
     $fontName: map-get($font-families, $name);
     $fontVersion: map-get($fontName, $weight);
@@ -12,7 +11,7 @@
 
 @mixin font-icon($icon: null) {
     position: relative;
-    font-family: $font--icon-name;
+    font-family: "Icons";
     font-style: normal;
     font-weight: normal;
     font-variant: normal;

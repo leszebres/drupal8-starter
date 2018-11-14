@@ -1,17 +1,27 @@
+// Styleguide Paragraphs
+
 .paragraph {
     margin-bottom: $v-align;
 }
 
-/* ==========================================================================
+/*
+Type text
 
-   ========================================================================== */
+Markup: url()->find(.paragraph--type--text)
+
+Styleguide Paragraphs - 10.paragraph--type--text
+*/
 .paragraph--type--text {
 
 }
 
-/* ==========================================================================
-    
-   ========================================================================== */
+/*
+Type document
+
+Markup: url()->find(.paragraph--type--document)
+
+Styleguide Paragraphs - 20.paragraph--type--document
+*/
 .paragraph--type--document {
     div {
         display: inline-block;
@@ -22,9 +32,13 @@
     }
 }
 
-/* ==========================================================================
+/*
+Type image
 
-   ========================================================================== */
+Markup: url()->find(.paragraph--type--image)
+
+Styleguide Paragraphs - 30.paragraph--type--image
+*/
 .paragraph--type--image {
 
 }

@@ -1,4 +1,4 @@
-// Styleguide Listes
+// Styleguide Lists
 
 .list {
     margin: 0;
@@ -67,13 +67,12 @@
 }
 
 
-
 /*
-Liste primaire
+Liste principale
 
 Markup: url()->find(.list--primary)
 
-Styleguide Listes - 1.list--primary
+Styleguide Lists - 10.list--primary
 */
 .list--primary {
     @include grid-wrapper();

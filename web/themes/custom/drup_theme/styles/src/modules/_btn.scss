@@ -1,4 +1,4 @@
-// Styleguide Boutons
+// Styleguide Buttons
 
 /*
 :hover    - Bouton au survol
@@ -7,7 +7,7 @@
 
 Markup: <button class="btn $modifierClass">Bouton</button>
 
-Styleguide Boutons - 1.btn
+Styleguide Buttons - 1.btn
  */
 button,
 .btn {
@@ -64,11 +64,11 @@ button {
 
 
 /*
-Btn primary (bg gradient)
+Btn primary
 
 Markup: url()->find(.btn--primary)
 
-Styleguide Boutons - 1.btn--primary
+Styleguide Buttons - 10.btn--primary
 */
 .btn--primary {
     color: #fff;

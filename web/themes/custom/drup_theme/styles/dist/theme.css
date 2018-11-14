@@ -39,9 +39,6 @@
    TABS
    ========================================================================== */
 /* ==========================================================================
-   PATH
-   ========================================================================== */
-/* ==========================================================================
    CUSTOM
    ========================================================================== */
 /* ==========================================================================
@@ -854,6 +851,7 @@ fieldset {
 table {
   width: 100% !important;
   max-width: 100%;
+  margin: 24px auto 48px;
   border: 1px solid #c0c0c0;
   border-collapse: collapse;
   border-spacing: 0;
@@ -1155,16 +1153,9 @@ tbody {
 /* ==========================================================================
    MODULES
    ========================================================================== */
-/*
-.icon---name - \unicode
-
-Markup: <span class="icon $modifierClass"></span>
-
-Styleguide Icones - 1.icon
-*/
 .icon:before {
   position: relative;
-  font-family: FontIcon;
+  font-family: "Icons";
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -1180,6 +1171,13 @@ p.icon:before {
   vertical-align: middle;
   margin-right: .6em; }
 
+/*
+.icon--name - \unicode
+
+Markup: <span class="icon $modifierClass"></span>
+
+Styleguide Icons - 1.icon
+*/
 .icon--edit:before, .btn--block-admin:after {
   content: ''; }
 
@@ -1191,10 +1189,11 @@ p.icon:before {
 
 Markup: <span class="$modifierClass">Titre</span>
 
-Styleguide Titres - 1.title
+Styleguide Titles - 1.title
 */
 h1,
 .title--h1,
+.content-title,
 h2,
 .title--h2,
 h3,
@@ -1283,7 +1282,7 @@ h4,
 
 Markup: <button class="btn $modifierClass">Bouton</button>
 
-Styleguide Boutons - 1.btn
+Styleguide Buttons - 1.btn
  */
 button,
 .btn {
@@ -1316,9 +1315,6 @@ button,
     color: #fff;
     border-color: #f2653d;
     background-color: #f2653d; }
-    .btn:focus:after, .btn:active:after, .btn.is-active:after, .btn:hover:after,
-    a:hover .btn:after {
-      left: 3px; }
   .btn:focus {
     outline: 0; }
   .btn.is-disabled, .btn:disabled {
@@ -1329,11 +1325,11 @@ button {
   height: 54px; }
 
 /*
-Btn primary (bg gradient)
+Btn primary
 
 Markup: url()->find(.btn--primary)
 
-Styleguide Boutons - 1.btn--primary
+Styleguide Buttons - 10.btn--primary
 */
 .btn--primary {
   color: #fff;
@@ -1349,7 +1345,7 @@ Tag par défaut
 
 Markup: url()->find(.tag)
 
-Styleguide  - 1.tag
+Styleguide Tags - 1.tag
  */
 .tag {
   position: relative;
@@ -1370,11 +1366,11 @@ a.tag {
   text-decoration: none; }
 
 /*
-Tag
+Tag principal
 
 Markup: url()->find(.tag--primary)
 
-Styleguide Tag - 10.tag--primary
+Styleguide Tags - 10.tag--primary
 */
 .map {
   position: relative;
@@ -1404,16 +1400,15 @@ form {
     outline: 0; }
 
 .form-group,
-.form-item,
-.form-wrapper {
+.form-wrapper,
+.form-item {
   margin-bottom: 24px; }
 
 label,
 legend,
 .form-group-title {
-  display: inline-block;
+  display: block;
   margin-bottom: .3em;
-  vertical-align: top;
   font-weight: normal;
   font-family: "Arial", Arial, sans-serif; }
 
@@ -1445,9 +1440,9 @@ form textarea:not([readonly]):focus {
 .form-search,
 .form-textarea {
   display: block;
-  padding: 15px 16px;
   width: 100%;
   height: 50px;
+  padding: 15px 16px;
   color: #333;
   font-family: inherit;
   background-color: #f3f3f3;
@@ -1468,8 +1463,8 @@ form textarea:not([readonly]):focus {
 .form-type-radio label,
 .form-type-checkbox label {
   display: inline;
-  margin-left: .5em;
-  vertical-align: middle; }
+  vertical-align: middle;
+  margin-left: .5em; }
 
 .form-checkboxes.checkboxes-inline .form-item {
   display: inline;
@@ -1485,8 +1480,8 @@ form textarea:not([readonly]):focus {
   font-family: "Arial", Arial, sans-serif; }
 
 .webform-options-display-side-by-side > div {
-  margin-right: 1.5em;
-  vertical-align: top; }
+  vertical-align: top;
+  margin-right: 1.5em; }
 
 .captcha {
   margin: 24px 0; }
@@ -1597,11 +1592,11 @@ form textarea:not([readonly]):focus {
       margin-bottom: 0; }
 
 /*
-Liste primaire
+Liste principale
 
 Markup: url()->find(.list--primary)
 
-Styleguide Listes - 1.list--primary
+Styleguide Lists - 10.list--primary
 */
 .list--primary {
   display: -webkit-box;
@@ -1652,28 +1647,28 @@ Navigation principale
 
 Markup: url()->find(.nav--main)
 
-Styleguide Navigation - 1.nav--main
+Styleguide Navigation - 10.nav--main
 */
 /*
 Navigation secondaire
 
 Markup: url()->find(.nav--secondary)
 
-Styleguide Navigation - 1.nav--secondary
+Styleguide Navigation - 15.nav--secondary
 */
 /*
 Navigation footer
 
 Markup: url()->find(.nav--footer)
 
-Styleguide Navigation - 1.nav--footer
+Styleguide Navigation - 20.nav--footer
 */
 /*
 Fil d'ariane
 
 Markup: url()->find(.nav--breadcrumb)
 
-Styleguide Navigation - 1.nav--breadcrumb
+Styleguide Navigation - 30.nav--breadcrumb
 */
 .nav--breadcrumb {
   margin-bottom: 24px;
@@ -1716,7 +1711,7 @@ Pagination classique
 
 Markup: url()->find(.nav--pager)
 
-Styleguide Navigation - 1.nav--pager
+Styleguide Navigation - 40.nav--pager
 */
 .nav--pager {
   margin: 24px auto;
@@ -1729,7 +1724,7 @@ Social items
 
 Markup: url()->find(.nav--social)
 
-Styleguide Navigation - 1.nav--social
+Styleguide Navigation - 50.nav--social
 */
 .nav--social {
   font-size: 1.625rem; }
@@ -1747,7 +1742,7 @@ Social share items
 
 Markup: url()->find(.nav--social-share)
 
-Styleguide Navigation - 1.nav--social-share
+Styleguide Navigation - 55.nav--social-share
 */
 .nav--social-share {
   font-size: 1.125rem; }
@@ -1769,14 +1764,14 @@ Slider HP
 
 Markup: url()->find(.slider--primary)
 
-Styleguide Slider - 1.slider--primary
+Styleguide Sliders - 10.slider--primary
 */
 /*
 Markup: <div class="messages $modifierClass">Ce texte est mon message mis en forme selon le niveau de notice.</div>
 
-.messages--status - Message de succès
-.messages-warning.warning - Message de mise en garde
-.messages-error.error   - Message d'erreur
+.messages--status  - Message de succès
+.messages--warning - Message de mise en garde
+.messages--error   - Message d'erreur
 
 Styleguide Notices - 1.messages
 */
@@ -1837,7 +1832,7 @@ Message pour les navigateurs non optimisés
 
 Markup: url()->find(.notice--browser)
 
-Styleguide Notices - 1.notice--browser
+Styleguide Notices - 10.notice--browser
 */
 .notice--browser {
   position: fixed;
@@ -1856,12 +1851,20 @@ Styleguide Notices - 1.notice--browser
 .paragraph {
   margin-bottom: 48px; }
 
-/* ==========================================================================
+/*
+Type text
 
-   ========================================================================== */
-/* ==========================================================================
-    
-   ========================================================================== */
+Markup: url()->find(.paragraph--type--text)
+
+Styleguide Paragraphs - 10.paragraph--type--text
+*/
+/*
+Type document
+
+Markup: url()->find(.paragraph--type--document)
+
+Styleguide Paragraphs - 20.paragraph--type--document
+*/
 .paragraph--type--document div {
   display: inline-block; }
 
@@ -1869,9 +1872,13 @@ Styleguide Notices - 1.notice--browser
   display: block;
   margin: 0 30px 24px 0; }
 
-/* ==========================================================================
+/*
+Type image
 
-   ========================================================================== */
+Markup: url()->find(.paragraph--type--image)
+
+Styleguide Paragraphs - 30.paragraph--type--image
+*/
 .block {
   position: relative;
   z-index: 1;
@@ -1916,7 +1923,7 @@ Styleguide Notices - 1.notice--browser
 /*
 Markup: url()->find(.block--primary)
 
-Styleguide Blocs - 1.block--primary
+Styleguide Blocks - 1.block--primary
 */
 /* ==========================================================================
    Contenu
@@ -2124,7 +2131,7 @@ Styleguide Blocs - 1.block--primary
 
 .btn--block-admin:after {
   position: relative;
-  font-family: FontIcon;
+  font-family: "Icons";
   font-style: normal;
   font-weight: normal;
   font-variant: normal;

@@ -57,8 +57,6 @@ $font-families: (
     )
 );
 $font--fallback: Arial, sans-serif;
-
-$font--icon-name: FontIcon;
 $font--icon-version: 1;
 
 
@@ -188,12 +186,6 @@ $tabs--background: $color--background-secondary;
 $tabs--color: $color--text-lighter;
 $tabs--border: $color--border;
 $tabs--color-active: $color--primary;
-
-
-/* ==========================================================================
-   PATH
-   ========================================================================== */
-$path-theme: "/sites/default/themes/child";
 
 
 /* ==========================================================================

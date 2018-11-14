@@ -32,18 +32,19 @@ Navigation principale
 
 Markup: url()->find(.nav--main)
 
-Styleguide Navigation - 1.nav--main
+Styleguide Navigation - 10.nav--main
 */
 .nav--main {
 
 }
+
 
 /*
 Navigation secondaire
 
 Markup: url()->find(.nav--secondary)
 
-Styleguide Navigation - 1.nav--secondary
+Styleguide Navigation - 15.nav--secondary
 */
 .nav--secondary {
 }
@@ -54,7 +55,7 @@ Navigation footer
 
 Markup: url()->find(.nav--footer)
 
-Styleguide Navigation - 1.nav--footer
+Styleguide Navigation - 20.nav--footer
 */
 .nav--footer {
 
@@ -66,7 +67,7 @@ Fil d'ariane
 
 Markup: url()->find(.nav--breadcrumb)
 
-Styleguide Navigation - 1.nav--breadcrumb
+Styleguide Navigation - 30.nav--breadcrumb
 */
 .nav--breadcrumb {
     margin-bottom: $v-align--medium;
@@ -90,13 +91,12 @@ Styleguide Navigation - 1.nav--breadcrumb
 }
 
 
-
 /*
 Pagination classique
 
 Markup: url()->find(.nav--pager)
 
-Styleguide Navigation - 1.nav--pager
+Styleguide Navigation - 40.nav--pager
 */
 .nav--pager {
     margin: $v-align--medium auto;
@@ -108,13 +108,12 @@ Styleguide Navigation - 1.nav--pager
 }
 
 
-
 /*
 Social items
 
 Markup: url()->find(.nav--social)
 
-Styleguide Navigation - 1.nav--social
+Styleguide Navigation - 50.nav--social
 */
 .nav--social {
     font-size: 26px;
@@ -132,12 +131,13 @@ Styleguide Navigation - 1.nav--social
     }
 }
 
+
 /*
 Social share items
 
 Markup: url()->find(.nav--social-share)
 
-Styleguide Navigation - 1.nav--social-share
+Styleguide Navigation - 55.nav--social-share
 */
 .nav--social-share {
     font-size: $fontsize--big;

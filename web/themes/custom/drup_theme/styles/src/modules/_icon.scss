@@ -1,12 +1,5 @@
-// Styleguide Icones
+// Styleguide Icons
 
-/*
-.icon---name - \unicode
-
-Markup: <span class="icon $modifierClass"></span>
-
-Styleguide Icones - 1.icon
-*/
 .icon {
     &:before {
         @include font-icon;
@@ -21,6 +14,13 @@ p.icon {
     }
 }
 
+/*
+.icon--name - \unicode
+
+Markup: <span class="icon $modifierClass"></span>
+
+Styleguide Icons - 1.icon
+*/
 .icon--edit:before {
     content: '';
 }

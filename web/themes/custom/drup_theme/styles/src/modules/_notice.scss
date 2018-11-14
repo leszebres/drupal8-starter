@@ -3,9 +3,9 @@
 /*
 Markup: <div class="messages $modifierClass">Ce texte est mon message mis en forme selon le niveau de notice.</div>
 
-.messages--status - Message de succès
-.messages-warning.warning - Message de mise en garde
-.messages-error.error   - Message d'erreur
+.messages--status  - Message de succès
+.messages--warning - Message de mise en garde
+.messages--error   - Message d'erreur
 
 Styleguide Notices - 1.messages
 */
@@ -80,7 +80,7 @@ Message pour les navigateurs non optimisés
 
 Markup: url()->find(.notice--browser)
 
-Styleguide Notices - 1.notice--browser
+Styleguide Notices - 10.notice--browser
 */
 .notice--browser {
     position: fixed;
