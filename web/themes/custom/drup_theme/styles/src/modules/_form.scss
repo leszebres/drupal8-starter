@@ -11,16 +11,15 @@ form {
     }
 }
 .form-group,
-.form-item,
-.form-wrapper {
+.form-wrapper,
+.form-item {
     margin-bottom: $v-align--medium;
 }
 
 label,
 legend,
 .form-group-title {
-    display: inline-block;
-    vertical-align: top;
+    display: block;
     margin-bottom: .3em;
     @include font(primary, bold);
 }

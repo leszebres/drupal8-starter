@@ -40,10 +40,6 @@ button,
         color: #fff;
         border-color: $color--primary;
         background-color: $color--primary;
-
-        &:after {
-            left: 3px;
-        }
     }
     &:focus {
         outline: 0;
