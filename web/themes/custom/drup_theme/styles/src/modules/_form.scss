@@ -27,7 +27,7 @@ legend,
 label.js-form-required,
 .fieldset-custom[required="required"] .fieldset-legend {
     &:after {
-        content: ' *';
+        content: " *";
         color: red;
     }
 }
@@ -52,6 +52,7 @@ form {
 }
 .form-text,
 .form-email,
+.form-tel,
 .form-select,
 .form-search,
 .form-textarea {
@@ -119,8 +120,8 @@ form {
 .form-text,
 .form-search {
     @include input-placeholder() {
-        font-size: $fontsize--small;
         @include font(primary, light);
+        font-size: $fontsize--small;
     }
 }
 
