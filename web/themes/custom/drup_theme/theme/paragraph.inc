@@ -7,8 +7,6 @@ use Drupal\Component\Utility\Html;
 use Drupal\drup\DrupEntityImage;
 
 /**
- * Preprocess des contenus Paragraphs
- *
  * @param array $variables
  */
 function drup_theme_preprocess_paragraph(array &$variables) {

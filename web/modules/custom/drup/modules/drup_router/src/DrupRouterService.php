@@ -30,7 +30,7 @@ class DrupRouterService {
     }
     
     /**
-     * Return specific route datas by name
+     * Return specific route data by name
      * @param $routeName
      *
      * @return null
@@ -101,10 +101,12 @@ class DrupRouterService {
         
         return null;
     }
-    
+
     /**
      * Return route name attached to a given drupal entity
      * @param null $entityId
+     * @param null $entityType
+     * @param null $language
      *
      * @return null
      */
@@ -128,9 +130,10 @@ class DrupRouterService {
         
         return null;
     }
-    
+
     /**
      * @param $routeName
+     * @param null $language
      *
      * @return bool
      */
@@ -158,9 +161,9 @@ class DrupRouterService {
         
         return $language;
     }
-    
+
     /**
-     * @return array|null
+     * @return object
      */
     protected function getEntity() {
         return $this->entity;

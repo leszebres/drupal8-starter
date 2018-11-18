@@ -9,24 +9,16 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\node\NodeInterface;
-use Drupal\node\Entity\Node;
 use Drupal\Core\Render\Markup;
-use Drupal\taxonomy\Entity\Term;
-
-use Drupal\Core\Entity\EntityInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Drupal\Core\Url;
 
 use Drupal\drup\DrupCommon;
-use Drupal\drup\DrupSite;
-use Drupal\drup\DrupEntityField;
 
 /**
  * @param array $settings
  */
 function drup_editor_js_settings_alter(array &$settings) {
     $settings['editor']['formats']['html_basic']['editorSettings']['bodyClass'] = ['node-body'];
-    $settings['editor']['formats']['html_basic']['editorSettings']['format_tags'] = "p;h2;h3;h4";
+    $settings['editor']['formats']['html_basic']['editorSettings']['format_tags'] = 'p;h2;h3;h4';
 }
 
 /**
@@ -60,16 +52,19 @@ function drup_query_alter(Drupal\Core\Database\Query\AlterableInterface $query) 
 
 /**
  * Implements hook_entity_access().
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ * @param $operation
+ * @param \Drupal\Core\Session\AccountInterface $account
  */
 function drup_entity_access(\Drupal\Core\Entity\EntityInterface $entity, $operation, \Drupal\Core\Session\AccountInterface $account) {
 
 }
 
 /**
- * 403 if node in not translated or not in current domain
  * Implements hook_node_access().
  */
 function drup_node_access(NodeInterface $node, $op, AccountInterface $account) {
+    // 403 status if node is not translated
     $isAllowed = DrupCommon::isNodeTranslated($node);
     $access = ($isAllowed === true) ? AccessResult::neutral() : AccessResult::forbidden();
     $access->addCacheableDependency($node);
@@ -78,11 +73,13 @@ function drup_node_access(NodeInterface $node, $op, AccountInterface $account) {
 }
 
 /**
- * Remove untranslated menu items
  * Implements hook_preprocess_menu().
+ * @param $variables
  */
 function drup_preprocess_menu(&$variables) {
     $language = Drupal::languageManager()->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getId();
+
+    // Unset untranslated menu items
     if (isset($variables['menu_name']) && in_array($variables['menu_name'], ['main', 'secondary', 'footer'])) {
         foreach ($variables['items'] as $menuId => $menuItem) {
             if (!$variables['items'][$menuId] = DrupCommon::checkMenuItemTranslation($menuItem, $language)) {
@@ -117,6 +114,11 @@ function drup_token_info() {
 
 /**
  * Implements hook_tokens().
+ * @param $type
+ * @param $tokens
+ * @param array $data
+ * @param array $options
+ * @param \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata
  */
 function drup_tokens($type, $tokens, array $data, array $options, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata) {
 //    $replacements = [];
@@ -170,10 +172,11 @@ function drup_preprocess_swiftmailer(&$variables) {
 //    echo '</pre>';
 //    die;
 }
-    
-    
+
+
 /**
  * Implements hook_page_attachments_alter().
+ * @param array $attachments
  */
 function drup_page_attachments_alter(array &$attachments) {
     DrupCommon::removeHeaderLinks($attachments);
@@ -181,15 +184,20 @@ function drup_page_attachments_alter(array &$attachments) {
 
 /**
  * Implements hook_entity_view_alter().
+ * @param array $build
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ * @param \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display
  */
 function drup_entity_view_alter(array &$build, Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
-    if ($build['#view_mode'] == 'full' && $entity Instanceof NodeInterface) {
+    if ($entity Instanceof NodeInterface && $build['#view_mode'] === 'full') {
         DrupCommon::removeHeaderLinks($build);
     }
 }
 
 /**
  * Implements hook_module_implements_alter().
+ * @param $implementations
+ * @param $hook
  */
 function drup_module_implements_alter(&$implementations, $hook) {
     if ($hook === 'page_attachments_alter') {

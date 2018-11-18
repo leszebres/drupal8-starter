@@ -72,13 +72,10 @@ class DrupSettingsVariables {
      * Register prefixed variable value by name
      * @param $variable
      * @param $value
-     *
-     * @return mixed
      */
     public function set($variable, $value) {
         $this->config->set($this->getName($variable), $value);
         $this->save();
-        //\Drupal::messenger()->addMessage('La variable '.$this->getName($variable).' a bien été mise à jour avec la valeur ' . json_encode($value), 'status');
     }
     
     /**

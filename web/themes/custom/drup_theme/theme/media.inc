@@ -4,7 +4,6 @@ use Drupal\Core\Url;
 use Drupal\Core\Link;
 
 /**
- * Media "file" template
  * @param $variables
  */
 function drup_theme_preprocess_file_link(&$variables) {

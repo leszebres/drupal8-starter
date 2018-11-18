@@ -2,11 +2,6 @@
 
 namespace Drupal\drup;
 
-use Drupal\Core\Entity\Entity\EntityFormDisplay;
-use Drupal\Core\Field\FieldDefinitionInterface;
-
-use Drupal\drup\DrupCommon;
-
 /**
  * Class DrupEntityField
  *
@@ -15,14 +10,17 @@ use Drupal\drup\DrupCommon;
 class DrupEntityField {
 
     /**
+     * @var
+     */
+    protected $entity;
+
+    /**
      * DrupField constructor.
      *
      * @param $entity
      */
     public function __construct($entity) {
         $this->entity = $entity;
-
-        return $this;
     }
 
     /**
@@ -48,19 +46,17 @@ class DrupEntityField {
         if (($fieldEntity = $this->get($field)) && $fieldEntity && ($data = $fieldEntity->getValue())) {
             if (count($data) > 1) {
                 return $data;
+            }
 
-            } else {
-                $data = (object) current($data);
-
-                if (isset($data->{$key})) {
-                    return $data->{$key};
-                }
+            $data = (object) current($data);
+            if (isset($data->{$key})) {
+                return $data->{$key};
             }
         }
 
         return null;
     }
-    
+
     /**
      * @param $field
      *
@@ -71,30 +67,6 @@ class DrupEntityField {
             return $data;
         }
 
-        return [];
-    }
-    
-    /**
-     * @param $field
-     * @return array
-     */
-    public function getReferencedNodes($field) {
-        if ($values = self::getValues($field)) {
-            return DrupCommon::getReferencedNodes($values);
-        }
-        
-        return [];
-    }
-    
-    /**
-     * @param $field
-     * @return array
-     */
-    public function getReferencedTerms($field) {
-        if ($values = self::getValues($field)) {
-            return DrupCommon::getReferencedTerms($values);
-        }
-        
         return [];
     }
 
@@ -123,20 +95,19 @@ class DrupEntityField {
      * Récupère les paramètres du champ
      *
      * @param $field
-     * @param null $setting
      *
-     * @return bool
+     * @return \Drupal\field\Entity\FieldConfig
      */
     public function getConfig($field) {
         return \Drupal\field\Entity\FieldConfig::loadByName($this->entity->getEntityTypeId(), $this->entity->bundle(), self::format($field));
     }
 
     /**
-     * Récupère les paramètres d'affichage du champ
-     *
      * @param $field
      *
      * @return mixed
+     * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+     * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
      */
     public function getDisplayConfig($field) {
         $formDisplay = \Drupal::entityTypeManager()

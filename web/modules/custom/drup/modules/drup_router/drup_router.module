@@ -41,11 +41,18 @@ function drup_router_token_info() {
 
 /**
  * Implements hook_tokens().
+ * @param $type
+ * @param $tokens
+ * @param array $data
+ * @param array $options
+ * @param \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata
+ *
+ * @return array
  */
 function drup_router_tokens($type, $tokens, array $data, array $options, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata) {
     $tokenType = 'drup_router';
-
     $replacements = array();
+
     if ($type === $tokenType) {
         $drupRouter = \Drupal::service('drup_router.router');
 
@@ -56,9 +63,11 @@ function drup_router_tokens($type, $tokens, array $data, array $options, \Drupal
                 $replacements[$original] = $alias;
             } else {
                 $node = Node::load($routeID);
-                $replacements[$original] = $node->getTitle();
+
+                if ($node instanceof Node) {
+                    $replacements[$original] = $node->getTitle();
+                }
             }
-            break;
         }
     }
     

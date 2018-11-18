@@ -55,7 +55,7 @@ class DrupBreadcrumbBuilder implements BreadcrumbBuilderInterface {
             $this->entity = DrupCommon::getPageEntity(true);
             $breadcrumbItems = $this->getCustomBreadcrumbItemsList();
 
-            if (!empty($this->entity->bundle) && isset($breadcrumbItems[$this->entity->type]) && in_array($this->entity->bundle, array_keys($breadcrumbItems[$this->entity->type]))) {
+            if (!empty($this->entity->bundle) && isset($breadcrumbItems[$this->entity->type]) && array_key_exists($this->entity->bundle, $breadcrumbItems[$this->entity->type])) {
                 return true;
             }
         }

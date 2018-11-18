@@ -39,5 +39,4 @@ class ContactEmailWebformHandler extends EmailWebformHandler {
         
         parent::sendMessage($webform_submission, $message);
     }
-    
 }

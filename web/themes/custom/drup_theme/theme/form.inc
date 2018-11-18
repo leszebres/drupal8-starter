@@ -1,7 +1,5 @@
 <?php
 
-use Drupal\pileje_store_locators\StoreLocatorHelpers;
-
 /**
  * Implements hook_theme_suggestions_field_alter().
  */
@@ -18,7 +16,7 @@ function drup_theme_theme_suggestions_fieldset_alter(array &$suggestions, array 
  * Implements hook_theme_suggestions_HOOK_alter() for form templates.
  */
 function drup_theme_theme_suggestions_form_alter(array &$suggestions, array $variables) {
-    if ($variables['element']['#form_id'] == 'search_block_form') {
+    if ($variables['element']['#form_id'] === 'search_block_form') {
         $suggestions[] = 'form__search_block_form';
     }
 }
@@ -38,6 +36,9 @@ function drup_theme_theme_suggestions_input_alter(array &$suggestions, array $va
     //}
 }
 
+/**
+ * @param $variables
+ */
 function drup_theme_preprocess_form_element_label(&$variables) {
     if ($variables['element']['#title_display'] !== 'after') {
         $variables['attributes']['class'][] = 'form-group-title';
@@ -45,21 +46,21 @@ function drup_theme_preprocess_form_element_label(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_form().
+ * @param array $variables
  */
 function drup_theme_preprocess_form(array &$variables) {
     //$variables['attributes']['novalidate'] = 'novalidate';
 }
 
 /**
- * Implements hook_preprocess_select().
+ * @param array $variables
  */
 function drup_theme_preprocess_select(array &$variables) {
     //$variables['attributes']['class'][] = 'select-chosen';
 }
-    
+
 /**
- * Implements hook_preprocess_input().
+ * @param array $variables
  */
 function drup_theme_preprocess_input(array &$variables) {
     if (!empty($variables['attributes'])) {
@@ -69,6 +70,11 @@ function drup_theme_preprocess_input(array &$variables) {
     }
 }
 
+/**
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
 function drup_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
     
     // SEARCH FORM PAGE SEARCH
@@ -81,8 +87,7 @@ function drup_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
         $form['basic']['keys']['#default_value'] = '';
         $form['basic']['submit']['#value'] = t('Ok');
     
-        unset($form['advanced']);
-        unset($form['help_link']);
+        unset($form['advanced'], $form['help_link']);
     }
     
     // WEBFORM (CONTACT)
@@ -97,8 +102,6 @@ function drup_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
 }
 
 /**
- * FormAlter views exposed form
- *
  * @param $form
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  * @param $form_id
@@ -114,14 +117,16 @@ function drup_theme_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\Form
 }
 
 /**
- * @param $variables
- *
- * @return array
+ * @param array $suggestions
+ * @param array $variables
  */
 function drup_theme_theme_suggestions_webform_email_message_html_alter(array &$suggestions, array $variables) {
     $suggestions[] = 'webform_email_message_html__custom';
 }
 
+/**
+ * @param array $variables
+ */
 function drup_theme_preprocess_webform_message(array &$variables) {
 //    echo '<pre>';
 //    var_dump($variables);

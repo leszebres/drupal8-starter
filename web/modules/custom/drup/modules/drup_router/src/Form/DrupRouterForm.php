@@ -39,7 +39,7 @@ class DrupRouterForm extends ConfigFormBase {
 
         $tableHeader = [
             'targetType' => '',
-            'routeName' => $this->t('Route')
+            'routeName' => $this->t('Route'),
         ];
         foreach ($languages as $languageCode => $language) {
             $tableHeader[$languageCode] = $language->getName();
@@ -58,20 +58,27 @@ class DrupRouterForm extends ConfigFormBase {
                 }
             }
         }
-        $form['routes'][] = $this->setRow(['isNew' => true, 'targetType' => 'node'], $languages);
-        $form['routes'][] = $this->setRow(['isNew' => true, 'targetType' => 'taxonomy_term'], $languages);
+        $form['routes'][] = $this->setRow([
+            'isNew' => true,
+            'targetType' => 'node',
+        ], $languages);
+        $form['routes'][] = $this->setRow([
+            'isNew' => true,
+            'targetType' => 'taxonomy_term',
+        ], $languages);
 
         return parent::buildForm($form, $form_state);
     }
 
     /**
-     * @param array $form
-     * @param \Drupal\Core\Form\FormStateInterface $form_state
      * @param $rowValues
+     * @param $languages
+     *
+     * @return array
      */
     public function setRow($rowValues, $languages) {
         $row = [];
-        $isNewRow = (isset($rowValues['isNew']) && $rowValues['isNew']) ? true : false;
+        $isNewRow = (isset($rowValues['isNew']) && $rowValues['isNew']);
 
         if (empty($rowValues['targetType'])) {
             $rowValues['targetType'] = 'node';
@@ -80,35 +87,34 @@ class DrupRouterForm extends ConfigFormBase {
 
         $row['targetType'] = [
             '#type' => 'hidden',
-            '#default_value' => $rowValues['targetType']
+            '#default_value' => $rowValues['targetType'],
         ];
         $row['routeName'] = [
             '#type' => 'textfield',
             '#title' => !$isNewRow ? $this->t('Route name') : $this->t('New @type route name', ['@type' => $targetTypeLabel]),
             '#title_display' => !$isNewRow ? 'invisible' : 'before',
             '#placeholder' => !$isNewRow ? $this->t('Route name') : '',
-            '#default_value' => !$isNewRow ? $rowValues['routeName'] : null
+            '#default_value' => !$isNewRow ? $rowValues['routeName'] : null,
         ];
         foreach ($languages as $languageCode => $language) {
             $languageName = $language->getName();
+
+            $value = null;
+            if (isset($rowValues[$languageCode])) {
+                $value = $rowValues['targetType'] === 'taxonomy_term' ? Term::load($rowValues[$languageCode]) : Node::load($rowValues[$languageCode]);
+            }
+
             $row[$languageCode] = [
                 '#type' => 'entity_autocomplete',
                 '#target_type' => $rowValues['targetType'],
                 '#title' => !$isNewRow ? $this->t($languageCode . ' ' . $targetTypeLabel) : $this->t($languageName . ' ' . $targetTypeLabel),
                 '#title_display' => !$isNewRow ? 'invisible' : 'before',
                 '#placeholder' => !$isNewRow ? $this->t($languageCode . ' ' . $targetTypeLabel) : '',
-                '#default_value' => (isset($rowValues[$languageCode])) ? (($rowValues['targetType'] === 'taxonomy_term') ? Term::load($rowValues[$languageCode]) :  Node::load($rowValues[$languageCode])) : null
+                '#default_value' => $value,
             ];
         }
 
         return $row;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function validateForm(array &$form, FormStateInterface $form_state) {
-        parent::validateForm($form, $form_state);
     }
 
     /**

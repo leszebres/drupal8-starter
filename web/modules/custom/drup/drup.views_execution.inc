@@ -12,18 +12,20 @@ use Drupal\drup\DrupEntityField;
 
 /**
  * @see hooks :
-    'views_pre_view',
-    'views_pre_build',
-    'views_post_build',
-    'views_pre_execute',
-    'views_post_execute',
-    'views_pre_render',
-    'views_post_render',
-
+ * 'views_pre_view',
+ * 'views_pre_build',
+ * 'views_post_build',
+ * 'views_pre_execute',
+ * 'views_post_execute',
+ * 'views_pre_render',
+ * 'views_post_render',
  */
 
 /**
  * Implements hook_views_query_alter().
+ *
+ * @param \Drupal\views\ViewExecutable $view
+ * @param \Drupal\views\Plugin\views\query\QueryPluginBase $query
  */
 function drup_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
 
@@ -31,6 +33,10 @@ function drup_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
 
 /**
  * Implements hook_views_pre_view().
+ *
+ * @param \Drupal\views\ViewExecutable $view
+ * @param $display_id
+ * @param array $args
  */
 function drup_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
 
@@ -38,6 +44,8 @@ function drup_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
 
 /**
  * Implements hook_views_pre_render().
+ *
+ * @param \Drupal\views\ViewExecutable $view
  */
 function drup_views_pre_render(ViewExecutable $view) {
 

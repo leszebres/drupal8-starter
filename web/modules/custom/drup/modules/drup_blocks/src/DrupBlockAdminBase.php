@@ -54,9 +54,11 @@ abstract class DrupBlockAdminBase extends BlockBase {
     public function build() {
         $this->drupValues = DrupBlockAdmin::getContextedValues($this->configuration['id'], $this->drupContext);
     }
-    
+
     /**
      * @param array $parameters
+     *
+     * @return array
      */
     public function mergeBuildParameters($parameters = []) {
         $parameters = array_merge_recursive($parameters, [

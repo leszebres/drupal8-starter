@@ -5,9 +5,6 @@
  * Contains drup_blocks.module.
  */
 
-use Drupal\block\Entity\Block;
-use Drupal\Core\Access\AccessResult;
-
 use Drupal\drup_blocks\DrupBlock;
 
 /**
@@ -48,8 +45,6 @@ function drup_block_build_alter(array &$build, \Drupal\Core\Block\BlockPluginInt
  * @param \Drupal\block\Entity\Block $block
  * @param $operation
  * @param \Drupal\Core\Session\AccountInterface $account
- *
- * @return mixed
  */
 function drup_blocks_block_access(\Drupal\block\Entity\Block $block, $operation, \Drupal\Core\Session\AccountInterface $account) {
     $currentRoute = \Drupal::service('drup_router.router')->getName();

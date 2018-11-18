@@ -1,8 +1,6 @@
 <?php
 
 /**
- * Hook theme
- *
  * @return array
  */
 function drup_theme_theme() {
@@ -14,9 +12,9 @@ function drup_theme_theme() {
 //        ]
 //    ];
 
-    \Drupal\drup_blocks\DrupBlock::format($themes, [
-        'type' => 'views'
-    ]);
+//    \Drupal\drup_blocks\DrupBlock::format($themes, [
+//        'type' => 'views'
+//    ]);
 
     return $themes;
 }

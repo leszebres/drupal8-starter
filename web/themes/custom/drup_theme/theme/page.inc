@@ -34,15 +34,14 @@ function drup_theme_preprocess_page(array &$variables) {
     
     $drupRouter = \Drupal::service('drup_router.router');
     $routeName = $drupRouter->getName();
-    
-    $cookiesDatas = CookieNotice\Config::get();
-    $variables['cookies_datas'] = $cookiesDatas;
+
+    $variables['cookies_data'] = CookieNotice\Config::get();
     
     $variables['site_name'] = $drupSettings->getValue('site_name');
     $variables['site_slogan'] = $drupSettings->getValue('site_slogan');
 
     /**
-     * Load libraries
+     * Load librariesw
      */
     $variables['page']['#cache']['contexts'][] = 'url.path'; // sets the cacheability metadata
     if (\Drupal::service('path.matcher')->isFrontPage()) {

@@ -1,9 +1,6 @@
 <?php
 
-use Drupal\Component\Utility\Html;
-use Drupal\taxonomy\Entity\Term;
 use Drupal\Core\Url;
-use Drupal\Component\Serialization\Json;
 
 use Drupal\Core\Template\Attribute;
 
@@ -49,6 +46,8 @@ function drup_theme_preprocess_views_view_unformatted(&$variables) {
 
 /**
  * Suggestions views
+ * @param array $suggestions
+ * @param array $variables
  */
 function drup_theme_theme_suggestions_views_view_unformatted_alter(array &$suggestions, array &$variables) {
     switch ($variables['view']->id()) {
@@ -116,7 +115,10 @@ function drup_theme_theme_suggestions_views_view_unformatted_alter(array &$sugge
 //}
 
 /**
- * Toutes les vues
+ * All views
+ * @param $variables
+ *
+ * @return mixed
  */
 function drup_theme_views_rows_controller($variables) {
     $viewId = $variables['view']->id();
@@ -139,7 +141,10 @@ function drup_theme_views_rows_controller($variables) {
 }
 
 /**
- * Vue rows primary
+ * View rows primary
+ * @param $variables
+ *
+ * @return mixed
  */
 function drup_theme_views_rows_controller__primary($variables) {
     $languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
@@ -187,6 +192,7 @@ function drup_theme_views_rows_controller__primary($variables) {
 
 /**
  * Implements hook_preprocess_views_infinite_scroll_pager().
+ * @param $vars
  */
 function drup_theme_preprocess_views_infinite_scroll_pager(&$vars) {
     $vars['btn_classes'] = 'btn';

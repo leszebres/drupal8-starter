@@ -4,7 +4,6 @@ namespace Drupal\drup_blocks;
 
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Class DrupBlockBase
@@ -13,19 +12,14 @@ use Drupal\Core\Form\FormStateInterface;
 abstract class DrupBlockBase extends BlockBase {
     
     /**
-     * {@inheritdoc}
-     */
-    public function defaultConfiguration() {
-        return parent::defaultConfiguration();
-    }
-    
-    /**
      * @return array|void
      */
     public function build() {}
-    
+
     /**
      * @param array $parameters
+     *
+     * @return array
      */
     public function mergeBuildParameters($parameters = []) {
         $parameters = array_merge_recursive($parameters, []);

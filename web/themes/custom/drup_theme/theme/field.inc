@@ -2,6 +2,8 @@
 
 /**
  * Implements hook_theme_suggestions_field_alter().
+ * @param array $suggestions
+ * @param array $variables
  */
 function drup_theme_theme_suggestions_field_alter(array &$suggestions, array $variables) {
     //dsm($variables);
@@ -12,6 +14,8 @@ function drup_theme_theme_suggestions_field_alter(array &$suggestions, array $va
 
 /**
  * Implements hook_preprocess_field().
+ * @param array $variables
+ * @param $hook
  */
 function drup_theme_preprocess_field(array &$variables, $hook) {
    $fieldName = $variables['element']['#field_name'];

@@ -7,8 +7,7 @@ Use Drupal\drup\CookieNotice;
 Use Drupal\drup\DrupCommon;
 
 /**
-/**
- * Implements hook_preprocess_HOOK() for html.html.twig.
+ * @param array $variables
  */
 function drup_theme_preprocess_html(array &$variables) {
     $drupSettings = \Drupal::service('drup_settings.variables');
@@ -28,6 +27,7 @@ function drup_theme_preprocess_html(array &$variables) {
         $variables['attributes']->addClass('is-front');
     } else {
         $pageEntity = DrupCommon::getPageEntity();
+
         if ($pageEntity->type && $pageEntity->bundle) {
             $variables['attributes']->addClass([
                 'entity-type--' . Html::cleanCssIdentifier($pageEntity->type),
@@ -45,10 +45,7 @@ function drup_theme_preprocess_html(array &$variables) {
     
     // User role @see module drup_admin_toolbar
     
-    $variables['google_tag'] = null;
-    if (($googleTag = $drupSettings->getValue('site_tag_manager')) && (CookieNotice\Service::isAllowed('googletagmanager')) || !CookieNotice\Service::hasConsent()) {
-        $variables['google_tag'] = $googleTag;
-    }
-    
+    $variables['google_tag'] = $drupSettings->getValue('site_tag_manager');;
+
     DrupCommon::addFavicons($variables, ['color_mask_icon' => '#5bbad5', 'color_msapplication' => '#da532c', 'color_theme' => '#ffffff'], 1);
 }

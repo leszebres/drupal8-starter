@@ -2,25 +2,15 @@
 
 namespace Drupal\drup\Controller;
 
-use Drupal\Core\KeyValueStore\KeyValueStoreInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\drup\DrupEntityAutocompleteMatcher;
 
+/**
+ * Class DrupEntityAutocompleteController
+ *
+ * @package Drupal\drup\Controller
+ */
 class DrupEntityAutocompleteController extends \Drupal\system\Controller\EntityAutocompleteController {
-    
-    /**
-     * The autocomplete matcher for entity references.
-     */
-    protected $matcher;
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function __construct(DrupEntityAutocompleteMatcher $matcher, KeyValueStoreInterface $key_value) {
-        $this->matcher = $matcher;
-        $this->keyValue = $key_value;
-    }
-    
+
     /**
      * {@inheritdoc}
      */

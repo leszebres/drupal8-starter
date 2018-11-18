@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Implements hook_preprocess_HOOK() for Block document templates.
+ * @param array $variables
  */
 function drup_theme_preprocess_block(array &$variables) {
     // Do not display id attribute
