@@ -18,6 +18,7 @@ button,
     color: $btn--color;
     @include font(primary);
     font-size: $btn--fontsize;
+    line-height: $btn--lineheight;
     text-decoration: none;
     text-transform: uppercase;
     background-color: $btn--background;
@@ -59,7 +60,7 @@ button,
 }
 
 button {
-    height: $btn--height + 6px;
+    height: $btn--height;
 }
 
 

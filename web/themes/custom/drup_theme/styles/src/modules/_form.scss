@@ -62,6 +62,8 @@ form {
     padding: $input--padding-vertical $input--padding-horizontal;
     color: $input--color;
     font-family: inherit;
+    font-size: $input--fontsize;
+    line-height: $input--lineheight;
     background-color: $input--background;
     border: $input--border-width solid $input--border-color;
     border-radius: $input--border-radius;
