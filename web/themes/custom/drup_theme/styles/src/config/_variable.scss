@@ -119,14 +119,14 @@ $zindex--big: 100;
    BTN
    ========================================================================== */
 $btn--color: $color--text;
-$btn--border: $color--border;
+$btn--border-width: 1px;
+$btn--border-color: $color--border;
 $btn--border-radius: 0;
 $btn--background: $color--background-secondary;
 $btn--fontsize: $fontsize--small;
 $btn--lineheight: $body--lineheight;
 $btn--padding-horizontal: $padding--horizontal;
 $btn--padding-vertical: $padding--vertical;
-$btn--height: $btn--padding-vertical*2 + $btn--fontsize + 1px*2 + 2px;
 
 $btn--height: floor($btn--padding-vertical*2 + $btn--fontsize * $btn--lineheight + $btn--border-width*2);
 

@@ -39,6 +39,9 @@
    TABS
    ========================================================================== */
 /* ==========================================================================
+   SPINNER
+   ========================================================================== */
+/* ==========================================================================
    CUSTOM
    ========================================================================== */
 /* ==========================================================================
@@ -61,9 +64,6 @@
    ========================================================================== */
 /* ==========================================================================
    ALIGNMENT
-   ========================================================================== */
-/* ==========================================================================
-   FROM PHOTOSHOP
    ========================================================================== */
 /* ==========================================================================
    OTHER
@@ -1155,7 +1155,7 @@ tbody {
    ========================================================================== */
 .icon:before {
   position: relative;
-  font-family: "Icons";
+  font-family: Icons;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -1294,6 +1294,7 @@ button,
   font-weight: normal;
   font-family: "Arial", Arial, sans-serif;
   font-size: 0.875rem;
+  line-height: 1.6;
   text-decoration: none;
   text-transform: uppercase;
   background-color: #f3f3f3;
@@ -1445,6 +1446,8 @@ form textarea:not([readonly]):focus {
   padding: 15px 16px;
   color: #333;
   font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.15;
   background-color: #f3f3f3;
   border: 1px solid #c0c0c0;
   border-radius: 6px;
@@ -2131,7 +2134,7 @@ Styleguide Blocks - 1.block--primary
 
 .btn--block-admin:after {
   position: relative;
-  font-family: "Icons";
+  font-family: Icons;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -2185,22 +2188,22 @@ pre.sf-dump .sf-dump-default {
 /* ==========================================================================
    Background primary
    ========================================================================== */
-.theme--bg-primary {
+.theme-bg-primary {
   background-color: #f2653d; }
-  .theme--bg-primary,
-  .theme--bg-primary a {
+  .theme-bg-primary,
+  .theme-bg-primary a {
     color: #fff; }
 
 /* ==========================================================================
    Background secondary
    ========================================================================== */
-.theme--bg-secondary {
+.theme-bg-secondary {
   background-color: #1f2e3c; }
-  .theme--bg-secondary,
-  .theme--bg-secondary a {
+  .theme-bg-secondary,
+  .theme-bg-secondary a {
     color: #fff; }
 
 /* Background gray
    ========================================================================== */
-.theme--bg-muted {
+.theme-bg-muted {
   background-color: #f3f3f3; }

@@ -22,7 +22,7 @@ button,
     text-decoration: none;
     text-transform: uppercase;
     background-color: $btn--background;
-    border: 1px solid $btn--border;
+    border: $btn--border-width solid $btn--border-color;
     border-radius: $btn--border-radius;
     cursor: pointer;
     box-sizing: border-box;
