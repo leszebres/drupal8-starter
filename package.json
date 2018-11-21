@@ -24,7 +24,7 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^9.2.0",
+    "autoprefixer": "^9.3.1",
     "gulp": "^3.9.1",
     "gulp-load-plugins": "^1.5.0",
     "gulp-pixrem": "^1.0.0",
@@ -34,8 +34,8 @@
     "postcss-pxtorem": "^4.0.1"
   },
   "dependencies": {
-    "gettext-parser": "^2.0.0",
+    "gettext-parser": "^3.1.0",
     "map-stream": "^0.0.7",
-    "yarn": "^1.10.1"
+    "yarn": "^1.12.3"
   }
 }
