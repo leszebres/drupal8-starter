@@ -126,7 +126,7 @@ function drup_theme_views_rows_controller($variables) {
 
     // Rows : valeurs par défaut liées au thème
     $variables['row_layout'] = 'third';
-    $variables['row_image_style'] = 'item_primary';
+    $variables['row_image_style'] = 'list_item_primary';
     $variables['row_tag_title'] = 'h3';
 
     if ($viewId === 'news') {
@@ -153,8 +153,8 @@ function drup_theme_views_rows_controller__primary($variables) {
 
     if (!empty($variables['view']->result)) {
         foreach ($variables['view']->result as $id => &$result) {
-            $node = \Drupal::service('entity.repository')->getTranslationFromContext($result->_entity, $languageId);
-            $drupField = $result->drupField = new DrupEntityField($node);
+            $result->node = \Drupal::service('entity.repository')->getTranslationFromContext($result->_entity, $languageId);
+            $result->drupField = new DrupEntityField($result->node);
             
             $result->layout = $variables['row_layout'];
             $result->imageStyle = $variables['row_image_style'];
@@ -165,7 +165,15 @@ function drup_theme_views_rows_controller__primary($variables) {
             $attributes->addClass('list-item');
     
             // Media
-            $mediaField = $drupField->get('image_thumbnail');
+            $mediaField = $result->drupField->getValue('thumbnail', 'target_id');
+            if ($mediaField && !empty($result->imageStyle)) {
+                $mediaEntity = new DrupEntityImage($mediaField);
+
+                if ($medias = $mediaEntity->renderMedias($result->imageStyle)) {
+                    $result->media = current($medias);
+                    $attributes->addClass('has-media');
+                }
+            }
     
             // partial
             if (isset($result->partial)) {
@@ -177,8 +185,9 @@ function drup_theme_views_rows_controller__primary($variables) {
             }
 
             // Content
-            $result->title = $node->getTitle();
-            $result->url = Url::fromUri('internal:/node/'.$node->id())->toString();
+            $result->title = $result->node->getTitle();
+            $result->url = Url::fromUri('internal:/node/'.$result->node->id())->toString();
+            $result->cta = t('Read more');
 
             // Add content
             $variables['rows'][$id]['content'] = $result;
