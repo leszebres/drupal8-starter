@@ -97,6 +97,9 @@ $row--small: map_get($breakpoints, "screen-small") + 1px;
 $grid--columns-nb: 12;
 
 $grid--gutter-width: 30px;
+$grid--gutter-inner-width: 24px;
+
+$row--gutter-width: $grid--gutter-width;
 
 $v-align: 48px;
 $v-align--medium: $v-align/2;

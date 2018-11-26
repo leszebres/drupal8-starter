@@ -32,7 +32,7 @@
 
     .item-media {
         position: relative;
-        margin-bottom: $grid--gutter-width;
+        margin-bottom: $grid--gutter-inner-width;
         overflow: hidden;
         background-color: $color--background;
 
@@ -43,14 +43,14 @@
 
     .item-footer,
     .item-content {
-        padding: 0 $grid--gutter-width;
+        padding: 0 $grid--gutter-inner-width;
     }
     .item-content {
         position: relative;
     }
 
     .item-title {
-        margin-bottom: $grid--gutter-width;
+        margin-bottom: $grid--gutter-inner-width;
         color: inherit;
         @include font(primary, bold);
     }

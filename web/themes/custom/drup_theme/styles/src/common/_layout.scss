@@ -7,8 +7,8 @@
     max-width: $row--normal;
     margin-left: auto;
     margin-right: auto;
-    padding-left: $grid--gutter-width;
-    padding-right: $grid--gutter-width;
+    padding-left: $row--gutter-width;
+    padding-right: $row--gutter-width;
     box-sizing: border-box;
     @include clearfix();
 }

@@ -27,8 +27,7 @@ button,
     cursor: pointer;
     box-sizing: border-box;
     transition: .3s;
-}
-.btn {
+
     & + & {
         margin-left: $btn--padding-horizontal/2;
     }
