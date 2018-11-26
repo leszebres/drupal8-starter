@@ -20,9 +20,9 @@ config:
 
 # Commands on events
 events:
-  post-start:
+  #post-start:
   #- appserver: cd $LANDO_WEBROOT && chown $LANDO_WEBROOT_USER:$LANDO_WEBROOT_GROUP -R .
-  - appserver: echo "alias ll='ls -la'" > ~/.bashrc
+  #- appserver: echo "alias ll='ls -la'" > ~/.bashrc
   post-db-import:
   - appserver: cd $LANDO_WEBROOT && drush cr -y
 

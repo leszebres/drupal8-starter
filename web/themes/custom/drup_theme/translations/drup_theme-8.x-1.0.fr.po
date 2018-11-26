@@ -27,17 +27,8 @@ msgstr "Si le problème persiste, <a href=\"@link\">contactez-nous</a>."
 msgid "Back to the front page"
 msgstr "Retourner à la page d'accueil"
 
-msgid "@site_name : further information"
-msgstr "@site_name : informations complémentaires"
-
 msgid "Contact us"
 msgstr "Contactez-nous"
-
-msgid "Subscribe"
-msgstr "Abonnez-vous"
-
-msgid "By phone"
-msgstr "Par téléphone"
 
 msgid "Read more"
 msgstr "En savoir plus"
@@ -48,20 +39,8 @@ msgstr "Partager cet article sur @media"
 msgid "Published on @date_created_formatted"
 msgstr "Mis en ligne le @date_created_formatted"
 
-msgid "For further"
-msgstr "Pour aller plus loin"
-
 msgid "Load More"
 msgstr "Voir plus"
-
-msgid "Table of content"
-msgstr "Sommaire"
-
-msgid "Read article"
-msgstr "Lire l'article"
-
-msgid "@time min"
-msgstr "@time min"
 
 msgid "There is no result at this moment."
 msgstr "Il n'y a aucun résultat pour le moment."
@@ -71,12 +50,6 @@ msgstr "Appliquer"
 
 msgid "Configure this block"
 msgstr "Configurer ce bloc"
-
-msgid "Phone:"
-msgstr "Tel :"
-
-msgid "contact us"
-msgstr "contactez-nous"
 
 msgid "@count result founded."
 msgid_plural "@count results founded."

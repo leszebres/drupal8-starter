@@ -46,6 +46,6 @@
     {% endblock %}
 
     {% if block_after %}
-        <p class="nav-suffix">{{ block_after }}</p>
+        <p class="nav-suffix">{{ block_after|raw }}</p>
     {% endif %}
 </nav>

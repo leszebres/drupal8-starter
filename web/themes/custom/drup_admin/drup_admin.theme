@@ -117,10 +117,6 @@ function drup_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
         'texte_simple' => [
             'field_subtitle_html',
             'field_body_more'
-        ],
-        'texte_liste' => [
-            'field_body_remember',
-            'field_body_references'
         ]
     ];
 
