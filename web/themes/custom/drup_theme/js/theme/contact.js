@@ -11,10 +11,10 @@
         };
 
         // Variables
-        this.customForm;
-        this.customFormCheckboxes;
-        this.customFormRadios;
-        this.customFormSelects;
+        this.customForm = undefined;
+        this.customFormCheckboxes = undefined;
+        this.customFormRadios = undefined;
+        this.customFormSelects = undefined;
     };
 
     Theme.contact.prototype = {

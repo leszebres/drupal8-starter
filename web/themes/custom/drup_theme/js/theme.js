@@ -18,10 +18,11 @@ var Theme = {};
         this.elements.externalLinks = this.elements.page.find('a[href^="http"]');
 
         // Variables
-        this.deviceDetect;
-        this.devices;
-        this.spinner;
-        this.cookieNotice;
+        this.deviceDetect = undefined;
+        this.devices = undefined;
+        this.spinner = undefined;
+        this.cookieNotice = undefined;
+
         this.userIsLoggedIn = this.elements.body.hasClass('is-logged-in');
         this.pathToTheme    = drupalSettings.pathToTheme || '';
 
@@ -66,10 +67,10 @@ var Theme = {};
         },
 
         /**
-         * Gestionnaire de la detection des périphériques
+         * Gestionnaire de la détection des périphériques
          */
         deviceDetectHandler: function () {
-            var self = this
+            var self = this;
 
             self.deviceDetect = new $.DeviceDetect();
             self.devices = self.deviceDetect.getDevices();
@@ -89,7 +90,7 @@ var Theme = {};
             this.spinner = this.elements.body.spinner({
                 auto: true,
                 minTimeout: 600,
-                autoPathsExceptions: ['/features/', '/modules/file/', 'https://photon.komoot.de/api/']
+                autoPathsExceptions: []
             });
         },
 
@@ -121,7 +122,6 @@ var Theme = {};
         anchorLinksHandler: function () {
             var self = this;
             var offset = 100;
-            var speed = 500;
 
             self.elements.page.on('click', 'a[href*="#"]:not([href="#"])', function (event) {
                 if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
@@ -131,12 +131,26 @@ var Theme = {};
                     if (target.length) {
                         event.preventDefault();
 
-                        self.elements.htmlBody.animate({
-                            scrollTop: target.offset().top - offset
-                        }, speed);
+                        self.scrollTop((target.offset().top - offset));
                     }
                 }
             });
+        },
+
+        /**
+         * Scroll top
+         *
+         * @param offset
+         * @param speed
+         */
+        scrollTop: function (offset, speed) {
+            speed = speed || 500;
+
+            this.elements.htmlBody.animate({
+                scrollTop: offset
+            }, speed);
+
+            return this;
         }
     };
 
@@ -152,7 +166,7 @@ var Theme = {};
                 Drupal.Theme.load('all').init();
 
                 Drupal.Theme.autoload({
-                    contact: '.route--contact'
+                    //contact: '.route--contact'
                 });
 
             } else {

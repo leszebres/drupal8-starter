@@ -11,7 +11,7 @@
         };
 
         // Variables
-        this.toggleMenu;
+        this.toggleMenu = undefined;
     };
 
     Theme.all.prototype = {
