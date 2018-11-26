@@ -40,7 +40,7 @@
                         set itemClasses = [
                             'nav-item',
                             'level-' ~ (menu_level+1),
-                            item.is_expanded ? 'has-children',
+                            item.is_expanded ? 'is-parent',
                             item.in_active_trail ? 'is-current'
                         ]
                     %}
