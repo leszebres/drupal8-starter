@@ -6,6 +6,7 @@
  */
 
 use Drupal\drup_blocks\DrupBlock;
+use Drupal\Core\Access\AccessResult;
 
 /**
  * Implements hook_theme().

@@ -30,9 +30,4 @@ function drup_theme_preprocess_block(array &$variables) {
         ];
         $variables['attributes']['id'] = 'nav-' . $derivativeId;
     }
-    
-    // Remove cache on drup blocks
-    if (isset($variables['content']['#theme']) && is_string($variables['content']['#theme']) && strpos($variables['content']['#theme'], 'drup_') !== false) {
-        $variables['elements']['#cache']['max-age'] = 0;
-    }
 }
