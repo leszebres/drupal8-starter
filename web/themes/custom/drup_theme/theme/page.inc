@@ -2,7 +2,8 @@
 
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
-use Drupal\taxonomy\Entity\Term;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
 use Drupal\drup\DrupEntityImage;
 use Drupal\drup\DrupEntityField;
 use Drupal\drup\DrupCommon;
@@ -60,6 +61,17 @@ function drup_theme_preprocess_page(array &$variables) {
         $node = $variables['node'];
         $nodeType = $node->getType();
         $drupField = new DrupEntityField($node);
+
+        // Redirect node to their DrupRoute
+        $nodesRedirection = [
+            //'news' => '<front>'
+        ];
+        if (isset($nodesRedirection[$nodeType])) {
+            $path = ($nodesRedirection[$nodeType] === '<front>') ? Url::fromRoute($nodesRedirection[$nodeType])->toString() : $drupRouter->getPath($nodesRedirection[$nodeType]);
+            $redirection = new RedirectResponse($path);
+            $redirection->send();
+            return;
+        }
         
     } elseif (\Drupal::request()->attributes->get('_route') === 'system.404') {
         $variables['page']['content'] = DrupSite::get404Content();
