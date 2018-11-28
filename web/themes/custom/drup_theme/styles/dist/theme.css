@@ -2015,7 +2015,7 @@ Styleguide Blocks - 1.block--primary
     .tabs--secondary li a {
       display: block;
       padding: 10px 24px;
-      color: #333;
+      color: #888686;
       background-color: #f3f3f3; }
       .tabs--primary li a.is-active,
       .tabs--secondary li a.is-active {
