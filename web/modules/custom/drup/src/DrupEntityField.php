@@ -10,7 +10,7 @@ namespace Drupal\drup;
 class DrupEntityField {
 
     /**
-     * @var
+     * @var \Drupal\Core\Entity\ContentEntityBase
      */
     protected $entity;
 

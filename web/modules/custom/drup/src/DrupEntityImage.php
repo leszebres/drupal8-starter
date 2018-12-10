@@ -58,15 +58,14 @@ class DrupEntityImage extends DrupEntityMedia {
 
     /**
      * @param $style
-     * @param array $attributes
      *
      * @return array
      */
-    public function getMediasData($style, $attributes = []) {
+    public function getMediasData($style) {
         $data = [];
 
         foreach ($this->mediasData as $index => $media) {
-            $data[] = $this->getMediaData($style, $index, $attributes);
+            $data[] = $this->getMediaData($style, $index);
         }
 
         return $data;
@@ -86,7 +85,7 @@ class DrupEntityImage extends DrupEntityMedia {
     protected function renderMedia($style, $index = 0, $attributes = []) {
         if (isset($this->mediasData[$index]) && ($fileUri = $this->mediasData[$index]->fileEntity->getFileUri())) {
 
-            // Check if image still exists
+            /** @var \Drupal\Core\Image\Image $image */
             $image = \Drupal::service('image.factory')->get($fileUri);
             if (!$image->isValid()) {
                 return false;
@@ -178,14 +177,14 @@ class DrupEntityImage extends DrupEntityMedia {
     /**
      * @param $style
      * @param int $index
-     * @param array $attributes
      *
      * @return array
      */
-    protected function getMediaData($style, $index = 0, $attributes = []) {
+    protected function getMediaData($style, $index = 0) {
         $data = [];
 
         if (isset($this->mediasData[$index]) && ($fileUri = $this->mediasData[$index]->fileEntity->getFileUri())) {
+            /** @var \Drupal\Core\Image\Image $image */
             $image = \Drupal::service('image.factory')->get($fileUri);
             if (!$image->isValid()) {
                 return $data;
@@ -217,11 +216,10 @@ class DrupEntityImage extends DrupEntityMedia {
             return $imageStyle;
         }
 
-        if (($allowResponsiveImageStyle === true) && ($responsiveImageStyle = ResponsiveImageStyle::load($style))) {
-            if ($responsiveImageStyle instanceof ResponsiveImageStyle) {
-                return $responsiveImageStyle;
-            }
+        if (($allowResponsiveImageStyle === true) && ($responsiveImageStyle = ResponsiveImageStyle::load($style)) && $responsiveImageStyle instanceof ResponsiveImageStyle) {
+            return $responsiveImageStyle;
         }
+
         return null;
     }
 }

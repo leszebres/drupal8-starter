@@ -10,21 +10,23 @@ use Drupal\drup_blocks\DrupBlockAdminBase;
 use Drupal\drup\DrupSite;
 
 /**
- * Provides a 'Distributor Countries' block.
+ * Provides a '_AdminExample' block.
  *
  * @Block(
- *  id = "distributor_countries",
- *  admin_label = @Translation("Distributor Countries"),
+ *  id = "admin_example",
+ *  admin_label = @Translation("Admin Example"),
  * )
  */
-class AdminExample extends DrupBlockAdminBase {
+class _AdminExample extends DrupBlockAdminBase {
 
-    protected $container = 'example';
+    public $container = 'container';
 
     /**
      * {@inheritdoc}
      */
     public function blockForm($form, FormStateInterface $form_state) {
+        $form = parent::blockForm($form, $form_state);
+
         $form[$this->container] = [
             '#type' => 'fieldset',
             '#title' => t('Manage countries list'),
@@ -33,13 +35,13 @@ class AdminExample extends DrupBlockAdminBase {
         $form[$this->container]['list'] = [
             '#type' => 'textarea',
             '#title' => t('Countries list (one item per line)'),
-            '#default_value' => (!empty($this->drupConfiguration[$this->container]['list'])) ? $this->drupConfiguration[$this->container]['list'] : null
+            '#default_value' => !empty($this->drupConfiguration[$this->container]['list']) ? $this->drupConfiguration[$this->container]['list'] : null
         ];
     
         $form[$this->container]['contact'] = [
             '#type' => 'email',
             '#title' => t('Email'),
-            '#default_value' => (!empty($this->drupConfiguration[$this->container]['contact'])) ? $this->drupConfiguration[$this->container]['contact'] : 'international@pileje.com'
+            '#default_value' => !empty($this->drupConfiguration[$this->container]['contact']) ? $this->drupConfiguration[$this->container]['contact'] : 'international@pileje.com'
         ];
 
         return $form;
@@ -70,7 +72,7 @@ class AdminExample extends DrupBlockAdminBase {
         $build = $this->mergeBuildParameters([
             '#theme' => 'drup_blocks_admin_distributor_countries',
             '#items' => $items,
-            '#contact_email' => (isset($this->drupValues[$this->container]['contact'])) ? $this->drupValues[$this->container]['contact'] : null,
+            '#contact_email' => isset($this->drupValues[$this->container]['contact']) ? $this->drupValues[$this->container]['contact'] : null,
         ]);
         
         return $build;

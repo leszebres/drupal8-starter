@@ -21,15 +21,13 @@ class DrupEntityFile extends DrupEntityMedia {
     }
 
     /**
-     * @param array $attributes
-     *
      * @return array
      */
-    public function getMediasData($attributes = []) {
+    public function getMediasData() {
         $medias = [];
 
         foreach ($this->mediasData as $index => $media) {
-            $medias[] = $this->getMediaData($index, $attributes);
+            $medias[] = $this->getMediaData($index);
         }
 
         return $medias;
@@ -51,11 +49,10 @@ class DrupEntityFile extends DrupEntityMedia {
 
     /**
      * @param int $index
-     * @param array $attributes
      *
      * @return array
      */
-    protected function getMediaData($index = 0, $attributes = []) {
+    protected function getMediaData($index = 0) {
         $data = [];
 
         if ($url = $this->getMediaUrl($index)) {

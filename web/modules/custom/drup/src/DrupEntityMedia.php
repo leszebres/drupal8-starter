@@ -122,10 +122,8 @@ class DrupEntityMedia {
      * @return \Drupal\Core\Entity\EntityInterface|Media|null
      */
     protected function loadMedia($mid) {
-        if ($mediaEntity = Media::load($mid)) {
-            if ($mediaEntity instanceof Media) {
-                return $mediaEntity;
-            }
+        if (($mediaEntity = Media::load($mid)) && $mediaEntity instanceof Media) {
+            return $mediaEntity;
         }
 
         return null;
@@ -137,16 +135,16 @@ class DrupEntityMedia {
      * @return \Drupal\Core\Entity\EntityInterface|Media|null
      */
     protected function loadFile($fid) {
-        if ($fileEntity = Media::load($fid)) {
-            if ($fileEntity instanceof File) {
-                return $fileEntity;
-            }
+        if (($fileEntity = Media::load($fid)) && $fileEntity instanceof File) {
+            return $fileEntity;
         }
 
         return null;
     }
 
     /**
+     * @param $fieldName
+     *
      * @return string
      */
     protected function formatFieldName($fieldName) {

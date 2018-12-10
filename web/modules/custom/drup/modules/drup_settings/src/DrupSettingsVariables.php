@@ -9,8 +9,15 @@ namespace Drupal\drup_settings;
  * @package Drupal\drup_settings
  */
 class DrupSettingsVariables {
-    
+
+    /**
+     * @var string
+     */
     public $currentLanguage;
+
+    /**
+     * @var \Drupal\Core\Config\Config
+     */
     public $config;
     
     /**
