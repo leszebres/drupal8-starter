@@ -9,7 +9,6 @@ Markup: <button class="btn $modifierClass">Bouton</button>
 
 Styleguide Buttons - 1.btn
  */
-button,
 .btn {
     position: relative;
     display: inline-block;
@@ -58,7 +57,7 @@ button,
     }
 }
 
-button {
+button.btn {
     height: $btn--height;
 }
 
