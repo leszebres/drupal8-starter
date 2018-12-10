@@ -10,21 +10,27 @@
 <li {{ row.attributes }}>
     <a href="{{ row.content.url }}">
         <article class="item-wrapper">
-            <div class="item-media">
-                {{ row.content.media }}
-            </div>
+            {% if row.content.media %}
+                <div class="item-media l-image">
+                    {{ row.content.media }}
+                </div>
+            {% endif %}
 
             <div class="item-content">
                 {% set titleTag = (row.content.tagTitle) ? row.content.tagTitle : 'h3' %}
-                <{{ titleTag }} class="item-title">{{ row.content.title }}</{{ titleTag }}>
+                {{ ('<'~ titleTag~' class="item-title"'~'>')|raw }}{{ row.content.title|nl2br }}{{ ('</'~titleTag~'>')|raw }}
 
-                <div class="item-body">
-                    {{ row.content.body|raw }}
-                </div>
+                {% if row.content.body %}
+                    <div class="item-body">
+                        {{ row.content.body|raw }}
+                    </div>
+                {% endif %}
 
-                <p class="item-more">
-                    {{ "Read article"|t }}
-                </p>
+                {% if row.content.cta %}
+                    <span class="item-cta btn">
+                        {{ row.content.cta }}
+                    </span>
+                {% endif %}
             </div>
         </article>
     </a>

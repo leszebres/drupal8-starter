@@ -110,7 +110,7 @@ theme:
   version: '0.1'
   css:
     theme:
-      styles/dist/theme.css: {}
+      styles/dist/theme.css: {weight: 50}
   js:
     js/theme.js: {}
     js/theme/all.js: {}
