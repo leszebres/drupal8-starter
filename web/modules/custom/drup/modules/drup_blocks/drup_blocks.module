@@ -54,7 +54,7 @@ function drup_blocks_block_access(\Drupal\block\Entity\Block $block, $operation,
     $args = \Drupal::routeMatch()->getParameters()->all();
 
     if ($operation === 'view') {
-        switch ($block->getPluginId()) {
+        switch ($block->id()) {
             /*
             * Content before
             */
