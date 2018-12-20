@@ -99,6 +99,32 @@ function drup_link_alter(&$variables) {
     $variables['text'] = Markup::create($variables['text']);
 }
 
+
+/**
+ * Implements hook_language_switch_links_alter().
+ */
+function drup_language_switch_links_alter(array &$links, $type, $path) {
+    $currentEntity = DrupCommon::getPageEntity(true);
+    $isEntity = ($currentEntity->entity !== null);
+
+    foreach ($links as $langCode => &$link) {
+        $link['title'] = ucfirst($langCode);
+
+        // Redirect untranslated entity to <front>
+        if ($isEntity && method_exists($currentEntity->entity, 'getTranslation')) {
+            try {
+                if ($currentEntity->entity->getTranslation($langCode)->access('view')) {
+                    //
+                }
+            }
+            catch (\InvalidArgumentException $e) {
+                $link['attributes']['class'][] = 'not-translated';
+                $link['url'] = Url::fromRoute('<front>', [], ['language' => Drupal::languageManager()->getLanguage($langCode)]);
+            }
+        }
+    }
+}
+
 /**
  * Implements hook_token_info().
  */
@@ -164,7 +190,7 @@ function drup_preprocess_swiftmailer(&$variables) {
     $theme = \Drupal::theme()->getActiveTheme();
     $variables['logo'] = $variables['base_url'] . '/' . $theme->getPath() . '/images/logo-mail.png';
     
-    $drupSettings = \Drupal::service('drup_settings.variables');
+    $drupSettings = new \Drupal\drup_settings\DrupSettings();
     $variables['site_name'] = $drupSettings->getValue('site_name');
 
 //    echo '<pre>';

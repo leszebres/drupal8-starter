@@ -4,6 +4,7 @@ use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
+use Drupal\drup_settings\DrupSettings;
 use Drupal\drup\DrupEntityImage;
 use Drupal\drup\DrupEntityField;
 use Drupal\drup\DrupCommon;
@@ -30,7 +31,7 @@ function drup_theme_page_attachments_alter(array &$page) {
  * Implements hook_preprocess_page() for page.html.twig.
  */
 function drup_theme_preprocess_page(array &$variables) {
-    $drupSettings = \Drupal::service('drup_settings.variables');
+    $drupSettings = new DrupSettings();
     $pageEntity = DrupCommon::getPageEntity();
     
     $drupRouter = \Drupal::service('drup_router.router');

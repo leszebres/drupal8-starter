@@ -6,6 +6,7 @@ use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Config\ConfigFactoryOverrideInterface;
 use Drupal\Core\Config\StorageInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\drup_settings\DrupSettings;
 
 /**
  * Class DrupSettingsOverride.
@@ -46,7 +47,7 @@ class DrupSettingsOverride implements ConfigFactoryOverrideInterface {
         $overrides = array();
     
         if (in_array('system.site', $names)) {
-            $drupSettings = \Drupal::service('drup_settings.variables');
+            $drupSettings = new DrupSettings();
             $overrides['system.site'] = [
                 'name' => $drupSettings->getValue('site_name'),
                 'slogan' => $drupSettings->getValue('site_slogan')

@@ -1,16 +1,16 @@
 <?php
 
-Use Drupal\Core\Template\Attribute;
-Use Drupal\Component\Utility\Html;
-Use Drupal\drup\CookieNotice;
+use Drupal\Core\Template\Attribute;
+use Drupal\Component\Utility\Html;
+use Drupal\drup_settings\DrupSettings;
 
-Use Drupal\drup\DrupCommon;
+use Drupal\drup\DrupCommon;
 
 /**
  * @param array $variables
  */
 function drup_theme_preprocess_html(array &$variables) {
-    $drupSettings = \Drupal::service('drup_settings.variables');
+    $drupSettings = new DrupSettings();
     $drupRouter = \Drupal::service('drup_router.router');
 
     // JS variables
@@ -25,6 +25,7 @@ function drup_theme_preprocess_html(array &$variables) {
     }
     if ($variables['root_path'] === false) {
         $variables['attributes']->addClass('is-front');
+
     } else {
         $pageEntity = DrupCommon::getPageEntity();
 

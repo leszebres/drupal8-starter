@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\drup_settings\DrupSettings;
+
 /**
  * @param array $variables
  */
@@ -13,7 +15,7 @@ function drup_theme_preprocess_block(array &$variables) {
     
     // Logo
     if ($pluginId === 'system_branding_block') {
-        $drupSettings = \Drupal::service('drup_settings.variables');
+        $drupSettings = new DrupSettings();
         $variables['site_alt_logo'] = $drupSettings->getValue('site_logo_alt');
         $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
     }

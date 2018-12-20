@@ -3,35 +3,51 @@
 namespace Drupal\drup_settings;
 
 /**
- * Class DrupSettingsVariables
+ * Class DrupSettings
  * Retourne des variables prefixées par la langue courante
  *
  * @package Drupal\drup_settings
  */
-class DrupSettingsVariables {
+class DrupSettings {
 
     /**
      * @var string
      */
-    public $currentLanguage;
+    public $langcode;
 
     /**
      * @var \Drupal\Core\Config\Config
      */
     public $config;
-    
+
     /**
-     * DrupSettingsVariables constructor.
+     * DrupSettings constructor.
+     *
+     * @param null $langcode
      */
-    public function __construct() {
-        $this->currentLanguage = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    public function __construct($langcode = null) {
+        $this->setLang($langcode);
         $this->config = \Drupal::service('config.factory')->getEditable('system.site');
     }
 
-    public function setLanguageId($id) {
-        $this->currentLanguage = $id;
+    /**
+     * @param null $langcode
+     */
+    public function setLang($langcode = null) {
+        if ($langcode === null) {
+            $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+        }
+
+        $this->langcode = $langcode;
     }
-    
+
+    /**
+     *
+     */
+    public function setNeutralLang() {
+        $this->langcode = 'und';
+    }
+
     /**
      * Return prefixed variable name
      * @param $variable
@@ -39,9 +55,9 @@ class DrupSettingsVariables {
      * @return string
      */
     public function getName($variable) {
-        return $this->currentLanguage . '_' . $variable;
+        return $this->langcode . '_' . $variable;
     }
-    
+
     /**
      * Return prefixed variable value
      * @param $variable
@@ -51,7 +67,7 @@ class DrupSettingsVariables {
     public function getValue($variable) {
         return $this->config->get($this->getName($variable));
     }
-    
+
     /**
      * Recherche dans la config toutes les variables commençant par un pattern
      * @param $search
@@ -62,7 +78,7 @@ class DrupSettingsVariables {
     public function searchValues($search, $trimKeys = true) {
         $values = [];
         $searchValue = $this->getName($search);
-        
+
         foreach ($this->config->get() as $key => $value) {
             if (strpos($key, $searchValue) !== false) {
                 if ($trimKeys === true) {
@@ -71,10 +87,10 @@ class DrupSettingsVariables {
                 $values[$key] = $value;
             }
         }
-        
+
         return $values;
     }
-    
+
     /**
      * Register prefixed variable value by name
      * @param $variable
@@ -84,7 +100,7 @@ class DrupSettingsVariables {
         $this->config->set($this->getName($variable), $value);
         $this->save();
     }
-    
+
     /**
      * Save system.config
      */
