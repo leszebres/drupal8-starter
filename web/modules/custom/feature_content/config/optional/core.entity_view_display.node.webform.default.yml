@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.field.node.webform.body
     - field.field.node.webform.field_metatags
+    - field.field.node.webform.field_webform
     - node.type.webform
   module:
     - text
@@ -19,6 +20,15 @@ content:
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_webform:
+    weight: 2
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
     region: content
   links:
     weight: 0

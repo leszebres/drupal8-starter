@@ -3,6 +3,8 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.page.field_layout_builder
+    - field.field.node.page.field_metatags
     - node.type.page
   module:
     - user
@@ -17,4 +19,6 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  field_layout_builder: true
+  field_metatags: true
   langcode: true

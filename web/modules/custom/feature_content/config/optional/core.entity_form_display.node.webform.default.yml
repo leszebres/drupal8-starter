@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.field.node.webform.body
     - field.field.node.webform.field_metatags
+    - field.field.node.webform.field_webform
     - node.type.webform
   module:
     - metatag
@@ -34,6 +35,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
+    region: content
+  field_webform:
+    weight: 123
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   langcode:
     type: language_select
