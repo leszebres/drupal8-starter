@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\drup;
+namespace Drupal\drup\Views;
 
 use Drupal\Core\Template\Attribute;
 
