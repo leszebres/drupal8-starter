@@ -1,14 +1,16 @@
 <?php
 
-namespace Drupal\drup;
+namespace Drupal\drup\Media;
 
 use Drupal\media\Entity\Media;
 use Drupal\file\Entity\File;
 
 /**
- * Class DrupEntityMedia.
+ * Class DrupMedia
+ *
+ * @package Drupal\drup\Media
  */
-class DrupEntityMedia {
+class DrupMedia {
 
     /**
      * Media entities list
@@ -46,7 +48,7 @@ class DrupEntityMedia {
     public $langcode;
 
     /**
-     * DrupEntityMedia constructor.
+     * DrupMedia constructor.
      *
      * @param $medias
      * @param null $fileField
@@ -97,8 +99,7 @@ class DrupEntityMedia {
             foreach ($this->mediasList as $mediaEntity) {
 
                 if ($mediaEntity->hasField($this->filesField)) {
-                    $fileReferenced = $mediaEntity->get($this->filesField)
-                        ->first();
+                    $fileReferenced = $mediaEntity->get($this->filesField)->first();
 
                     if (!$fileReferenced->isEmpty() && ($fileData = $fileReferenced->getValue())) {
                         if (isset($fileData['target_id']) && ($fileEntity = File::load($fileData['target_id']))) {

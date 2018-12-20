@@ -1,16 +1,16 @@
 <?php
 
-namespace Drupal\drup;
+namespace Drupal\drup\Media;
 
 /**
- * Class DrupEntityFile
+ * Class DrupMediaFile
  *
- * @package Drupal\drup
+ * @package Drupal\drup\Media
  */
-class DrupEntityFile extends DrupEntityMedia {
+class DrupMediaFile extends DrupMedia {
 
     /**
-     * DrupEntityFile constructor.
+     * DrupMediaFile constructor.
      *
      * @param $medias
      * @param null $fileField
