@@ -3,9 +3,11 @@
 namespace Drupal\drup;
 
 use Drupal\Core\Menu\MenuLinkInterface;
+use Drupal\file\Entity\File;
 use Drupal\menu_link_content\Plugin\Menu\MenuLinkContent;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\node\Entity\Node;
+use Drupal\views\Views;
 use Symfony\Component\HttpFoundation\Request;
 use Drupal\Component\Utility\Unicode;
 
@@ -174,37 +176,6 @@ abstract class DrupCommon {
         }
 
         return null;
-    }
-
-    /**
-     * Liste des réseaux sociaux pour partager un article
-     *
-     * @return array
-     */
-    public static function getShareItems() {
-        $config      = \Drupal::config('system.site');
-        $request     = \Drupal::request();
-        $route_match = \Drupal::routeMatch();
-
-        $title        = $config->get('name') . ' : '. \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
-        $currentTitle = urlencode($title);
-        $pathAlias    = \Drupal::service('path.alias_manager')->getAliasByPath($request->getPathInfo());
-        $currentUrl   = urlencode($request->getSchemeAndHttpHost() . $request->getBaseUrl() . $pathAlias);
-
-        return [
-            'linkedin' => [
-                'url'  => 'https://www.linkedin.com/shareArticle?url=' . $currentUrl . '&title=' . $currentTitle,
-                'icon' => 'linkedin'
-            ],
-            'twitter'  => [
-                'url'  => 'https://twitter.com/share?url=' . $currentUrl . '&text=' . $currentTitle,
-                'icon' => 'twitter'
-            ],
-            'facebook' => [
-                'url'  => 'https://www.facebook.com/sharer/sharer.php?u=' . $currentUrl . '&t=' . $currentTitle,
-                'icon' => 'facebook'
-            ]
-        ];
     }
 
     /**
@@ -483,6 +454,7 @@ abstract class DrupCommon {
 
         if (!empty($terms)) {
             foreach ($terms as $tid => &$term) {
+                /** @var Term $term */
                 $term = \Drupal::service('entity.repository')
                     ->getTranslationFromContext($term, $languageId);
                 $tree[$tid] = (object) [
@@ -540,5 +512,156 @@ abstract class DrupCommon {
                 unset($attachments['#attached']['html_head_link'][$key]);
             }
         }
+    }
+
+    /**
+     * @return array
+     */
+    public static function getSiblingsNodes() {
+        $entities = [
+            'previous' => (object) [
+                'operator' => '>',
+                'sort' => 'ASC'
+            ],
+            'next' => (object) [
+                'operator' => '<',
+                'sort' => 'DESC'
+            ]
+        ];
+        $currentEntity = self::getPageEntity(true);
+
+        if (!empty($currentEntity->entity)) {
+            foreach ($entities as $type => $filters) {
+                $query = \Drupal::entityQuery($currentEntity->type);
+                $query->condition('status', 1);
+                $query->condition('type', $currentEntity->bundle);
+                $query->condition('langcode', \Drupal::languageManager()->getCurrentLanguage()->getId());
+                $query->condition('created', $currentEntity->entity->getCreatedTime(), $filters->operator);
+                $query->sort('created', $filters->sort);
+                $query->range(0, 1);
+
+                $result = $query->execute();
+                $entities[$type] = !empty($result) ? Node::load(current($result)) : null;
+            }
+        }
+
+        return $entities;
+    }
+
+    /**
+     * @param $elements
+     */
+    public static function setRequiredAndPlaceholderAttributes(&$elements) {
+        if (!empty($elements)) {
+            foreach ($elements as $index => &$element) {
+                if (is_array($element) && isset($element['#type'])) {
+                    $isRequired = (isset($element['#required']) && (bool) $element['#required']);
+
+                    switch ($element['#type']) {
+                        // Apply
+                        case 'textfield':
+                        case 'textarea':
+                        case 'email':
+                        case 'tel':
+                            $element['#attributes']['placeholder'] = $element['#title'];
+                            if ($isRequired) {
+                                $element['#attributes']['placeholder'] .= ' *';
+                            }
+                            break;
+                        case 'select':
+                        case 'webform_select_other':
+                            if ($isRequired && isset($element['#empty_option'])) {
+                                $element['#empty_option'] .= ' *';
+                            }
+                            break;
+                            break;
+                        case 'checkboxes':
+                            if ($isRequired ) {
+                                if (count($element['#options']) === 1) {
+                                    foreach ($element['#options'] as &$option) {
+                                        $option .= ' *';
+                                    }
+                                }
+                            }
+                            break;
+                        // Loop again
+                        case 'fieldset':
+                        case 'container':
+                            self::setRequiredAndPlaceholderAttributes($element);
+                            break;
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * @param $viewId
+     * @param $viewDisplayId
+     * @param array $arguments
+     *
+     * @return bool
+     */
+    public static function buildView($viewId, $viewDisplayId, $arguments = []) {
+        $output = false;
+
+        $view = Views::getView($viewId);
+        if ($view instanceof ViewExecutable) {
+            $view->setDisplay($viewDisplayId);
+
+            $arguments = [implode(',', $arguments)];
+            $view->setArguments($arguments);
+            $view->execute();
+
+            $render = $view->render();
+            $output = \Drupal::service('renderer')->render($render);
+        }
+
+        return $output;
+    }
+
+    /**
+     * @param $fid
+     *
+     * @return mixed
+     */
+    public static function setFilePermanent($fid) {
+        if (is_array($fid)) {
+            $fid = current($fid);
+        }
+        $file = File::load($fid);
+
+        if ($file instanceof File) {
+            $file->setPermanent();
+            $file->save();
+
+            return $file;
+        }
+
+        return false;
+    }
+
+    /**
+     * @param $fid
+     *
+     * @return string|null
+     */
+    public static function getFileUrl($fid, $absolute = true) {
+        $url = null;
+
+        if (is_array($fid)) {
+            $fid = current($fid);
+        }
+
+        $file = File::load($fid);
+        if ($file instanceof File) {
+            $url = $file->getFileUri();
+
+            if ($absolute) {
+                $url = file_create_url($url);
+            }
+        }
+
+        return $url;
     }
 }
