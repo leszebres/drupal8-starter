@@ -69,5 +69,12 @@ msgstr "Identifiant"
 msgid "Enter your e-mail address or username."
 msgstr "Entrez votre adresse email ou votre pseudo"
 
+# BLOCKS
+
+msgid "Configure this block"
+msgstr "Configurer ce bloc"
+
+msgid "Edit content below"
+msgstr "Modifier le contenu ci-dessous"
 
 # CUSTOM

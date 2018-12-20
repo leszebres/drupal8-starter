@@ -48,9 +48,6 @@ msgstr "Il n'y a aucun résultat pour le moment."
 msgid "Apply"
 msgstr "Appliquer"
 
-msgid "Configure this block"
-msgstr "Configurer ce bloc"
-
 msgid "@count result founded."
 msgid_plural "@count results founded."
 msgstr[0] "@count résultat trouvé."

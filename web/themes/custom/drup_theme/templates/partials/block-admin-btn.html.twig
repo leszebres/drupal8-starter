@@ -1,13 +1,14 @@
 {% if admin_url %}
     {% if btnTitle is empty %}
-        {% set btnTitle = 'Configure this block'|t %}
+        {% set btnTitle = 'Edit content below'|t %}
     {% endif %}
 
     <div class="block-admin-btn">
-        {{ link(btnTitle, admin_url, {
+        {#{{ link(btnTitle, admin_url, {
             'class': ['use-ajax', 'btn', 'btn--block-admin'],
             'data-dialog-type': 'modal',
             'data-dialog-options': '{"height":"80%","width":"80%"}'
-        }) }}
+        }) }}#}
+        <a href="javascript:;" class="btn btn--block-admin" data-fancybox data-type="iframe" data-src="{{ admin_url }}">{{ btnTitle }}</a>
     </div>
 {% endif %}

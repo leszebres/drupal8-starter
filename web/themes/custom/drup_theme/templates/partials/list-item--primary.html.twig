@@ -18,7 +18,7 @@
 
             <div class="item-content">
                 {% set titleTag = (row.content.tagTitle) ? row.content.tagTitle : 'h3' %}
-                {{ ('<'~ titleTag~' class="item-title"'~'>')|raw }}{{ row.content.title|nl2br }}{{ ('</'~titleTag~'>')|raw }}
+                {{ ('<' ~ titleTag ~ ' class="item-title"' ~ '>')|raw }}{{ row.content.title|nl2br }}{{ ('</' ~ titleTag ~ '>')|raw }}
 
                 {% if row.content.body %}
                     <div class="item-body">

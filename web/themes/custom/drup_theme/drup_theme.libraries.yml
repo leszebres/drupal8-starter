@@ -123,6 +123,7 @@ theme:
   - drup_theme/cookienotice
   - drup_theme/spinner
   - drup_theme/togglemenu
+  - drup_theme/fancybox
 
 theme-contact:
   version: '0.1'

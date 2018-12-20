@@ -1,4 +1,4 @@
-var Theme = {};
+let Theme = {};
 
 (function ($, Drupal, drupalSettings) {
     'use strict';
@@ -41,7 +41,7 @@ var Theme = {};
             }
         },
         autoload: function(options) {
-            var self = this;
+            let self = this;
 
             if (options !== undefined) {
                 $.each(options, function(className, condition) {
@@ -64,13 +64,14 @@ var Theme = {};
             this.cookieNoticeHandler();
             this.externalLinksHandler();
             this.anchorLinksHandler();
+            this.drupBlockAdminFallback();
         },
 
         /**
          * Gestionnaire de la détection des périphériques
          */
         deviceDetectHandler: function () {
-            var self = this;
+            let self = this;
 
             self.deviceDetect = new $.DeviceDetect();
             self.devices = self.deviceDetect.getDevices();
@@ -120,12 +121,12 @@ var Theme = {};
          * Gestionnaire des ancres
          */
         anchorLinksHandler: function () {
-            var self = this;
-            var offset = 100;
+            let self = this;
+            let offset = 100;
 
             self.elements.page.on('click', 'a[href*="#"]:not([href="#"])', function (event) {
                 if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
-                    var target = $(this.hash);
+                    let target = $(this.hash);
                     target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
 
                     if (target.length) {
@@ -151,6 +152,25 @@ var Theme = {};
             }, speed);
 
             return this;
+        },
+
+        /**
+         * If drupblockadmin is saved from iframe, fancybox is closed and page reloaded
+         */
+        drupBlockAdminFallback: function () {
+            if (this.userIsLoggedIn) {
+                let fancyboxInstance = parent.jQuery.fancybox.getInstance();
+
+                if ((fancyboxInstance !== false) && (fancyboxInstance.current.type === 'iframe') && (fancyboxInstance.current.src.search('drup-blocks-context') >= 0)) {
+                    this.elements.body.spinner({
+                        auto: false,
+                        maxTimeout: -1,
+                        onShow: function () {
+                            parent.location.reload();
+                        }
+                    }).show();
+                }
+            }
         }
     };
 
@@ -174,7 +194,7 @@ var Theme = {};
 
                 if (context.length) {
                     // if (context.is('.block--articles-term')) {
-                    //     var thematic = Drupal.Theme.load('thematic');
+                    //     let thematic = Drupal.Theme.load('thematic');
                     //     thematic.customFormHandler();
                     // }
                 }
