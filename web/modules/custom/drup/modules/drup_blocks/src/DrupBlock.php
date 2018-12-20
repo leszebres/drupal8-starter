@@ -17,10 +17,10 @@ abstract class DrupBlock {
         $options = array_merge([
             'type' => 'blocks'
         ], $options);
-
+        
         $themePath = '/' . drupal_get_path('theme', 'drup_theme');
         $themePathBlocks = $themePath . '/templates/' . $options['type'];
-
+        
         foreach ($themes as $themeID => &$theme) {
             $template = null;
 

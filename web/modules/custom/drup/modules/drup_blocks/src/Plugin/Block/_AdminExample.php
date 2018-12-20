@@ -3,6 +3,7 @@
 namespace Drupal\drup_blocks\Plugin\Block;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\drup\DrupCommon;
 use Drupal\node\Entity\Node;
 
 use Drupal\drup_blocks\DrupBlockAdmin;
@@ -19,7 +20,28 @@ use Drupal\drup\DrupSite;
  */
 class _AdminExample extends DrupBlockAdminBase {
 
-    public $container = 'container';
+    /**
+     * {@inheritdoc}
+     */
+    public function __construct(array $configuration, $plugin_id, $plugin_definition) {
+        parent::__construct($configuration, $plugin_id, $plugin_definition);
+        //$this->langcode = 'und'; // same content for every language
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAjaxRow(&$rowContainer, $rowValues) {
+        if (!empty($rowValues['title'])) {
+            $rowContainer['#title'] = $rowValues['title'];
+        }
+        $rowContainer['title'] = [
+            '#type' => 'textfield',
+            '#title' => $this->t('Title'),
+            '#required' => true,
+            '#default_value' => !empty($rowValues['title']) ? $rowValues['title'] : null
+        ];
+    }
 
     /**
      * {@inheritdoc}
@@ -27,22 +49,15 @@ class _AdminExample extends DrupBlockAdminBase {
     public function blockForm($form, FormStateInterface $form_state) {
         $form = parent::blockForm($form, $form_state);
 
-        $form[$this->container] = [
-            '#type' => 'fieldset',
-            '#title' => t('Manage countries list'),
-            '#tree' => true
-        ];
-        $form[$this->container]['list'] = [
+        $form['title'] = [
             '#type' => 'textarea',
-            '#title' => t('Countries list (one item per line)'),
-            '#default_value' => !empty($this->drupConfiguration[$this->container]['list']) ? $this->drupConfiguration[$this->container]['list'] : null
+            '#title' => $this->t('Title'),
+            '#rows' => 2,
+            '#default_value' => !empty($this->configValues['title']) ? $this->configValues['title'] : null
         ];
-    
-        $form[$this->container]['contact'] = [
-            '#type' => 'email',
-            '#title' => t('Email'),
-            '#default_value' => !empty($this->drupConfiguration[$this->container]['contact']) ? $this->drupConfiguration[$this->container]['contact'] : 'international@pileje.com'
-        ];
+
+        $this->ajaxMaxRows = 5;
+        $this->buildAjaxContainer($form, $form_state);
 
         return $form;
     }
@@ -51,7 +66,16 @@ class _AdminExample extends DrupBlockAdminBase {
      * {@inheritdoc}
      */
     public function blockSubmit($form, FormStateInterface $form_state) {
-        $this->drupConfiguration[$this->container] = $form_state->getValue($this->container);
+        $this->configValues['title'] = &$form_state->getValue('title');
+        $this->configValues[$this->ajaxContainer] = &$form_state->getValue($this->ajaxContainer);
+
+        if (!empty($this->configValues[$this->ajaxContainer])) {
+            foreach ($this->configValues[$this->ajaxContainer] as $index => $formItem) {
+                if (!empty($formItem['logo'])) {
+                    DrupCommon::setFilePermanent($formItem['logo']);
+                }
+            }
+        }
 
         parent::blockSubmit($form, $form_state);
     }
@@ -61,20 +85,22 @@ class _AdminExample extends DrupBlockAdminBase {
      */
     public function build() {
         parent::build();
-        $items = [];
-        $nbCountriesPerColumn = 5;
 
-        if (!empty($this->drupValues[$this->container]['list'])) {
-            $countries = explode("\r\n", $this->drupValues[$this->container]['list']);
-            $items = array_chunk($countries, $nbCountriesPerColumn);
+        $items = [];
+        if (!empty($this->configValues[$this->ajaxContainer])) {
+            foreach ($this->configValues[$this->ajaxContainer] as $index => $formItem) {
+                if (!empty($formItem['title'])) {
+                    $items[] = $formItem['title'];
+                }
+            }
         }
 
         $build = $this->mergeBuildParameters([
-            '#theme' => 'drup_blocks_admin_distributor_countries',
-            '#items' => $items,
-            '#contact_email' => isset($this->drupValues[$this->container]['contact']) ? $this->drupValues[$this->container]['contact'] : null,
+            '#theme' => 'drup_blocks_admin_admin_example',
+            '#title' => $this->configValues['title'],
+            '#items' => $items
         ]);
-        
+
         return $build;
     }
 }
