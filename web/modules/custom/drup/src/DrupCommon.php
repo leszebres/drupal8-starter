@@ -331,7 +331,7 @@ abstract class DrupCommon {
         $navItems = [];
 
         $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
-        $links = $menu_link_manager->loadLinksByRoute('entity.node.canonical', ['node' => $nid]);
+        $links = $menu_link_manager->loadLinksByRoute('entity.node.canonical', ['node' => $nid], $menuName);
         $root_menu_item = array_pop($links);
 
         $menuParameters = new \Drupal\Core\Menu\MenuTreeParameters();
