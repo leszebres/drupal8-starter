@@ -464,6 +464,9 @@ template {
             transform: translateY(0);
     visibility: visible; }
   .notice--cookie p {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
     margin: 0; }
   .notice--cookie a {
     color: inherit; }
@@ -478,7 +481,7 @@ template {
         -ms-flex-align: center;
             align-items: center;
     margin-left: 20px; }
-  .notice--cookie button {
+  .notice--cookie .cookienotice-btn {
     padding: 15px 32px;
     color: #000;
     font-weight: bold;
@@ -489,19 +492,20 @@ template {
     -webkit-transition: .3s;
     transition: .3s;
     white-space: nowrap; }
-    .notice--cookie button + button {
+    .notice--cookie .cookienotice-btn + .cookienotice-btn {
       margin-left: 10px; }
-    .notice--cookie button:hover, .notice--cookie button:focus {
+    .notice--cookie .cookienotice-btn:hover, .notice--cookie .cookienotice-btn:focus {
       color: #fff;
+      text-decoration: none;
       background-color: #000;
       border-color: #000; }
-  .notice--cookie .cookienotice-customize {
+  .notice--cookie .cookienotice-btn--primary {
+    text-transform: uppercase; }
+  .notice--cookie .cookienotice-btn--secondary {
     background-color: transparent;
     color: #fff;
     border-color: #fff;
     text-transform: none; }
-  .notice--cookie .cookienotice-agree {
-    text-transform: uppercase; }
   @media (max-width: 767px) {
     .notice--cookie {
       -webkit-box-orient: vertical;
@@ -641,8 +645,7 @@ template {
     color: #333;
     font-size: 2em;
     font-weight: bold;
-    text-transform: uppercase;
-    line-height: 1.3; }
+    text-transform: uppercase; }
   .cookienotice-modal-header .cookienotice-modal-description {
     margin: 24px 0;
     padding-bottom: 24px; }
@@ -705,7 +708,6 @@ template {
   border-bottom: 0; }
 
 .cookienotice-service-actions {
-  min-width: 280px;
   text-align: right; }
 
 .cookienotice-service-action {
@@ -740,7 +742,7 @@ template {
 p.cookienotice-service-all-label {
   margin-bottom: 0; }
 
-@media screen and (max-width: 500px) {
+@media (max-width: 767px) {
   .cookienotice-service {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -754,7 +756,7 @@ p.cookienotice-service-all-label {
             align-items: start; }
   .cookienotice-service-actions {
     margin-top: 10px;
-    text-align: left; } }
+    min-width: 0; } }
 
 /* ==========================================================================
    BASE
@@ -1284,7 +1286,6 @@ Markup: <button class="btn $modifierClass">Bouton</button>
 
 Styleguide Buttons - 1.btn
  */
-button,
 .btn {
   position: relative;
   display: inline-block;
@@ -1304,9 +1305,7 @@ button,
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   -webkit-transition: .3s;
-  transition: .3s; }
-
-.btn {
+  transition: .3s;
   /* Sizes
        ========================================================================== */ }
   .btn + .btn {
@@ -1322,7 +1321,7 @@ button,
     opacity: .5;
     cursor: default; }
 
-button {
+button.btn {
   height: 54px; }
 
 /*
@@ -1570,18 +1569,18 @@ form textarea:not([readonly]):focus {
             box-sizing: border-box; }
   .list-item .item-media {
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     overflow: hidden;
     background-color: #fff; }
     .list-item .item-media img {
       display: block; }
   .list-item .item-footer,
   .list-item .item-content {
-    padding: 0 30px; }
+    padding: 0 24px; }
   .list-item .item-content {
     position: relative; }
   .list-item .item-title {
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     color: inherit;
     font-weight: normal;
     font-family: "Arial", Arial, sans-serif; }
