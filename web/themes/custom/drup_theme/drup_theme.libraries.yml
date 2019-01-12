@@ -70,7 +70,7 @@ customform:
   - core/jquery
 
 cookienotice:
-  version: '3.0.2'
+  version: '3.0.4'
   js:
     js/libs/cookienotice.min.js: {}
   dependencies:
@@ -84,7 +84,7 @@ fixer:
   - core/jquery
 
 spinner:
-  version: '2.2.0'
+  version: '2.2.2'
   js:
     js/libs/spinner.min.js: {}
   dependencies:

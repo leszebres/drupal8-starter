@@ -90,7 +90,6 @@ let Theme = {};
         spinnerHandler: function () {
             this.spinner = this.elements.body.spinner({
                 auto: true,
-                minTimeout: 600,
                 autoPathsExceptions: []
             });
         },
@@ -99,7 +98,9 @@ let Theme = {};
          * Gestionnaire de CookieNotice
          */
         cookieNoticeHandler: function () {
-            this.cookieNotice = this.elements.cookieNotice.cookieNotice();
+            if (this.elements.cookieNotice.length) {
+                this.cookieNotice = this.elements.cookieNotice.cookieNotice();
+            }
         },
 
         /**
