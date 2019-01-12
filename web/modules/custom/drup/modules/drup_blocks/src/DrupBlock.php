@@ -52,4 +52,12 @@ abstract class DrupBlock {
     public static function getDefaultCacheTags() {
         return ['node_list', 'taxonomy_term_list', 'media_list', 'config:system'];
     }
+
+    /**
+     * Cache invalidation for following
+     * @return array
+     */
+    public static function getDefaultCacheContexts() {
+        return ['route'];
+    }
 }

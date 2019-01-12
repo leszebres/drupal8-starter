@@ -13,6 +13,10 @@ function drup_admin_preprocess_html(array &$variables) {
     if ($routeName = $drupRouter->getName()) {
         $variables['attributes']->addClass('route--' . Html::cleanCssIdentifier($routeName));
     }
+
+    if ($drupBlockContext = \Drupal::request()->query->get('drup-blocks-context')) {
+        $variables['attributes']->addClass('is-drup-block-admin');
+    }
 }
 
 /**

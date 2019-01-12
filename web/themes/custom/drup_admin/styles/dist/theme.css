@@ -147,7 +147,6 @@ body:not(.role--super-admin) .js-form-item-roles-super-admin {
   padding: 0; }
   .horizontal-tabs .horizontal-tab-button a {
     -webkit-transition: .3s;
-    -o-transition: .3s;
     transition: .3s; }
     .horizontal-tabs .horizontal-tab-button a:after {
       content: "";
@@ -158,7 +157,6 @@ body:not(.role--super-admin) .js-form-item-roles-super-admin {
       width: 100%;
       height: 0;
       -webkit-transition: height .3s;
-      -o-transition: height .3s;
       transition: height .3s; }
     .horizontal-tabs .horizontal-tab-button a:hover, .horizontal-tabs .horizontal-tab-button a:focus {
       background: #fff; }
@@ -224,3 +222,23 @@ form.entity-browser-form .field--name-revision-log-message {
 .field--type-push .push-link .description {
   display: inline-block;
   margin-right: 8px; }
+
+/* ==========================================================================
+   ADMIN BLOCK FROM DRUPBLOCKADMIN
+   ex : /admin/structure/block/manage/factories_list?destination=/pommier&drup-blocks-context=node/6
+   ========================================================================== */
+body.is-drup-block-admin {
+  padding-top: 0 !important; }
+  body.is-drup-block-admin .content-header {
+    margin-top: -4rem;
+    margin-bottom: 1rem; }
+  body.is-drup-block-admin #toolbar-administration,
+  body.is-drup-block-admin .block-local-tasks-block,
+  body.is-drup-block-admin .region-breadcrumb,
+  body.is-drup-block-admin #edit-settings-admin-label,
+  body.is-drup-block-admin .block-form .js-form-item-settings-label,
+  body.is-drup-block-admin .block-form .js-form-item-settings-label-display,
+  body.is-drup-block-admin .block-form .form-type-vertical-tabs,
+  body.is-drup-block-admin #edit-block-region-wrapper,
+  body.is-drup-block-admin #edit-actions .button--danger {
+    display: none; }

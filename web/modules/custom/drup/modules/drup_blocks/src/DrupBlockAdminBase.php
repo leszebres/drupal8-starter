@@ -158,7 +158,7 @@ abstract class DrupBlockAdminBase extends BlockBase {
      * {@inheritdoc}
      */
     public function getCacheContexts() {
-        return Cache::mergeContexts(parent::getCacheContexts(), []);
+        return Cache::mergeContexts(parent::getCacheContexts(), DrupBlock::getDefaultCacheContexts());
     }
 
     /**

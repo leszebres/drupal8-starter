@@ -25,12 +25,12 @@ abstract class DrupBlockBase extends BlockBase {
         $parameters = array_merge_recursive($parameters, []);
         return $parameters;
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function getCacheContexts() {
-        return Cache::mergeContexts(parent::getCacheContexts(), []);
+        return Cache::mergeContexts(parent::getCacheContexts(), DrupBlock::getDefaultCacheContexts());
     }
     
     /**
