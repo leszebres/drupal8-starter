@@ -664,4 +664,28 @@ abstract class DrupCommon {
 
         return $url;
     }
+
+    /**
+     * @param $string
+     *
+     * @return string
+     */
+    public static function encodeVideoUrl($string) {
+        $encodedUrl = null;
+
+        if (strpos($string, 'vimeo') !== false) {
+            if (preg_match('%^https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)(?:[?]?.*)$%im', $string, $matches)) {
+                $videoId = isset($matches[3]) ? $matches[3] : null;
+                $encodedUrl = 'https://player.vimeo.com/' . $videoId . '?background=1&autoplay=1&loop=1&byline=0&title=0';
+
+            }
+        } else {
+            if (preg_match("/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/", $string, $matches)) {
+                $videoId = isset($matches[1]) ? $matches[1] : null;
+                $encodedUrl = 'https://www.youtube.com/embed/' . $videoId . '?autoplay=1&controls=0&disablekb=1&fs=0&loop=1&playlist='.$videoId.'&modestbranding=1&rel=0&showinfo=0&autohide=1&mute=1';
+            }
+        }
+
+        return $encodedUrl;
+    }
 }
