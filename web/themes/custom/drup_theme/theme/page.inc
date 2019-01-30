@@ -93,7 +93,7 @@ function drup_theme_preprocess_page(array &$variables) {
 function drup_theme_theme_suggestions_page_alter(array &$suggestions, array $variables) {
 //    $pageSecondaryNodeTypes = ['healthreview_article'];
 //
-//    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+//    if (($node = \Drupal::routeMatch()->getParameter('node')) && $node instanceof Node) {
 //        $nodeType = $node->getType();
 //
 //        if (in_array($nodeType, $pageSecondaryNodeTypes)) {

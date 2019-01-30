@@ -34,7 +34,6 @@
         "drupal/features": "3.x-dev",
         "drupal/field_group": "3.x-dev",
         "drupal/geolocation": "2.x-dev",
-        "drupal/honeypot": "1.x-dev",
         "drupal/imageapi_optimize_resmushit": "^1.0",
         "drupal/imce": "1.x-dev",
         "drupal/inline_entity_form": "1.x-dev",
@@ -45,6 +44,7 @@
         "drupal/metatag": "1.x-dev",
         "drupal/paragraphs": "1.x-dev",
         "drupal/pathauto": "1.x-dev",
+        "drupal/quick_node_clone": "^1.11",
         "drupal/recaptcha": "2.x-dev",
         "drupal/redirect": "1.x-dev",
         "drupal/role_delegation": "1.x-dev",
@@ -53,6 +53,7 @@
         "drupal/swiftmailer": "1.x-dev",
         "drupal/taxonomy_multidelete_terms": "1.x-dev",
         "drupal/url_embed": "^1.0@alpha",
+        "drupal/ultimate_cron": "^2.0",
         "drupal/views_infinite_scroll": "1.x-dev",
         "drupal/webform": "^5.0",
         "drush/drush": "^9.0.0",
@@ -108,11 +109,6 @@
             "initial": {
                 ".editorconfig": "../.editorconfig",
                 ".gitattributes": "../.gitattributes"
-            }
-        },
-        "patches": {
-            "drupal/swiftmailer": {
-                "Support CSS inlining": "https://www.drupal.org/files/issues/2018-07-10/swiftmailer.css_inliner.2843327-49.patch"
             }
         }
     }
