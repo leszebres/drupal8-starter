@@ -14,12 +14,19 @@ function drup_theme_preprocess_file_link(&$variables) {
 
         if (isset($linkText[1]) && !empty($linkHref[1])) {
             $url = Url::fromUri($linkHref[1]);
+            $htmlClasses = [];
+
+            // File uploaded through webforms
+            if (strpos($url, 'webform') === false) {
+                $htmlClasses[] = 'btn';
+                $htmlClasses[] = 'btn--primary';
+            }
             $url->setOptions(['attributes' => [
-                'class' => ['btn', 'btn--primary'],
+                'class' => $htmlClasses,
                 'target' => '_blank'
             ]]);
 
-            $variables['link'] = Link::fromTextAndUrl($linkText[1], $url)->toString();;
+            $variables['link'] = Link::fromTextAndUrl($linkText[1], $url)->toString();
         }
     }
 }

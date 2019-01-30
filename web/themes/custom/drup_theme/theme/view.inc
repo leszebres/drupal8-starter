@@ -27,7 +27,7 @@ function drup_theme_preprocess_views_view(&$variables) {
 //                '@count result founded.',
 //                '@count results founded.'
 //            );
-//            if (empty($variables['view']->total_rows)) {
+//            if (empty($variables['rows'])) {
 //                $variables['empty'] = t('No result match your search.');
 //            }
 //            break;

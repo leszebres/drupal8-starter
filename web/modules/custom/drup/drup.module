@@ -44,20 +44,6 @@ function drup_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_stat
     }
 }
 
-/**
- * @param $links
- */
-function drup_menu_links_discovered_alter(&$links) {
-    $links['drup.admin_list'] = [
-        'title' => t('Drup'),
-        'route_name' => 'drup_settings.admin_form',
-        'menu_name' => 'admin',
-        'parent' => 'system.admin_config',
-        'weight' => -40,
-    ];
-}
-
-
 
 /**
  * @param \Drupal\Core\Database\Query\AlterableInterface $query

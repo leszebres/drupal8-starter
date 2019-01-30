@@ -235,6 +235,8 @@ a.tabledrag-handle .handle {
    ========================================================================== */
 // Form add/edit
 form.entity-browser-form {
+    padding-bottom: 80px;
+
     .description {
         br {
             display: none;
@@ -242,6 +244,18 @@ form.entity-browser-form {
     }
     .field--name-revision-log-message {
         display: none;
+    }
+
+    .form-actions {
+        position: fixed;
+        z-index: 50;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 1em;
+        background: #fff;
+        box-shadow: -2px 0 5px rgba(#000, .2);
     }
 }
 // Field entity browser

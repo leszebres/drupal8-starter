@@ -3,6 +3,7 @@
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\node\Entity\Node;
 
 use Drupal\drup_settings\DrupSettings;
 use Drupal\drup\DrupEntityImage;
@@ -58,8 +59,15 @@ function drup_theme_preprocess_page(array &$variables) {
     /**
      * Node fields
      */
+    $node = null;
     if (isset($variables['node'])) {
         $node = $variables['node'];
+    }
+    if (is_string($node)) {
+        $node = Node::load($node);
+    }
+
+    if ($node instanceof Node) {
         $nodeType = $node->getType();
         $drupField = new DrupEntityField($node);
 

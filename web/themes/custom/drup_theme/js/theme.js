@@ -80,7 +80,7 @@ let Theme = {};
                 $('<div>', {
                     'class': 'notice notice--browser',
                     html: Drupal.t('This website is not optimized for your browser version.')
-                }).appendTo(self.common.elements.body);
+                }).appendTo(self.elements.body);
             });
         },
 

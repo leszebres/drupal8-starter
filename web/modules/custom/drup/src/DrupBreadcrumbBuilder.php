@@ -99,6 +99,18 @@ class DrupBreadcrumbBuilder implements BreadcrumbBuilderInterface {
                             }
                         }
                         break;
+                    case 'taxonomy_term_parents':
+                        if ($termParents = \Drupal::service('entity_type.manager')->getStorage('taxonomy_term')->loadAllParents($currentEntity->id)) {
+                            ksort($termParents);
+                            foreach ($termParents as $term) {
+                                if ($term->id() !== $currentEntity->id) {
+                                    $termTarget = ['target_id' => $term->id()];
+                                    $term = current(DrupCommon::getReferencedTerms([$termTarget]));
+                                    $links[] = Link::fromTextAndUrl($term->name, Url::fromUri($term->uri));
+                                }
+                            }
+                        }
+                        break;
                     case 'node':
                         if ($nodes = $drupField->getValues($id)) {
                             $node = current(DrupCommon::getReferencedNodes($nodes));
