@@ -1,29 +1,31 @@
-const package = require('./package.json');
+const packagejson = require('./package.json');
 const plugins = require('gulp-load-plugins')({
     pattern: ['*'],
     scope: ['devDependencies']
 });
 
-// Sass Front
-plugins.gulp.task('sass', function () {
-    let themePath = (process.argv.indexOf('--admin') !== -1) ? package.paths.theme_admin : package.paths.theme;
+// Sass
+function sass(pumpCallback) {
+    let themePath = process.argv.indexOf('--admin') === -1 ? packagejson.paths.theme : packagejson.paths.theme_admin;
 
-    return plugins.gulp.src(themePath + '/' + package.paths.styles + '/src/**/*.scss')
-        .pipe(plugins.sass().on('error', plugins.sass.logError))
-        .pipe(plugins.postcss([
-            plugins.autoprefixer(package.autoprefixer),
-            plugins.postcssPxtorem(package.pxtorem)
-        ]))
-        .pipe(plugins.rename('theme.css'))
-        .pipe(plugins.gulp.dest(themePath + '/' + package.paths.styles + '/dist/'));
-});
+    return plugins.pump([
+        plugins.gulp.src(themePath + '/' + packagejson.paths.styles + '/src/**/*.scss'),
+        plugins.sass(),
+        plugins.postcss([
+            plugins.autoprefixer(packagejson.autoprefixer),
+            plugins.postcssPxtorem(packagejson.pxtorem)
+        ]),
+        plugins.rename('theme.css'),
+        plugins.gulp.dest(themePath + '/' + packagejson.paths.styles + '/dist/')
+    ], pumpCallback);
+}
 
-// Watch SASS Front
-plugins.gulp.task('watchsass', function () {
-    let themePath = (process.argv.indexOf('--admin') !== -1) ? package.paths.theme_admin : package.paths.theme;
+// Watch SASS
+function watchsass() {
+    let themePath = process.argv.indexOf('--admin') === -1 ? packagejson.paths.theme : packagejson.paths.theme_admin;
 
-    plugins.gulp.watch(themePath + '/' + package.paths.styles + '/src/**/*.scss', ['sass']);
-});
+    plugins.gulp.watch(themePath + '/' + packagejson.paths.styles + '/src/**/*.scss', plugins.gulp.parallel(sass));
+}
 
 // Alias
-plugins.gulp.task('default', ['sass', 'watchsass']);
+exports.default = plugins.gulp.series(sass, watchsass);
