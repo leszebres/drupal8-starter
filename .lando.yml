@@ -42,7 +42,7 @@ services:
     composer:
       deployer/deployer: '6.*'
   node:
-    type: node:latest
+    type: node:11
     globals:
       gulp-cli: "latest"
   mailhog:
