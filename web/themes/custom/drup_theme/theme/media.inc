@@ -17,7 +17,7 @@ function drup_theme_preprocess_file_link(&$variables) {
             $htmlClasses = [];
 
             // File uploaded through webforms
-            if (strpos($url, 'webform') === false) {
+            if (strpos($linkHref[1], 'webform') === false) {
                 $htmlClasses[] = 'btn';
                 $htmlClasses[] = 'btn--primary';
             }

@@ -21,7 +21,7 @@ abstract class DrupCommon {
     /**
      * @param bool $loadEntity
      *
-     * @return object
+     * @return mixed
      */
     public static function getPageEntity($loadEntity = false) {
         $args = in_array(\Drupal::routeMatch()->getRouteName(), [
@@ -41,26 +41,22 @@ abstract class DrupCommon {
         if (!empty($args)) {
             $entityType = current(array_keys($args));
 
-            if (!empty($entityType) && (!in_array($entityType, [
-                    'entity',
-                    'uid',
-                ]))) {
+            if (!empty($entityType) && !in_array($entityType, ['entity', 'uid'])) {
                 $entity = $args[$entityType];
-                $data->type = $entityType;
 
                 if (is_object($entity)) {
-                    $data->bundle = method_exists($entity, 'bundle') ? $entity->bundle() : null;
-                    $data->id = method_exists($entity, 'id') ? $entity->id() : null;
-                }
-                else {
+                    $data->entity = $entity;
+                    $data->id = method_exists($data->entity, 'id') ? (int) $data->entity->id() : null;
+                } else {
+                    if (\Drupal::entityTypeManager()->getDefinition($entityType, false) === null) {
+                        return $data;
+                    }
+                    $data->entity = \Drupal::entityTypeManager()->getStorage($entityType)->load($entity);
                     $data->id = (int) $entity;
                 }
 
-                if ($loadEntity === true && !empty($data->id)) {
-                    $data->entity = \Drupal::entityTypeManager()
-                        ->getStorage($entityType)
-                        ->load($data->id);
-                }
+                $data->type = $entityType;
+                $data->bundle = method_exists($data->entity, 'bundle') ? $data->entity->bundle() : null;
             }
         }
 

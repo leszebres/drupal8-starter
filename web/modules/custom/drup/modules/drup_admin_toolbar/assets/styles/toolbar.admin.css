@@ -2,7 +2,20 @@
   background-image: url("/core/misc/icons/787878/wrench.svg");
 }
 
-body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/config"] {
+body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/config"],
+body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/structure/taxonomy/add"],
+body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/structure/menu/add"],
+body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/structure/menu/manage/admin"],
+body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/structure/menu/manage/account"],
+body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/structure/menu/manage/tools"],
+body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/structure/block"],
+body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/people/roles"],
+body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/people/permissions"] {
+  display: none;
+}
+
+body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/structure/menu"] + .toolbar-menu .toolbar-menu,
+body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/structure/taxonomy"] + .toolbar-menu .toolbar-menu {
   display: none;
 }
 

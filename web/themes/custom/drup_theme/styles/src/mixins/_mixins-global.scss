@@ -10,14 +10,16 @@
 }
 
 @mixin font-icon($icon: null) {
-    position: relative;
+    //position: relative;
+    display: inline-block;
+    //vertical-align: middle;
     font-family: Icons;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
     text-transform: none;
     speak: none;
-    line-height: 1;
+    //line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 

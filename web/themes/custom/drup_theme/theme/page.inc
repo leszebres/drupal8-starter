@@ -38,6 +38,8 @@ function drup_theme_preprocess_page(array &$variables) {
     $drupRouter = \Drupal::service('drup_router.router');
     $routeName = $drupRouter->getName();
 
+    $isFront = \Drupal::service('path.matcher')->isFrontPage();
+
     $variables['cookies_data'] = CookieNotice\Config::get();
     
     $variables['site_name'] = $drupSettings->getValue('site_name');
@@ -47,7 +49,7 @@ function drup_theme_preprocess_page(array &$variables) {
      * Load librariesw
      */
     $variables['page']['#cache']['contexts'][] = 'url.path'; // sets the cacheability metadata
-    if (\Drupal::service('path.matcher')->isFrontPage()) {
+    if ($isFront) {
     
     } else {
         if ($routeName === 'contact') {
@@ -73,7 +75,7 @@ function drup_theme_preprocess_page(array &$variables) {
 
         // Redirect node to their DrupRoute
         $nodesRedirection = [
-            //'news' => '<front>'
+            'factory' => '<front>'
         ];
         if (isset($nodesRedirection[$nodeType])) {
             $path = ($nodesRedirection[$nodeType] === '<front>') ? Url::fromRoute($nodesRedirection[$nodeType])->toString() : $drupRouter->getPath($nodesRedirection[$nodeType]);
@@ -112,8 +114,5 @@ function drup_theme_preprocess_page_title(array &$variables) {
     ]);
     $variables['tag'] = 'h1';
     
-    $entity = \Drupal\drup\DrupCommon::getPageEntity(true);
-    if ($entity->type === 'taxonomy_term') {
-        $variables['title'] = strip_tags($variables['title']->__toString(), 'span');
-    }
+    $entity = DrupCommon::getPageEntity(true);
 }

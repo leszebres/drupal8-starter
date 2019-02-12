@@ -1,4 +1,5 @@
-// Global
+/* Global
+   ========================================================================== */
 .spinner--overlay {
     position: relative;
 }
@@ -15,7 +16,8 @@
     }
 }
 
-// overlay
+/* Overlay
+   ========================================================================== */
 .spinner--overlay {
     .spinner-wrapper {
         position: fixed;
@@ -48,6 +50,24 @@
             .spinner-wrapperInner {
                 background-image: url("../../images/spinner.svg");
             }
+        }
+    }
+}
+
+/* Inline
+   ========================================================================== */
+.spinner--inline {
+    .spinner-wrapper {
+        display: none;
+    }
+
+    &.is-loading {
+        &.form--search-product .form-text,
+        .form-autocomplete {
+            background-image: url("../../images/spinner--inline.svg");
+            background-repeat: no-repeat;
+            background-position: 97% center;
+            background-size: auto 40%;
         }
     }
 }

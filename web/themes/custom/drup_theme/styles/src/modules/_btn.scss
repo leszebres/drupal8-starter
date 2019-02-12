@@ -27,10 +27,6 @@ Styleguide Buttons - 1.btn
     box-sizing: border-box;
     transition: .3s;
 
-    & + & {
-        margin-left: $btn--padding-horizontal/2;
-    }
-
     &:focus,
     &:active,
     &.is-active,
@@ -57,8 +53,18 @@ Styleguide Buttons - 1.btn
     }
 }
 
-button.btn {
-    height: $btn--height;
+button {
+    cursor: pointer;
+    background-color: $btn--background;
+    border: 0;
+
+    &:focus {
+        outline: 0;
+    }
+
+    &.btn {
+        height: $btn--height;
+    }
 }
 
 

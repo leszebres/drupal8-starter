@@ -1,5 +1,8 @@
 <?php
 
+use Drupal\drup\DrupCommon;
+use Drupal\drup\DrupSite;
+
 /**
  * Implements hook_theme_suggestions_field_alter().
  */
@@ -93,6 +96,11 @@ function drup_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
     // WEBFORM (CONTACT)
     elseif (strpos($form_id, 'webform_submission_') !== false) {
         $form['#attributes']['class'] = ['form', 'form--webform'];
+
+        // placeholders
+        DrupCommon::setRequiredAndPlaceholderAttributes($form['elements']);
+        // rgpd
+        DrupSite::setGDPRMention($form, 'contact');
     }
     
     // LOGIN + PASSWORD

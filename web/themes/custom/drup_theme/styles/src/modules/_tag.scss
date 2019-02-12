@@ -10,14 +10,13 @@ Styleguide Tags - 1.tag
 .tag {
     position: relative;
     display: inline-block;
-    padding: 4px 10px 5px;
-    color: #fff;
-    @include font(primary);
-    font-size: $fontsize--small;
-    font-style: italic;
-    line-height: 1.2;
-    background: $color--primary;
-    border-radius: 6px;
+    padding: $tag--padding-vertical $tag--padding-horizontal;
+    color: $tag--color;
+    @include font(primary, medium);
+    font-size: $tag--fontsize;
+    line-height: $tag--lineheight;
+    background: $tag--background;
+    border-radius: $tag--border-radius;
     transition: .3s;
 }
 a.tag {

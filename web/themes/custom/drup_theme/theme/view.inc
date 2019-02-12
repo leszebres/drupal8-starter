@@ -19,6 +19,10 @@ use Drupal\drup\DrupSite;
 function drup_theme_preprocess_views_view(&$variables) {
     $drupViewsView = new DrupViewsView($variables);
     $variables = $drupViewsView->controller();
+
+    if (empty($variables['rows'])) {
+        $variables['empty'] = t('No result match your search.');
+    }
     
 //    switch ($variables['view']->id()) {
 //        case 'store_locators':

@@ -16,17 +16,6 @@ imagesloaded:
   dependencies:
   - core/jquery
 
-flickity:
-  version: '2.1.2'
-  css:
-    theme:
-      js/libs/flickity/flickity.css: {}
-  js:
-    js/libs/flickity/flickity.pkgd.min.js: {}
-  dependencies:
-  - core/jquery
-  - drup_theme/imagesloaded
-
 masonry:
   version: '4.2.2'
   js:
@@ -44,11 +33,6 @@ leaflet:
       js/libs/leaflet/leaflet.css: {}
   dependencies:
   - core/jquery
-
-swiftmailer:
-  css:
-    theme:
-      styles/dist/mail.css: {}
 
 # CUSTOM
 togglemenu:
@@ -106,6 +90,11 @@ responsivetable:
   - drup_theme/devicedetect
 
 # THEME
+swiftmailer:
+  css:
+    theme:
+      styles/dist/mail.css: {}
+
 theme:
   version: '0.1'
   css:

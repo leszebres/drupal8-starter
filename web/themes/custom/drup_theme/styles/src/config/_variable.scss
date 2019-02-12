@@ -149,6 +149,18 @@ $input--background: $color--background-secondary;
 
 $input--height: floor($input--padding-vertical*2 + $input--fontsize * $input--lineheight + $input--border-width*2);
 
+
+/* ==========================================================================
+   TAG
+   ========================================================================== */
+$tag--color: $color--primary;
+$tag--border-radius: 15px;
+$tag--background: $color--primary;
+$tag--fontsize: $fontsize--tiny;
+$tag--lineheight: 1.1;
+$tag--padding-horizontal: 15px;
+$tag--padding-vertical: 7px;
+
 /* ==========================================================================
    TABLE
    ========================================================================== */

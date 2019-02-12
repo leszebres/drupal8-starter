@@ -3,7 +3,7 @@
 .block {
     position: relative;
     z-index: 1;
-    margin-bottom: $v-align;
+    margin-bottom: $v-align--medium;
     padding-top: $v-align;
     padding-bottom: $v-align;
     box-sizing: border-box;
@@ -40,7 +40,10 @@
 
 .block-admin-btn {
     margin-bottom: $v-align--medium;
+    padding: $v-align--medium 0;
+    border-top: 1px solid rgba(#000, .15);
     text-align: center;
+    background-color: rgba(#000, .03);
 }
 
 /* ==========================================================================

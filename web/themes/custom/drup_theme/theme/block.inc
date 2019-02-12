@@ -17,6 +17,7 @@ function drup_theme_preprocess_block(array &$variables) {
     if ($pluginId === 'system_branding_block') {
         $drupSettings = new DrupSettings();
         $variables['site_alt_logo'] = $drupSettings->getValue('site_logo_alt');
+        $variables['home_h1'] = $drupSettings->getValue('home_h1');
         $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
     }
     // Breadcrumb

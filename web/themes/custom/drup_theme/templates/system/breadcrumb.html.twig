@@ -14,7 +14,9 @@
                 {% if item.url %}
                     <li class="nav-item">
                         <a href="{{ item.url }}">{{ item.text|raw }}</a>
-                        <span class="item-separator icon icon--arrow">&nbsp;</span>
+                        {% if i != breadcrumb|length - 1 %}
+                            <span class="item-separator icon icon--arrow-right">&nbsp;</span>
+                        {% endif %}
                     </li>
                 {% else %}
                     <li class="nav-item" aria-current="page">

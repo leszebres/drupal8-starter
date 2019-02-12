@@ -30,6 +30,9 @@
    INPUT
    ========================================================================== */
 /* ==========================================================================
+   TAG
+   ========================================================================== */
+/* ==========================================================================
    TABLE
    ========================================================================== */
 /* ==========================================================================
@@ -389,6 +392,8 @@ template {
 [hidden] {
   display: none; }
 
+/* Global
+   ========================================================================== */
 .spinner--overlay {
   position: relative; }
 
@@ -402,6 +407,8 @@ template {
     visibility: visible;
     pointer-events: auto; }
 
+/* Overlay
+   ========================================================================== */
 .spinner--overlay .spinner-wrapper {
   position: fixed;
   top: 0;
@@ -430,6 +437,18 @@ template {
 
 .spinner--overlay.l-spinner.is-loading .spinner-wrapperInner {
   background-image: url("../../images/spinner.svg"); }
+
+/* Inline
+   ========================================================================== */
+.spinner--inline .spinner-wrapper {
+  display: none; }
+
+.spinner--inline.is-loading.form--search-product .form-text,
+.spinner--inline.is-loading .form-autocomplete {
+  background-image: url("../../images/spinner--inline.svg");
+  background-repeat: no-repeat;
+  background-position: 97% center;
+  background-size: auto 40%; }
 
 /* ==========================================================================
    Notice des cookies
@@ -482,30 +501,11 @@ template {
             align-items: center;
     margin-left: 20px; }
   .notice--cookie .cookienotice-btn {
-    padding: 15px 32px;
-    color: #000;
-    font-weight: bold;
-    background-color: #fff;
-    border: 1px solid transparent;
-    border-radius: 20px;
-    cursor: pointer;
-    -webkit-transition: .3s;
-    transition: .3s;
     white-space: nowrap; }
     .notice--cookie .cookienotice-btn + .cookienotice-btn {
       margin-left: 10px; }
-    .notice--cookie .cookienotice-btn:hover, .notice--cookie .cookienotice-btn:focus {
-      color: #fff;
-      text-decoration: none;
-      background-color: #000;
-      border-color: #000; }
   .notice--cookie .cookienotice-btn--primary {
     text-transform: uppercase; }
-  .notice--cookie .cookienotice-btn--secondary {
-    background-color: transparent;
-    color: #fff;
-    border-color: #fff;
-    text-transform: none; }
   @media (max-width: 767px) {
     .notice--cookie {
       -webkit-box-orient: vertical;
@@ -644,7 +644,6 @@ template {
     margin: 0 20px 24px 0;
     color: #333;
     font-size: 2em;
-    font-weight: bold;
     text-transform: uppercase; }
   .cookienotice-modal-header .cookienotice-modal-description {
     margin: 24px 0;
@@ -764,6 +763,9 @@ p.cookienotice-service-all-label {
 /* ==========================================================================
    GLOBAL
    ========================================================================== */
+html {
+  font-size: 1rem; }
+
 html,
 body {
   width: 100%;
@@ -787,7 +789,7 @@ a {
   text-decoration: none;
   -webkit-transition: .2s;
   transition: .2s; }
-  a:hover, a:focus {
+  a:not(.btn):hover, a:not(.btn):focus {
     color: #000; }
 
 strong,
@@ -864,41 +866,37 @@ table {
   table caption {
     margin-bottom: 24px;
     font-style: italic; }
-
-th,
-td {
-  vertical-align: middle;
-  padding: 15px 32px; }
-  th + th,
-  td + th, th +
-  td,
-  td +
-  td {
-    border-left: 1px solid #fff; }
-
-th {
-  color: #fff;
-  vertical-align: bottom; }
-
-thead {
-  font-weight: normal;
-  font-family: "Arial", Arial, sans-serif;
-  color: #fff; }
-  thead,
-  thead a {
+  table th,
+  table td {
+    vertical-align: middle;
+    padding: 15px 32px; }
+    table th + table th,
+    table td + table th, table th +
+    table td,
+    table td +
+    table td {
+      border-left: 1px solid #fff; }
+  table th {
+    color: #fff;
+    vertical-align: bottom; }
+  table thead {
+    font-weight: normal;
+    font-family: "Arial", Arial, sans-serif;
     color: #fff; }
-  thead tr {
-    background-color: #f2653d; }
-  thead th,
-  thead td {
-    border: 1px solid #f2653d; }
-
-tbody {
-  background-color: #fff; }
-  tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3; }
-  tbody td {
-    border: 1px solid #c0c0c0; }
+    table thead,
+    table thead a {
+      color: #fff; }
+    table thead tr {
+      background-color: #f2653d; }
+    table thead th,
+    table thead td {
+      border: 1px solid #f2653d; }
+  table tbody {
+    background-color: #fff; }
+    table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3; }
+    table tbody td {
+      border: 1px solid #c0c0c0; }
 
 /* ==========================================================================
    Rows
@@ -1118,12 +1116,12 @@ tbody {
   position: relative;
   max-width: 1920px;
   margin: 0 auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   -webkit-transition: -webkit-transform .3s;
   transition: -webkit-transform .3s;
   transition: transform .3s;
-  transition: transform .3s, -webkit-transform .3s;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box; }
+  transition: transform .3s, -webkit-transform .3s; }
 
 /* ==========================================================================
    Header
@@ -1156,21 +1154,18 @@ tbody {
    MODULES
    ========================================================================== */
 .icon:before {
-  position: relative;
+  display: inline-block;
   font-family: Icons;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
   speak: none;
-  line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
 .btn.icon:before,
 p.icon:before {
-  top: -1px;
-  vertical-align: middle;
   margin-right: .6em; }
 
 /*
@@ -1308,8 +1303,6 @@ Styleguide Buttons - 1.btn
   transition: .3s;
   /* Sizes
        ========================================================================== */ }
-  .btn + .btn {
-    margin-left: 16px; }
   .btn:focus, .btn:active, .btn.is-active, .btn:hover,
   a:hover .btn {
     color: #fff;
@@ -1321,8 +1314,14 @@ Styleguide Buttons - 1.btn
     opacity: .5;
     cursor: default; }
 
-button.btn {
-  height: 54px; }
+button {
+  cursor: pointer;
+  background-color: #f3f3f3;
+  border: 0; }
+  button:focus {
+    outline: 0; }
+  button.btn {
+    height: 54px; }
 
 /*
 Btn primary
@@ -1350,15 +1349,14 @@ Styleguide Tags - 1.tag
 .tag {
   position: relative;
   display: inline-block;
-  padding: 4px 10px 5px;
-  color: #fff;
+  padding: 7px 15px;
+  color: #f2653d;
   font-weight: normal;
-  font-family: "Arial", Arial, sans-serif;
-  font-size: 0.875rem;
-  font-style: italic;
-  line-height: 1.2;
+  font-family: Arial, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.1;
   background: #f2653d;
-  border-radius: 6px;
+  border-radius: 15px;
   -webkit-transition: .3s;
   transition: .3s; }
 
@@ -1884,7 +1882,7 @@ Styleguide Paragraphs - 30.paragraph--type--image
 .block {
   position: relative;
   z-index: 1;
-  margin-bottom: 48px;
+  margin-bottom: 24px;
   padding-top: 48px;
   padding-bottom: 48px;
   -webkit-box-sizing: border-box;
@@ -1914,7 +1912,10 @@ Styleguide Paragraphs - 30.paragraph--type--image
 
 .block-admin-btn {
   margin-bottom: 24px;
-  text-align: center; }
+  padding: 24px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.03); }
 
 /* ==========================================================================
    Variantes globales
@@ -1970,6 +1971,8 @@ Styleguide Blocks - 1.block--primary
       counter-increment: decimal; }
       .node-body ol:not([class]) > li:before {
         content: counter(decimal) "."; }
+  .node-body .btn {
+    margin: 0 12px 12px 0; }
 
 .node-body .item-body {
   /* Texte
@@ -2132,14 +2135,13 @@ Styleguide Blocks - 1.block--primary
     margin-right: 30px; }
 
 .btn--block-admin:after {
-  position: relative;
+  display: inline-block;
   font-family: Icons;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
   speak: none;
-  line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 0.875rem; }

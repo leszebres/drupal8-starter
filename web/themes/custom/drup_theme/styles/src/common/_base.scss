@@ -2,6 +2,7 @@
    GLOBAL
    ========================================================================== */
 html {
+    font-size: $body--fontsize;
 }
 
 html,
@@ -13,7 +14,7 @@ body { // Fix iPad container
 body {
     color: $color--text;
     @include font(primary);
-    font-size: $body--fontsize;
+    font-size: 1rem;
     line-height: $body--lineheight;
     background-color: $color--background;
     -webkit-font-smoothing: antialiased;
@@ -29,8 +30,8 @@ a {
     text-decoration: none;
     transition: .2s;
 
-    &:hover,
-    &:focus {
+    &:not(.btn):hover,
+    &:not(.btn):focus {
         color: $color--link-hover;
     }
 }
@@ -127,47 +128,48 @@ table {
         margin-bottom: $v-align--medium;
         font-style: italic;
     }
-}
-th,
-td {
-    vertical-align: middle;
-    padding: $table--padding-vertical $table--padding-horizontal;
 
-    & + & {
-        border-left: 1px solid $table--border;
-    }
-}
-th {
-    color: #fff;
-    vertical-align: bottom;
-}
-td {
-
-}
-thead {
-    @include font(primary, bold);
-    color: #fff;
-
-    &,
-    a {
-        color: #fff;
-    }
-
-    tr {
-        background-color: $table--background-thead;
-    }
     th,
     td {
-        border: 1px solid $table--background-thead;
-    }
-}
-tbody {
-    background-color: $table--background-odd;
+        vertical-align: middle;
+        padding: $table--padding-vertical $table--padding-horizontal;
 
-    tr:nth-of-type(even) {
-        background-color: $table--background-even;
+        & + & {
+            border-left: 1px solid $table--border;
+        }
+    }
+    th {
+        color: #fff;
+        vertical-align: bottom;
     }
     td {
-        border: 1px solid $color--border;
+
+    }
+    thead {
+        @include font(primary, bold);
+        color: #fff;
+
+        &,
+        a {
+            color: #fff;
+        }
+
+        tr {
+            background-color: $table--background-thead;
+        }
+        th,
+        td {
+            border: 1px solid $table--background-thead;
+        }
+    }
+    tbody {
+        background-color: $table--background-odd;
+
+        tr:nth-of-type(even) {
+            background-color: $table--background-even;
+        }
+        td {
+            border: 1px solid $color--border;
+        }
     }
 }

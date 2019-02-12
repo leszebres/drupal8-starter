@@ -60,6 +60,10 @@
             }
         }
     }
+
+    .btn {
+        margin: 0 $grid--gutter-inner-width/2 $grid--gutter-inner-width/2 0;
+    }
 }
 
 
@@ -68,6 +72,10 @@
        ========================================================================== */
     a:not(.btn) {
         text-decoration: underline;
+
+        &:focus,
+        &:hover {
+        }
     }
 
     h2,
