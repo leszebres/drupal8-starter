@@ -2,6 +2,7 @@
 
 namespace Drupal\drup;
 
+use Drupal\Component\Utility\Xss;
 use Drupal\node\Entity\Node;
 use Drupal\drup\Helpers\DrupUrl;
 

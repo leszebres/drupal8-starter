@@ -2,6 +2,7 @@
 
 use Drupal\Core\Template\Attribute;
 use Drupal\Component\Utility\Html;
+use Drupal\drup\DrupSEO;
 use Drupal\drup_settings\DrupSettings;
 
 use Drupal\drup\DrupCommon;
@@ -38,6 +39,9 @@ function drup_theme_preprocess_html(array &$variables) {
     }
     if (isset($variables['node_type'])) {
         $variables['attributes']->addClass('node-type--' . Html::cleanCssIdentifier($variables['node_type']));
+
+        // Site title
+        DrupSEO::addSiteTitle($variables['head_title']['title']);
     }
     if ($routeName = $drupRouter->getName()) {
         $variables['#attached']['drupalSettings']['currentRoute'] = $routeName;
@@ -49,4 +53,7 @@ function drup_theme_preprocess_html(array &$variables) {
     $variables['google_tag'] = $drupSettings->getValue('site_tag_manager');;
 
     DrupCommon::addFavicons($variables, ['color_mask_icon' => '#5bbad5', 'color_msapplication' => '#da532c', 'color_theme' => '#ffffff'], 1);
+
+    // SEO
+    DrupSEO::pagerHandler($variables);
 }
