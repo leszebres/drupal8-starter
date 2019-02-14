@@ -48,7 +48,7 @@ settings:
             - Maximize
   plugins:
     stylescombo:
-      styles: "a.btn|Bouton simple\r\na.btn.btn--primary|Bouton normal"
+      styles: "a.btn.btn--primary|Bouton normal\r\na.btn.btn--link|Bouton simple"
     drupallink:
       linkit_enabled: true
       linkit_profile: simple

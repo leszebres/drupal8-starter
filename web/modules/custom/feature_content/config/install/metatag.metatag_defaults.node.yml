@@ -1,0 +1,17 @@
+langcode: fr
+status: true
+dependencies: {  }
+id: node
+label: Contenu
+tags:
+  canonical_url: '[node:url]'
+  description: '[seo:meta:desc]'
+  og_image_width: '[seo:thumbnail:width]'
+  og_image: '[seo:thumbnail:url]'
+  og_image_height: '[seo:thumbnail:height]'
+  og_description: '[seo:meta:desc]'
+  og_image_type: '[seo:thumbnail:type]'
+  twitter_cards_image: '[seo:thumbnail:url]'
+  twitter_cards_image_width: '[seo:thumbnail:width]'
+  twitter_cards_description: '[site:meta:desc]'
+  twitter_cards_image_height: '[seo:thumbnail:height]'

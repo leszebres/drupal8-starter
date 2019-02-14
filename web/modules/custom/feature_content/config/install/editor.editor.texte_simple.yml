@@ -29,10 +29,10 @@ settings:
             - Source
   plugins:
     stylescombo:
-      styles: "a.btn|Bouton simple\r\na.btn.btn--primary|Bouton normal"
+      styles: 'a.btn.btn--link|Bouton simple'
     drupallink:
-      linkit_enabled: true
-      linkit_profile: simple
+      linkit_enabled: false
+      linkit_profile: ''
     language:
       language_list: un
 image_upload:

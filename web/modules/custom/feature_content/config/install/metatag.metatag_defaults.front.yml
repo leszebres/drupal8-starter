@@ -1,0 +1,21 @@
+langcode: fr
+status: true
+dependencies: {  }
+id: front
+label: 'Front page'
+tags:
+  shortlink: '[site:url]'
+  title: '[seo:meta:front:title]'
+  canonical_url: '[site:url]'
+  description: '[seo:meta:front:desc]'
+  og_image_width: '[seo:logo:width]'
+  og_image: '[seo:logo:url]'
+  og_image_height: '[seo:logo:height]'
+  og_description: '[seo:meta:front:desc]'
+  og_image_type: '[seo:logo:type]'
+  og_title: '[seo:meta:front:title]'
+  twitter_cards_image: '[seo:logo:url]'
+  twitter_cards_image_width: '[seo:logo:width]'
+  twitter_cards_description: '[seo:meta:front:desc]'
+  twitter_cards_image_height: '[seo:logo:height]'
+  twitter_cards_title: '[seo:meta:front:title]'

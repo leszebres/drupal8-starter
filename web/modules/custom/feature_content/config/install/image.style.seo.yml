@@ -1,0 +1,15 @@
+langcode: fr
+status: true
+dependencies: {  }
+name: seo
+label: SEO
+effects:
+  bf022cb3-93cb-43f8-a27f-7917fc1cc14e:
+    uuid: bf022cb3-93cb-43f8-a27f-7917fc1cc14e
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1200
+      height: 630
+      anchor: center-center
+pipeline: default
