@@ -1,24 +1,7 @@
-// Styleguide Icons
-
-.icon {
-    &:before {
-        @include font-icon;
-    }
-}
-.btn.icon,
-p.icon {
-    &:before {
-        margin-right: .6em;
-    }
-}
-
 /*
-.icon--name - \unicode
+Généré par Gulp
 
-Markup: <span class="icon $modifierClass"></span>
+@see styles/src/config/_fonticon.twig
 
-Styleguide Icons - 1.icon
+Commande : gulp fonticon
 */
-.icon--edit:before {
-    content: '';
-}

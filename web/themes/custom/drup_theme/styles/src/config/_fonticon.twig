@@ -1,0 +1,42 @@
+// Styleguide Icons
+
+/* ==========================================================================
+   Font
+   ========================================================================== */
+@font-face {
+    font-family: {{ fontName }};
+    font-weight: normal;
+    font-style: normal;
+    src: url("../../fonts/{{ fontName|lower }}.woff2?v={{ fontVersion }}") format("woff2"),
+         url("../../fonts/{{ fontName|lower }}.woff?v={{ fontVersion }}") format("woff");
+}
+
+/* ==========================================================================
+   Icons
+   ========================================================================== */
+.icon {
+    &:before {
+        @include font-icon;
+    }
+}
+.btn.icon,
+p.icon {
+    &:before {
+        margin-right: .6em;
+    }
+}
+
+/*
+{% for glyph in glyphs %}
+.icon--{{ glyph.name }} - \{{ glyph.unicode }}
+{% endfor %}
+
+Markup: <span class="icon $modifierClass"></span>
+
+Styleguide Icons - 1.icon
+*/
+{% for glyph in glyphs %}
+.icon--{{ glyph.name }}:before {
+    content: "\{{ glyph.unicode }}";
+}
+{% endfor %}

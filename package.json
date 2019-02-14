@@ -27,6 +27,7 @@
   "devDependencies": {
     "autoprefixer": "^9.4.7",
     "gulp": "^4.0.0",
+    "gulp-consolidate": "^0.2.0",
     "gulp-iconfont": "^10.0.2",
     "gulp-imagemin": "^5.0.3",
     "gulp-load-plugins": "^1.5.0",
@@ -35,7 +36,8 @@
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "postcss-pxtorem": "^4.0.1",
-    "pump": "^3.0.0"
+    "pump": "^3.0.0",
+    "twig": "^1.13.2"
   },
   "dependencies": {
     "gettext-parser": "^3.1.0",

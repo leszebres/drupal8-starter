@@ -34,11 +34,26 @@ function fonticon(pumpCallback) {
         plugins.iconfont({
             fontName: 'Icons',
             formats: ['woff', 'woff2', 'svg'],
-            timestamp: Math.round(Date.now() / 1000)
-        }).on('glyphs', function(glyphs, options) {
-            // Generate css
-            console.log(glyphs);
-        }),
+            centerHorizontally: true,
+            normalize: true,
+            fontHeight: 1000,
+            log: function() {}
+        })
+            .on('glyphs', function(glyphs, options) {
+                glyphs.forEach(function (glyph) {
+                    glyph.unicode = glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase();
+                });
+
+                plugins.pump([
+                    plugins.gulp.src(packagejson.paths.theme + '/' + packagejson.paths.styles + '/src/config/_fonticon.twig'),
+                    plugins.consolidate('twig', {
+                        fontName: options.fontName,
+                        glyphs: glyphs
+                    }),
+                    plugins.rename('_icon.scss'),
+                    plugins.gulp.dest(packagejson.paths.theme + '/' + packagejson.paths.styles + '/src/modules')
+                ], pumpCallback);
+            }),
         plugins.gulp.dest(packagejson.paths.theme + '/' + packagejson.paths.fonts)
     ], pumpCallback);
 }
