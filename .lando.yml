@@ -16,7 +16,6 @@ config:
   php: '7.2'
   via: apache
   database: mariadb
-  drush: composer
   xdebug: false
 
 # Commands on events
@@ -39,6 +38,8 @@ proxy:
 # Additional services
 services:
   appserver:
+    build:
+      - composer install
     composer:
       deployer/deployer: '6.*'
   node:
@@ -54,6 +55,8 @@ services:
 
 # Additionnal commands line "lando XXX"
 tooling:
+  drush:
+    cmd: /app/vendor/bin/drush
   npm:
     service: node
   node:

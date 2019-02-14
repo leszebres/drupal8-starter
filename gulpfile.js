@@ -28,4 +28,5 @@ function watchsass() {
 }
 
 // Alias
+exports.sass = sass;
 exports.default = plugins.gulp.series(sass, watchsass);
