@@ -17,3 +17,15 @@ matchers:
       bundles: {  }
       group_by_bundle: true
       substitution_type: canonical
+      limit: 100
+  100ae527-cf83-4548-85c5-7dc0d3927b5a:
+    uuid: 100ae527-cf83-4548-85c5-7dc0d3927b5a
+    id: 'entity:media'
+    weight: 0
+    settings:
+      metadata: ''
+      bundles:
+        document: document
+      group_by_bundle: false
+      substitution_type: media
+      limit: 100

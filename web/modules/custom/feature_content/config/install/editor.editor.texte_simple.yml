@@ -29,7 +29,7 @@ settings:
             - Source
   plugins:
     stylescombo:
-      styles: 'a.btn.btn--link|Bouton simple'
+      styles: 'a.btn.btn--link|Bouton lien'
     drupallink:
       linkit_enabled: false
       linkit_profile: ''
