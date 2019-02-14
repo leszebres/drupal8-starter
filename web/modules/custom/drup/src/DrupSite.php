@@ -52,7 +52,7 @@ class DrupSite {
 
             $links[$socialNetwork] = [
                 'url' => $url,
-                'title' => ucfirst($socialNetwork),
+                'title' => ucfirst($socialNetwork)
             ];
         }
 
@@ -125,5 +125,25 @@ class DrupSite {
         $form['gdpr_infos']['#suffix'] = '<div class="form-legal-info">';
         $form['gdpr_infos']['#suffix'] .= self::getGDPRMention($type);
         $form['gdpr_infos']['#suffix'] .= '</div>';
+    }
+
+    /**
+     * Retourne des informations sur le logo du site
+     *
+     * @return object
+     */
+    public static function getLogo() {
+        $out = (object) ['url' => null, 'width' => null, 'height' => null, 'mimetype' => null];
+        $theme = \Drupal::theme()->getActiveTheme();
+        $logo = \Drupal::request()->getUriForPath('/' . $theme->getPath() . '/images/logo.png');
+
+        if ($logo && ($size = getimagesize($logo))) {
+            $out->url = $logo;
+            $out->width = $size[0];
+            $out->height = $size[1];
+            $out->mimetype = $size['mime'];
+        }
+
+        return $out;
     }
 }

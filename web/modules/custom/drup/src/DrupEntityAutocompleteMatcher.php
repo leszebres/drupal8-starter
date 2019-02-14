@@ -4,13 +4,14 @@ namespace Drupal\drup;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\Tags;
+use Drupal\Core\Entity\EntityAutocompleteMatcher;
 
 /**
  * Class DrupEntityAutocompleteMatcher
  *
  * @package Drupal\drup
  */
-class DrupEntityAutocompleteMatcher extends \Drupal\Core\Entity\EntityAutocompleteMatcher {
+class DrupEntityAutocompleteMatcher extends EntityAutocompleteMatcher {
 
     /**
      * @param string $target_type
