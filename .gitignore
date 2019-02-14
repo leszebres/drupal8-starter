@@ -1,7 +1,6 @@
 ####### Custom
 node_modules
 _sql
-config/sync
 /web/sites/*/services.yml
 drupal8.*.gz
 !_dump/drupal8.*.gz

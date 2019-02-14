@@ -95,12 +95,14 @@ function drup_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
     
     // WEBFORM (CONTACT)
     elseif (strpos($form_id, 'webform_submission_') !== false) {
-        $form['#attributes']['class'] = ['form', 'form--webform'];
+        $form['#attributes']['class'][] = 'form'; // Ne pas remplacer les classes par défaut, elles sont utilisées par webform (conditions)
+        $form['#attributes']['class'][] = 'form--webform';
 
         // placeholders
         DrupCommon::setRequiredAndPlaceholderAttributes($form['elements']);
-        // rgpd
-        DrupSite::setGDPRMention($form, 'contact');
+
+        // RGPD
+        DrupSite::setGDPRMention($form);
     }
     
     // LOGIN + PASSWORD

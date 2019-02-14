@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b0d89ddd318585a452f3c3f792d2a491",
+    "content-hash": "9706d5dbdcdf3d9b3e7b468cc433017d",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1831,7 +1831,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/admin_toolbar",
-                "reference": "0d9171cac3776a4ec9c3ca03bf86c23fec3bae1a"
+                "reference": "7755a9a7a97eaa363545042cfea295dcc576166b"
             },
             "require": {
                 "drupal/core": "*"
@@ -1842,8 +1842,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.25+2-dev",
-                    "datestamp": "1549217880",
+                    "version": "8.x-1.26+1-dev",
+                    "datestamp": "1549472880",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -1899,7 +1899,7 @@
                 "source": "http://cgit.drupalcode.org/admin_toolbar",
                 "issues": "https://www.drupal.org/project/issues/admin_toolbar"
             },
-            "time": "2019-02-06T17:07:23+00:00"
+            "time": "2019-02-12T15:38:15+00:00"
         },
         {
             "name": "drupal/adminimal_theme",
@@ -2083,7 +2083,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/claro",
-                "reference": "5b2b95bd84b2b4f322dc00dea7377ecc41c569e1"
+                "reference": "0b84db48f0c4bf078d484de0b55cc0d2a2155268"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -2095,7 +2095,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.x-dev",
-                    "datestamp": "1549881784",
+                    "datestamp": "1549966080",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -2133,7 +2133,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/claro"
             },
-            "time": "2019-02-11T15:54:28+00:00"
+            "time": "2019-02-13T10:14:57+00:00"
         },
         {
             "name": "drupal/config_update",
@@ -4021,8 +4021,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.7+3-dev",
-                    "datestamp": "1549605917",
+                    "version": "8.x-1.7+2-dev",
+                    "datestamp": "1543094281",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -4135,7 +4135,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/paragraphs",
-                "reference": "066dc3d4e8cde210aef15ee19ef2352ce7663b98"
+                "reference": "8627264255e05c2d0c86453adb77e8c01bb57d65"
             },
             "require": {
                 "drupal/core": "~8",
@@ -4163,8 +4163,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.5+19-dev",
-                    "datestamp": "1548972180",
+                    "version": "8.x-1.5+22-dev",
+                    "datestamp": "1550005380",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -4202,7 +4202,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/paragraphs"
             },
-            "time": "2019-02-11T14:14:56+00:00"
+            "time": "2019-02-12T21:03:33+00:00"
         },
         {
             "name": "drupal/pathauto",
@@ -4930,6 +4930,65 @@
                 "source": "http://cgit.drupalcode.org/url_embed",
                 "issues": "https://www.drupal.org/project/issues/url_embed",
                 "irc": "irc://irc.freenode.org/drupal-media"
+            }
+        },
+        {
+            "name": "drupal/views_ajax_history",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/views_ajax_history",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/views_ajax_history-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "ef23bf3a8e1c902b98d4556203dd8fc7068dfcb5"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1535376480",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "amateescu",
+                    "homepage": "https://www.drupal.org/user/729614"
+                },
+                {
+                    "name": "joelpittet",
+                    "homepage": "https://www.drupal.org/user/160302"
+                },
+                {
+                    "name": "kalman.hosszu",
+                    "homepage": "https://www.drupal.org/user/267481"
+                },
+                {
+                    "name": "nod_",
+                    "homepage": "https://www.drupal.org/user/598310"
+                }
+            ],
+            "description": "Add bookmarking abilities to AJAX Views.",
+            "homepage": "https://www.drupal.org/project/views_ajax_history",
+            "support": {
+                "source": "http://cgit.drupalcode.org/views_ajax_history"
             }
         },
         {
