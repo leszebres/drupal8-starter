@@ -392,7 +392,8 @@ template {
 [hidden] {
   display: none; }
 
-/* Global
+/* ==========================================================================
+   Spinner
    ========================================================================== */
 .spinner--overlay {
   position: relative; }
@@ -407,7 +408,8 @@ template {
     visibility: visible;
     pointer-events: auto; }
 
-/* Overlay
+/* ==========================================================================
+   Overlay
    ========================================================================== */
 .spinner--overlay .spinner-wrapper {
   position: fixed;
@@ -419,7 +421,7 @@ template {
   -webkit-transition: opacity .3s;
   transition: opacity .3s; }
 
-.spinner--overlay .spinner-wrapperInner {
+.spinner--overlay .spinner-wrapper-inner {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -431,19 +433,16 @@ template {
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25); }
 
-.spinner--overlay.l-spinner .spinner-wrapperInner {
+.spinner--overlay.l-spinner .spinner-wrapper-inner {
   background: no-repeat center #f2653d;
   border-radius: 50%; }
 
-.spinner--overlay.l-spinner.is-loading .spinner-wrapperInner {
+.spinner--overlay.l-spinner.is-loading .spinner-wrapper-inner {
   background-image: url("../../images/spinner.svg"); }
 
-/* Inline
+/* ==========================================================================
+   Inline
    ========================================================================== */
-.spinner--inline .spinner-wrapper {
-  display: none; }
-
-.spinner--inline.is-loading.form--search-product .form-text,
 .spinner--inline.is-loading .form-autocomplete {
   background-image: url("../../images/spinner--inline.svg");
   background-repeat: no-repeat;

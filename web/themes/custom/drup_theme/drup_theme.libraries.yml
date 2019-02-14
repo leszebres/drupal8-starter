@@ -45,7 +45,7 @@ togglemenu:
   - core/jquery
 
 customform:
-  version: '4.6.1'
+  version: '4.6.4'
   js:
     js/libs/customform/customform.min.js: {}
     js/libs/customform/customform-select.min.js: {}
@@ -54,7 +54,7 @@ customform:
   - core/jquery
 
 cookienotice:
-  version: '3.0.4'
+  version: '3.0.5'
   js:
     js/libs/cookienotice.min.js: {}
   dependencies:
@@ -68,14 +68,14 @@ fixer:
   - core/jquery
 
 spinner:
-  version: '2.2.2'
+  version: '2.3.0'
   js:
     js/libs/spinner.min.js: {}
   dependencies:
   - core/jquery
 
 devicedetect:
-  version: '2.1.1'
+  version: '2.1.2'
   js:
     js/libs/devicedetect.min.js: {}
   dependencies:
