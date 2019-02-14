@@ -16,6 +16,7 @@ let Theme = {};
             page: $('#page')
         };
         this.elements.externalLinks = this.elements.page.find('a[href^="http"]');
+        this.elements.openInNewWindowLinks = this.elements.page.find('a[href$=".pdf"]');
 
         // Variables
         this.deviceDetect = undefined;
@@ -63,6 +64,7 @@ let Theme = {};
             this.spinnerHandler();
             this.cookieNoticeHandler();
             this.externalLinksHandler();
+            this.openInNewWindowHandler();
             this.anchorLinksHandler();
             this.drupBlockAdminFallback();
         },
@@ -114,6 +116,18 @@ let Theme = {};
                     if (link.attr('href').indexOf(window.location.host) === -1) {
                         link.attr('target', '_blank');
                     }
+                });
+            }
+        },
+
+        /**
+         * Gestionnaire pour l'ouverture de lien dans un nouvel onglet
+         */
+        openInNewWindowHandler: function () {
+            if (this.elements.openInNewWindowLinks.length) {
+                this.elements.openInNewWindowLinks.on('click', function (event) {
+                    event.preventDefault();
+                    window.open($(event.currentTarget).attr('href'));
                 });
             }
         },
@@ -181,16 +195,8 @@ let Theme = {};
      */
     Drupal.behaviors.drupTheme = {
         attach: function (context) {
-            if (context.body !== undefined) {
-                Drupal.Theme = new Theme.Common();
-                Drupal.Theme.init();
-                Drupal.Theme.load('all').init();
-
-                Drupal.Theme.autoload({
-                    //contact: '.route--contact'
-                });
-
-            } else {
+            // XHR
+            if (context.body === undefined) {
                 context = $(context);
 
                 if (context.length) {
@@ -199,6 +205,16 @@ let Theme = {};
                     //     thematic.customFormHandler();
                     // }
                 }
+            }
+            // Ready
+            else {
+                Drupal.Theme = new Theme.Common();
+                Drupal.Theme.init();
+                Drupal.Theme.load('all').init();
+
+                Drupal.Theme.autoload({
+                    //contact: '.route--contact'
+                });
             }
         }
     };
