@@ -48,6 +48,7 @@ function fonticon(pumpCallback) {
                     plugins.gulp.src(packagejson.paths.theme + '/' + packagejson.paths.styles + '/src/config/_fonticon.twig'),
                     plugins.consolidate('twig', {
                         fontName: options.fontName,
+                        fontVersion: Math.round(Date.now() / 1000),
                         glyphs: glyphs
                     }),
                     plugins.rename('_icon.scss'),
@@ -58,13 +59,27 @@ function fonticon(pumpCallback) {
     ], pumpCallback);
 }
 
-// Compression Images
+// Compression images
 function images(pumpCallback) {
-
+    return plugins.pump([
+        plugins.gulp.src(packagejson.paths.theme + '/' + packagejson.paths.images + '/**/*.{png,jpg,svg}'),
+        plugins.imagemin({
+            progressive: true,
+            interlaced: true,
+            optimizationLevel: 7,
+            svgoPlugins: [
+                {removeViewBox: false},
+                {cleanupIDs: false}
+            ],
+            verbose: true,
+            use: []
+        }),
+        plugins.gulp.dest(packagejson.paths.theme + '/' + packagejson.paths.images)
+    ], pumpCallback);
 }
 
 // Alias
 exports.sass = sass;
-exports.fonticon = fonticon;
+exports.fonticon = plugins.gulp.series(fonticon, sass);
 exports.images = images;
 exports.default = plugins.gulp.series(sass, watchsass);
