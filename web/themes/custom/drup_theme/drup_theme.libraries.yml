@@ -45,11 +45,11 @@ togglemenu:
   - core/jquery
 
 customform:
-  version: '4.6.4'
+  version: '4.7.0'
   js:
     js/libs/customform/customform.min.js: {}
-    js/libs/customform/customform-select.min.js: {}
     js/libs/customform/customform-check.min.js: {}
+    js/libs/customform/customform-select.min.js: {}
   dependencies:
   - core/jquery
 
@@ -61,7 +61,7 @@ cookienotice:
   - core/jquery
 
 fixer:
-  version: '2.2.1'
+  version: '3.0.0'
   js:
     js/libs/fixer.min.js: {}
   dependencies:
