@@ -1,24 +1,22 @@
 <?php
 
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\drup\DrupCommon;
+use Drupal\node\NodeInterface;
 
 /**
- * Implements hook_entity_access().
- * @param \Drupal\Core\Entity\EntityInterface $entity
- * @param $operation
- * @param \Drupal\Core\Session\AccountInterface $account
+ * @inheritdoc
  */
-function drup_entity_access(\Drupal\Core\Entity\EntityInterface $entity, $operation, \Drupal\Core\Session\AccountInterface $account) {
+function drup_entity_access(EntityInterface $entity, $operation, AccountInterface $account) {
 
 }
 
 /**
- * Implements hook_entity_view_alter().
- * @param array $build
- * @param \Drupal\Core\Entity\EntityInterface $entity
- * @param \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display
+ * @inheritdoc
  */
-function drup_entity_view_alter(array &$build, Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
+function drup_entity_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
     if ($entity Instanceof NodeInterface && $build['#view_mode'] === 'full') {
         DrupCommon::removeHeaderLinks($build);
     }

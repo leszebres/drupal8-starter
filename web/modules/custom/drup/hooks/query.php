@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @param \Drupal\Core\Database\Query\AlterableInterface $query
+ * @inheritdoc
  */
 function drup_query_alter(Drupal\Core\Database\Query\AlterableInterface $query) {
     if (isset($query->alterMetaData['view'])) {

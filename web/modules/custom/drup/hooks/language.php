@@ -4,7 +4,7 @@ use Drupal\Core\Url;
 use Drupal\drup\DrupCommon;
 
 /**
- * Implements hook_language_switch_links_alter().
+ * @inheritdoc
  */
 function drup_language_switch_links_alter(array &$links, $type, $path) {
     $currentEntity = DrupCommon::getPageEntity(true);

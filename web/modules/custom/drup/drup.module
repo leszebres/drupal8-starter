@@ -5,7 +5,9 @@
  * Contains drup.module.
  */
 
+use Drupal\drup\Drup;
+
 /**
  * Implements ./hooks/*.php
  */
-\Drupal\drup\Drup::implementsHooks();
+Drup::implementsHooks();

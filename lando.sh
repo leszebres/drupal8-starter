@@ -31,8 +31,16 @@ function up {
 
 # Import custom themes translations
 function trans {
-    lando drush langimp themes/custom/drup_theme/translations/drup_theme-8.x-1.0.fr.po
-    lando drush langimp themes/custom/drup_admin/translations/drup_admin-8.x-1.0.fr.po
+    for filename in web/themes/custom/drup_theme/translations/*
+    do
+        echo "$filename"
+        lando drush langimp themes/custom/drup_theme/translations/$(basename "$filename")
+    done
+    for filename in web/themes/custom/drup_admin/translations/*
+    do
+        echo "$filename"
+        lando drush langimp themes/custom/drup_admin/translations/$(basename "$filename")
+    done
 }
 
 # Shell prompt

@@ -3,6 +3,8 @@
 namespace Drupal\drup;
 
 use Drupal\Component\Utility\Xss;
+use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\drup\Media\DrupMediaImage;
 use Drupal\node\Entity\Node;
 use Drupal\drup\Helpers\DrupUrl;
 
@@ -29,6 +31,8 @@ abstract class DrupSEO {
 
     /**
      * Déclaration des tokens pour le SEO
+     *
+     * @param $info
      */
     public static function tokensInfo(&$info) {
         // Déclaration du groupe SEO
@@ -86,8 +90,15 @@ abstract class DrupSEO {
 
     /**
      * Contenu des tokens
+     *
+     * @param $replacements
+     * @param $type
+     * @param array $tokens
+     * @param array $data
+     * @param array $options
+     * @param \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata
      */
-    public static function tokens(&$replacements, $type, array $tokens, array $data, array $options, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata) {
+    public static function tokens(&$replacements, $type, array $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
         if ($type === self::$tokenType) {
             $drupSettings = \Drupal::service('drup_settings.variables');
             $metatagManager = \Drupal::service('metatag.manager');
@@ -96,6 +107,7 @@ abstract class DrupSEO {
             // Node
             $node = $drupField = false;
             if (isset($data['node']) && $data['node'] instanceof Node) {
+                /** @var \Drupal\node\Entity\Node $node */
                 $node = \Drupal::service('entity.repository')->getTranslationFromContext($data['node'], $options['langcode']);
                 $drupField = new DrupEntityField($node);
             }
@@ -172,8 +184,8 @@ abstract class DrupSEO {
                         $mediaField = $banner;
                     }
 
-                    if ($mediaField && ($media = new DrupEntityImage($mediaField))) {
-                        $replacements[$original] = $media->getMediaUri(self::$imageStyle);
+                    if ($mediaField && ($media = new DrupMediaImage($mediaField))) {
+                        $replacements[$original] = current($media->getMediasUrl(self::$imageStyle));
                     }
 
                 } elseif ($name === 'thumbnail:type') {
@@ -233,7 +245,8 @@ abstract class DrupSEO {
     /**
      * Ajoute le nom du site à la fin de la chaine fournie
      *
-     * @param $variables
+     * @param $string
+     * @param string $separator
      */
     public static function addSiteTitle(&$string, $separator = '|') {
         if (strpos($string, $separator) === false) {

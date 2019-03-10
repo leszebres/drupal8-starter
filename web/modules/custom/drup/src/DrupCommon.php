@@ -7,6 +7,7 @@ use Drupal\file\Entity\File;
 use Drupal\menu_link_content\Plugin\Menu\MenuLinkContent;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\node\Entity\Node;
+use Drupal\views\ViewExecutable;
 use Drupal\views\Views;
 use Symfony\Component\HttpFoundation\Request;
 use Drupal\Component\Utility\Unicode;
@@ -595,25 +596,40 @@ abstract class DrupCommon {
      * @param $viewId
      * @param $viewDisplayId
      * @param array $arguments
+     * @param bool $render
      *
-     * @return bool
+     * @return mixed
      */
-    public static function buildView($viewId, $viewDisplayId, $arguments = []) {
-        $output = false;
-
+    public static function buildView($viewId, $viewDisplayId, $arguments = [], $render = true) {
         $view = Views::getView($viewId);
+
         if ($view instanceof ViewExecutable) {
             $view->setDisplay($viewDisplayId);
 
-            $arguments = [implode(',', $arguments)];
-            $view->setArguments($arguments);
-            $view->execute();
+            if (!empty($arguments)) {
+                $arguments = [implode(',', $arguments)];
+                $view->setArguments($arguments);
+            }
 
-            $render = $view->render();
-            $output = \Drupal::service('renderer')->render($render);
+            // Render
+            if ($render) {
+                $view->execute();
+
+                if (!empty($view->result)) {
+                    $rendered = $view->render();
+                    return \Drupal::service('renderer')->render($rendered);
+                }
+            }
+
+            // Or get results
+            $view->preview();
+            if (!empty($view->result)) {
+                return $view->result;
+            }
+
         }
 
-        return $output;
+        return null;
     }
 
     /**

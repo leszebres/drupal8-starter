@@ -4,8 +4,7 @@ use Drupal\Core\Language\LanguageInterface;
 use Drupal\drup\DrupCommon;
 
 /**
- * Implements hook_preprocess_menu().
- * @param $variables
+ * @inheritdoc
  */
 function drup_preprocess_menu(&$variables) {
     $language = Drupal::languageManager()->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getId();

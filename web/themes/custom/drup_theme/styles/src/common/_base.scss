@@ -1,9 +1,6 @@
 /* ==========================================================================
    GLOBAL
    ========================================================================== */
-html {
-    font-size: $body--fontsize;
-}
 
 html,
 body { // Fix iPad container
@@ -14,7 +11,7 @@ body { // Fix iPad container
 body {
     color: $color--text;
     @include font(primary);
-    font-size: 1rem;
+    font-size: $body--fontsize;
     line-height: $body--lineheight;
     background-color: $color--background;
     -webkit-font-smoothing: antialiased;

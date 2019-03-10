@@ -46,7 +46,7 @@ class DrupBreadcrumbBuilder implements BreadcrumbBuilderInterface {
         
         return $breadcrumbs;
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -59,46 +59,59 @@ class DrupBreadcrumbBuilder implements BreadcrumbBuilderInterface {
                 return true;
             }
         }
-        
+
         return false;
     }
-    
+
     /**
      * @see http://kevinquillen.com/drupal/2017/02/16/manually-add-breadcrumb-links-in-drupal-8
      * {@inheritdoc}
      */
     public function build(RouteMatchInterface $route_match) {
         $drupRouter = \Drupal::service('drup_router.router');
-    
+
         $breadcrumb = new Breadcrumb();
         $breadcrumb->addCacheContexts(['route']);
         $links = [];
-        
+
         $breadcrumbItemsList = $this->getCustomBreadcrumbItemsList();
         $currentEntity = DrupCommon::getPageEntity(true);
         $breadcrumbItems = $breadcrumbItemsList[$currentEntity->type][$currentEntity->bundle];
-        
+
         $drupField = new DrupEntityField($currentEntity->entity);
-        
+
         $links[] = Link::createFromRoute(t('Home'), '<front>');
-        
+
         if (!empty($breadcrumbItems)) {
             foreach ($breadcrumbItems as $id => $type) {
                 switch ($type) {
                     case 'druproute':
-                        $nid = $drupRouter->getId($id);
-                        if ($node = Node::load($nid)) {
-                            $links[] = Link::fromTextAndUrl($node->getTitle(), Url::fromRoute('entity.node.canonical', ['node' => $nid]));
+                        $node = current(DrupCommon::getReferencedNodes([['target_id' => $drupRouter->getId($id)]]));
+                        if (is_object($node)) {
+                            $links[] = Link::fromTextAndUrl($node->name, Url::fromUri($node->uri));
                         }
                         break;
+
                     case 'taxonomy_term':
                         if ($terms = $drupField->getValues($id)) {
                             $term = current(DrupCommon::getReferencedTerms($terms));
                             if (is_object($term)) {
-                                $links[] = Link::fromTextAndUrl($term->name, Url::fromUri($term->uri));
+                                if ($termParents = \Drupal::service('entity_type.manager')->getStorage('taxonomy_term')->loadAllParents($term->id)) {
+                                    ksort($termParents);
+                                    foreach ($termParents as $term) {
+                                        if ($term->id() !== $currentEntity->id) {
+                                            $termTarget = ['target_id' => $term->id()];
+                                            $term = current(DrupCommon::getReferencedTerms([$termTarget]));
+                                            $links[] = Link::fromTextAndUrl($term->name, Url::fromUri($term->uri));
+                                        }
+                                    }
+                                } else {
+                                    $links[] = Link::fromTextAndUrl($term->name, Url::fromUri($term->uri));
+                                }
                             }
                         }
                         break;
+
                     case 'taxonomy_term_parents':
                         if ($termParents = \Drupal::service('entity_type.manager')->getStorage('taxonomy_term')->loadAllParents($currentEntity->id)) {
                             ksort($termParents);
@@ -111,6 +124,7 @@ class DrupBreadcrumbBuilder implements BreadcrumbBuilderInterface {
                             }
                         }
                         break;
+
                     case 'node':
                         if ($nodes = $drupField->getValues($id)) {
                             $node = current(DrupCommon::getReferencedNodes($nodes));
@@ -122,7 +136,7 @@ class DrupBreadcrumbBuilder implements BreadcrumbBuilderInterface {
                 }
             }
         }
-        
+
         return $breadcrumb->setLinks($links)->addCacheableDependency(0);
     }
     

@@ -1,13 +1,15 @@
 <?php
 
+use Drupal\drup_settings\DrupSettings;
+
 /**
- * @param $variables
+ * @inheritdoc
  */
 function drup_preprocess_swiftmailer(&$variables) {
     $theme = \Drupal::theme()->getActiveTheme();
     $variables['logo'] = $variables['base_url'] . '/' . $theme->getPath() . '/images/logo-mail.png';
 
-    $drupSettings = new \Drupal\drup_settings\DrupSettings();
+    $drupSettings = new DrupSettings();
     $variables['site_name'] = $drupSettings->getValue('site_name');
 
 //    echo '<pre>';

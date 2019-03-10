@@ -3,7 +3,7 @@
 use Drupal\drup\DrupSEO;
 
 /**
- * Déclaration des tokens
+ * @inheritdoc
  */
 function drup_token_info() {
     $info = [];
@@ -15,7 +15,7 @@ function drup_token_info() {
 }
 
 /**
- * Remplacement des valeurs des tokens
+ * @inheritdoc
  */
 function drup_tokens($type, $tokens, array $data, array $options, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata) {
     $replacements = [];
@@ -27,7 +27,7 @@ function drup_tokens($type, $tokens, array $data, array $options, \Drupal\Core\R
 }
 
 /**
- * Alter
+ * @inheritdoc
  */
 function drup_tokens_alter(array &$replacements, array $context) {
     // SEO

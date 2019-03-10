@@ -7,8 +7,6 @@
 
 use Drupal\views\ViewExecutable;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
-use Drupal\Core\Database\Query\Condition;
-use Drupal\drup\DrupEntityField;
 
 /**
  * @see hooks :
@@ -22,30 +20,21 @@ use Drupal\drup\DrupEntityField;
  */
 
 /**
- * Implements hook_views_query_alter().
- *
- * @param \Drupal\views\ViewExecutable $view
- * @param \Drupal\views\Plugin\views\query\QueryPluginBase $query
+ * @inheritdoc
  */
 function drup_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
 
 }
 
 /**
- * Implements hook_views_pre_view().
- *
- * @param \Drupal\views\ViewExecutable $view
- * @param $display_id
- * @param array $args
+ * @inheritdoc
  */
 function drup_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
 
 }
 
 /**
- * Implements hook_views_pre_render().
- *
- * @param \Drupal\views\ViewExecutable $view
+ * @inheritdoc
  */
 function drup_views_pre_render(ViewExecutable $view) {
 
