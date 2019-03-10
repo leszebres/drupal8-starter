@@ -4,8 +4,8 @@ dependencies:
   module:
     - editor
     - linkit
-name: 'Texte simple'
-format: texte_simple
+name: 'Texte formaté simplifié'
+format: html_simple
 weight: 0
 filters:
   filter_url:

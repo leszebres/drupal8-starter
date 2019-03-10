@@ -62,15 +62,11 @@ function fonticon(pumpCallback) {
 // Compression images
 function images(pumpCallback) {
     return plugins.pump([
-        plugins.gulp.src(packagejson.paths.theme + '/' + packagejson.paths.images + '/**/*.{png,jpg,svg}'),
+        plugins.gulp.src(packagejson.paths.theme + '/' + packagejson.paths.images + '/**/*.{png,jpg}'),
         plugins.imagemin({
             progressive: true,
             interlaced: true,
             optimizationLevel: 7,
-            svgoPlugins: [
-                {removeViewBox: false},
-                {cleanupIDs: false}
-            ],
             verbose: true,
             use: []
         }),

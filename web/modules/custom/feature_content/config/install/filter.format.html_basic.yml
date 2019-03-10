@@ -4,7 +4,7 @@ dependencies:
   module:
     - editor
     - linkit
-name: 'Texte formatté'
+name: 'Texte formaté'
 format: html_basic
 weight: 0
 filters:
@@ -45,13 +45,13 @@ filters:
   filter_align:
     id: filter_align
     provider: filter
-    status: true
+    status: false
     weight: -46
     settings: {  }
   filter_caption:
     id: filter_caption
     provider: filter
-    status: true
+    status: false
     weight: -45
     settings: {  }
   filter_htmlcorrector:
