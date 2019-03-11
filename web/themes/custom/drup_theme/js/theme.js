@@ -1,4 +1,4 @@
-let Theme = {};
+var Theme = {};
 
 (function ($, Drupal, drupalSettings) {
     'use strict';
@@ -24,8 +24,11 @@ let Theme = {};
         this.spinner = undefined;
         this.cookieNotice = undefined;
 
+        this.menuScrollOffset = 110;
+
         this.userIsLoggedIn = this.elements.body.hasClass('is-logged-in');
         this.pathToTheme    = drupalSettings.pathToTheme || '';
+        this.langcode       = drupalSettings.path.currentLanguage || 'fr';
 
         return this;
     };
@@ -42,7 +45,7 @@ let Theme = {};
             }
         },
         autoload: function(options) {
-            let self = this;
+            var self = this;
 
             if (options !== undefined) {
                 $.each(options, function(className, condition) {
@@ -73,7 +76,7 @@ let Theme = {};
          * Gestionnaire de la détection des périphériques
          */
         deviceDetectHandler: function () {
-            let self = this;
+            var self = this;
 
             self.deviceDetect = new $.DeviceDetect();
             self.devices = self.deviceDetect.getDevices();
@@ -90,10 +93,12 @@ let Theme = {};
          * Gestionnaire du loader sur les requêtes ajax
          */
         spinnerHandler: function () {
-            this.spinner = this.elements.body.spinner({
+            var options = {
                 auto: true,
                 autoPathsExceptions: []
-            });
+            };
+
+            this.spinner = this.elements.body.spinner(options);
         },
 
         /**
@@ -101,7 +106,15 @@ let Theme = {};
          */
         cookieNoticeHandler: function () {
             if (this.elements.cookieNotice.length) {
-                this.cookieNotice = this.elements.cookieNotice.cookieNotice();
+                this.cookieNotice = this.elements.cookieNotice.cookieNotice({
+                    'classes': {
+                        'btnAgree': '{prefix}-agree btn btn--secondary',
+                        'btnCustomize': '{prefix}-customize btn btn--secondary'
+                    },
+                    afterWrapNotice: function () {
+                        //this.elements.btnAgree.wrapInner('<span>');
+                    }
+                });
             }
         },
 
@@ -136,12 +149,12 @@ let Theme = {};
          * Gestionnaire des ancres
          */
         anchorLinksHandler: function () {
-            let self = this;
-            let offset = 100;
+            var self = this;
+            var offset = 100;
 
             self.elements.page.on('click', 'a[href*="#"]:not([href="#"])', function (event) {
                 if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
-                    let target = $(this.hash);
+                    var target = $(this.hash);
                     target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
 
                     if (target.length) {
@@ -174,7 +187,7 @@ let Theme = {};
          */
         drupBlockAdminFallback: function () {
             if (this.userIsLoggedIn) {
-                let fancyboxInstance = parent.jQuery.fancybox.getInstance();
+                var fancyboxInstance = parent.jQuery.fancybox.getInstance();
 
                 if ((fancyboxInstance !== false) && (fancyboxInstance.current.type === 'iframe') && (fancyboxInstance.current.src.search('drup-blocks-context') >= 0)) {
                     this.elements.body.spinner({
@@ -200,10 +213,18 @@ let Theme = {};
                 context = $(context);
 
                 if (context.length) {
-                    // if (context.is('.block--articles-term')) {
-                    //     let thematic = Drupal.Theme.load('thematic');
-                    //     thematic.customFormHandler();
-                    // }
+                    if (context.is('form')) {
+                        // var formId = context.attr('id');
+
+                        // if (formId.indexOf('form-contact') !== -1) {
+                        //
+                        // }
+                    } else {
+                        // if (context.is('.block--articles-term')) {
+                        //     var thematic = Drupal.Theme.load('thematic');
+                        //     thematic.customFormHandler();
+                        // }
+                    }
                 }
             }
             // Ready
