@@ -118,7 +118,7 @@ function drup_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
 
     $baseFormIds = ['node_form'];
     $formatsToFields = [
-        'texte_simple' => [
+        'html_simple' => [
             'field_subtitle_html',
             'field_body_more'
         ]
