@@ -49,8 +49,13 @@ form {
             border-color: $color--primary;
         }
     }
+
+    .description {
+
+    }
 }
 .form-text,
+.form-number,
 .form-email,
 .form-tel,
 .form-select,
@@ -69,13 +74,25 @@ form {
     border-radius: $input--border-radius;
     box-sizing: border-box;
     transition: border-color .3s;
+
+    // Placeholders
+    @include input-placeholder() {
+        color: $color--text;
+        opacity: 1;
+    }
+
+    &.error {
+        border-color: $notice--error-color;
+    }
+
+    // Sizes
+    &.l-big {
+
+    }
 }
 .form-textarea {
     height: auto; // use #rows
     resize: vertical;
-}
-.description {
-    font-size: $fontsize--tiny;
 }
 .form-type-radio,
 .form-type-checkbox {
@@ -103,6 +120,11 @@ form {
         @include font(primary, light);
     }
 }
+
+.js input.form-autocomplete {
+    background: none;
+}
+
 .webform-options-display-side-by-side > div {
     vertical-align: top;
     margin-right: 1.5em;
@@ -114,16 +136,6 @@ form {
 .g-recaptcha {
     & > div {
         margin-left: auto;
-    }
-}
-
-/* Placeholders
-   ========================================================================== */
-.form-text,
-.form-search {
-    @include input-placeholder() {
-        @include font(primary, light);
-        font-size: $fontsize--small;
     }
 }
 

@@ -60,6 +60,10 @@
    Inline
    ========================================================================== */
 .spinner--inline {
+    .spinner-wrapper {
+        display: none;
+    }
+    
     &.is-loading {
         .form-autocomplete {
             background-image: url("../../images/spinner--inline.svg");

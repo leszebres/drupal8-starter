@@ -1,11 +1,18 @@
 .logo {
+    a,
     img {
         display: block;
-        max-width: 200px;
+    }
+    img {
+        max-width: none;
     }
 }
 
 .logo--primary {
+    &,
+    img {
+        width: 200px;
+    }
 }
 
 .logo--secondary {

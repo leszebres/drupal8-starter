@@ -40,5 +40,52 @@ Markup: url()->find(.paragraph--type--image)
 Styleguide Paragraphs - 30.paragraph--type--image
 */
 .paragraph--type--image {
+    picture {
+        img {
+            margin: 0 auto;
+        }
+    }
+}
 
+
+/*
+Type text + image
+
+Markup: url()->find(.paragraph--type--text-image)
+
+Styleguide Paragraphs - 40.paragraph--type--text-image
+*/
+.paragraph--type--text-image {
+    @include media-breakpoint-min(tablet) {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+
+        .item-media {
+            max-width: 440px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        .item-body > div {
+            margin-bottom: -$v-align--medium;
+        }
+
+        &.l-left {
+            .item-media {
+                order: -1;
+            }
+            .item-body {
+                padding-left: $grid--gutter-inner-width;
+            }
+        }
+        &.l-right {
+            .item-media {
+
+            }
+            .item-body {
+                padding-right: $grid--gutter-inner-width;
+                text-align: right;
+            }
+        }
+    }
 }

@@ -1,14 +1,16 @@
 /* ==========================================================================
    GLOBAL
    ========================================================================== */
-
 html,
 body { // Fix iPad container
     width: 100%;
-    overflow-x: hidden;
 }
-
+html {
+}
 body {
+    min-width: 320px;
+    overflow-x: hidden;
+    overflow-y: scroll;
     color: $color--text;
     @include font(primary);
     font-size: $body--fontsize;
@@ -70,7 +72,8 @@ ol {
     list-style-position: inside;
 }
 ul {
-
+}
+ol {
 }
 
 
@@ -99,7 +102,7 @@ hr {
 }
 fieldset {
     min-width: 0;
-    padding: $grid--gutter-width;
+    padding: $padding--vertical $padding--horizontal;
     border: 1px solid $color--border;
 }
 
@@ -152,21 +155,23 @@ table {
         }
 
         tr {
-            background-color: $table--background-thead;
         }
         th,
         td {
             border: 1px solid $table--background-thead;
+            background-color: $table--background-thead;
         }
     }
     tbody {
-        background-color: $table--background-odd;
-
-        tr:nth-of-type(even) {
-            background-color: $table--background-even;
-        }
         td {
             border: 1px solid $color--border;
+            background-color: $table--background-odd;
+        }
+
+        tr:nth-of-type(even) {
+            td {
+                background-color: $table--background-even;
+            }
         }
     }
 }

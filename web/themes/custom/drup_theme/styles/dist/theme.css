@@ -447,6 +447,9 @@ template {
 /* ==========================================================================
    Inline
    ========================================================================== */
+.spinner--inline .spinner-wrapper {
+  display: none; }
+
 .spinner--inline.is-loading .form-autocomplete {
   background-image: url("../../images/spinner--inline.svg");
   background-repeat: no-repeat;
@@ -730,10 +733,12 @@ p.cookienotice-service-all-label {
    ========================================================================== */
 html,
 body {
-  width: 100%;
-  overflow-x: hidden; }
+  width: 100%; }
 
 body {
+  min-width: 320px;
+  overflow-x: hidden;
+  overflow-y: scroll;
   color: #333;
   font-weight: normal;
   font-family: "Arial", Arial, sans-serif;
@@ -807,7 +812,7 @@ hr {
 
 fieldset {
   min-width: 0;
-  padding: 30px;
+  padding: 15px 32px;
   border: 1px solid #c0c0c0; }
 
 /* ==========================================================================
@@ -847,17 +852,15 @@ table {
     table thead,
     table thead a {
       color: #fff; }
-    table thead tr {
-      background-color: #f2653d; }
     table thead th,
     table thead td {
-      border: 1px solid #f2653d; }
-  table tbody {
+      border: 1px solid #f2653d;
+      background-color: #f2653d; }
+  table tbody td {
+    border: 1px solid #c0c0c0;
     background-color: #fff; }
-    table tbody tr:nth-of-type(even) {
-      background-color: #f3f3f3; }
-    table tbody td {
-      border: 1px solid #c0c0c0; }
+  table tbody tr:nth-of-type(even) td {
+    background-color: #f3f3f3; }
 
 /* ==========================================================================
    Rows
@@ -1065,6 +1068,9 @@ table {
   padding-bottom: 24px;
   background-color: #f3f3f3; }
 
+/* ==========================================================================
+   FRONT PAGE
+   ========================================================================== */
 /* ==========================================================================
    MODULES
    ========================================================================== */
@@ -1284,9 +1290,16 @@ h4,
     height: 0;
     padding-bottom: 56.25%; }
 
+.logo a,
 .logo img {
-  display: block;
-  max-width: 200px; }
+  display: block; }
+
+.logo img {
+  max-width: none; }
+
+.logo--primary,
+.logo--primary img {
+  width: 200px; }
 
 .map {
   position: relative;
@@ -1413,7 +1426,8 @@ Styleguide Buttons - 1.btn
   transition: .3s;
   /* Sizes
        ========================================================================== */ }
-  .btn:focus, .btn:active, .btn.is-active, .btn:hover,
+  .btn:active, .btn.is-active, .btn:focus, .btn:hover,
+  a:focus .btn,
   a:hover .btn {
     color: #fff;
     border-color: #f2653d;
@@ -1444,11 +1458,33 @@ Styleguide Buttons - 10.btn--primary
   color: #fff;
   background-color: #f2653d;
   border-color: #f2653d; }
-  .btn--primary.is-active, .btn--primary:hover,
-  a:hover .btn--primary, .btn--primary:focus {
+  .btn--primary:active, .btn--primary.is-active, .btn--primary:focus, .btn--primary:hover,
+  a:focus .btn--primary,
+  a:hover .btn--primary {
     background-color: #1f2e3c;
     border-color: #1f2e3c; }
 
+/*
+Bouton secondaire :
+
+Markup: url()->find(.btn--secondary)
+
+Styleguide Buttons - 15.btn--secondary
+*/
+/*
+Bouton tertiaire :
+
+Markup: url()->find(.btn--tertiary)
+
+Styleguide Buttons - 20.btn--tertiary
+*/
+/*
+Bouton lien : arrow
+
+Markup: url()->find(.btn--link)
+
+Styleguide Buttons - 30.btn--link
+*/
 /*
 Tag par défaut
 
@@ -1467,6 +1503,7 @@ Styleguide Tags - 1.tag
   line-height: 1.1;
   background: #f2653d;
   border-radius: 15px;
+  box-sizing: border-box;
   transition: .3s; }
 
 a.tag {
@@ -1525,6 +1562,7 @@ form textarea:not([readonly]):focus {
   border-color: #f2653d; }
 
 .form-text,
+.form-number,
 .form-email,
 .form-tel,
 .form-select,
@@ -1543,13 +1581,54 @@ form textarea:not([readonly]):focus {
   border-radius: 6px;
   box-sizing: border-box;
   transition: border-color .3s; }
+  .form-text::-webkit-input-placeholder,
+  .form-number::-webkit-input-placeholder,
+  .form-email::-webkit-input-placeholder,
+  .form-tel::-webkit-input-placeholder,
+  .form-select::-webkit-input-placeholder,
+  .form-search::-webkit-input-placeholder,
+  .form-textarea::-webkit-input-placeholder {
+    color: #333;
+    opacity: 1; }
+  .form-text:-moz-placeholder,
+  .form-number:-moz-placeholder,
+  .form-email:-moz-placeholder,
+  .form-tel:-moz-placeholder,
+  .form-select:-moz-placeholder,
+  .form-search:-moz-placeholder,
+  .form-textarea:-moz-placeholder {
+    color: #333;
+    opacity: 1; }
+  .form-text::-moz-placeholder,
+  .form-number::-moz-placeholder,
+  .form-email::-moz-placeholder,
+  .form-tel::-moz-placeholder,
+  .form-select::-moz-placeholder,
+  .form-search::-moz-placeholder,
+  .form-textarea::-moz-placeholder {
+    color: #333;
+    opacity: 1; }
+  .form-text:-ms-input-placeholder,
+  .form-number:-ms-input-placeholder,
+  .form-email:-ms-input-placeholder,
+  .form-tel:-ms-input-placeholder,
+  .form-select:-ms-input-placeholder,
+  .form-search:-ms-input-placeholder,
+  .form-textarea:-ms-input-placeholder {
+    color: #333;
+    opacity: 1; }
+  .form-text.error,
+  .form-number.error,
+  .form-email.error,
+  .form-tel.error,
+  .form-select.error,
+  .form-search.error,
+  .form-textarea.error {
+    border-color: #d9534f; }
 
 .form-textarea {
   height: auto;
   resize: vertical; }
-
-.description {
-  font-size: 0.75rem; }
 
 .form-type-radio label,
 .form-type-checkbox label {
@@ -1570,6 +1649,9 @@ form textarea:not([readonly]):focus {
   font-weight: normal;
   font-family: "Arial", Arial, sans-serif; }
 
+.js input.form-autocomplete {
+  background: none; }
+
 .webform-options-display-side-by-side > div {
   vertical-align: top;
   margin-right: 1.5em; }
@@ -1579,32 +1661,6 @@ form textarea:not([readonly]):focus {
 
 .g-recaptcha > div {
   margin-left: auto; }
-
-/* Placeholders
-   ========================================================================== */
-.form-text::-webkit-input-placeholder,
-.form-search::-webkit-input-placeholder {
-  font-weight: normal;
-  font-family: "Arial", Arial, sans-serif;
-  font-size: 0.875rem; }
-
-.form-text:-moz-placeholder,
-.form-search:-moz-placeholder {
-  font-weight: normal;
-  font-family: "Arial", Arial, sans-serif;
-  font-size: 0.875rem; }
-
-.form-text::-moz-placeholder,
-.form-search::-moz-placeholder {
-  font-weight: normal;
-  font-family: "Arial", Arial, sans-serif;
-  font-size: 0.875rem; }
-
-.form-text:-ms-input-placeholder,
-.form-search:-ms-input-placeholder {
-  font-weight: normal;
-  font-family: "Arial", Arial, sans-serif;
-  font-size: 0.875rem; }
 
 /* Submit
    ========================================================================== */
@@ -1639,8 +1695,12 @@ form textarea:not([readonly]):focus {
   .block.l-narrow {
     padding-top: 0;
     padding-bottom: 0; }
+  .block .block--view {
+    margin-bottom: 0;
+    padding: 0; }
 
 .block-header {
+  margin-bottom: 48px;
   text-align: center; }
 
 .block-title {
@@ -1694,6 +1754,8 @@ Styleguide Blocks - 1.block--primary
         -ms-user-select: none;
             user-select: none;
     box-sizing: border-box; }
+    .list-item > a:hover, .list-item > a:focus {
+      color: inherit; }
   .list-item .item-wrapper {
     position: relative;
     width: 100%;
@@ -1798,6 +1860,8 @@ Styleguide Navigation - 30.nav--breadcrumb
 .nav--breadcrumb {
   margin-bottom: 24px;
   font-size: 0.75rem; }
+  .nav--breadcrumb .nav-item {
+    margin-bottom: 8px; }
   .nav--breadcrumb a {
     display: inline;
     padding: 5px 0;
@@ -1852,11 +1916,6 @@ Styleguide Navigation - 50.nav--social
 */
 .nav--social {
   font-size: 1.625rem; }
-  .nav--social .nav-menu {
-    margin-left: -10px; }
-  .nav--social li {
-    display: inline-block;
-    vertical-align: top; }
   .nav--social a {
     padding: 5px 10px;
     line-height: 1; }
@@ -1873,8 +1932,7 @@ Styleguide Navigation - 55.nav--social-share
 
 .slider {
   position: relative;
-  z-index: 5;
-  background-color: #f2653d; }
+  z-index: 25; }
   .slider .slider-item {
     position: relative;
     width: 100%;
@@ -1921,6 +1979,35 @@ Markup: url()->find(.paragraph--type--image)
 
 Styleguide Paragraphs - 30.paragraph--type--image
 */
+.paragraph--type--image picture img {
+  margin: 0 auto; }
+
+/*
+Type text + image
+
+Markup: url()->find(.paragraph--type--text-image)
+
+Styleguide Paragraphs - 40.paragraph--type--text-image
+*/
+@media (min-width: 1024px) {
+  .paragraph--type--text-image {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center; }
+    .paragraph--type--text-image .item-media {
+      max-width: 440px;
+      flex-shrink: 0;
+      overflow: hidden; }
+    .paragraph--type--text-image .item-body > div {
+      margin-bottom: -24px; }
+    .paragraph--type--text-image.l-left .item-media {
+      order: -1; }
+    .paragraph--type--text-image.l-left .item-body {
+      padding-left: 24px; }
+    .paragraph--type--text-image.l-right .item-body {
+      padding-right: 24px;
+      text-align: right; } }
+
 /* ==========================================================================
    Contenu
    ========================================================================== */
@@ -2019,7 +2106,8 @@ Styleguide Paragraphs - 30.paragraph--type--image
         color: #f2653d; }
 
 .tabs--primary {
-  border-bottom: 1px solid #c0c0c0; }
+  border-bottom: 1px solid #c0c0c0;
+  border-radius: 0 0 0 0; }
   .is-logged-in .tabs--primary {
     position: fixed;
     z-index: 125;
@@ -2134,8 +2222,7 @@ Styleguide Paragraphs - 30.paragraph--type--image
   text-transform: none;
   speak: none;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 0.875rem; }
+  -moz-osx-font-smoothing: grayscale; }
 
 /* ==========================================================================
    DEBUG DRUPAL
@@ -2173,10 +2260,12 @@ pre.sf-dump .sf-dump-default {
   -webkit-clip-path: none;
           clip-path: none; }
 
-@media (min-width: 768px) {
-  .is-mobile {
-    display: none !important; } }
-
+/* ==========================================================================
+   Menu sticky
+   ========================================================================== */
+/* ==========================================================================
+   Primary
+   ========================================================================== */
 /* ==========================================================================
    Background primary
    ========================================================================== */

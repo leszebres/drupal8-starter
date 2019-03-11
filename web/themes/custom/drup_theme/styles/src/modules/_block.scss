@@ -12,12 +12,22 @@
         padding-top: 0;
         padding-bottom: 0;
     }
+
+    .block--view {
+        margin-bottom: 0;
+        padding: 0;
+    }
+
+    .sidebar & {
+
+    }
 }
 .block-inner {
 
 }
 
 .block-header {
+    margin-bottom: $v-align;
     text-align: center;
 }
 .block-title {
@@ -31,6 +41,9 @@
 }
 .block-content {
     margin-bottom: $v-align;
+}
+.block-image {
+
 }
 .block-footer {
     margin-top: $v-align;
@@ -53,6 +66,10 @@
     padding: 0;
 
     .block-title {
+    }
+
+    .content-views & {
+
     }
 }
 

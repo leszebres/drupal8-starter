@@ -73,6 +73,10 @@ Styleguide Navigation - 30.nav--breadcrumb
     margin-bottom: $v-align--medium;
     font-size: $fontsize--tiny;
 
+    .nav-item {
+        margin-bottom: 8px;
+    }
+
     a {
         display: inline;
         padding: 5px 0;
@@ -118,13 +122,6 @@ Styleguide Navigation - 50.nav--social
 .nav--social {
     font-size: 26px;
 
-    .nav-menu {
-        margin-left: -10px;
-    }
-    li {
-        display: inline-block;
-        vertical-align: top;
-    }
     a {
         padding: 5px 10px;
         line-height: 1;

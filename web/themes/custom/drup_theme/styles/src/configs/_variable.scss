@@ -51,9 +51,6 @@ $font-families: (
         "light": 'Arial',
         "regular": 'Arial',
         "bold": 'Arial',
-    ),
-    "secondary": (
-        "regular": 'Arial',
     )
 );
 $font--fallback: Arial, sans-serif;
@@ -102,6 +99,7 @@ $grid--gutter-inner-width: 24px;
 $row--gutter-width: $grid--gutter-width;
 
 $v-align: 48px;
+$v-align--small: $v-align/4;
 $v-align--medium: $v-align/2;
 $v-align--big: $v-align*1.5;
 
@@ -116,6 +114,7 @@ $zindex--default: 5;
 $zindex--small: 25;
 $zindex--medium: 50;
 $zindex--big: 100;
+$zindex--huge: 1000;
 
 
 /* ==========================================================================
@@ -131,7 +130,7 @@ $btn--lineheight: $body--lineheight;
 $btn--padding-horizontal: $padding--horizontal;
 $btn--padding-vertical: $padding--vertical;
 
-$btn--height: floor($btn--padding-vertical*2 + $btn--fontsize * $btn--lineheight + $btn--border-width*2);
+$btn--height: round($btn--padding-vertical*2 + $btn--fontsize * $btn--lineheight + $btn--border-width*2);
 
 
 /* ==========================================================================

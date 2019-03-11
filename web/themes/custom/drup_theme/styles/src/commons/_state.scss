@@ -11,8 +11,21 @@
     @include sr-only-focusable();
 }
 
-.is-mobile {
-    @include media-breakpoint-min(smartphone) {
-        display: none !important;
+
+
+
+
+/* ==========================================================================
+   Menu sticky
+   ========================================================================== */
+.fixer-header-container.is-fixed {
+    &.toolbar-fixed {
+
+        &.toolbar-tray-open {
+
+        }
+        &.toolbar-vertical {
+
+        }
     }
 }

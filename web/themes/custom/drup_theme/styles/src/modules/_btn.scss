@@ -27,10 +27,11 @@ Styleguide Buttons - 1.btn
     box-sizing: border-box;
     transition: .3s;
 
-    &:focus,
     &:active,
     &.is-active,
+    &:focus,
     &:hover,
+    a:focus &,
     a:hover & {
         color: #fff;
         border-color: $color--primary;
@@ -80,11 +81,67 @@ Styleguide Buttons - 10.btn--primary
     background-color: $color--primary;
     border-color: $color--primary;
 
+    &:active,
     &.is-active,
+    &:focus,
     &:hover,
-    a:hover &,
-    &:focus {
+    a:focus &,
+    a:hover & {
         background-color: $color--secondary;
         border-color: $color--secondary;
     }
+}
+
+
+
+/*
+Bouton secondaire :
+
+Markup: url()->find(.btn--secondary)
+
+Styleguide Buttons - 15.btn--secondary
+*/
+.btn--secondary {
+
+    &:active,
+    &.is-active,
+    &:focus,
+    &:hover,
+    a:focus &,
+    a:hover & {
+
+    }
+}
+
+
+/*
+Bouton tertiaire :
+
+Markup: url()->find(.btn--tertiary)
+
+Styleguide Buttons - 20.btn--tertiary
+*/
+.btn--tertiary {
+
+    &:active,
+    &.is-active,
+    &:focus,
+    &:hover,
+    a:focus &,
+    a:hover & {
+
+    }
+}
+
+
+
+/*
+Bouton lien : arrow
+
+Markup: url()->find(.btn--link)
+
+Styleguide Buttons - 30.btn--link
+*/
+.btn--link {
+
 }

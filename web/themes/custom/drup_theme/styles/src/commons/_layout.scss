@@ -108,9 +108,25 @@
 .content-subtitle {
 }
 
+.content-banner {
+
+}
+
+
 .content-body {
     margin-bottom: $v-align;
 }
+.content-header {
+}
+.content-footer {
+}
+
+.content-after {
+
+}
+
+
+
 
 /* ==========================================================================
    Footer
@@ -121,4 +137,14 @@
     background-color: $color--background-secondary;
 }
 .mainFooter-inner {
+}
+
+
+
+
+/* ==========================================================================
+   FRONT PAGE
+   ========================================================================== */
+.is-front {
+
 }

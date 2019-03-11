@@ -45,6 +45,7 @@
 }
 .tabs--primary {
     border-bottom: 1px solid $tabs--border;
+    border-radius: 0 $btn--border-radius/2 0 0;
 
     .is-logged-in & {
         position: fixed;
@@ -166,7 +167,7 @@
     details.form-wrapper {
         border: 1px solid $color--border;
         border-radius: 4px;
-        
+
         summary {
             padding: 10px $grid--gutter-width;
             font-weight: bold;
@@ -186,9 +187,10 @@
         }
     }
 }
-.btn--block-admin:after {
-    @include font-icon(edit);
-    font-size: $fontsize--small;
+.btn--block-admin {
+    &:after {
+        @include font-icon(edit);
+    }
 }
 
 /* ==========================================================================

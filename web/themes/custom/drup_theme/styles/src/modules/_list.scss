@@ -16,7 +16,13 @@
         user-select: none;
         box-sizing: border-box;
 
-        &:hover {
+        &:hover,
+        &:focus {
+            color: inherit;
+
+            .item-cta {
+
+            }
         }
     }
 
@@ -63,6 +69,9 @@
         p {
             margin-bottom: 0;
         }
+    }
+    .item-cta {
+
     }
 }
 

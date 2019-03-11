@@ -2,8 +2,7 @@
 
 .slider {
     position: relative;
-    z-index: 5;
-    background-color: $color--primary;
+    z-index: $zindex--small;
 
     .slider-item {
         position: relative;
