@@ -17,21 +17,6 @@ Commande : gulp fonticon
          url("../../fonts/{{ fontName|lower }}.woff?v={{ fontVersion }}") format("woff");
 }
 
-/* ==========================================================================
-   Icons
-   ========================================================================== */
-.icon {
-    &:before {
-        @include font-icon;
-    }
-}
-.btn.icon,
-p.icon {
-    &:before {
-        margin-right: .6em;
-    }
-}
-
 /*
 {% for glyph in glyphs %}
 .icon--{{ glyph.name }} - \{{ glyph.unicode }}

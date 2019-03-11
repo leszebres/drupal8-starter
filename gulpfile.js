@@ -45,14 +45,14 @@ function fonticon(pumpCallback) {
                 });
 
                 plugins.pump([
-                    plugins.gulp.src(packagejson.paths.theme + '/' + packagejson.paths.styles + '/src/config/_fonticon.twig'),
+                    plugins.gulp.src(packagejson.paths.theme + '/' + packagejson.paths.styles + '/src/configs/_fonticon.twig'),
                     plugins.consolidate('twig', {
                         fontName: options.fontName,
                         fontVersion: Math.round(Date.now() / 1000),
                         glyphs: glyphs
                     }),
-                    plugins.rename('_icon.scss'),
-                    plugins.gulp.dest(packagejson.paths.theme + '/' + packagejson.paths.styles + '/src/modules')
+                    plugins.rename('_fonticon.scss'),
+                    plugins.gulp.dest(packagejson.paths.theme + '/' + packagejson.paths.styles + '/dist')
                 ], pumpCallback);
             }),
         plugins.gulp.dest(packagejson.paths.theme + '/' + packagejson.paths.fonts)
