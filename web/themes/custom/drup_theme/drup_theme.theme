@@ -5,20 +5,13 @@
  * Functions to support theming in the drup_theme theme.
  */
 
-
-require_once 'theme/theme.inc';
-
-require_once 'theme/html.inc';
-require_once 'theme/page.inc';
-require_once 'theme/search.inc';
-require_once 'theme/taxonomy.inc';
-require_once 'theme/node.inc';
-
-require_once 'theme/block.inc';
-require_once 'theme/media.inc';
-require_once 'theme/navigation.inc';
-require_once 'theme/field.inc';
-require_once 'theme/paragraph.inc';
-require_once 'theme/form.inc';
-
-require_once 'theme/view.inc';
+/**
+ * Load all files in /theme/ directory
+ */
+$themeDirectory = __DIR__ . '/theme';
+foreach (scandir($themeDirectory, SCANDIR_SORT_NONE) as $filename) {
+    $path = $themeDirectory . '/' . $filename;
+    if (is_file($path)) {
+        require_once $path;
+    }
+}

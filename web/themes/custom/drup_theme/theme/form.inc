@@ -48,6 +48,18 @@ function drup_theme_preprocess_form_element_label(&$variables) {
     }
 }
 
+
+/**
+ * @param $variables
+ */
+function drup_theme_preprocess_container(&$variables) {
+    if (isset($variables['attributes']['id']) && $variables['attributes']['id'] === 'edit-actions') {
+        if (isset($variables['element']['submit']['#id'])) {
+            $variables['attributes']['id'] = $variables['attributes']['data-drupal-selector'] = $variables['element']['submit']['#id'] . '-actions';
+        }
+    }
+}
+
 /**
  * @param array $variables
  */
@@ -79,27 +91,11 @@ function drup_theme_preprocess_input(array &$variables) {
  * @param $form_id
  */
 function drup_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-    
-    // SEARCH FORM PAGE SEARCH
-    if ($form_id === 'search_form') {
-        $form['#attributes']['class'] = ['form', 'form--search'];
-        
-        $form['basic']['keys']['#title_display'][] = 'invisible';
-        $form['basic']['keys']['#attributes']['placeholder'] = t('Click here to make a new search...');
-        
-        $form['basic']['keys']['#default_value'] = '';
-        $form['basic']['submit']['#value'] = t('Ok');
-    
-        unset($form['advanced'], $form['help_link']);
-    }
-    
+
     // WEBFORM (CONTACT)
-    elseif (strpos($form_id, 'webform_submission_') !== false) {
+    if (strpos($form_id, 'webform_submission_') !== false) {
         $form['#attributes']['class'][] = 'form'; // Ne pas remplacer les classes par défaut, elles sont utilisées par webform (conditions)
         $form['#attributes']['class'][] = 'form--webform';
-
-        // placeholders
-        DrupCommon::setRequiredAndPlaceholderAttributes($form['elements']);
 
         // RGPD
         DrupSite::setGDPRMention($form);
@@ -107,7 +103,8 @@ function drup_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
     
     // LOGIN + PASSWORD
     elseif (in_array($form_id, ['user_login_form', 'user_pass'])) {
-        $form['#attributes']['class'] = ['form', 'form--login'];
+        $form['#attributes']['class'][] = ['form'];
+        $form['#attributes']['class'][] = ['form--login'];
     }
 }
 

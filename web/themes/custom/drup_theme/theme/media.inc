@@ -4,7 +4,7 @@ use Drupal\Core\Url;
 use Drupal\Core\Link;
 
 /**
- * @param $variables
+ * @inheritdoc
  */
 function drup_theme_preprocess_file_link(&$variables) {
     if (method_exists($variables['link'], 'getGeneratedLink')) {
@@ -31,6 +31,9 @@ function drup_theme_preprocess_file_link(&$variables) {
     }
 }
 
+/**
+ * @inheritdoc
+ */
 function drup_theme_preprocess_file_managed_file(&$variables) {
     unset($variables['attributes']['id']);
 }

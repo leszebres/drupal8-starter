@@ -8,11 +8,12 @@ use Drupal\drup_settings\DrupSettings;
 use Drupal\drup\DrupCommon;
 
 /**
- * @param array $variables
+ * @inheritdoc
  */
 function drup_theme_preprocess_html(array &$variables) {
     $drupSettings = new DrupSettings();
     $drupRouter = \Drupal::service('drup_router.router');
+    $systemRouteName = \Drupal::routeMatch()->getRouteName();
 
     // JS variables
     $variables['#attached']['drupalSettings']['pathToTheme'] = '/' . drupal_get_path('theme', 'drup_theme');
@@ -46,6 +47,9 @@ function drup_theme_preprocess_html(array &$variables) {
     if ($routeName = $drupRouter->getName()) {
         $variables['#attached']['drupalSettings']['currentRoute'] = $routeName;
         $variables['attributes']->addClass('route--' . Html::cleanCssIdentifier($routeName));
+    }
+    if ($systemRouteName) {
+        $variables['attributes']->addClass('route--' . Html::cleanCssIdentifier(str_replace('.', '-', $systemRouteName)));
     }
     
     // User role @see module drup_admin_toolbar

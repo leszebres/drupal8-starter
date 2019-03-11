@@ -72,11 +72,10 @@
  * @ingroup themeable
  */
 #}
-{#{% if content.field_body_layout['#theme'] %}#}
-{% if content is not empty %}
-    <div{{ attributes.removeAttribute('role') }}>
-        <div{{ content_attributes.addClass('node-body') }}>
-            {{ content }}
-        </div>
-    </article>
-{% endif %}
+
+
+<div{{ attributes.removeAttribute('role') }}>
+    <div{{ content_attributes.addClass('node-body') }}>
+        {{ content }}
+    </div>
+</div>

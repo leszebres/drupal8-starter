@@ -31,7 +31,10 @@ function drup_theme_preprocess_menu(&$variables) {
  * @param $variables
  */
 function drup_theme_preprocess_breadcrumb(&$variables) {
-    if ($variables['breadcrumb'] && $title = DrupCommon::getCurrentTitle()) {
+    $request     = \Drupal::request();
+    $route_match = \Drupal::routeMatch();
+
+    if ($title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject())) {
         $variables['breadcrumb'][] = ['text' => $title];
     }
 

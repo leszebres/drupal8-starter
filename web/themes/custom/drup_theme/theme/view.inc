@@ -2,14 +2,10 @@
 
 use Drupal\Core\Url;
 
-use Drupal\Core\Template\Attribute;
-
-use Drupal\drup\DrupViewsView;
-use Drupal\drup\DrupViewsRows;
 use Drupal\drup\DrupEntityField;
-use Drupal\drup\DrupEntityImage;
-use Drupal\drup\DrupCommon;
-use Drupal\drup\DrupSite;
+use Drupal\drup\Media\DrupMediaImage;
+use Drupal\drup\Views\DrupViewsRows;
+use Drupal\drup\Views\DrupViewsView;
 
 /**
  * Preprocess View
@@ -17,10 +13,13 @@ use Drupal\drup\DrupSite;
  * @param $variables
  */
 function drup_theme_preprocess_views_view(&$variables) {
+    $drupRouter = \Drupal::service('drup_router.router');
+    $drupRouteName = $drupRouter->getName();
+
     $drupViewsView = new DrupViewsView($variables);
     $variables = $drupViewsView->controller();
 
-    if (empty($variables['rows'])) {
+    if (empty($variables['view']->total_rows)) {
         $variables['empty'] = t('No result match your search.');
     }
     
@@ -171,7 +170,7 @@ function drup_theme_views_rows_controller__primary($variables) {
             // Media
             $mediaField = $result->drupField->getValue('thumbnail', 'target_id');
             if ($mediaField && !empty($result->imageStyle)) {
-                $mediaEntity = new DrupEntityImage($mediaField);
+                $mediaEntity = new DrupMediaImage($mediaField);
 
                 if ($medias = $mediaEntity->renderMedias($result->imageStyle)) {
                     $result->media = current($medias);
@@ -213,6 +212,6 @@ function drup_theme_preprocess_views_infinite_scroll_pager(&$vars) {
     //if (isset($vars['parameters']['field_localisation_proximity'])) {
     //    $vars['btn_classes'] .= ' btn--link';
     //} else {
-        $vars['btn_classes'] .= ' btn--primary l-arrow-bottom';
+        $vars['btn_classes'] .= ' btn--primary';
     //}
 }

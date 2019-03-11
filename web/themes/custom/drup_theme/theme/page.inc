@@ -36,8 +36,8 @@ function drup_theme_preprocess_page(array &$variables) {
     $pageEntity = DrupCommon::getPageEntity();
     
     $drupRouter = \Drupal::service('drup_router.router');
-    $routeName = $drupRouter->getName();
-
+    $drupRouteName = $drupRouter->getName();
+    $systemRouteName = \Drupal::routeMatch()->getRouteName();
     $isFront = \Drupal::service('path.matcher')->isFrontPage();
 
     $variables['cookies_data'] = CookieNotice\Config::get();
@@ -49,10 +49,11 @@ function drup_theme_preprocess_page(array &$variables) {
      * Load librariesw
      */
     $variables['page']['#cache']['contexts'][] = 'url.path'; // sets the cacheability metadata
+
     if ($isFront) {
     
     } else {
-        if ($routeName === 'contact') {
+        if ($drupRouteName === 'contact') {
             $variables['#attached']['library'][] = 'drup_theme/theme-contact';
         }
     }
@@ -109,10 +110,11 @@ function drup_theme_theme_suggestions_page_alter(array &$suggestions, array $var
  * @param array $variables
  */
 function drup_theme_preprocess_page_title(array &$variables) {
+    $entity = DrupCommon::getPageEntity(true);
+    $drupRouter  = \Drupal::service('drup_router.router');
+
     $variables['title_attributes'] = new Attribute([
         'class' => ['content-title']
     ]);
     $variables['tag'] = 'h1';
-    
-    $entity = DrupCommon::getPageEntity(true);
 }
