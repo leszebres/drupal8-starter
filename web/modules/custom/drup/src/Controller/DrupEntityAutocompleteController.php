@@ -2,6 +2,7 @@
 
 namespace Drupal\drup\Controller;
 
+use Drupal\system\Controller\EntityAutocompleteController;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -9,11 +10,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @package Drupal\drup\Controller
  */
-class DrupEntityAutocompleteController extends \Drupal\system\Controller\EntityAutocompleteController {
+class DrupEntityAutocompleteController extends EntityAutocompleteController {
 
-    /**
-     * {@inheritdoc}
-     */
     public static function create(ContainerInterface $container) {
         return new static(
             $container->get('drup.autocomplete_matcher'),

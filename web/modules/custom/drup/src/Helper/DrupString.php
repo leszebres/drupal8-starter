@@ -20,8 +20,7 @@ abstract class DrupString {
      *
      * @return string
      */
-    public static function trimString($string, $truncateLimit = 250, $tagsToStrip = true)
-    {
+    public static function trimString($string, $truncateLimit = 250, $tagsToStrip = true) {
         if ($tagsToStrip !== false) {
             $string = strip_tags($string, $tagsToStrip);
         }

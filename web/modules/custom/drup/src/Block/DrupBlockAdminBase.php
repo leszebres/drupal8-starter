@@ -6,11 +6,12 @@ use Drupal\Core\Cache\Cache;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
-use Drupal\drup\DrupCommon;
 use Drupal\drup\DrupPageEntity;
+use Drupal\drup\Helper\DrupRequest;
 
 /**
  * Class DrupBlockAdminBase
+ *
  * @package Drupal\drup_blocks
  */
 abstract class DrupBlockAdminBase extends BlockBase {
@@ -285,20 +286,19 @@ abstract class DrupBlockAdminBase extends BlockBase {
     /**
      * @param string $view
      *
-     * @return mixed|string|null
+     * @return string|null
      */
     public function getUrlContextValue($view = 'admin') {
         if ($view === 'admin') {
             return \Drupal::request()->query->get($this->urlContextKey);
         }
-        if (\Drupal::service('path.matcher')->isFrontPage()) {
+        if (DrupRequest::isFront()) {
             return 'front';
         }
-        if ($entity = DrupPageEntity::getPageEntity()) {
-            return $entity->type . '/' . $entity->id;
+        if ($entity = DrupPageEntity::loadEntity()) {
+            return $entity->getEntityType() . '/' . $entity->id();
         }
 
         return null;
-
     }
 }

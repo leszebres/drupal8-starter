@@ -4,13 +4,9 @@ namespace Drupal\drup_settings\Form;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Form\ConfigFormBase;
-use Drupal\drup\DrupCommon;
 use Drupal\drup\Helper\DrupUrl;
 use Drupal\drup\Media\DrupFile;
 use Drupal\drup_settings\DrupSettings;
-use Drupal\file\Entity\File;
-
-use Drupal\drup_settings\DrupSettingsVariables;
 
 /**
  * Class DrupSettingsFrom.
@@ -20,7 +16,7 @@ class DrupSettingsForm extends ConfigFormBase {
     /**
      * @var DrupSettings
      */
-    public $drupSettings;
+    protected $drupSettings;
 
     /**
      * {@inheritdoc}
@@ -37,7 +33,7 @@ class DrupSettingsForm extends ConfigFormBase {
     }
 
     /**
-     *
+     * todo form dans drup_site
      * {@inheritdoc}
      */
     public function buildForm(array $form, FormStateInterface $form_state) {

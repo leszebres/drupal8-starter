@@ -2,8 +2,6 @@
 
 namespace Drupal\drup\Plugin\Field\FieldType;
 
-use Drupal\Component\Utility\Random;
-use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemBase;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\TypedData\DataDefinition;
@@ -25,19 +23,14 @@ class IconPickerItem extends FieldItemBase {
      * {@inheritdoc}
      */
     public function isEmpty() {
-        if ($this->icon !== null) {
-            return false;
-        }
-        return true;
+        return !($this->icon !== null);
     }
 
     /**
      * {@inheritdoc}
      */
     public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
-
-        $properties['icon'] = DataDefinition::create('string')
-            ->setLabel(t('Icon'));
+        $properties['icon'] = DataDefinition::create('string')->setLabel(t('Icon'));
 
         return $properties;
     }
@@ -56,7 +49,6 @@ class IconPickerItem extends FieldItemBase {
      * {@inheritdoc}
      */
     public static function schema(FieldStorageDefinitionInterface $field_definition) {
-
         $columns = [
             'icon' => [
                 'type'   => 'varchar',

@@ -10,13 +10,12 @@ namespace Drupal\drup;
 class DrupHead {
 
     /**
-     * @param $variables
+     * @param array $variables
      * @param array $data
      * @param int $version
      * @param null $path
      */
-    public static function addFavicons(&$variables, $data = [], $version = 1, $path = null)
-    {
+    public static function addFavicons(&$variables, $data = [], $version = 1, $path = null) {
         if (empty($path)) {
             $path = '/' . \Drupal::theme()->getActiveTheme()->getPath() . '/images/favicons';
         }
@@ -27,32 +26,32 @@ class DrupHead {
                 '#attributes' => [
                     'rel' => 'apple-touch-icon',
                     'sizes' => '180x180',
-                    'href' => $path . '/apple-touch-icon.png?v=' . $version
-                ]
+                    'href' => $path . '/apple-touch-icon.png?v=' . $version,
+                ],
             ],
             'icon32x32' => [
                 '#tag' => 'link',
                 '#attributes' => [
                     'rel' => 'icon',
                     'sizes' => '32x32',
-                    'href' => $path . '/favicon-32x32.png?v=' . $version
-                ]
+                    'href' => $path . '/favicon-32x32.png?v=' . $version,
+                ],
             ],
             'icon16x16' => [
                 '#tag' => 'link',
                 '#attributes' => [
                     'rel' => 'icon',
                     'sizes' => '16x16',
-                    'href' => $path . '/favicon-16x16.png?v=' . $version
-                ]
+                    'href' => $path . '/favicon-16x16.png?v=' . $version,
+                ],
             ],
             'manifest' => [
                 '#tag' => 'link',
                 '#attributes' => [
                     'rel' => 'manifest',
-                    'href' => $path . '/site.webmanifest?v=' . $version
-                ]
-            ]
+                    'href' => $path . '/site.webmanifest?v=' . $version,
+                ],
+            ],
         ];
 
         if (isset($data['color_mask_icon'])) {
@@ -61,8 +60,8 @@ class DrupHead {
                 '#attributes' => [
                     'rel' => 'mask-icon',
                     'href' => $path . '/safari-pinned-tab.svg?v=' . $version,
-                    'color' => $data['color_mask_icon']
-                ]
+                    'color' => $data['color_mask_icon'],
+                ],
             ];
         }
         if (isset($data['color_msapplication'])) {
@@ -70,8 +69,8 @@ class DrupHead {
                 '#tag' => 'meta',
                 '#attributes' => [
                     'name' => 'msapplication-TileColor',
-                    'content' => $data['color_msapplication']
-                ]
+                    'content' => $data['color_msapplication'],
+                ],
             ];
         }
         if (isset($data['color_theme'])) {
@@ -79,23 +78,25 @@ class DrupHead {
                 '#tag' => 'meta',
                 '#attributes' => [
                     'name' => 'theme-color',
-                    'content' => $data['color_theme']
-                ]
+                    'content' => $data['color_theme'],
+                ],
             ];
         }
 
         foreach ($metas as $metaName => $meta) {
-            $variables['page']['#attached']['html_head'][] = [$meta, 'favicons-' . $metaName];
+            $variables['page']['#attached']['html_head'][] = [
+                $meta,
+                'favicons-' . $metaName,
+            ];
         }
     }
 
     /**
      * Remove some head metas that invalidate W3C
      *
-     * @param $attachments
+     * @param array $attachments
      */
-    public static function removeHeaderLinks(&$attachments)
-    {
+    public static function removeHeaderLinks(&$attachments) {
         if (!isset($attachments['#attached']['html_head_link'])) {
             return;
         }
@@ -119,7 +120,7 @@ class DrupHead {
             //'shortlink',
             //'canonical'
         ];
-        // Unset loop.
+        
         foreach ($attachments['#attached']['html_head_link'] as $key => $value) {
             if (isset($value[0]['rel']) && in_array($value[0]['rel'], $unset_html_head_link)) {
                 unset($attachments['#attached']['html_head_link'][$key]);

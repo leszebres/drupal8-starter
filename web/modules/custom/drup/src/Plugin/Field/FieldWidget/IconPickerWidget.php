@@ -39,8 +39,8 @@ class IconPickerWidget extends WidgetBase {
     public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
         $element['icon'] = [
             '#type'  => 'textfield',
-            '#title' => (isset($element['#title'])) ? $element['#title'] : $this->t('Icon'),
-            '#default_value' => (isset($items[$delta]->icon)) ? $this->prefix . ' ' . $this->prefix . '-type--' . $this->type . ' ' . $this->prefix . '--' . $items[$delta]->icon : null
+            '#title' => isset($element['#title']) ? $element['#title'] : $this->t('Icon'),
+            '#default_value' => isset($items[$delta]->icon) ? $this->prefix . ' ' . $this->prefix . '-type--' . $this->type . ' ' . $this->prefix . '--' . $items[$delta]->icon : null
         ];
 
         $element['#attached']['library'][] = 'drup/drup_iconpicker';
@@ -50,9 +50,7 @@ class IconPickerWidget extends WidgetBase {
             'input' => 'edit-' . Html::getId($items->getName()) . '-' . $delta . '-icon'
         ];
 
-        $pathToTheme = \Drupal::service('theme_handler')
-            ->getTheme('drup_theme')
-            ->getPath();
+        $pathToTheme = \Drupal::service('theme_handler')->getTheme('drup_theme')->getPath();
         $element['#attached']['drupalSettings']['drup_iconpicker']['font_path'] = $pathToTheme . '/fonts/map/icons.svg';
 
         return $element;

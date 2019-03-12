@@ -52,6 +52,8 @@ class DrupBreadcrumb implements BreadcrumbBuilderInterface {
     }
 
     /**
+     * todo revoir toutes les méthodes
+     *
      * @see http://kevinquillen.com/drupal/2017/02/16/manually-add-breadcrumb-links-in-drupal-8
      * {@inheritdoc}
      */

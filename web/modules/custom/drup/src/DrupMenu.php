@@ -14,22 +14,23 @@ use Drupal\node\Entity\Node;
 class DrupMenu {
 
     /**
-     * @param $item
-     * @param $language
+     * todo revoir cf pile
      *
-     * @return bool
+     * @param array $item
+     * @param string $languageId
+     *
+     * @return array|bool
      */
-    public static function checkMenuItemTranslation($item, $language)
-    {
+    public static function checkMenuItemTranslation(array $item, $languageId) {
         $menuLinkEntity = self::loadLinkEntityByLink($item['original_link']);
 
         if ($menuLinkEntity !== null) {
-            $isTranslated = self::checkEntityTranslation($menuLinkEntity, $language);
+            $isTranslated = self::checkEntityTranslation($menuLinkEntity, $languageId);
 
             if ($isTranslated === true) {
                 if (count($item['below']) > 0) {
                     foreach ($item['below'] as $subkey => $subitem) {
-                        if (!$item['below'][$subkey] = self::checkMenuItemTranslation($subitem, $language)) {
+                        if (!$item['below'][$subkey] = self::checkMenuItemTranslation($subitem, $languageId)) {
                             unset($item['below'][$subkey]);
                         }
                     }
@@ -41,13 +42,14 @@ class DrupMenu {
     }
 
     /**
+     * todo revoir cf pileje
+     *
      * @param $entity
      * @param $language
      *
      * @return bool
      */
-    public static function checkEntityTranslation($entity, $language)
-    {
+    public static function checkEntityTranslation($entity, $language) {
         if (!empty($entity)) {
             return array_key_exists($language, $entity->getTranslationLanguages()) ? true : false;
         }
@@ -56,12 +58,13 @@ class DrupMenu {
     }
 
     /**
+     * todo revoir cf pileje
+     *
      * @param \Drupal\Core\Menu\MenuLinkInterface $menuLinkContentPlugin
      *
      * @return null
      */
-    public static function loadLinkEntityByLink(MenuLinkInterface $menuLinkContentPlugin)
-    {
+    public static function loadLinkEntityByLink(MenuLinkInterface $menuLinkContentPlugin) {
         $entity = null;
         if ($menuLinkContentPlugin instanceof MenuLinkContent) {
             $menu_link = explode(':', $menuLinkContentPlugin->getPluginId(), 2);
@@ -73,12 +76,13 @@ class DrupMenu {
     }
 
     /**
+     * todo revoir cf pileje
+     *
      * @param $menuItem
      *
      * @return int|null
      */
-    public static function getNidFromMenuItem($menuItem)
-    {
+    public static function getNidFromMenuItem($menuItem) {
         if (isset($menuItem['url']) && !$menuItem['url']->isExternal()) {
             $urlParameters = $menuItem['url']->getRouteParameters();
 
@@ -91,13 +95,14 @@ class DrupMenu {
     }
 
     /**
+     * todo nouvelles classes + ne pas retourner de node
+     *
      * @param $nid
      * @param string $menuName
      *
      * @return array|bool
      */
-    public static function getNodeChildren($nid, $menuName = 'main')
-    {
+    public static function getNodeChildren($nid, $menuName = 'main') {
         $navItems = [];
 
         $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
@@ -127,7 +132,7 @@ class DrupMenu {
                 ->getId();
 
             foreach ($menuItems['#items'] as $index => $menuItem) {
-                $navItems[$index] = (object)[
+                $navItems[$index] = (object) [
                     'menuItem' => $menuItem,
                 ];
                 if ($nid = DrupMenu::getNidFromMenuItem($menuItem)) {

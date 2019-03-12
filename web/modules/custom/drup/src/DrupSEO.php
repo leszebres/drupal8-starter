@@ -13,6 +13,7 @@ use Drupal\node\Entity\Node;
 use Drupal\drup\Helper\DrupUrl;
 
 /**
+ * todo revoir complètement
  * Class DrupSEO
  *
  * @package Drupal\drup

@@ -2,6 +2,7 @@
 
 namespace Drupal\drup\Helper;
 
+use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Core\Url;
 
 /**
@@ -22,7 +23,7 @@ abstract class DrupRequest {
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public static function isAdminRoute() {
         $adminContext = \Drupal::service('router.admin_context');
@@ -31,7 +32,7 @@ abstract class DrupRequest {
     }
 
     /**
-     * @return \Drupal\Component\Render\FormattableMarkup
+     * @return FormattableMarkup
      */
     public static function get404Content() {
         $drupRouter = \Drupal::service('drup_router.router');
@@ -40,10 +41,9 @@ abstract class DrupRequest {
         if ($contact = $drupRouter->getPath('contact')) {
             $content404 .= '<p>' . t('If the problem persists, <a href="%link">contact us</a>.', ['%link' => $contact]) . '</p>';
         }
-        $content404 .= '<p><a href="' . Url::fromRoute('<front>')
-                ->toString() . '" class="btn btn--primary">' . t('Back to the front page') . '</a></p>';
+        $content404 .= '<p><a href="' . Url::fromRoute('<front>')->toString() . '" class="btn btn--primary">' . t('Back to the front page') . '</a></p>';
 
-        return new \Drupal\Component\Render\FormattableMarkup($content404, []);
+        return new FormattableMarkup($content404, []);
     }
 
     /**
@@ -61,7 +61,7 @@ abstract class DrupRequest {
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public static function isFront() {
         return \Drupal::service('path.matcher')->isFrontPage();

@@ -13,7 +13,7 @@ class DrupSettings {
     /**
      * @var string
      */
-    public $langcode;
+    public $languageId;
 
     /**
      * @var \Drupal\Core\Config\Config
@@ -38,14 +38,14 @@ class DrupSettings {
             $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
         }
 
-        $this->langcode = $langcode;
+        $this->languageId = $langcode;
     }
 
     /**
      *
      */
     public function setNeutralLang() {
-        $this->langcode = 'und';
+        $this->languageId = 'und';
     }
 
     /**
@@ -55,7 +55,7 @@ class DrupSettings {
      * @return string
      */
     public function getName($variable) {
-        return $this->langcode . '_' . $variable;
+        return $this->languageId . '_' . $variable;
     }
 
     /**

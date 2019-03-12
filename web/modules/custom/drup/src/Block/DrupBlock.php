@@ -3,13 +3,15 @@
 namespace Drupal\drup_blocks;
 
 /**
- * Class DrupBlocks
+ * Class DrupBlock
+ *
  * @package Drupal\drup_blocks
  */
 abstract class DrupBlock {
     
     /**
      * Format block theme
+     *
      * @param $themes
      * @param array $options
      */

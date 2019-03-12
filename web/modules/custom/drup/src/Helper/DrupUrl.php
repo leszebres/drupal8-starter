@@ -58,7 +58,12 @@ abstract class DrupUrl {
      *
      * @return array
      */
-    public static function getSocialLinks($socialNetworks = ['facebook', 'twitter', 'linkedin', 'youtube'], $forceLoad = true) {
+    public static function getSocialLinks($socialNetworks = [
+        'facebook',
+        'twitter',
+        'linkedin',
+        'youtube',
+    ], $forceLoad = true) {
         $drupSettings = new DrupSettings();
         $links = [];
 
@@ -72,7 +77,7 @@ abstract class DrupUrl {
 
                 $links[$socialNetwork] = [
                     'url' => $url,
-                    'title' => ucfirst($socialNetwork)
+                    'title' => ucfirst($socialNetwork),
                 ];
             }
         }
@@ -83,17 +88,14 @@ abstract class DrupUrl {
     /**
      * @return array
      */
-    public static function getShareItems()
-    {
+    public static function getShareItems() {
         $config = \Drupal::config('system.site');
         $request = \Drupal::request();
         $route_match = \Drupal::routeMatch();
 
-        $title = $config->get('name') . ' : ' . \Drupal::service('title_resolver')
-                ->getTitle($request, $route_match->getRouteObject());
+        $title = $config->get('name') . ' : ' . \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
         $currentTitle = urlencode($title);
-        $pathAlias = \Drupal::service('path.alias_manager')
-            ->getAliasByPath($request->getPathInfo());
+        $pathAlias = \Drupal::service('path.alias_manager')->getAliasByPath($request->getPathInfo());
         $currentUrl = urlencode($request->getSchemeAndHttpHost() . $request->getBaseUrl() . $pathAlias);
 
         return [

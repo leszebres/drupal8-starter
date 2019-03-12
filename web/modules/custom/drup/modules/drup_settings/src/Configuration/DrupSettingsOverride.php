@@ -104,6 +104,6 @@ class DrupSettingsOverride implements ConfigFactoryOverrideInterface {
      *   The configuration object for the provided name and collection.
      */
     public function createConfigObject($name, $collection = StorageInterface::DEFAULT_COLLECTION) {
-        return NULL;
+        return null;
     }
 }
