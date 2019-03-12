@@ -3,6 +3,8 @@
 namespace Drupal\drup\Entity;
 
 /**
+ * todo inclure dans les autres classes
+ *
  * Class DrupField
  *
  * @package Drupal\drup\Entity

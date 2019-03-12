@@ -2,16 +2,19 @@
 
 namespace Drupal\drup\Entity;
 
-use Drupal\drup\DrupCommon;
-
 /**
  * Class Term
  *
  * @package Drupal\drup\Entity
  */
-class Term extends ContentEntityBase {
+class Term extends \Drupal\taxonomy\Entity\Term {
 
     /**
+     * todo inclure le reste
+     */
+
+    /**
+     * todo
      * @param $vid
      * @param int $parent
      *

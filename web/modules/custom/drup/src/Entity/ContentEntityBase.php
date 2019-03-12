@@ -10,15 +10,60 @@ use Drupal\taxonomy\Entity\Term;
  *
  * @package Drupal\drup\Entity
  */
-class ContentEntityBase {
+class ContentEntityBase extends \Drupal\Core\Entity\ContentEntityBase {
 
     /**
+     * @param \Drupal\Core\Entity\ContentEntityBase $entity
+     * @param null $languageId
+     *
+     * @return bool
+     */
+    public static function isTranslated(\Drupal\Core\Entity\ContentEntityBase $entity, $languageId = null) {
+        $isAllowed = true;
+
+        if ($languageId === null) {
+            $languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
+        }
+
+        $translations = $entity->getTranslationLanguages();
+
+        if (!isset($translations['und']) && !$entity->hasTranslation($languageId)) {
+            $isAllowed = false;
+        }
+
+        return $isAllowed;
+    }
+
+    /**
+     * @param \Drupal\Core\Entity\ContentEntityBase $entity
+     * @param null $languageId
+     *
+     * @return \Drupal\Core\Entity\ContentEntityBase
+     */
+    public static function translate(\Drupal\Core\Entity\ContentEntityBase $entity, $languageId = null) {
+        if ($languageId === null) {
+            $languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
+        }
+
+        if ($entity->hasTranslation($languageId)) {
+            return \Drupal::service('entity.repository')->getTranslationFromContext($entity, $languageId);
+        }
+
+        return $entity;
+    }
+
+
+
+
+
+
+    /**
+     * todo a revoir
      * @param $terms
      *
      * @return array
      */
-    public static function getReferencedTerms($terms)
-    {
+    public static function getReferencedTerms($terms) {
         $items = [];
         $languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
@@ -47,6 +92,7 @@ class ContentEntityBase {
     }
 
     /**
+     * todo a revoir
      * @param $nodes
      *
      * @return array

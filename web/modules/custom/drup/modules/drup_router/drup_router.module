@@ -20,10 +20,10 @@ function drup_router_token_info() {
 
     $tokensAvailable = [];
     $drupRouter = \Drupal::service('drup_router.router');
-    $routes = $drupRouter->getRoutes();
-    if (!empty($routes)) {
-        foreach ($routes as $index => $route) {
-            $routeName = $route['routeName'];
+    $drupRoutes = $drupRouter->getRoutes();
+    if (!empty($drupRoutes)) {
+        foreach ($drupRoutes as $index => $drupRoute) {
+            $routeName = $drupRoute['routeName'];
             $tokensAvailable[$routeName] = [
                 'name' => $routeName,
                 'description' => 'Slug for ' . $routeName
