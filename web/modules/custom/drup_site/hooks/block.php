@@ -8,22 +8,6 @@
 use Drupal\drup_blocks\DrupBlock;
 use Drupal\Core\Access\AccessResult;
 
-/**
- * Implements hook_theme().
- */
-function drup_blocks_theme() {
-    $themes = [
-//        'drup_blocks_admin_expertise_pushes' => [
-//            'variables' => [
-//                'items' => []
-//            ]
-//        ],
-    ];
-    
-    DrupBlock::format($themes);
-    
-    return $themes;
-}
     
 /**
  * Hook build alter
@@ -31,7 +15,7 @@ function drup_blocks_theme() {
  * @param array $build
  * @param \Drupal\Core\Block\BlockPluginInterface $block
  */
-function drup_block_build_alter(array &$build, \Drupal\Core\Block\BlockPluginInterface $block) {
+function drup_site_block_build_alter(array &$build, \Drupal\Core\Block\BlockPluginInterface $block) {
     // Désactivation du cache pour certains blockId
     $disableCacheBlockId = [
         'system_branding_block'
@@ -47,7 +31,7 @@ function drup_block_build_alter(array &$build, \Drupal\Core\Block\BlockPluginInt
  * @param $operation
  * @param \Drupal\Core\Session\AccountInterface $account
  */
-function drup_blocks_block_access(\Drupal\block\Entity\Block $block, $operation, \Drupal\Core\Session\AccountInterface $account) {
+function drup_site_block_access(\Drupal\block\Entity\Block $block, $operation, \Drupal\Core\Session\AccountInterface $account) {
     $currentRoute = \Drupal::service('drup_router.router')->getName();
     $entity = \Drupal\drup\DrupCommon::getPageEntity();
     $isFront = \Drupal::service('path.matcher')->isFrontPage();

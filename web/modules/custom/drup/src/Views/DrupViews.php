@@ -15,8 +15,20 @@ class DrupViews {
      * @var
      */
     protected $variables;
+
+    /**
+     * @var \Drupal\Core\Theme\ActiveTheme
+     */
     protected $activeTheme;
+
+    /**
+     * @var \StdClass
+     */
     protected $theme;
+
+    /**
+     * @var \StdClass
+     */
     protected $view;
 
     /**

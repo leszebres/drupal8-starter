@@ -10,7 +10,7 @@ use Drupal\drup\DrupEntityImage;
 use Drupal\drup\DrupEntityField;
 use Drupal\drup\DrupCommon;
 use Drupal\drup\DrupSite;
-use Drupal\drup\CookieNotice;
+use Drupal\drup_site\CookieNotice;
 
 /**
  * Implements hook_page_attachments_alter().

@@ -6,7 +6,7 @@ use Drupal\drup\DrupCommon;
 /**
  * @inheritdoc
  */
-function drup_language_switch_links_alter(array &$links, $type, $path) {
+function drup_site_language_switch_links_alter(array &$links, $type, $path) {
     $currentEntity = DrupCommon::getPageEntity(true);
     $isEntity = ($currentEntity->entity !== null);
 

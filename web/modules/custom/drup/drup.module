@@ -1,13 +1,9 @@
 <?php
 
-/**
- * @file
- * Contains drup.module.
- */
-
-use Drupal\drup\Drup;
 
 /**
- * Implements ./hooks/*.php
+ * @temp A supprimer une fois les caches vidés
+ *
+ * @param array $attachments
  */
-Drup::implementsHooks();
+function drup_page_attachments_alter(array &$attachments) {}

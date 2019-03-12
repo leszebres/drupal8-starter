@@ -3,7 +3,7 @@
 /**
  * @inheritdoc
  */
-function drup_query_alter(Drupal\Core\Database\Query\AlterableInterface $query) {
+function drup_site_query_alter(Drupal\Core\Database\Query\AlterableInterface $query) {
     if (isset($query->alterMetaData['view'])) {
 //        if ($query->alterMetaData['view']->storage->id() === 'healthreview_article') {
 //            if ($query->alterMetaData['view']->current_display === 'similar_content') {

@@ -1,0 +1,16 @@
+services:
+  # Overrides breadcrumb for some entities
+  drup_site.breadcrumb:
+    class: Drupal\drup_site\DrupSiteBreadcrumbBuilder
+    tags:
+      - { name: breadcrumb_builder, priority: 10001 }
+
+  # Alter entity autocomplete results
+  drup_site.route_subscriber:
+    class: Drupal\drup\Routing\DrupRouteSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  drup_site.autocomplete_matcher:
+    class: Drupal\drup\DrupEntityAutocompleteMatcher
+    arguments: ['@plugin.manager.entity_reference_selection']

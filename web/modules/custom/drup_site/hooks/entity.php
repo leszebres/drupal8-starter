@@ -9,14 +9,14 @@ use Drupal\node\NodeInterface;
 /**
  * @inheritdoc
  */
-function drup_entity_access(EntityInterface $entity, $operation, AccountInterface $account) {
+function drup_site_entity_access(EntityInterface $entity, $operation, AccountInterface $account) {
 
 }
 
 /**
  * @inheritdoc
  */
-function drup_entity_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+function drup_site_entity_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
     if ($entity Instanceof NodeInterface && $build['#view_mode'] === 'full') {
         DrupCommon::removeHeaderLinks($build);
     }

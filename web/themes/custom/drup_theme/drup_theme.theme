@@ -9,9 +9,13 @@
  * Load all files in /theme/ directory
  */
 $themeDirectory = __DIR__ . '/theme';
-foreach (scandir($themeDirectory, SCANDIR_SORT_NONE) as $filename) {
+$dir = scandir($themeDirectory, SCANDIR_SORT_NONE);
+
+foreach ($dir as $filename) {
     $path = $themeDirectory . '/' . $filename;
-    if (is_file($path)) {
+    $fileExtension = pathinfo($path);
+
+    if (isset($fileExtension['extension']) && $fileExtension['extension'] === 'inc' && is_file($path)) {
         require_once $path;
     }
 }

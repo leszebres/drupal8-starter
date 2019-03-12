@@ -5,7 +5,7 @@ use Drupal\drup_settings\DrupSettings;
 /**
  * @inheritdoc
  */
-function drup_preprocess_swiftmailer(&$variables) {
+function drup_site_preprocess_swiftmailer(&$variables) {
     $theme = \Drupal::theme()->getActiveTheme();
     $variables['logo'] = $variables['base_url'] . '/' . $theme->getPath() . '/images/logo-mail.png';
 

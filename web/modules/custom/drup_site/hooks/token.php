@@ -5,7 +5,7 @@ use Drupal\drup\DrupSEO;
 /**
  * @inheritdoc
  */
-function drup_token_info() {
+function drup_site_token_info() {
     $info = [];
 
     // SEO
@@ -17,7 +17,7 @@ function drup_token_info() {
 /**
  * @inheritdoc
  */
-function drup_tokens($type, $tokens, array $data, array $options, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata) {
+function drup_site_tokens($type, $tokens, array $data, array $options, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata) {
     $replacements = [];
 
     // SEO
@@ -29,7 +29,7 @@ function drup_tokens($type, $tokens, array $data, array $options, \Drupal\Core\R
 /**
  * @inheritdoc
  */
-function drup_tokens_alter(array &$replacements, array $context) {
+function drup_site_tokens_alter(array &$replacements, array $context) {
     // SEO
     DrupSEO::tokensAlter($replacements, $context);
 }

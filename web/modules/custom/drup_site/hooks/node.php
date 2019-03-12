@@ -8,7 +8,7 @@ use Drupal\node\NodeInterface;
 /**
  * @inheritdoc
  */
-function drup_node_access(NodeInterface $node, $op, AccountInterface $account) {
+function drup_site_node_access(NodeInterface $node, $op, AccountInterface $account) {
     if (!\Drupal::service('router.admin_context')->isAdminRoute()) {
         // 403 status if node is not translated
         $isAllowed = DrupCommon::isNodeTranslated($node);

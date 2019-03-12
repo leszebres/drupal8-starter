@@ -1,6 +1,6 @@
 <?php
     
-    namespace Drupal\drup\CookieNotice;
+    namespace Drupal\drup_site\CookieNotice;
     
     /**
      * Class Config

@@ -26,25 +26,8 @@ class DrupBreadcrumbBuilder implements BreadcrumbBuilderInterface {
      */
     protected $entity;
 
-    /**
-     * Custom breadcrumb items for nodes or terms
-     * [EntityType (node, term)] => [Bundle (node type or vocabulary name)] => [ID/FieldID => TYPE]
-     * @return array
-     */
     public function getCustomBreadcrumbItemsList() {
-        $breadcrumbs = [
-            'node' => [
-//                'healthreview_article' => [
-//                    'health-review' => 'druproute',
-//                    'thematics' => 'taxonomy_term',
-//                    'node_file' => 'node'
-//                ],
-            ],
-            'taxonomy_term' => [
-            ]
-        ];
-        
-        return $breadcrumbs;
+        return [];
     }
 
     /**
@@ -139,5 +122,4 @@ class DrupBreadcrumbBuilder implements BreadcrumbBuilderInterface {
 
         return $breadcrumb->setLinks($links)->addCacheableDependency(0);
     }
-    
 }

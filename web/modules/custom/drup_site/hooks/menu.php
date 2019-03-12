@@ -6,7 +6,7 @@ use Drupal\drup\DrupCommon;
 /**
  * @inheritdoc
  */
-function drup_preprocess_menu(&$variables) {
+function drup_site_preprocess_menu(&$variables) {
     $language = Drupal::languageManager()->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getId();
 
     // Unset untranslated menu items
