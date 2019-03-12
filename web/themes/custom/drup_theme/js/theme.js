@@ -27,8 +27,8 @@ var Theme = {};
         this.menuScrollOffset = 110;
 
         this.userIsLoggedIn = this.elements.body.hasClass('is-logged-in');
-        this.pathToTheme    = drupalSettings.pathToTheme || '';
-        this.langcode       = drupalSettings.path.currentLanguage || 'fr';
+        this.pathToTheme = drupalSettings.pathToTheme || '';
+        this.currentLanguageId = drupalSettings.path.currentLanguage || 'fr';
 
         return this;
     };
@@ -107,12 +107,9 @@ var Theme = {};
         cookieNoticeHandler: function () {
             if (this.elements.cookieNotice.length) {
                 this.cookieNotice = this.elements.cookieNotice.cookieNotice({
-                    'classes': {
-                        'btnAgree': '{prefix}-agree btn btn--secondary',
-                        'btnCustomize': '{prefix}-customize btn btn--secondary'
-                    },
-                    afterWrapNotice: function () {
-                        //this.elements.btnAgree.wrapInner('<span>');
+                    classes: {
+                        btnAgree: '{prefix}-agree btn btn--secondary',
+                        btnCustomize: '{prefix}-customize btn btn--secondary'
                     }
                 });
             }
@@ -150,7 +147,6 @@ var Theme = {};
          */
         anchorLinksHandler: function () {
             var self = this;
-            var offset = 100;
 
             self.elements.page.on('click', 'a[href*="#"]:not([href="#"])', function (event) {
                 if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
@@ -160,7 +156,7 @@ var Theme = {};
                     if (target.length) {
                         event.preventDefault();
 
-                        self.scrollTop((target.offset().top - offset));
+                        self.scrollTop((target.offset().top - self.menuScrollOffset));
                     }
                 }
             });
