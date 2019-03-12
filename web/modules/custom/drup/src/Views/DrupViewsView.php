@@ -8,7 +8,7 @@ use Drupal\Core\Template\Attribute;
 /**
  * Class DrupViewsView
  *
- * @package Drupal\drup
+ * @package Drupal\drup\Views
  */
 class DrupViewsView extends DrupViews {
 

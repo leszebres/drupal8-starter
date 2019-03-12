@@ -14,7 +14,7 @@ use Drupal\views\Views;
 class DrupViews {
 
     /**
-     * @var
+     * @var array
      */
     protected $variables;
 
@@ -54,47 +54,6 @@ class DrupViews {
     }
 
     /**
-     * @param $viewId
-     * @param $viewDisplayId
-     * @param array $arguments
-     * @param bool $render
-     *
-     * @return mixed
-     */
-    public static function buildView($viewId, $viewDisplayId, $arguments = [], $render = true)
-    {
-        $view = Views::getView($viewId);
-
-        if ($view instanceof ViewExecutable) {
-            $view->setDisplay($viewDisplayId);
-
-            if (!empty($arguments)) {
-                $arguments = [implode(',', $arguments)];
-                $view->setArguments($arguments);
-            }
-
-            // Render
-            if ($render) {
-                $view->execute();
-
-                if (!empty($view->result)) {
-                    $rendered = $view->render();
-                    return \Drupal::service('renderer')->render($rendered);
-                }
-            }
-
-            // Or get results
-            $view->preview();
-            if (!empty($view->result)) {
-                return $view->result;
-            }
-
-        }
-
-        return null;
-    }
-
-    /**
      * Defaults values
      */
     public function defaults() {
@@ -129,7 +88,7 @@ class DrupViews {
             // Call suggestions
             foreach ($suggestions as $suggestion) {
                 if (function_exists($suggestion)) {
-                    $this->variables = call_user_func($suggestion, $this->variables);
+                    $this->variables = $suggestion($this->variables);
                 }
             }
 
@@ -137,5 +96,70 @@ class DrupViews {
         }
 
         return false;
+    }
+
+    /**
+     * @param $viewId
+     * @param $viewDisplayId
+     * @param array $arguments
+     *
+     * @return \Drupal\views\ViewExecutable
+     */
+    public static function getView($viewId, $viewDisplayId, $arguments = []) {
+        $view = Views::getView($viewId);
+
+        if ($view instanceof ViewExecutable) {
+            $view->setDisplay($viewDisplayId);
+
+            if (!empty($arguments)) {
+                $arguments = [implode(',', $arguments)];
+                $view->setArguments($arguments);
+            }
+        }
+
+        return $view;
+    }
+
+    /**
+     * @param $viewId
+     * @param $viewDisplayId
+     * @param array $arguments
+     *
+     * @return array|null
+     */
+    public static function buildView($viewId, $viewDisplayId, $arguments = []) {
+        $view = self::getView($viewId, $viewDisplayId, $arguments);
+
+        if ($view instanceof ViewExecutable) {
+            $view->preview();
+
+            if (!empty($view->result)) {
+                return $view->result;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @param $viewId
+     * @param $viewDisplayId
+     * @param array $arguments
+     *
+     * @return string|null
+     */
+    public static function renderView($viewId, $viewDisplayId, $arguments = []) {
+        $view = self::getView($viewId, $viewDisplayId, $arguments);
+
+        if ($view instanceof ViewExecutable) {
+            $view->execute();
+
+            if (!empty($view->result)) {
+                $rendered = $view->render();
+                return \Drupal::service('renderer')->render($rendered);
+            }
+        }
+
+        return null;
     }
 }
