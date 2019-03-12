@@ -1,0 +1,5 @@
+name: 'Drup Site'
+type: module
+description: 'Utils to extend Drupal 8 methods'
+core: 8.x
+package: 'Drup'
