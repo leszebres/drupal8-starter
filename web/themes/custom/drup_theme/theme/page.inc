@@ -7,7 +7,7 @@ use Drupal\node\Entity\Node;
 
 use Drupal\drup_settings\DrupSettings;
 use Drupal\drup\DrupEntityImage;
-use Drupal\drup\DrupEntityField;
+use Drupal\drup\Entity\DrupEntityField;
 use Drupal\drup\DrupCommon;
 use Drupal\drup\DrupSite;
 use Drupal\drup_site\CookieNotice;

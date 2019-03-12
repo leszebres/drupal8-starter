@@ -7,11 +7,11 @@ use Drupal\image\Entity\ImageStyle;
 use Drupal\responsive_image\Entity\ResponsiveImageStyle;
 
 /**
- * Class DrupFileImage
+ * Class DrupFile
  *
  * @package Drupal\drup\Media
  */
-class DrupFileImage {
+class DrupFile {
 
     /**
      * @var File

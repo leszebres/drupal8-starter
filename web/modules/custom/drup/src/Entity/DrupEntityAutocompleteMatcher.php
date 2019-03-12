@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\drup;
+namespace Drupal\drup\Entity;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\Tags;
@@ -9,7 +9,7 @@ use Drupal\Core\Entity\EntityAutocompleteMatcher;
 /**
  * Class DrupEntityAutocompleteMatcher
  *
- * @package Drupal\drup
+ * @package Drupal\drup\Entity
  */
 class DrupEntityAutocompleteMatcher extends EntityAutocompleteMatcher {
 

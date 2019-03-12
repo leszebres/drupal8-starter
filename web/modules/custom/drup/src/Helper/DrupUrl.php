@@ -1,13 +1,13 @@
 <?php
 
-namespace Drupal\drup\Helpers;
+namespace Drupal\drup\Helper;
 
 /**
  * Class DrupUrl
  *
  * Méthodes globales pour le traitement des urls
  *
- * @package Drupal\drup\Helpers
+ * @package Drupal\drup\Helper
  */
 abstract class DrupUrl {
 
