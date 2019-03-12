@@ -1,6 +1,6 @@
 <?php
 
-Use Drupal\drup\DrupEntityField;
+Use Drupal\drup\Entity\DrupEntityField;
 Use Drupal\drup\DrupEntityImage;
 
 /**

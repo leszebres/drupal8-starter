@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\drup;
+namespace Drupal\drup\Entity;
 
 /**
  * Class DrupEntityField
  *
- * @package Drupal\drup
+ * @package Drupal\drup\Entity
  */
 class DrupEntityField {
 

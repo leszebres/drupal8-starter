@@ -1,6 +1,6 @@
 <?php
 
-use Drupal\drup\DrupEntityField;
+use Drupal\drup\Entity\DrupEntityField;
 
 /**
  * @param array $suggestions

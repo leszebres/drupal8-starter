@@ -3,7 +3,7 @@
 use Drupal\node\Entity\Node;
 
 use Drupal\drup\DrupCommon;
-use Drupal\drup\DrupEntityField;
+use Drupal\drup\Entity\DrupEntityField;
 
 /**
  * @param $variables

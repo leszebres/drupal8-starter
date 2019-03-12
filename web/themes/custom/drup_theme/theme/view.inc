@@ -2,7 +2,7 @@
 
 use Drupal\Core\Url;
 
-use Drupal\drup\DrupEntityField;
+use Drupal\drup\Entity\DrupEntityField;
 use Drupal\drup\Media\DrupMediaImage;
 use Drupal\drup\Views\DrupViewsRows;
 use Drupal\drup\Views\DrupViewsView;

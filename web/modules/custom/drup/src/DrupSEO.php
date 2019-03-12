@@ -4,9 +4,11 @@ namespace Drupal\drup;
 
 use Drupal\Component\Utility\Xss;
 use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\drup\Entity\DrupEntityField;
 use Drupal\drup\Media\DrupMediaImage;
+use Drupal\image\Entity\ImageStyle;
 use Drupal\node\Entity\Node;
-use Drupal\drup\Helpers\DrupUrl;
+use Drupal\drup\Helper\DrupUrl;
 
 /**
  * Class DrupSEO
