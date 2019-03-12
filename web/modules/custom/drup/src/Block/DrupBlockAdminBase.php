@@ -19,7 +19,7 @@ abstract class DrupBlockAdminBase extends BlockBase {
     /**
      * @var
      */
-    public $langcode;
+    public $languageId;
 
     /**
      * Block id
@@ -78,7 +78,7 @@ abstract class DrupBlockAdminBase extends BlockBase {
      * {@inheritdoc}
      */
     public function __construct(array $configuration, $plugin_id, $plugin_definition) {
-        $this->langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+        $this->languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
         $this->urlContextKey = 'drup-blocks-context';
 
         parent::__construct($configuration, $plugin_id, $plugin_definition);
@@ -97,7 +97,7 @@ abstract class DrupBlockAdminBase extends BlockBase {
 
             $this->config = \Drupal::service('config.factory')->getEditable('drup_blocks.admin_values');
 
-            $this->configKey = $this->blockId . '.' . $this->langcode . '.' . $this->urlContextValue;
+            $this->configKey = $this->blockId . '.' . $this->languageId . '.' . $this->urlContextValue;
             $this->configValues = $this->config->get($this->configKey);
         }
 

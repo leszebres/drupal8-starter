@@ -158,7 +158,7 @@ class DrupSettingsForm extends ConfigFormBase {
         ];
 
         // Back to current lang
-        $this->drupSettings->setLang();
+        $this->drupSettings->setLanguage();
 
         /**
          * .....
@@ -175,7 +175,7 @@ class DrupSettingsForm extends ConfigFormBase {
             if (strpos($fieldID, 'contact_') === 0) {
                 $this->drupSettings->setNeutralLang();
             } else {
-                $this->drupSettings->setLang();
+                $this->drupSettings->setLanguage();
             }
             $this->drupSettings->set($fieldID, $fieldValue);
 
@@ -184,7 +184,7 @@ class DrupSettingsForm extends ConfigFormBase {
             }
         }
 
-        $this->drupSettings->setLang();
+        $this->drupSettings->setLanguage();
         $this->drupSettings->save();
 
         parent::submitForm($form, $form_state);

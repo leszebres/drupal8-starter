@@ -23,22 +23,22 @@ class DrupSettings {
     /**
      * DrupSettings constructor.
      *
-     * @param null $langcode
+     * @param null $languageId
      */
-    public function __construct($langcode = null) {
-        $this->setLang($langcode);
+    public function __construct($languageId = null) {
+        $this->setLanguage($languageId);
         $this->config = \Drupal::service('config.factory')->getEditable('system.site');
     }
 
     /**
-     * @param null $langcode
+     * @param null $languageId
      */
-    public function setLang($langcode = null) {
-        if ($langcode === null) {
-            $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    public function setLanguage($languageId = null) {
+        if ($languageId === null) {
+            $languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
         }
 
-        $this->languageId = $langcode;
+        $this->languageId = $languageId;
     }
 
     /**

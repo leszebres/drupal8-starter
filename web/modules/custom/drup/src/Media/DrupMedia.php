@@ -45,7 +45,7 @@ class DrupMedia {
      *
      * @var string
      */
-    public $langcode;
+    public $languageId;
 
     /**
      * DrupMedia constructor.
@@ -54,7 +54,7 @@ class DrupMedia {
      * @param null $fileField
      */
     public function __construct($medias, $fileField = null) {
-        $this->langcode = \Drupal::languageManager()
+        $this->languageId = \Drupal::languageManager()
             ->getCurrentLanguage()
             ->getId();
 
@@ -81,7 +81,7 @@ class DrupMedia {
             $entity = ($media instanceof Media) ? $media : $this->loadMedia($media);
             if ($entity !== null) {
                 $entities[] = \Drupal::service('entity.repository')
-                    ->getTranslationFromContext($entity, $this->langcode);
+                    ->getTranslationFromContext($entity, $this->languageId);
             }
         }
 
