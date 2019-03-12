@@ -5,6 +5,7 @@ namespace Drupal\drup_settings\Form;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\drup\DrupCommon;
+use Drupal\drup\Media\DrupFile;
 use Drupal\drup_settings\DrupSettings;
 use Drupal\file\Entity\File;
 
@@ -182,7 +183,7 @@ class DrupSettingsForm extends ConfigFormBase {
             $this->drupSettings->set($fieldID, $fieldValue);
 
             if (!empty($fieldValue) && (strpos($fieldID, 'image') !== false || strpos($fieldID, 'file') !== false)) {
-                DrupCommon::setFilePermanent($fieldValue);
+                DrupFile::setFilePermanent($fieldValue);
             }
         }
 

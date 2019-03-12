@@ -4,6 +4,7 @@ namespace Drupal\drup_blocks\Plugin\Block;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\drup\DrupCommon;
+use Drupal\drup\Media\DrupFile;
 use Drupal\node\Entity\Node;
 
 use Drupal\drup_blocks\DrupBlockAdmin;
@@ -72,7 +73,7 @@ class _AdminExample extends DrupBlockAdminBase {
         if (!empty($this->configValues[$this->ajaxContainer])) {
             foreach ($this->configValues[$this->ajaxContainer] as $index => $formItem) {
                 if (!empty($formItem['logo'])) {
-                    DrupCommon::setFilePermanent($formItem['logo']);
+                    DrupFile::setFilePermanent($formItem['logo']);
                 }
             }
         }

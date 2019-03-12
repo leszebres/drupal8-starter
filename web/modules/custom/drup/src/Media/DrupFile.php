@@ -38,6 +38,70 @@ class DrupFile {
     }
 
     /**
+     * @param $mediaUrl
+     *
+     * @return bool|null|string|string[]
+     */
+    public static function getSVGContent($mediaUrl)
+    {
+        $output = null;
+
+        if ($mediaContent = @file_get_contents($mediaUrl)) {
+            $mediaContent = preg_replace('/<!--.*?-->/ms', '', $mediaContent);
+            return $mediaContent;
+        }
+
+        return $output;
+    }
+
+    /**
+     * @param $fid
+     *
+     * @return mixed
+     */
+    public static function setFilePermanent($fid)
+    {
+        if (is_array($fid)) {
+            $fid = current($fid);
+        }
+        $file = File::load($fid);
+
+        if ($file instanceof File) {
+            $file->setPermanent();
+            $file->save();
+
+            return $file;
+        }
+
+        return false;
+    }
+
+    /**
+     * @param $fid
+     *
+     * @return string|null
+     */
+    public static function getFileUrl($fid, $absolute = true)
+    {
+        $url = null;
+
+        if (is_array($fid)) {
+            $fid = current($fid);
+        }
+
+        $file = File::load($fid);
+        if ($file instanceof File) {
+            $url = $file->getFileUri();
+
+            if ($absolute) {
+                $url = file_create_url($url);
+            }
+        }
+
+        return $url;
+    }
+
+    /**
      * @param $style
      * @param array $attributes
      *

@@ -7,6 +7,7 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\drup\DrupCommon;
+use Drupal\drup\DrupPageEntity;
 
 /**
  * Class DrupBlockAdminBase
@@ -293,7 +294,7 @@ abstract class DrupBlockAdminBase extends BlockBase {
         if (\Drupal::service('path.matcher')->isFrontPage()) {
             return 'front';
         }
-        if ($entity = DrupCommon::getPageEntity()) {
+        if ($entity = DrupPageEntity::getPageEntity()) {
             return $entity->type . '/' . $entity->id;
         }
 

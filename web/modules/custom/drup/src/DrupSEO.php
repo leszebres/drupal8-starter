@@ -5,6 +5,7 @@ namespace Drupal\drup;
 use Drupal\Component\Utility\Xss;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\drup\Entity\DrupField;
+use Drupal\drup\Helper\DrupString;
 use Drupal\drup\Media\DrupMediaImage;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\node\Entity\Node;
@@ -152,7 +153,7 @@ abstract class DrupSEO {
                             }
 
                             if (!empty($description)) {
-                                $replacements[$original] = DrupCommon::trimString($description);
+                                $replacements[$original] = DrupString::trimString($description);
                             }
 
                         } else {

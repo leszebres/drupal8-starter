@@ -5,6 +5,7 @@
  * Contains drup_blocks.module.
  */
 
+use Drupal\drup\DrupPageEntity;
 use Drupal\drup_blocks\DrupBlock;
 use Drupal\Core\Access\AccessResult;
 
@@ -33,7 +34,7 @@ function drup_site_block_build_alter(array &$build, \Drupal\Core\Block\BlockPlug
  */
 function drup_site_block_access(\Drupal\block\Entity\Block $block, $operation, \Drupal\Core\Session\AccountInterface $account) {
     $currentRoute = \Drupal::service('drup_router.router')->getName();
-    $entity = \Drupal\drup\DrupCommon::getPageEntity();
+    $entity = DrupPageEntity::getPageEntity();
     $isFront = \Drupal::service('path.matcher')->isFrontPage();
     $args = \Drupal::routeMatch()->getParameters()->all();
 

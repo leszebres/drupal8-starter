@@ -3,6 +3,8 @@
 namespace Drupal\drup\Views;
 
 use Drupal\Core\Template\Attribute;
+use Drupal\views\ViewExecutable;
+use Drupal\views\Views;
 
 /**
  * Class DrupViews
@@ -49,6 +51,47 @@ class DrupViews {
         $this->view = new \StdClass;
         $this->view->id = $this->variables['view']->id();
         $this->view->displayId = $this->variables['view']->current_display;
+    }
+
+    /**
+     * @param $viewId
+     * @param $viewDisplayId
+     * @param array $arguments
+     * @param bool $render
+     *
+     * @return mixed
+     */
+    public static function buildView($viewId, $viewDisplayId, $arguments = [], $render = true)
+    {
+        $view = Views::getView($viewId);
+
+        if ($view instanceof ViewExecutable) {
+            $view->setDisplay($viewDisplayId);
+
+            if (!empty($arguments)) {
+                $arguments = [implode(',', $arguments)];
+                $view->setArguments($arguments);
+            }
+
+            // Render
+            if ($render) {
+                $view->execute();
+
+                if (!empty($view->result)) {
+                    $rendered = $view->render();
+                    return \Drupal::service('renderer')->render($rendered);
+                }
+            }
+
+            // Or get results
+            $view->preview();
+            if (!empty($view->result)) {
+                return $view->result;
+            }
+
+        }
+
+        return null;
     }
 
     /**

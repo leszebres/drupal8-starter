@@ -2,6 +2,8 @@
 
 namespace Drupal\drup_router;
 
+use Drupal\drup\DrupPageEntity;
+
 /**
  * Class DrupRouterService.
  */
@@ -19,7 +21,7 @@ class DrupRouterService {
         $this->routes = \Drupal::config('drup.routes')->get('routes');
         $this->languageCurrent = \Drupal::languageManager()->getCurrentLanguage()->getId();
         $this->languageDefault = \Drupal::languageManager()->getDefaultLanguage()->getId();
-        $this->entity = \Drupal\drup\DrupCommon::getPageEntity();
+        $this->entity = DrupPageEntity::getPageEntity();
     }
     
     /**

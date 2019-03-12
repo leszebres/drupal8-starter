@@ -2,6 +2,8 @@
 
 use Drupal\Core\Template\Attribute;
 use Drupal\Component\Utility\Html;
+use Drupal\drup\DrupHead;
+use Drupal\drup\DrupPageEntity;
 use Drupal\drup\DrupSEO;
 use Drupal\drup_settings\DrupSettings;
 
@@ -29,7 +31,7 @@ function drup_theme_preprocess_html(array &$variables) {
         $variables['attributes']->addClass('is-front');
 
     } else {
-        $pageEntity = DrupCommon::getPageEntity();
+        $pageEntity = DrupPageEntity::getPageEntity();
 
         if ($pageEntity->type && $pageEntity->bundle) {
             $variables['attributes']->addClass([
@@ -56,7 +58,9 @@ function drup_theme_preprocess_html(array &$variables) {
     
     $variables['google_tag'] = $drupSettings->getValue('site_tag_manager');;
 
-    DrupCommon::addFavicons($variables, ['color_mask_icon' => '#5bbad5', 'color_msapplication' => '#da532c', 'color_theme' => '#ffffff'], 1);
+    DrupHead::addFavicons($variables, [
+        'color_mask_icon' => '#5bbad5', 'color_msapplication' => '#da532c', 'color_theme' => '#ffffff'
+    ], 1);
 
     // SEO
     DrupSEO::pagerHandler($variables);

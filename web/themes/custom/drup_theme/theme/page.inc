@@ -2,6 +2,7 @@
 
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
+use Drupal\drup\DrupPageEntity;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\node\Entity\Node;
 
@@ -33,7 +34,7 @@ function drup_theme_page_attachments_alter(array &$page) {
  */
 function drup_theme_preprocess_page(array &$variables) {
     $drupSettings = new DrupSettings();
-    $pageEntity = DrupCommon::getPageEntity();
+    $pageEntity = DrupPageEntity::getPageEntity();
     
     $drupRouter = \Drupal::service('drup_router.router');
     $drupRouteName = $drupRouter->getName();
@@ -110,7 +111,7 @@ function drup_theme_theme_suggestions_page_alter(array &$suggestions, array $var
  * @param array $variables
  */
 function drup_theme_preprocess_page_title(array &$variables) {
-    $entity = DrupCommon::getPageEntity(true);
+    $entity = DrupPageEntity::getPageEntity(true);
     $drupRouter  = \Drupal::service('drup_router.router');
 
     $variables['title_attributes'] = new Attribute([

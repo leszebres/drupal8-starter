@@ -4,6 +4,7 @@ use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\drup\DrupCommon;
+use Drupal\drup\DrupHead;
 use Drupal\node\NodeInterface;
 
 /**
@@ -18,6 +19,6 @@ function drup_site_entity_access(EntityInterface $entity, $operation, AccountInt
  */
 function drup_site_entity_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
     if ($entity Instanceof NodeInterface && $build['#view_mode'] === 'full') {
-        DrupCommon::removeHeaderLinks($build);
+        DrupHead::removeHeaderLinks($build);
     }
 }
