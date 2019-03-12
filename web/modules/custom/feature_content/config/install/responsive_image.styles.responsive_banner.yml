@@ -3,11 +3,11 @@ status: true
 dependencies:
   config:
     - image.style.banner_full
-    - image.style.banner_responsive_mobile
+    - image.style.banner_small
   theme:
     - drup_theme
-id: banner
-label: Bannière
+id: responsive_banner
+label: 'Bannière'
 image_style_mappings:
   -
     breakpoint_id: drup_theme.screen
@@ -28,6 +28,6 @@ image_style_mappings:
     breakpoint_id: drup_theme.smartphone_small
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: banner_responsive_mobile
+    image_mapping: banner_small
 breakpoint_group: drup_theme
-fallback_image_style: banner_responsive_mobile
+fallback_image_style: banner_small

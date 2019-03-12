@@ -1,8 +1,8 @@
 langcode: fr
 status: true
 dependencies: {  }
-name: list_item_primary
-label: 'List item primary (500x300)'
+name: item_primary
+label: 'Liste principale (500×300)'
 effects:
   510c1601-0314-4d1b-965f-c45724e34094:
     uuid: 510c1601-0314-4d1b-965f-c45724e34094

@@ -2,7 +2,7 @@ langcode: fr
 status: true
 dependencies: {  }
 name: banner_full
-label: 'Bannière full width (1920x400)'
+label: 'Bannière grande (1920×400)'
 effects:
   d141f324-8e67-4ee7-a613-69d33e8cfdeb:
     uuid: d141f324-8e67-4ee7-a613-69d33e8cfdeb

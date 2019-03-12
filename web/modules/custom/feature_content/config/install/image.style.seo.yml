@@ -2,7 +2,7 @@ langcode: fr
 status: true
 dependencies: {  }
 name: seo
-label: SEO
+label: 'SEO (1200×630)'
 effects:
   bf022cb3-93cb-43f8-a27f-7917fc1cc14e:
     uuid: bf022cb3-93cb-43f8-a27f-7917fc1cc14e

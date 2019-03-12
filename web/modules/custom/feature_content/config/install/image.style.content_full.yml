@@ -1,8 +1,8 @@
 langcode: fr
 status: true
 dependencies: {  }
-name: node_full
-label: 'Node full (1200)'
+name: content_full
+label: 'Contenu pleine largeur (1200)'
 effects:
   2761ac34-d144-4d70-b1bd-20779eda69ff:
     uuid: 2761ac34-d144-4d70-b1bd-20779eda69ff

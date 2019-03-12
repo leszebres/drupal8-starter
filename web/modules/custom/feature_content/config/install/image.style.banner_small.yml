@@ -1,8 +1,8 @@
 langcode: fr
 status: true
 dependencies: {  }
-name: banner_responsive_mobile
-label: 'Bannière responsive (768x280)'
+name: banner_small
+label: 'Bannière petite (768×280)'
 effects:
   94113ffa-9de2-4244-b232-6bba78003ae2:
     uuid: 94113ffa-9de2-4244-b232-6bba78003ae2
