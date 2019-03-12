@@ -56,28 +56,6 @@ class DrupMenu {
     }
 
     /**
-     * Check if node is available on current language
-     *
-     * @param $node
-     *
-     * @return bool
-     */
-    public static function isNodeTranslated($node)
-    {
-        $isAllowed = true;
-
-        $languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
-        $nodeTranslations = $node->getTranslationLanguages();
-
-        // Node untranslated
-        if (!isset($nodeTranslations['und']) && !$node->hasTranslation($languageId)) {
-            $isAllowed = false;
-        }
-
-        return $isAllowed;
-    }
-
-    /**
      * @param \Drupal\Core\Menu\MenuLinkInterface $menuLinkContentPlugin
      *
      * @return null

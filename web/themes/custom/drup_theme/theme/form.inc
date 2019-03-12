@@ -2,6 +2,7 @@
 
 use Drupal\drup\DrupCommon;
 use Drupal\drup\DrupSite;
+use Drupal\drup_site\DrupSiteForm;
 
 /**
  * Implements hook_theme_suggestions_field_alter().
@@ -98,7 +99,7 @@ function drup_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
         $form['#attributes']['class'][] = 'form--webform';
 
         // RGPD
-        DrupSite::setGDPRMention($form);
+        DrupSiteForm::setGDPRMention($form);
     }
     
     // LOGIN + PASSWORD

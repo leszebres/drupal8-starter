@@ -102,6 +102,27 @@ class DrupFile {
     }
 
     /**
+     * Retourne des informations sur le logo du site
+     *
+     * @return object
+     */
+    public static function getLogo()
+    {
+        $out = (object)['url' => null, 'width' => null, 'height' => null, 'mimetype' => null];
+        $theme = \Drupal::theme()->getActiveTheme();
+        $logo = \Drupal::request()->getUriForPath('/' . $theme->getPath() . '/images/logo.png');
+
+        if ($logo && ($size = getimagesize($logo))) {
+            $out->url = $logo;
+            $out->width = $size[0];
+            $out->height = $size[1];
+            $out->mimetype = $size['mime'];
+        }
+
+        return $out;
+    }
+
+    /**
      * @param $style
      * @param array $attributes
      *

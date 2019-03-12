@@ -3,6 +3,7 @@
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
 use Drupal\drup\DrupPageEntity;
+use Drupal\drup\Helper\DrupRequest;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\node\Entity\Node;
 
@@ -87,7 +88,7 @@ function drup_theme_preprocess_page(array &$variables) {
         }
         
     } elseif (\Drupal::request()->attributes->get('_route') === 'system.404') {
-        $variables['page']['content'] = DrupSite::get404Content();
+        $variables['page']['content'] = DrupRequest::get404Content();
     }
 }
 

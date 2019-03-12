@@ -2,6 +2,7 @@
 
 namespace Drupal\drup\Helper;
 
+use Drupal\drup_settings\DrupSettings;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -44,5 +45,64 @@ abstract class DrupUrl {
         }
 
         return $baseUrl . $relativePath;
+    }
+
+    /**
+     * @param bool $forceLoad
+     *
+     * @return array
+     */
+    public static function getSocialLinks($forceLoad = true)
+    {
+        $socialNetworks = ['facebook', 'twitter', 'linkedin', 'youtube'];
+        $drupSettings = new DrupSettings();
+
+        $links = [];
+        foreach ($socialNetworks as $socialNetwork) {
+            $url = $drupSettings->getValue('site_' . $socialNetwork);
+
+            if ($forceLoad === false && empty($url)) {
+                continue;
+            }
+
+            $links[$socialNetwork] = [
+                'url' => $url,
+                'title' => ucfirst($socialNetwork)
+            ];
+        }
+
+        return $links;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getShareItems()
+    {
+        $config = \Drupal::config('system.site');
+        $request = \Drupal::request();
+        $route_match = \Drupal::routeMatch();
+
+        $title = $config->get('name') . ' : ' . \Drupal::service('title_resolver')
+                ->getTitle($request, $route_match->getRouteObject());
+        $currentTitle = urlencode($title);
+        $pathAlias = \Drupal::service('path.alias_manager')
+            ->getAliasByPath($request->getPathInfo());
+        $currentUrl = urlencode($request->getSchemeAndHttpHost() . $request->getBaseUrl() . $pathAlias);
+
+        return [
+            'linkedin' => [
+                'url' => 'https://www.linkedin.com/shareArticle?url=' . $currentUrl . '&title=' . $currentTitle,
+                'icon' => 'linkedin',
+            ],
+            'twitter' => [
+                'url' => 'https://twitter.com/share?url=' . $currentUrl . '&text=' . $currentTitle,
+                'icon' => 'twitter',
+            ],
+            'facebook' => [
+                'url' => 'https://www.facebook.com/sharer/sharer.php?u=' . $currentUrl . '&t=' . $currentTitle,
+                'icon' => 'facebook',
+            ],
+        ];
     }
 }

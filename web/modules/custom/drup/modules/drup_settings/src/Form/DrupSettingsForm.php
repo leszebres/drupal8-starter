@@ -5,6 +5,7 @@ namespace Drupal\drup_settings\Form;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\drup\DrupCommon;
+use Drupal\drup\Helper\DrupUrl;
 use Drupal\drup\Media\DrupFile;
 use Drupal\drup_settings\DrupSettings;
 use Drupal\file\Entity\File;
@@ -121,7 +122,7 @@ class DrupSettingsForm extends ConfigFormBase {
         ];
 
 
-        $socialNetworks = \Drupal\drup\DrupSite::getSocialLinks();
+        $socialNetworks = DrupUrl::getSocialLinks();
         $form[$container]['main']['social_networks'] = [
             '#type' => 'details',
             '#title' => $this->t('URLs des réseaux sociaux'),

@@ -6,6 +6,7 @@ use Drupal\Component\Utility\Xss;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\drup\Entity\DrupField;
 use Drupal\drup\Helper\DrupString;
+use Drupal\drup\Media\DrupFile;
 use Drupal\drup\Media\DrupMediaImage;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\node\Entity\Node;
@@ -105,7 +106,7 @@ abstract class DrupSEO {
         if ($type === self::$tokenType) {
             $drupSettings = \Drupal::service('drup_settings.variables');
             $metatagManager = \Drupal::service('metatag.manager');
-            $logo = DrupSite::getLogo();
+            $logo = DrupFile::getLogo();
 
             // Node
             $node = $drupField = false;
