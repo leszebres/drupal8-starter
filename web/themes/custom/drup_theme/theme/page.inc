@@ -7,7 +7,7 @@ use Drupal\node\Entity\Node;
 
 use Drupal\drup_settings\DrupSettings;
 use Drupal\drup\DrupEntityImage;
-use Drupal\drup\Entity\DrupEntityField;
+use Drupal\drup\Entity\DrupField;
 use Drupal\drup\DrupCommon;
 use Drupal\drup\DrupSite;
 use Drupal\drup_site\CookieNotice;
@@ -72,7 +72,7 @@ function drup_theme_preprocess_page(array &$variables) {
 
     if ($node instanceof Node) {
         $nodeType = $node->getType();
-        $drupField = new DrupEntityField($node);
+        $drupField = new DrupField($node);
 
         // Redirect node to their DrupRoute
         $nodesRedirection = [

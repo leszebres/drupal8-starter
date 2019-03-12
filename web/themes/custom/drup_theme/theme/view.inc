@@ -2,7 +2,7 @@
 
 use Drupal\Core\Url;
 
-use Drupal\drup\Entity\DrupEntityField;
+use Drupal\drup\Entity\DrupField;
 use Drupal\drup\Media\DrupMediaImage;
 use Drupal\drup\Views\DrupViewsRows;
 use Drupal\drup\Views\DrupViewsView;
@@ -98,7 +98,7 @@ function drup_theme_theme_suggestions_views_view_unformatted_alter(array &$sugge
 //    if (!empty($variables['view']->result)) {
 //        foreach ($variables['view']->result as $id => &$result) {
 //            $node = $result->_entity;
-//            $drupField = new DrupEntityField($node);
+//            $drupField = new DrupField($node);
 //
 //            // Row attributes
 //            $attributes = $variables['rows'][$id]['attributes'];
@@ -157,7 +157,7 @@ function drup_theme_views_rows_controller__primary($variables) {
     if (!empty($variables['view']->result)) {
         foreach ($variables['view']->result as $id => &$result) {
             $result->node = \Drupal::service('entity.repository')->getTranslationFromContext($result->_entity, $languageId);
-            $result->drupField = new DrupEntityField($result->node);
+            $result->drupField = new DrupField($result->node);
             
             $result->layout = $variables['row_layout'];
             $result->imageStyle = $variables['row_image_style'];

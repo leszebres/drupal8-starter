@@ -4,7 +4,7 @@ namespace Drupal\drup;
 
 use Drupal\Component\Utility\Xss;
 use Drupal\Core\Render\BubbleableMetadata;
-use Drupal\drup\Entity\DrupEntityField;
+use Drupal\drup\Entity\DrupField;
 use Drupal\drup\Media\DrupMediaImage;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\node\Entity\Node;
@@ -111,7 +111,7 @@ abstract class DrupSEO {
             if (isset($data['node']) && $data['node'] instanceof Node) {
                 /** @var \Drupal\node\Entity\Node $node */
                 $node = \Drupal::service('entity.repository')->getTranslationFromContext($data['node'], $options['langcode']);
-                $drupField = new DrupEntityField($node);
+                $drupField = new DrupField($node);
             }
 
             // Tokens

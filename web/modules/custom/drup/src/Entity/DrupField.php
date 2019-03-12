@@ -3,11 +3,11 @@
 namespace Drupal\drup\Entity;
 
 /**
- * Class DrupEntityField
+ * Class DrupField
  *
  * @package Drupal\drup\Entity
  */
-class DrupEntityField {
+class DrupField {
 
     /**
      * @var \Drupal\Core\Entity\ContentEntityBase
