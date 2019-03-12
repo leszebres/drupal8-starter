@@ -8,5 +8,5 @@ namespace Drupal\drup;
  * @package Drupal\drup
  */
 class DrupPageEntity {
-    
+
 }
