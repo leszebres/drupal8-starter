@@ -11,15 +11,15 @@ use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\node\Entity\Node;
 use Drupal\Core\Url;
+use Drupal\drup\Entity\DrupField;
 
 /**
  * Class MyModuleBreadcrumbBuilder.
  *
  * @package Drupal\mymodule
  */
-class DrupBreadcrumbBuilder implements BreadcrumbBuilderInterface {
+class DrupBreadcrumb implements BreadcrumbBuilderInterface {
 
     /**
      * @var
@@ -61,7 +61,7 @@ class DrupBreadcrumbBuilder implements BreadcrumbBuilderInterface {
         $currentEntity = DrupCommon::getPageEntity(true);
         $breadcrumbItems = $breadcrumbItemsList[$currentEntity->type][$currentEntity->bundle];
 
-        $drupField = new DrupEntityField($currentEntity->entity);
+        $drupField = new DrupField($currentEntity->entity);
 
         $links[] = Link::createFromRoute(t('Home'), '<front>');
 

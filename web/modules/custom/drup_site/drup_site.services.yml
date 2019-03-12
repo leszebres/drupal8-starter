@@ -1,7 +1,7 @@
 services:
   # Overrides breadcrumb for some entities
   drup_site.breadcrumb:
-    class: Drupal\drup_site\DrupSiteBreadcrumbBuilder
+    class: Drupal\drup_site\DrupSiteBreadcrumb
     tags:
       - { name: breadcrumb_builder, priority: 10001 }
 

@@ -2,20 +2,22 @@
 
 namespace Drupal\drup_site;
 
-use Drupal\drup\DrupBreadcrumbBuilder;
+use Drupal\drup\DrupBreadcrumb;
 
-class DrupSiteBreadcrumbBuilder extends DrupBreadcrumbBuilder {
+class DrupSiteBreadcrumb extends DrupBreadcrumb {
+
     /**
      * Custom breadcrumb items for nodes or terms
+     *
      * [EntityType (node, term)] => [Bundle (node type or vocabulary name)] => [ID/FieldID => TYPE]
      * @return array
      */
     public function getCustomBreadcrumbItemsList() {
         $breadcrumbs = [
             'node' => [
-                'page' => [
-                    'contact' => 'druproute'
-                ]
+//                'page' => [
+//                    'contact' => 'druproute'
+//                ]
 //                'healthreview_article' => [
 //                    'health-review' => 'druproute',
 //                    'thematics' => 'taxonomy_term',
