@@ -8,10 +8,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\node\Entity\Node;
 
 use Drupal\drup_settings\DrupSettings;
-use Drupal\drup\DrupEntityImage;
 use Drupal\drup\Entity\DrupField;
-use Drupal\drup\DrupCommon;
-use Drupal\drup\DrupSite;
 use Drupal\drup_site\CookieNotice;
 
 /**
@@ -35,12 +32,12 @@ function drup_theme_page_attachments_alter(array &$page) {
  */
 function drup_theme_preprocess_page(array &$variables) {
     $drupSettings = new DrupSettings();
-    $pageEntity = DrupPageEntity::getPageEntity();
+    $drupPageEntity = DrupPageEntity::loadEntity();
     
     $drupRouter = \Drupal::service('drup_router.router');
     $drupRouteName = $drupRouter->getName();
-    $systemRouteName = \Drupal::routeMatch()->getRouteName();
-    $isFront = \Drupal::service('path.matcher')->isFrontPage();
+    $systemRouteName = DrupRequest::getRouteName();
+    $isFront = DrupRequest::isFront();
 
     $variables['cookies_data'] = CookieNotice\Config::get();
     
@@ -112,8 +109,8 @@ function drup_theme_theme_suggestions_page_alter(array &$suggestions, array $var
  * @param array $variables
  */
 function drup_theme_preprocess_page_title(array &$variables) {
-    $entity = DrupPageEntity::getPageEntity(true);
-    $drupRouter  = \Drupal::service('drup_router.router');
+    $drupPageEntity = DrupPageEntity::loadEntity();
+    $drupRouter = \Drupal::service('drup_router.router');
 
     $variables['title_attributes'] = new Attribute([
         'class' => ['content-title']

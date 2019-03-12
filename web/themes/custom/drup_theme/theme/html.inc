@@ -5,9 +5,8 @@ use Drupal\Component\Utility\Html;
 use Drupal\drup\DrupHead;
 use Drupal\drup\DrupPageEntity;
 use Drupal\drup\DrupSEO;
+use Drupal\drup\Helper\DrupRequest;
 use Drupal\drup_settings\DrupSettings;
-
-use Drupal\drup\DrupCommon;
 
 /**
  * @inheritdoc
@@ -15,7 +14,7 @@ use Drupal\drup\DrupCommon;
 function drup_theme_preprocess_html(array &$variables) {
     $drupSettings = new DrupSettings();
     $drupRouter = \Drupal::service('drup_router.router');
-    $systemRouteName = \Drupal::routeMatch()->getRouteName();
+    $systemRouteName = DrupRequest::getRouteName();
 
     // JS variables
     $variables['#attached']['drupalSettings']['pathToTheme'] = '/' . drupal_get_path('theme', 'drup_theme');
@@ -31,12 +30,12 @@ function drup_theme_preprocess_html(array &$variables) {
         $variables['attributes']->addClass('is-front');
 
     } else {
-        $pageEntity = DrupPageEntity::getPageEntity();
+        $drupPageEntity = DrupPageEntity::loadEntity();
 
-        if ($pageEntity->type && $pageEntity->bundle) {
+        if (($entityType = $drupPageEntity->getEntityType()) && ($bundle = $drupPageEntity->getBundle())) {
             $variables['attributes']->addClass([
-                'entity-type--' . Html::cleanCssIdentifier($pageEntity->type),
-                'entity-bundle--' . Html::cleanCssIdentifier($pageEntity->bundle)
+                'entity-type--' . Html::cleanCssIdentifier($entityType),
+                'entity-bundle--' . Html::cleanCssIdentifier($bundle)
             ]);
         }
     }

@@ -10,9 +10,10 @@ class DrupSiteBreadcrumb extends DrupBreadcrumb {
      * Custom breadcrumb items for nodes or terms
      *
      * [EntityType (node, term)] => [Bundle (node type or vocabulary name)] => [ID/FieldID => TYPE]
+     *
      * @return array
      */
-    public function getCustomBreadcrumbItemsList() {
+    public function buildList() {
         $breadcrumbs = [
             'node' => [
 //                'page' => [

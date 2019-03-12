@@ -6,10 +6,9 @@
  */
 
 use Drupal\drup\DrupPageEntity;
-use Drupal\drup_blocks\DrupBlock;
-use Drupal\Core\Access\AccessResult;
+use Drupal\drup\Helper\DrupRequest;
 
-    
+
 /**
  * Hook build alter
  *
@@ -33,10 +32,10 @@ function drup_site_block_build_alter(array &$build, \Drupal\Core\Block\BlockPlug
  * @param \Drupal\Core\Session\AccountInterface $account
  */
 function drup_site_block_access(\Drupal\block\Entity\Block $block, $operation, \Drupal\Core\Session\AccountInterface $account) {
-    $currentRoute = \Drupal::service('drup_router.router')->getName();
-    $entity = DrupPageEntity::getPageEntity();
-    $isFront = \Drupal::service('path.matcher')->isFrontPage();
-    $args = \Drupal::routeMatch()->getParameters()->all();
+    $drupRouteName = \Drupal::service('drup_router.router')->getName();
+    $drupPageEntity = DrupPageEntity::loadEntity();
+    $isFront = DrupRequest::isFront();
+    $args = DrupRequest::getArgs();
 
     if ($operation === 'view') {
         switch ($block->id()) {

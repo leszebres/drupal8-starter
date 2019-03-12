@@ -8,24 +8,39 @@ use Drupal\drup\DrupPageEntity;
  * Class DrupRouterService.
  */
 class DrupRouterService {
-    
+
+    /**
+     * @var array
+     */
     protected $routes;
-    protected $languageCurrent;
-    protected $languageDefault;
+
+    /**
+     * @var string
+     */
+    protected $languageCurrentId;
+
+    /**
+     * @var string
+     */
+    protected $languageDefaultId;
+
+    /**
+     * @var \Drupal\drup\DrupPageEntity
+     */
     protected $entity;
-    
+
     /**
      * DrupRouterService constructor.
      */
     public function __construct() {
         $this->routes = \Drupal::config('drup.routes')->get('routes');
-        $this->languageCurrent = \Drupal::languageManager()->getCurrentLanguage()->getId();
-        $this->languageDefault = \Drupal::languageManager()->getDefaultLanguage()->getId();
-        $this->entity = DrupPageEntity::getPageEntity();
+        $this->languageCurrentId = \Drupal::languageManager()->getCurrentLanguage()->getId();
+        $this->languageDefaultId = \Drupal::languageManager()->getDefaultLanguage()->getId();
+        $this->entity = DrupPageEntity::loadEntity();
     }
     
     /**
-     * @return array|mixed|null
+     * @return array
      */
     public function getRoutes() {
         return $this->routes;
@@ -116,10 +131,10 @@ class DrupRouterService {
         $language = $this->getLanguage($language);
         
         if ($entityId === null) {
-            $entityId = $this->getEntity()->id;
+            $entityId = $this->entity->id();
         }
         if ($entityType === null) {
-            $entityType = $this->getEntity()->type;
+            $entityType = $this->entity->getEntityType();
         }
         
         if (!empty($entityId) && !empty($this->routes)) {
@@ -143,7 +158,7 @@ class DrupRouterService {
         $language = $this->getLanguage($language);
         
         if ($route = $this->getRoute($routeName)) {
-            return (($this->getEntity()->type === $route['targetType']) && ($this->getEntity()->id === $route[$language]));
+            return (($this->entity->getEntityType() === $route['targetType']) && ($this->entity->id() === $route[$language]));
         }
         
         return false;
@@ -158,16 +173,9 @@ class DrupRouterService {
     protected function getLanguage($language = null) {
         if ($language === null) {
             //$language = $this->languageCurrent;
-            $language = $this->languageDefault; // force main entity
+            $language = $this->languageDefaultId; // force main entity
         }
         
         return $language;
-    }
-
-    /**
-     * @return object
-     */
-    protected function getEntity() {
-        return $this->entity;
     }
 }

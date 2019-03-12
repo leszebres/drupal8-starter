@@ -14,8 +14,7 @@ abstract class DrupRequest {
     /**
      * @return mixed
      */
-    public static function getCurrentTitle()
-    {
+    public static function getCurrentTitle() {
         $request = \Drupal::request();
         $route = \Drupal::routeMatch()->getRouteObject();
 
@@ -25,8 +24,7 @@ abstract class DrupRequest {
     /**
      * @return mixed
      */
-    public static function isAdminRoute()
-    {
+    public static function isAdminRoute() {
         $adminContext = \Drupal::service('router.admin_context');
 
         return $adminContext->isAdminRoute();
@@ -35,8 +33,7 @@ abstract class DrupRequest {
     /**
      * @return \Drupal\Component\Render\FormattableMarkup
      */
-    public static function get404Content()
-    {
+    public static function get404Content() {
         $drupRouter = \Drupal::service('drup_router.router');
 
         $content404 = '<h2 class="title--h3">' . t('You may have followed a broken link, or tried to view a page that no longer exists.') . '</h2>';
@@ -47,5 +44,26 @@ abstract class DrupRequest {
                 ->toString() . '" class="btn btn--primary">' . t('Back to the front page') . '</a></p>';
 
         return new \Drupal\Component\Render\FormattableMarkup($content404, []);
+    }
+
+    /**
+     * @return array
+     */
+    public static function getArgs() {
+        return \Drupal::routeMatch()->getParameters()->all();
+    }
+
+    /**
+     * @return string|null
+     */
+    public static function getRouteName() {
+        return \Drupal::routeMatch()->getRouteName();
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function isFront() {
+        return \Drupal::service('path.matcher')->isFrontPage();
     }
 }

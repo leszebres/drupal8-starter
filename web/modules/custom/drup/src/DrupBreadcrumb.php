@@ -13,7 +13,6 @@ use Drupal\Core\Link;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\drup\Entity\ContentEntityBase;
 use Drupal\drup\Helper\DrupRequest;
-use Drupal\node\Entity\Node;
 use Drupal\Core\Url;
 use Drupal\drup\Entity\DrupField;
 
@@ -29,7 +28,10 @@ class DrupBreadcrumb implements BreadcrumbBuilderInterface {
      */
     protected $entity;
 
-    public function getCustomBreadcrumbItemsList() {
+    /**
+     * @return array
+     */
+    public function buildList() {
         return [];
     }
 
@@ -38,10 +40,10 @@ class DrupBreadcrumb implements BreadcrumbBuilderInterface {
      */
     public function applies(RouteMatchInterface $route_match) {
         if (!DrupRequest::isAdminRoute()) {
-            $this->entity = DrupPageEntity::getPageEntity(true);
-            $breadcrumbItems = $this->getCustomBreadcrumbItemsList();
+            $this->entity = DrupPageEntity::loadEntity();
+            $breadcrumbItems = $this->buildList();
 
-            if (!empty($this->entity->bundle) && isset($breadcrumbItems[$this->entity->type]) && array_key_exists($this->entity->bundle, $breadcrumbItems[$this->entity->type])) {
+            if (!empty($this->entity->getBundle()) && isset($breadcrumbItems[$this->entity->getEntityType()]) && array_key_exists($this->entity->getBundle(), $breadcrumbItems[$this->entity->getEntityType()])) {
                 return true;
             }
         }
@@ -60,11 +62,10 @@ class DrupBreadcrumb implements BreadcrumbBuilderInterface {
         $breadcrumb->addCacheContexts(['route']);
         $links = [];
 
-        $breadcrumbItemsList = $this->getCustomBreadcrumbItemsList();
-        $currentEntity = DrupPageEntity::getPageEntity(true);
-        $breadcrumbItems = $breadcrumbItemsList[$currentEntity->type][$currentEntity->bundle];
+        $breadcrumbItemsList = $this->buildList();
+        $breadcrumbItems = $breadcrumbItemsList[$this->entity->type][$this->entity->bundle];
 
-        $drupField = new DrupField($currentEntity->entity);
+        $drupField = new DrupField($this->entity->entity);
 
         $links[] = Link::createFromRoute(t('Home'), '<front>');
 
@@ -85,7 +86,7 @@ class DrupBreadcrumb implements BreadcrumbBuilderInterface {
                                 if ($termParents = \Drupal::service('entity_type.manager')->getStorage('taxonomy_term')->loadAllParents($term->id)) {
                                     ksort($termParents);
                                     foreach ($termParents as $term) {
-                                        if ($term->id() !== $currentEntity->id) {
+                                        if ($term->id() !== $this->entity->id) {
                                             $termTarget = ['target_id' => $term->id()];
                                             $term = current(ContentEntityBase::getReferencedTerms([$termTarget]));
                                             $links[] = Link::fromTextAndUrl($term->name, Url::fromUri($term->uri));
@@ -99,10 +100,10 @@ class DrupBreadcrumb implements BreadcrumbBuilderInterface {
                         break;
 
                     case 'taxonomy_term_parents':
-                        if ($termParents = \Drupal::service('entity_type.manager')->getStorage('taxonomy_term')->loadAllParents($currentEntity->id)) {
+                        if ($termParents = \Drupal::service('entity_type.manager')->getStorage('taxonomy_term')->loadAllParents($this->entity->id)) {
                             ksort($termParents);
                             foreach ($termParents as $term) {
-                                if ($term->id() !== $currentEntity->id) {
+                                if ($term->id() !== $this->entity->id) {
                                     $termTarget = ['target_id' => $term->id()];
                                     $term = current(ContentEntityBase::getReferencedTerms([$termTarget]));
                                     $links[] = Link::fromTextAndUrl($term->name, Url::fromUri($term->uri));
