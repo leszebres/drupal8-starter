@@ -20,27 +20,29 @@ abstract class DrupUrl {
      * @param $argument
      * @param $value
      * @param $queryString
+     *
      * @return string
      */
     public static function replaceArgument($argument, $value, $queryString): string {
         $separator = !empty($queryString) ? '&' : null;
-        $replace = (strpos($queryString, $argument) !== false);
+        $replace = strpos($queryString, $argument) !== false;
 
         return '?' . ($replace ? preg_replace('/' . $argument . '\=[a-z0-9]+/i', $argument . '=' . $value, $queryString) : $queryString . $separator . $argument . '=' . $value);
     }
 
     /**
+     * Retourne le chemin absolu
+     *
      * @param null $relativePath
      * @param null $baseUrl
      *
      * @return string
      */
-    public static function getAbsolutePath($relativePath = null, $baseUrl = null)
-    {
-        if (empty($baseUrl)) {
+    public static function getAbsolutePath($relativePath = null, $baseUrl = null) {
+        if ($baseUrl === null) {
             $baseUrl = Request::createFromGlobals()->getSchemeAndHttpHost();
         }
-        if (empty($relativePath)) {
+        if ($relativePath === null) {
             $relativePath = \Drupal::service('path.current')->getPath();
         }
 
@@ -48,27 +50,31 @@ abstract class DrupUrl {
     }
 
     /**
+     * todo Renomer vars en site_social_*
+     * todo Utiliser drupSettings->searchValues()
+     * todo enlever forceLoad
+     *
      * @param bool $forceLoad
      *
      * @return array
      */
-    public static function getSocialLinks($forceLoad = true)
-    {
-        $socialNetworks = ['facebook', 'twitter', 'linkedin', 'youtube'];
+    public static function getSocialLinks($socialNetworks = ['facebook', 'twitter', 'linkedin', 'youtube'], $forceLoad = true) {
         $drupSettings = new DrupSettings();
-
         $links = [];
-        foreach ($socialNetworks as $socialNetwork) {
-            $url = $drupSettings->getValue('site_' . $socialNetwork);
 
-            if ($forceLoad === false && empty($url)) {
-                continue;
+        if (!empty($socialNetworks)) {
+            foreach ($socialNetworks as $socialNetwork) {
+                $url = $drupSettings->getValue('site_' . $socialNetwork);
+
+                if ($forceLoad === false && empty($url)) {
+                    continue;
+                }
+
+                $links[$socialNetwork] = [
+                    'url' => $url,
+                    'title' => ucfirst($socialNetwork)
+                ];
             }
-
-            $links[$socialNetwork] = [
-                'url' => $url,
-                'title' => ucfirst($socialNetwork)
-            ];
         }
 
         return $links;
