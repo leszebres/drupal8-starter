@@ -8,6 +8,7 @@ use Drupal\drup\Entity\DrupField;
 use Drupal\drup\Helper\DrupString;
 use Drupal\drup\Media\DrupFile;
 use Drupal\drup\Media\DrupMediaImage;
+use Drupal\drup_settings\DrupSettings;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\node\Entity\Node;
 use Drupal\drup\Helper\DrupUrl;
@@ -105,7 +106,7 @@ abstract class DrupSEO {
      */
     public static function tokens(&$replacements, $type, array $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
         if ($type === self::$tokenType) {
-            $drupSettings = \Drupal::service('drup_settings.variables');
+            $drupSettings = new DrupSettings();
             $metatagManager = \Drupal::service('metatag.manager');
             $logo = DrupFile::getLogo();
 
@@ -255,7 +256,7 @@ abstract class DrupSEO {
      */
     public static function addSiteTitle(&$string, $separator = '|') {
         if (strpos($string, $separator) === false) {
-            $string .= ' ' . $separator . ' ' . \Drupal::service('drup_settings.variables')->getValue('site_name');
+            $string .= ' ' . $separator . ' ' . (new DrupSettings())->getValue('site_name');
         }
     }
 
