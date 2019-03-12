@@ -84,7 +84,7 @@ class DrupMediaImage extends DrupMedia {
      */
     protected function renderMedia($style, $index = 0, $attributes = []) {
         if (isset($this->mediasData[$index])) {
-            $drupFileImage = new DrupFileImage($this->mediasData[$index]->fileEntity);
+            $drupFileImage = new DrupFile($this->mediasData[$index]->fileEntity);
 
             $attributes = array_merge([
                 'alt' => $this->mediasData[$index]->fileReferenced->get('alt')->getString(),
@@ -104,7 +104,7 @@ class DrupMediaImage extends DrupMedia {
      */
     protected function getMediaUrl($style, $index = 0) {
         if (isset($this->mediasData[$index])) {
-            $drupFileImage = new DrupFileImage($this->mediasData[$index]->fileEntity);
+            $drupFileImage = new DrupFile($this->mediasData[$index]->fileEntity);
             return $drupFileImage->getMediaUrl($style);
         }
 
@@ -121,7 +121,7 @@ class DrupMediaImage extends DrupMedia {
         $data = [];
 
         if (isset($this->mediasData[$index])) {
-            $drupFileImage = new DrupFileImage($this->mediasData[$index]->fileEntity);
+            $drupFileImage = new DrupFile($this->mediasData[$index]->fileEntity);
 
             if ($drupFileImage->isValid()) {
                 $data = [

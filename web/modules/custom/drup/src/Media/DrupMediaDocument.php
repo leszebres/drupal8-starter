@@ -3,11 +3,11 @@
 namespace Drupal\drup\Media;
 
 /**
- * Class DrupMediaFile
+ * Class DrupMediaDocument
  *
  * @package Drupal\drup\Media
  */
-class DrupMediaFile extends DrupMedia {
+class DrupMediaDocument extends DrupMedia {
 
     /**
      * DrupMediaFile constructor.
