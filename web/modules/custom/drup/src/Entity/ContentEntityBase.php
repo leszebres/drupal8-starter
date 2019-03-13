@@ -2,9 +2,6 @@
 
 namespace Drupal\drup\Entity;
 
-use Drupal\node\Entity\Node;
-use Drupal\taxonomy\Entity\Term;
-
 /**
  * Class ContentEntityBase
  *
@@ -52,18 +49,13 @@ class ContentEntityBase extends \Drupal\Core\Entity\ContentEntityBase {
         return $entity;
     }
 
-
-
-
-
-
     /**
-     * todo a revoir
+
      * @param $terms
      *
      * @return array
      */
-    public static function getReferencedTerms($terms) {
+    /*public static function getReferencedTerms($terms) {
         $items = [];
         $languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
@@ -90,15 +82,14 @@ class ContentEntityBase extends \Drupal\Core\Entity\ContentEntityBase {
         }
 
         return $items;
-    }
+    }*/
 
     /**
-     * todo a revoir
      * @param $nodes
      *
      * @return array
      */
-    public static function getReferencedNodes($nodes)
+    /*public static function getReferencedNodes($nodes)
     {
         $items = [];
         $languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
@@ -124,5 +115,5 @@ class ContentEntityBase extends \Drupal\Core\Entity\ContentEntityBase {
         }
 
         return $items;
-    }
+    }*/
 }
