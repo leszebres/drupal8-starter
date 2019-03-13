@@ -3,12 +3,11 @@
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
 use Drupal\drup\DrupPageEntity;
+use Drupal\drup\Entity\Node;
 use Drupal\drup\Helper\DrupRequest;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Drupal\node\Entity\Node;
 
 use Drupal\drup_settings\DrupSettings;
-use Drupal\drup\Entity\DrupField;
 use Drupal\drup_site\CookieNotice;
 
 /**
@@ -71,10 +70,10 @@ function drup_theme_preprocess_page(array &$variables) {
 
     if ($node instanceof Node) {
         $nodeType = $node->getType();
-        $drupField = new DrupField($node);
+        $drupField = $node->drupField();
 
         // Redirect node to their DrupRoute
-        $nodesRedirection = [
+        $nodesRedirection =  [
             'factory' => '<front>'
         ];
         if (isset($nodesRedirection[$nodeType])) {
@@ -109,8 +108,8 @@ function drup_theme_theme_suggestions_page_alter(array &$suggestions, array $var
  * @param array $variables
  */
 function drup_theme_preprocess_page_title(array &$variables) {
-    $drupPageEntity = DrupPageEntity::loadEntity();
-    $drupRouter = \Drupal::service('drup_router.router');
+//    $drupPageEntity = DrupPageEntity::loadEntity();
+//    $drupRouter = \Drupal::service('drup_router.router');
 
     $variables['title_attributes'] = new Attribute([
         'class' => ['content-title']

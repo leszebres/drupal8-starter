@@ -46,7 +46,7 @@ class ContentEntityBase extends \Drupal\Core\Entity\ContentEntityBase {
         }
 
         if ($entity->hasTranslation($languageId)) {
-            return \Drupal::service('entity.repository')->getTranslationFromContext($entity, $languageId);
+            return $entity->getTranslation($languageId);
         }
 
         return $entity;
@@ -76,10 +76,11 @@ class ContentEntityBase extends \Drupal\Core\Entity\ContentEntityBase {
                 $termEntity = Term::load($termReferenced['target_id']);
                 if ($termEntity instanceof Term) {
                     if ($termEntity->hasTranslation($languageId)) {
+                        //$termEntity->getTranslation()
                         $termEntity = \Drupal::service('entity.repository')
                             ->getTranslationFromContext($termEntity, $languageId);
                     }
-                    $items[] = (object)[
+                    $items[] = (object) [
                         'id' => $termEntity->id(),
                         'name' => $termEntity->getName(),
                         'uri' => 'internal:/taxonomy/term/' . $termEntity->id(),

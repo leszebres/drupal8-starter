@@ -41,6 +41,13 @@ class Node extends \Drupal\node\Entity\Node {
     }
 
     /**
+     * @return \Drupal\drup\Entity\DrupField
+     */
+    public function drupField() {
+        return new DrupField($this);
+    }
+
+    /**
      * @return string
      */
     public function getName() {
