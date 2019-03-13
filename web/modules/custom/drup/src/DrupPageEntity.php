@@ -44,9 +44,9 @@ class DrupPageEntity {
         $this->args = in_array(\Drupal::routeMatch()->getRouteName(), [
             'views.ajax',
             'entity.node.preview',
-        ]) ? $this->getPreviousRouteParameters() : DrupRequest::getArgs();
+        ]) ? DrupRequest::getPreviousRouteParameters() : DrupRequest::getArgs();
 
-        $this->init();
+        $this->setData($this->loadData());
     }
 
     /**
@@ -54,7 +54,7 @@ class DrupPageEntity {
      *
      * @return mixed
      */
-    public function init() {
+    public function loadData() {
         $data = (object) [
             'entity' => null,
             'type' => null,
@@ -89,32 +89,13 @@ class DrupPageEntity {
     }
 
     /**
-     * Récupère les paramètres de l'url précédente
-     *
-     * @return array
-     */
-    public function getPreviousRouteParameters() {
-        $previousUrl = \Drupal::request()->server->get('HTTP_REFERER');
-        $fakeRequest = Request::create($previousUrl);
-
-        /** @var \Drupal\Core\Url $url **/
-        $url = \Drupal::service('path.validator')->getUrlIfValid($fakeRequest->getRequestUri());
-
-        if ($url) {
-            return $url->getRouteParameters();
-        }
-
-        return [];
-    }
-
-    /**
      * @param \StdClass $data
      */
     protected function setData(\StdClass $data) {
-        $this->entity = $data['entity'];
-        $this->type = $data['type'];
-        $this->id = $data['id'];
-        $this->bundle = $data['bundle'];
+        $this->entity = $data->entity;
+        $this->type = $data->type;
+        $this->id = $data->id;
+        $this->bundle = $data->bundle;
     }
 
     /**

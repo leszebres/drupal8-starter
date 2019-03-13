@@ -4,6 +4,7 @@ namespace Drupal\drup\Helper;
 
 use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class DrupRequest
@@ -15,7 +16,7 @@ abstract class DrupRequest {
     /**
      * @return mixed
      */
-    public static function getCurrentTitle() {
+    public static function getTitle() {
         $request = \Drupal::request();
         $route = \Drupal::routeMatch()->getRouteObject();
 
@@ -65,5 +66,24 @@ abstract class DrupRequest {
      */
     public static function isFront() {
         return \Drupal::service('path.matcher')->isFrontPage();
+    }
+
+    /**
+     * Récupère les paramètres de l'url précédente
+     *
+     * @return array
+     */
+    public static function getPreviousRouteParameters() {
+        $previousUrl = \Drupal::request()->server->get('HTTP_REFERER');
+        $fakeRequest = Request::create($previousUrl);
+
+        /** @var \Drupal\Core\Url $url * */
+        $url = \Drupal::service('path.validator')->getUrlIfValid($fakeRequest->getRequestUri());
+
+        if ($url) {
+            return $url->getRouteParameters();
+        }
+
+        return [];
     }
 }
