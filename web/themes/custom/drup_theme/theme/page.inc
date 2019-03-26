@@ -11,35 +11,17 @@ use Drupal\drup_site\CookieNotice;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
- * Implements hook_page_attachments_alter().
- */
-function drup_theme_page_attachments_alter(array &$page) {
-  // Tell IE to use latest rendering engine (not to use compatibility mode).
-  /*$ie_edge = [
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => [
-    'http-equiv' => 'X-UA-Compatible',
-    'content' => 'IE=edge',
-    ],
-  ];
-  $page['#attached']['html_head'][] = [$ie_edge, 'ie_edge'];*/
-}
-
-/**
  * Implements hook_preprocess_page() for page.html.twig.
  */
 function drup_theme_preprocess_page(array &$variables) {
     $drupSettings = new DrupSettings();
     $drupPageEntity = DrupPageEntity::loadEntity();
-    
     $drupRouter = \Drupal::service('drup_router.router');
     $drupRouteName = $drupRouter->getName();
     $systemRouteName = DrupRequest::getRouteName();
     $isFront = DrupRequest::isFront();
 
-    $variables['cookies_data'] = CookieNotice\Config::get();
-    
+    $variables['cookie_notice'] = CookieNotice\Config::get();
     $variables['site_name'] = $drupSettings->getValue('site_name');
     $variables['site_slogan'] = $drupSettings->getValue('site_slogan');
 
@@ -103,7 +85,7 @@ function drup_theme_theme_suggestions_page_alter(array &$suggestions, array $var
 //    }
 }
     
-    /**
+/**
  * Implements hook_preprocess_page_title().
  * @param array $variables
  */
