@@ -17,7 +17,7 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  file_extensions: 'txt doc docx pdf'
+  file_extensions: 'txt doc docx pdf zip'
   file_directory: '[date:custom:Y]-[date:custom:m]'
   max_filesize: ''
   description_field: false
