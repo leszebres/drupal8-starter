@@ -72,7 +72,7 @@ class _AdminExample extends DrupBlockAdminBase {
         if (!empty($this->configValues[$this->ajaxContainer])) {
             foreach ($this->configValues[$this->ajaxContainer] as $index => $formItem) {
                 if (!empty($formItem['logo'])) {
-                    DrupFile::setFilePermanent($formItem['logo']);
+                    DrupFile::setPermanent($formItem['logo']);
                 }
             }
         }

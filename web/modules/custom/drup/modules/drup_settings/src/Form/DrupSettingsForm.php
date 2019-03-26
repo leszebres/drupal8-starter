@@ -180,7 +180,7 @@ class DrupSettingsForm extends ConfigFormBase {
             $this->drupSettings->set($fieldID, $fieldValue);
 
             if (!empty($fieldValue) && (strpos($fieldID, 'image') !== false || strpos($fieldID, 'file') !== false)) {
-                DrupFile::setFilePermanent($fieldValue);
+                DrupFile::setPermanent($fieldValue);
             }
         }
 

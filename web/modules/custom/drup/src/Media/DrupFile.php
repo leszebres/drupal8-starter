@@ -42,8 +42,7 @@ class DrupFile {
      *
      * @return bool|null|string|string[]
      */
-    public static function getSVGContent($mediaUrl)
-    {
+    public static function getSVGContent($mediaUrl) {
         $output = null;
 
         if ($mediaContent = @file_get_contents($mediaUrl)) {
@@ -55,15 +54,17 @@ class DrupFile {
     }
 
     /**
+     * Défini le fichier en statut permanent
+     *
      * @param $fid
      *
      * @return mixed
      */
-    public static function setFilePermanent($fid)
-    {
+    public static function setPermanent($fid) {
         if (is_array($fid)) {
             $fid = current($fid);
         }
+
         $file = File::load($fid);
 
         if ($file instanceof File) {
@@ -77,12 +78,14 @@ class DrupFile {
     }
 
     /**
-     * @param $fid
+     * Retourne l'url du fichier
      *
-     * @return string|null
+     * @param      $fid
+     * @param bool $absolute
+     *
+     * @return null|string
      */
-    public static function getFileUrl($fid, $absolute = true)
-    {
+    public static function getUrl($fid, $absolute = true) {
         $url = null;
 
         if (is_array($fid)) {
@@ -90,6 +93,7 @@ class DrupFile {
         }
 
         $file = File::load($fid);
+
         if ($file instanceof File) {
             $url = $file->getFileUri();
 
@@ -104,22 +108,30 @@ class DrupFile {
     /**
      * Retourne des informations sur le logo du site
      *
+     * @param array $options Surcharge des éléments retournés
+     *
      * @return object
      */
-    public static function getLogo()
-    {
-        $out = (object)['url' => null, 'width' => null, 'height' => null, 'mimetype' => null];
-        $theme = \Drupal::theme()->getActiveTheme();
-        $logo = \Drupal::request()->getUriForPath('/' . $theme->getPath() . '/images/logo.png');
+    public static function getLogo($options = []) {
+        $options = array_merge([
+            'url' => null,
+            'width' => null,
+            'height' => null,
+            'mimetype' => 'image/png'
+        ], $options);
 
-        if ($logo && ($size = getimagesize($logo))) {
-            $out->url = $logo;
-            $out->width = $size[0];
-            $out->height = $size[1];
-            $out->mimetype = $size['mime'];
+        if (empty($options['url'])) {
+            $theme = \Drupal::theme()->getActiveTheme();
+            $options['url'] = \Drupal::request()->getUriForPath('/' . $theme->getPath() . '/images/logo.png');
         }
 
-        return $out;
+        if (!empty($options['url']) && empty($options['width']) && empty($options['height']) && ($size = getimagesize($options['url']))) {
+            $options['width'] = $size[0];
+            $options['height'] = $size[1];
+            $options['mimetype'] = $size['mime'];
+        }
+
+        return (object) $options;
     }
 
     /**
