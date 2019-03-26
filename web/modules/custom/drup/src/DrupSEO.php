@@ -156,7 +156,7 @@ abstract class DrupSEO {
                             }
 
                             if (!empty($description)) {
-                                $replacements[$original] = DrupString::trimString($description);
+                                $replacements[$original] = DrupString::truncate($description);
                             }
 
                         } else {

@@ -14,21 +14,23 @@ use Drupal\Component\Utility\Unicode;
 abstract class DrupString {
 
     /**
+     * Tronquer
+     *
      * @param $string
-     * @param int $truncateLimit
-     * @param bool $tagsToStrip
+     * @param int $maxLength
+     * @param string|bool $stripTags false pour désactiver
      *
      * @return string
      */
-    public static function trimString($string, $truncateLimit = 250, $tagsToStrip = true) {
-        if ($tagsToStrip !== false) {
-            $string = strip_tags($string, $tagsToStrip);
+    public static function truncate($string, $maxLength = 250, $stripTags = null) {
+        if ($stripTags !== false) {
+            $string = strip_tags($string, $stripTags);
         }
 
         $string = str_replace(PHP_EOL, '', $string);
 
-        if ($truncateLimit > 0) {
-            $string = Unicode::truncate($string, $truncateLimit, true, true);
+        if ($maxLength > 0) {
+            $string = Unicode::truncate($string, $maxLength, true, true);
         }
 
         return $string;
