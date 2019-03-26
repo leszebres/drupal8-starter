@@ -3,8 +3,8 @@
 namespace Drupal\drup;
 
 use Drupal\Core\Menu\MenuLinkInterface;
+use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\menu_link_content\Plugin\Menu\MenuLinkContent;
-use Drupal\node\Entity\Node;
 
 /**
  * Class DrupMenu
@@ -95,21 +95,21 @@ class DrupMenu {
     }
 
     /**
-     * todo nouvelles classes + ne pas retourner de node
+     * todo nouvelles classes
      *
      * @param $nid
      * @param string $menuName
      *
-     * @return array|bool
+     * @return array
      */
-    public static function getNodeChildren($nid, $menuName = 'main') {
+    public static function getChildren($nid, $menuName = 'main') {
         $navItems = [];
 
         $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
         $links = $menu_link_manager->loadLinksByRoute('entity.node.canonical', ['node' => $nid], $menuName);
         $root_menu_item = array_pop($links);
 
-        $menuParameters = new \Drupal\Core\Menu\MenuTreeParameters();
+        $menuParameters = new MenuTreeParameters();
         $menuParameters
             ->setMaxDepth(1)
             ->setRoot($root_menu_item->getPluginId())
@@ -127,24 +127,13 @@ class DrupMenu {
         $menuItems['#cache']['max-age'] = 0;
 
         if (!empty($menuItems['#items'])) {
-            $languageId = \Drupal::languageManager()
-                ->getCurrentLanguage()
-                ->getId();
-
-            foreach ($menuItems['#items'] as $index => $menuItem) {
+            foreach ($menuItems['#items'] as $index => $item) {
                 $navItems[$index] = (object) [
-                    'menuItem' => $menuItem,
+                    'item' => $item
                 ];
-                if ($nid = DrupMenu::getNidFromMenuItem($menuItem)) {
-                    $node = Node::load($nid);
-                    $node = \Drupal::service('entity.repository')
-                        ->getTranslationFromContext($node, $languageId);
-                    $navItems[$index]->node = $node;
-                }
             }
-            return $navItems;
         }
 
-        return false;
+        return $navItems;
     }
 }
