@@ -241,8 +241,17 @@ abstract class DrupSEO {
     public static function attachmentsAlter(&$attachments) {
         if (!empty($attachments['#attached']['html_head'])) {
             foreach ($attachments['#attached']['html_head'] as $index => $attachment) {
-                if (isset($attachment[1]) && $attachment[1] === 'title') {
-                    self::addSiteTitle($attachments['#attached']['html_head'][$index][0]['#attributes']['content']);
+                if (isset($attachment[1])) {
+                    if ($attachment[1] === 'title') {
+                        self::addSiteTitle($attachments['#attached']['html_head'][$index][0]['#attributes']['content']);
+
+                    } elseif ($attachment[1] === 'canonical_url') {
+                        $queryString = \Drupal::request()->getQueryString();
+
+                        if ($queryString !== null) {
+                            $attachments['#attached']['html_head'][$index][0]['#attributes']['href'] .= '?' . $queryString;
+                        }
+                    }
                 }
             }
         }
@@ -260,20 +269,19 @@ abstract class DrupSEO {
         }
     }
 
+
     /**
      * Gestionnaire de pagination
      *
      * @param $variables
-     * @param int $itemsPerPage
      */
-    public static function pagerHandler(&$variables, $itemsPerPage = 10) {
-        if (isset($variables['page']['#attached']['html_head'])) {
-            $links       = [];
-            $currentPath = \Drupal::service('path.alias_manager')->getAliasByPath(\Drupal::service('path.current')->getPath());
+    public static function pagerHandler(&$variables) {
+        if (isset($variables['current'])) {
+            $links = [];
             $queryString = \Drupal::request()->getQueryString();
-            $currentPage = (int) Xss::filter(\Drupal::request()->get('page'));
-            $nextItems   = ($currentPage * $itemsPerPage) + $itemsPerPage;
-            $totalItems  = (!empty($GLOBALS['pager_total_items']) && isset($GLOBALS['pager_total_items'][0])) ? (int) $GLOBALS['pager_total_items'][0] : 0;
+            $currentPath = Url::fromRoute('<current>')->toString();
+            $currentPage = (int) $variables['current'] - 1;
+            $totalPages = preg_replace('/^.*page=(\d+).*$/', '$1', $variables['items']['last']['href']);
 
             // Prev
             if ($currentPage > 0) {
@@ -281,29 +289,20 @@ abstract class DrupSEO {
             }
 
             // Next
-            if ($totalItems > $nextItems) {
+            if ($currentPage < $totalPages) {
                 $links['next'] = $currentPage + 1;
             }
 
             // Add
-            foreach ($links as $link => $page) {
-                $variables['page']['#attached']['html_head'][] = [
-                    [
-                        '#tag' => 'link',
-                        '#attributes' => [
+            if (!empty($links)) {
+                foreach ($links as $link => $page) {
+                    $variables['#attached']['html_head_link'][] = [
+                        [
                             'rel' => $link,
                             'href' => $currentPath . DrupUrl::replaceArgument('page', $page, $queryString)
-                        ]
-                    ],
-                    'pager-' . $link
-                ];
-            }
-
-            // Update canonical
-            foreach ((array) $variables['page']['#attached']['html_head'] as &$meta) {
-                if ($queryString !== null && $meta[1] === 'canonical_url') {
-                    $meta[0]['#attributes']['href'] = $meta[0]['#attributes']['href'] . '?' . $queryString;
-                    break;
+                        ],
+                        true
+                    ];
                 }
             }
         }

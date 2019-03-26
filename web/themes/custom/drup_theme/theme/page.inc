@@ -3,12 +3,12 @@
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
 use Drupal\drup\DrupPageEntity;
+use Drupal\drup\DrupSEO;
 use Drupal\drup\Entity\Node;
 use Drupal\drup\Helper\DrupRequest;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-
 use Drupal\drup_settings\DrupSettings;
 use Drupal\drup_site\CookieNotice;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Implements hook_page_attachments_alter().
@@ -115,4 +115,11 @@ function drup_theme_preprocess_page_title(array &$variables) {
         'class' => ['content-title']
     ]);
     $variables['tag'] = 'h1';
+}
+
+/**
+ * Implements hook_preprocess_pager().
+ */
+function drup_theme_preprocess_pager(&$pager) {
+    DrupSEO::pagerHandler($pager);
 }
