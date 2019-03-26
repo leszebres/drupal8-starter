@@ -17,15 +17,6 @@ function drup_theme_theme_suggestions_fieldset_alter(array &$suggestions, array 
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK_alter() for form templates.
- */
-function drup_theme_theme_suggestions_form_alter(array &$suggestions, array $variables) {
-    if ($variables['element']['#form_id'] === 'search_block_form') {
-        $suggestions[] = 'form__search_block_form';
-    }
-}
-
-/**
  * @param $suggestions
  * @param array $variables
  */
@@ -92,7 +83,6 @@ function drup_theme_preprocess_input(array &$variables) {
  * @param $form_id
  */
 function drup_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-
     // WEBFORM (CONTACT)
     if (strpos($form_id, 'webform_submission_') !== false) {
         $form['#attributes']['class'][] = 'form'; // Ne pas remplacer les classes par défaut, elles sont utilisées par webform (conditions)
@@ -104,8 +94,8 @@ function drup_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
     
     // LOGIN + PASSWORD
     elseif (in_array($form_id, ['user_login_form', 'user_pass'])) {
-        $form['#attributes']['class'][] = ['form'];
-        $form['#attributes']['class'][] = ['form--login'];
+        $form['#attributes']['class'][] = 'form';
+        $form['#attributes']['class'][] = 'form--login';
     }
 }
 
