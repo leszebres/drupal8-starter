@@ -60,7 +60,4 @@ function drup_theme_preprocess_html(array &$variables) {
     DrupHead::addFavicons($variables, [
         'color_mask_icon' => '#5bbad5', 'color_msapplication' => '#da532c', 'color_theme' => '#ffffff'
     ], 1);
-
-    // SEO
-    DrupSEO::pagerHandler($variables);
 }
