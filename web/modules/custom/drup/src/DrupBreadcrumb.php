@@ -52,10 +52,11 @@ class DrupBreadcrumb implements BreadcrumbBuilderInterface {
     }
 
     /**
+     * {@inheritdoc}
+     *
      * todo revoir toutes les méthodes
      *
-     * @see http://kevinquillen.com/drupal/2017/02/16/manually-add-breadcrumb-links-in-drupal-8
-     * {@inheritdoc}
+     * @link http://kevinquillen.com/drupal/2017/02/16/manually-add-breadcrumb-links-in-drupal-8
      */
     public function build(RouteMatchInterface $route_match) {
         $drupRouter = \Drupal::service('drup_router.router');

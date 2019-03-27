@@ -14,7 +14,7 @@ use Drupal\menu_link_content\Plugin\Menu\MenuLinkContent;
 class DrupMenu {
 
     /**
-     * todo revoir cf pile
+     * todo revoir cf pileje
      *
      * @param array $item
      * @param string $languageId
@@ -95,24 +95,23 @@ class DrupMenu {
     }
 
     /**
-     * todo nouvelles classes
+     * Retourne les liens enfants d'un noeud
      *
      * @param $nid
      * @param string $menuName
      *
      * @return array
      */
-    public static function getChildren($nid, $menuName = 'main') {
+    public static function getNodeChildren($nid, $menuName = 'main') {
         $navItems = [];
-
-        $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
-        $links = $menu_link_manager->loadLinksByRoute('entity.node.canonical', ['node' => $nid], $menuName);
-        $root_menu_item = array_pop($links);
+        $menuLinkManager = \Drupal::service('plugin.manager.menu.link');
+        $links = $menuLinkManager->loadLinksByRoute('entity.node.canonical', ['node' => $nid], $menuName);
+        $rootMenuItem = array_pop($links);
 
         $menuParameters = new MenuTreeParameters();
         $menuParameters
             ->setMaxDepth(1)
-            ->setRoot($root_menu_item->getPluginId())
+            ->setRoot($rootMenuItem->getPluginId())
             ->excludeRoot()
             ->onlyEnabledLinks();
         $menuTreeService = \Drupal::service('menu.link_tree');
@@ -120,7 +119,7 @@ class DrupMenu {
         $menuTree = $menuTreeService->load($menuName, $menuParameters);
         $manipulators = [
             ['callable' => 'menu.default_tree_manipulators:checkAccess'],
-            ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+            ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort']
         ];
         $tree = $menuTreeService->transform($menuTree, $manipulators);
         $menuItems = $menuTreeService->build($tree);
@@ -128,9 +127,7 @@ class DrupMenu {
 
         if (!empty($menuItems['#items'])) {
             foreach ($menuItems['#items'] as $index => $item) {
-                $navItems[$index] = (object) [
-                    'item' => $item
-                ];
+                $navItems[$index] = $item;
             }
         }
 

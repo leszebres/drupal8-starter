@@ -38,27 +38,16 @@ class IconPickerItem extends FieldItemBase {
     /**
      * {@inheritdoc}
      */
-    public function getConstraints() {
-        $constraints = parent::getConstraints();
-
-        // @todo Add more constrains here.
-        return $constraints;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public static function schema(FieldStorageDefinitionInterface $field_definition) {
         $columns = [
             'icon' => [
                 'type'   => 'varchar',
-                'length' => 255,
-            ],
+                'length' => 255
+            ]
         ];
 
         $schema = [
-            'columns' => $columns,
-            // @DCG Add indexes here if necessary.
+            'columns' => $columns
         ];
 
         return $schema;
