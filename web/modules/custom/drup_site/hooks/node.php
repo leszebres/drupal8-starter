@@ -13,9 +13,10 @@ use Drupal\node\NodeInterface;
 function drup_site_node_access(NodeInterface $node, $op, AccountInterface $account) {
     if (!\Drupal::service('router.admin_context')->isAdminRoute()) {
         // 403 status if node is not translated
-//        $isAllowed = Node::isNodeTranslated($node);
-        $isAllowed = true; //todo corriger ci dessus
-        $access = ($isAllowed === true) ? AccessResult::neutral() : AccessResult::forbidden();
+        $languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+        $isAllowed = $node->hasTranslation($languageId);
+        $access = $isAllowed ? AccessResult::neutral() : AccessResult::forbidden();
         $access->addCacheableDependency($node);
 
         return $access;
