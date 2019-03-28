@@ -3,7 +3,6 @@
 namespace Drupal\drup;
 
 use Drupal\drup\Helper\DrupRequest;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class DrupPageEntity
@@ -18,7 +17,7 @@ class DrupPageEntity {
     protected $args;
 
     /**
-     * @var object
+     * @var \Drupal\Core\Entity\Entity
      */
     protected $entity;
 
@@ -106,7 +105,7 @@ class DrupPageEntity {
     }
 
     /**
-     * @return object
+     * @return \Drupal\Core\Entity\Entity
      */
     public function getEntity() {
         return $this->entity;

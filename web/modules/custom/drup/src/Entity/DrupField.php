@@ -2,6 +2,7 @@
 
 namespace Drupal\drup\Entity;
 
+use Drupal\Core\Entity\Entity;
 use Drupal\field\Entity\FieldConfig;
 
 /**
@@ -13,7 +14,7 @@ use Drupal\field\Entity\FieldConfig;
 class DrupField {
 
     /**
-     * @var \Drupal\Core\Entity\ContentEntityBase
+     * @var \Drupal\drup\Entity\ContentEntityBase
      */
     protected $entity;
 
@@ -22,7 +23,7 @@ class DrupField {
      *
      * @param $entity
      */
-    public function __construct(\Drupal\Core\Entity\ContentEntityBase $entity) {
+    public function __construct(Entity $entity) {
         $this->entity = $entity;
     }
 
