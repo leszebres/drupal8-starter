@@ -3,6 +3,8 @@
 namespace Drupal\drup_router;
 
 use Drupal\drup\DrupPageEntity;
+use Drupal\drup\Entity\Node;
+use Drupal\drup\Entity\Term;
 
 /**
  * Class DrupRouterService.
@@ -81,6 +83,27 @@ class DrupRouterService {
             return $route[$language];
         }
         
+        return null;
+    }
+
+    /**
+     * @param $routeName
+     * @param null $language
+     *
+     * @return \Drupal\drup\Entity\Node|\Drupal\drup\Entity\Term|null
+     */
+    public function getEntity($routeName, $language = null) {
+        $language = $this->getLanguage($language);
+
+        if (($route = $this->getRoute($routeName)) && isset($route[$language])) {
+            if ($route['targetType'] === 'taxonomy_term') {
+                return Term::load($route[$language]);
+            }
+            if ($route['targetType'] === 'node') {
+                return Node::load($route[$language]);
+            }
+        }
+
         return null;
     }
     
