@@ -5,6 +5,7 @@ namespace Drupal\drup;
 use Drupal\Component\Utility\Xss;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\drup\Entity\DrupField;
+use Drupal\drup\Helper\DrupRequest;
 use Drupal\drup\Helper\DrupString;
 use Drupal\drup\Media\DrupFile;
 use Drupal\drup\Media\DrupMediaImage;
@@ -105,6 +106,10 @@ abstract class DrupSEO {
      * @param \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata
      */
     public static function tokens(&$replacements, $type, array $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
+        if (DrupRequest::isAdminRoute()) {
+            return false;
+        }
+
         if ($type === self::$tokenType) {
             $drupSettings = new DrupSettings();
             $metatagManager = \Drupal::service('metatag.manager');
