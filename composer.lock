@@ -2434,7 +2434,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/claro",
-                "reference": "d40bfbbbc806752237f40a061b3a8d9551db08f8"
+                "reference": "c669bf84191c6d17c528f4c3fd07ad7d5f8bf6c6"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -2446,7 +2446,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.x-dev",
-                    "datestamp": "1550170680",
+                    "datestamp": "1552905787",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -2484,7 +2484,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/claro"
             },
-            "time": "2019-03-18T11:06:37+00:00"
+            "time": "2019-03-28T12:25:56+00:00"
         },
         {
             "name": "drupal/config_update",
@@ -4498,7 +4498,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/paragraphs",
-                "reference": "09049d2e2f7c13a15824b57d3fdf1458e8419e68"
+                "reference": "fe3d6da5fb1a442c78aaf24281a79413259d8ea5"
             },
             "require": {
                 "drupal/core": "~8",
@@ -4526,8 +4526,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.7+1-dev",
-                    "datestamp": "1553609887",
+                    "version": "8.x-1.8+1-dev",
+                    "datestamp": "1553693285",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -4565,7 +4565,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/paragraphs"
             },
-            "time": "2019-03-27T13:27:17+00:00"
+            "time": "2019-03-28T12:51:29+00:00"
         },
         {
             "name": "drupal/pathauto",
