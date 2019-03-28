@@ -7,6 +7,7 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\drup\Helper\DrupUrl;
 use Drupal\drup\Media\DrupFile;
 use Drupal\drup_settings\DrupSettings;
+use Drupal\drup_social_links\DrupSocialLinks;
 
 /**
  * Class DrupSettingsFrom.
@@ -118,18 +119,20 @@ class DrupSettingsForm extends ConfigFormBase {
         ];
 
 
-        $socialNetworks = DrupUrl::getSocialLinks();
-        $form[$container]['main']['social_networks'] = [
-            '#type' => 'details',
-            '#title' => $this->t('URLs des réseaux sociaux'),
-            '#open' => true,
-        ];
-        foreach ($socialNetworks as $socialNetworkID => $socialNetwork) {
-            $form[$container]['main']['social_networks']['site_' . $socialNetworkID] = [
-                '#type' => 'url',
-                '#title' => $socialNetwork['title'],
-                '#default_value' => $socialNetwork['url'],
+        $socialNetworks = DrupSocialLinks::getLinkItems();
+        if (!empty($socialNetworks)) {
+            $form[$container]['main']['social_networks'] = [
+                '#type' => 'details',
+                '#title' => $this->t('URLs des réseaux sociaux'),
+                '#open' => true
             ];
+            foreach ($socialNetworks as $network) {
+                $form[$container]['main']['social_networks']['site_social_link_' . $network['id']] = [
+                    '#type' => 'url',
+                    '#title' => $network['title'],
+                    '#default_value' => $network['link_url']
+                ];
+            }
         }
 
         /**
@@ -168,19 +171,35 @@ class DrupSettingsForm extends ConfigFormBase {
     }
 
     /**
+     * todo review save fields
      * {@inheritdoc}
      */
     public function submitForm(array &$form, FormStateInterface $form_state) {
-        foreach ($form_state->getValues() as $fieldID => $fieldValue) {
-            if (strpos($fieldID, 'contact_') === 0) {
-                $this->drupSettings->setNeutralLang();
-            } else {
-                $this->drupSettings->setLanguage();
-            }
-            $this->drupSettings->set($fieldID, $fieldValue);
+        $values = $form_state->getValues();
+        $drupSocialLinksConfig = DrupSocialLinks::getConfig(true);
+        $drupSocialLinksItems = $drupSocialLinksConfig->get('items');
 
-            if (!empty($fieldValue) && (strpos($fieldID, 'image') !== false || strpos($fieldID, 'file') !== false)) {
-                DrupFile::setPermanent($fieldValue);
+        foreach ($values as $fieldId => $fieldValue) {
+            if (strpos($fieldId, 'site_social_link_') !== false) {
+                $socialId = str_replace('site_social_link_', '', $fieldId);
+
+                if (isset($drupSocialLinksItems[$socialId])) {
+                    $drupSocialLinksItems[$socialId]['link_url'] = $fieldValue;
+                    $drupSocialLinksConfig->set('items', $drupSocialLinksItems);
+                    $drupSocialLinksConfig->save();
+                }
+
+            } else {
+                if (strpos($fieldId, 'contact_') !== false) {
+                    $this->drupSettings->setNeutralLang();
+                } else {
+                    $this->drupSettings->setLanguage();
+                }
+                $this->drupSettings->set($fieldId, $fieldValue);
+
+                if (!empty($fieldValue) && (strpos($fieldId, 'image') !== false || strpos($fieldId, 'file') !== false)) {
+                    DrupFile::setPermanent($fieldValue);
+                }
             }
         }
 
