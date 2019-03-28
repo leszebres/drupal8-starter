@@ -47,30 +47,27 @@ class Term extends \Drupal\taxonomy\Entity\Term {
 
 
     /**
-     * todo
-     * @param $vid
+     * @param string $vid
      * @param int $parent
+     * @param int $maxDepth
      *
      * @return array
      */
-    public static function getTermsAsTree($vid, $parent = 0)
-    {
+    public static function loadTree($vid, $parent = 0, $maxDepth = 1) {
         $tree = [];
         $languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
-        $terms = \Drupal::service('entity_type.manager')
-            ->getStorage("taxonomy_term")
-            ->loadTree($vid, $parent, 1, true);
+        $terms = \Drupal::service('entity_type.manager')->getStorage('taxonomy_term')->loadTree($vid, $parent, $maxDepth, true);
 
         if (!empty($terms)) {
             foreach ($terms as $tid => &$term) {
-                /** @var \Drupal\taxonomy\Entity\Term $term */
-                $term = \Drupal::service('entity.repository')
-                    ->getTranslationFromContext($term, $languageId);
-                $tree[$tid] = (object)[
-                    'term' => $term,
-                    'children' => \Drupal\taxonomy\Entity\Term::getTermsAsTree($vid, $term->id()),
-                ];
+                /** @var \Drupal\drup\Entity\Term $term */
+                if (($term = self::load($term->id())) && $term->isTranslated($languageId)) {
+                    $tree[] = (object) [
+                        'term' => $term,
+                        'children' => self::loadTree($vid, $term->id(), $maxDepth)
+                    ];
+                }
             }
         }
 
