@@ -3,7 +3,7 @@
 use Drupal\drup_settings\DrupSettings;
 
 /**
- * @param array $variables
+ * @inheritdoc
  */
 function drup_theme_preprocess_block(array &$variables) {
     // Do not display id attribute

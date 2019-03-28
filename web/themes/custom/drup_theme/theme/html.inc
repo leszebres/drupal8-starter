@@ -55,7 +55,7 @@ function drup_theme_preprocess_html(array &$variables) {
     
     // User role @see module drup_admin_toolbar
     
-    $variables['google_tag'] = $drupSettings->getValue('site_tag_manager');;
+    $variables['google_tag'] = $drupSettings->getValue('site_tag_manager');
 
     DrupHead::addFavicons($variables, [
         'color_mask_icon' => '#5bbad5', 'color_msapplication' => '#da532c', 'color_theme' => '#ffffff'

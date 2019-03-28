@@ -3,9 +3,7 @@
 use Drupal\drup_site\DrupSiteForm;
 
 /**
- * @param $form
- * @param \Drupal\Core\Form\FormStateInterface $form_state
- * @param $form_id
+ * @inheritdoc
  */
 function drup_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
     // WEBFORM (CONTACT)
@@ -25,9 +23,7 @@ function drup_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
 }
 
 /**
- * @param $form
- * @param \Drupal\Core\Form\FormStateInterface $form_state
- * @param $form_id
+ * @inheritdoc
  */
 function drup_theme_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
     // Vue Tags : articles dans une thématique/notion clé

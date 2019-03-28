@@ -1,8 +1,6 @@
 <?php
 
-use Drupal\Core\Url;
-
-use Drupal\drup\Entity\DrupField;
+use Drupal\drup\Entity\Node;
 use Drupal\drup\Media\DrupMediaImage;
 use Drupal\drup\Views\DrupViewsRows;
 use Drupal\drup\Views\DrupViewsView;
@@ -111,20 +109,18 @@ function drup_theme_views_rows_controller($variables) {
  * @return mixed
  */
 function drup_theme_views_rows_controller__primary($variables) {
-    $languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
-
     $variables['rows_attributes']->addClass('list--primary');
 
     if (!empty($variables['view']->result)) {
         foreach ($variables['view']->result as $id => &$result) {
-            $result->node = \Drupal::service('entity.repository')->getTranslationFromContext($result->_entity, $languageId);
-            $result->drupField = new DrupField($result->node);
+            $result->_entity = Node::load($result->_entity->id());
+            $result->drupField = $result->_entity->drupField();
             
             $result->layout = $variables['row_layout'];
             $result->imageStyle = $variables['row_image_style'];
             $result->tagTitle = $variables['row_tag_title'];
 
-            // Row attributes
+            /** @var \Drupal\Core\Template\Attribute $attributes **/
             $attributes = $variables['rows'][$id]['attributes'];
             $attributes->addClass('list-item');
     
@@ -149,8 +145,8 @@ function drup_theme_views_rows_controller__primary($variables) {
             }
 
             // Content
-            $result->title = $result->node->getTitle();
-            $result->url = Url::fromUri('internal:/node/'.$result->node->id())->toString();
+            $result->title = $result->_entity->getTitle();
+            $result->url = $result->_entity->toUrl();
             $result->cta = t('Read more');
 
             // Add content

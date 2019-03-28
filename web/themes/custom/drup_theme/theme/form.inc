@@ -1,11 +1,7 @@
 <?php
 
-use Drupal\drup\DrupCommon;
-use Drupal\drup\DrupSite;
-use Drupal\drup_site\DrupSiteForm;
-
 /**
- * Implements hook_theme_suggestions_field_alter().
+ * @inheritdoc
  */
 function drup_theme_theme_suggestions_fieldset_alter(array &$suggestions, array $variables) {
     $element = $variables['element'];
@@ -17,8 +13,7 @@ function drup_theme_theme_suggestions_fieldset_alter(array &$suggestions, array 
 }
 
 /**
- * @param $suggestions
- * @param array $variables
+ * @inheritdoc
  */
 function drup_theme_theme_suggestions_input_alter(array &$suggestions, array $variables) {
     $element = $variables['element'];
@@ -32,7 +27,7 @@ function drup_theme_theme_suggestions_input_alter(array &$suggestions, array $va
 }
 
 /**
- * @param $variables
+ * @inheritdoc
  */
 function drup_theme_preprocess_form_element_label(&$variables) {
     if ($variables['element']['#title_display'] !== 'after') {
@@ -42,7 +37,7 @@ function drup_theme_preprocess_form_element_label(&$variables) {
 
 
 /**
- * @param $variables
+ * @inheritdoc
  */
 function drup_theme_preprocess_container(&$variables) {
     if (isset($variables['attributes']['id']) && $variables['attributes']['id'] === 'edit-actions') {
@@ -53,21 +48,21 @@ function drup_theme_preprocess_container(&$variables) {
 }
 
 /**
- * @param array $variables
+ * @inheritdoc
  */
 function drup_theme_preprocess_form(array &$variables) {
     //$variables['attributes']['novalidate'] = 'novalidate';
 }
 
 /**
- * @param array $variables
+ * @inheritdoc
  */
 function drup_theme_preprocess_select(array &$variables) {
     //$variables['attributes']['class'][] = 'select-chosen';
 }
 
 /**
- * @param array $variables
+ * @inheritdoc
  */
 function drup_theme_preprocess_input(array &$variables) {
     if (!empty($variables['attributes'])) {
@@ -78,15 +73,14 @@ function drup_theme_preprocess_input(array &$variables) {
 }
 
 /**
- * @param array $suggestions
- * @param array $variables
+ * @inheritdoc
  */
 function drup_theme_theme_suggestions_webform_email_message_html_alter(array &$suggestions, array $variables) {
     $suggestions[] = 'webform_email_message_html__custom';
 }
 
 /**
- * @param array $variables
+ * @inheritdoc
  */
 function drup_theme_preprocess_webform_message(array &$variables) {
 //    echo '<pre>';

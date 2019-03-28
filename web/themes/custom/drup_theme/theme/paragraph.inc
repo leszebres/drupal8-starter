@@ -1,10 +1,6 @@
 <?php
 
-use Drupal\Core\Template\Attribute;
-use Drupal\Core\Url;
-use Drupal\Component\Utility\Html;
-
-use Drupal\drup\DrupEntityImage;
+use Drupal\Core\Render\Markup;
 
 /**
  * @param array $variables
@@ -15,9 +11,10 @@ function drup_theme_preprocess_paragraph(array &$variables) {
     switch ($paragraph->getType()) {
         // Code html
         case 'html':
-            $variables['content'] = Drupal\Core\Render\Markup::create($paragraph->get('field_html_code')->value);
+            $variables['content'] = Markup::create($paragraph->get('field_html_code')->value);
             break;
 
+        // Text + image
         case 'text_image':
             $variables['image_position'] = $paragraph->get('field_image_position')->value;
             $variables['attributes']['class'][] = 'l-' . $variables['image_position'];

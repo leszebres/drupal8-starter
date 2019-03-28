@@ -1,6 +1,6 @@
 <?php
 
-use Drupal\drup\Entity\DrupField;
+use Drupal\drup\Entity\Node;
 
 /**
  * @param array $suggestions
@@ -19,9 +19,13 @@ function drup_theme_theme_suggestions_node_alter(array &$suggestions, array $var
  * @param array $variables
  */
 function drup_theme_preprocess_node(array &$variables) {
-    $node = $variables['node'];
+    $node = Node::load($variables['node']->id());
+    if (!$node instanceof Node) {
+        return;
+    }
+
     $nodeType = $node->getType();
-    $drupField = new DrupField($node);
+    $drupField = $node->drupField();
 
     $variables['fields'] = [];
 }

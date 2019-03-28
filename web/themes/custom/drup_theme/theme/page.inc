@@ -54,6 +54,19 @@ function drup_theme_preprocess_page(array &$variables) {
         $nodeType = $node->getType();
         $drupField = $node->drupField();
 
+        /**
+         * @todo Tests à supprimer
+         */
+
+        //dsm(\Drupal\drup\Entity\Term::loadTree('test'));
+
+        //foreach ($drupField->getReferencedEntities('terms') as $index => $referencedEntity) {
+            //dsm($referencedEntity->getName());
+        //}
+        //foreach ($drupField->getReferencedEntities('nodes') as $index => $referencedEntity) {
+            //dsm($referencedEntity->getName());
+        //}
+
         // Redirect node to their DrupRoute
         $nodesRedirection =  [
             'factory' => '<front>'

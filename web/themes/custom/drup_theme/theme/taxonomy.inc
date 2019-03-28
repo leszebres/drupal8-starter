@@ -1,10 +1,17 @@
 <?php
 
+use Drupal\drup\Entity\Term;
+
 /**
  * @param $variables
  */
 function drup_theme_preprocess_taxonomy_term(&$variables) {
-//    $term = $variables['term'];
-//    $drupField = $term->DrupField();
-//    $variables['content'] = new \StdClass;
+    $term = Term::load($variables['term']->id());
+    if (!$term instanceof Term) {
+        return;
+    }
+
+    $drupField = $term->DrupField();
+
+    $variables['fields'] = [];
 }

@@ -26,10 +26,11 @@ function drup_site_entity_view_alter(array &$build, EntityInterface $entity, Ent
  * @inheritdoc
  */
 function drup_site_entity_type_build(array &$entity_types) {
+//function drup_site_entity_type_alter(array &$entity_types) {
     if (isset($entity_types['node'])) {
-        $entity_types['node']->setClass('\Drupal\drup\Entity\Node');
+        $entity_types['node']->setClass('Drupal\\drup\\Entity\\Node');
     }
     if (isset($entity_types['taxonomy_term'])) {
-        $entity_types['taxonomy_term']->setClass('\Drupal\drup\Entity\Term');
+        $entity_types['taxonomy_term']->setClass('Drupal\\drup\\Entity\\Term');
     }
 }
