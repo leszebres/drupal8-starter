@@ -35,7 +35,7 @@ class DrupEntityAutocompleteMatcher extends EntityAutocompleteMatcher {
         $handler = $this->selectionManager->getInstance($options);
 
         if ($string !== null) {
-            $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+            $languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
             // Get an array of matching entities.
             $match_operator = !empty($selection_settings['match_operator']) ? $selection_settings['match_operator'] : 'CONTAINS';
             $entity_labels = $handler->getReferenceableEntities($string, $match_operator, 10);
@@ -43,15 +43,16 @@ class DrupEntityAutocompleteMatcher extends EntityAutocompleteMatcher {
             // Loop through the entities and convert them into autocomplete output.
             foreach ($entity_labels as $values) {
                 foreach ($values as $entity_id => $label) {
+                    /** @var \Drupal\Core\Entity\EditorialContentEntityBase $entity **/
                     $entity = \Drupal::entityTypeManager()->getStorage($target_type)->load($entity_id);
-                    $entity = \Drupal::service('entity.repository')->getTranslationFromContext($entity, $language);
+                    $entity = \Drupal::service('entity.repository')->getTranslationFromContext($entity, $languageId);
 
                     $type = !empty($entity->type->entity) ? $entity->type->entity->label() : $entity->bundle();
                     $type = ucfirst(t($type));
 
                     $status = '';
-                    if ($entity->getEntityType()->id() === 'node') {
-                        if (!DrupCommon::isNodeTranslated($entity)) {
+                    if (($entityType = $entity->getEntityType()) && $entityType->id() === 'node') {
+                        if (!$entity->hasTranslation($languageId)) {
                             continue;
                         }
                         $status = $entity->isPublished() ? 'published' : 'unpublished';

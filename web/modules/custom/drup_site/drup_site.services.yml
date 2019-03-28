@@ -12,5 +12,5 @@ services:
       - { name: event_subscriber }
 
   drup_site.autocomplete_matcher:
-    class: Drupal\drup\DrupEntityAutocompleteMatcher
+    class: Drupal\drup\Entity\DrupEntityAutocompleteMatcher
     arguments: ['@plugin.manager.entity_reference_selection']

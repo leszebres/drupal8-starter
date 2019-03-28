@@ -4,6 +4,7 @@ namespace Drupal\drup;
 
 use Drupal\Core\Menu\MenuLinkInterface;
 use Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\drup\Entity\Node;
 use Drupal\menu_link_content\Plugin\Menu\MenuLinkContent;
 
 /**
@@ -14,36 +15,29 @@ use Drupal\menu_link_content\Plugin\Menu\MenuLinkContent;
 class DrupMenu {
 
     /**
-     * todo revoir cf pileje
+     * @param $items
+     * @param $languageId
      *
-     * @param array $item
-     * @param string $languageId
-     *
-     * @return array|bool
+     * @return bool
      */
-    public static function checkMenuItemTranslation(array $item, $languageId) {
-        $menuLinkEntity = self::loadLinkEntityByLink($item['original_link']);
-
-        if ($menuLinkEntity !== null) {
-            $isTranslated = self::checkEntityTranslation($menuLinkEntity, $languageId);
-
-            if ($isTranslated === true) {
-                if (count($item['below']) > 0) {
-                    foreach ($item['below'] as $subkey => $subitem) {
-                        if (!$item['below'][$subkey] = self::checkMenuItemTranslation($subitem, $languageId)) {
-                            unset($item['below'][$subkey]);
-                        }
-                    }
+    public static function checkMenuItemTranslation(&$items, $languageId) {
+        foreach ($items as $index => &$item) {
+            if (($item['original_link'] instanceof MenuLinkInterface) && ($nid = self::getNidFromMenuItem($item)) && ($node = Node::load($nid)) && ($node instanceof Node)) {
+                if (!$node->isTranslated($languageId)) {
+                    unset($items[$index]);
+                } else if (($menuLinkEntity = self::loadLinkEntityByLink($item['original_link'])) && !self::checkEntityTranslation($menuLinkEntity, $languageId)) {
+                    unset($items[$index]);
                 }
-                return $item;
+            }
+            if (count($item['below']) > 0) {
+                self::checkMenuItemTranslation($item['below'], $languageId);
             }
         }
-        return false;
+
+        return $items;
     }
 
     /**
-     * todo revoir cf pileje
-     *
      * @param $entity
      * @param $language
      *
@@ -58,26 +52,23 @@ class DrupMenu {
     }
 
     /**
-     * todo revoir cf pileje
-     *
      * @param \Drupal\Core\Menu\MenuLinkInterface $menuLinkContentPlugin
      *
-     * @return null
+     * @return |null
      */
     public static function loadLinkEntityByLink(MenuLinkInterface $menuLinkContentPlugin) {
         $entity = null;
+
         if ($menuLinkContentPlugin instanceof MenuLinkContent) {
             $menu_link = explode(':', $menuLinkContentPlugin->getPluginId(), 2);
             $uuid = $menu_link[1];
-            $entity = \Drupal::service('entity.repository')
-                ->loadEntityByUuid('menu_link_content', $uuid);
+            $entity = \Drupal::service('entity.repository')->loadEntityByUuid('menu_link_content', $uuid);
         }
+
         return $entity;
     }
 
     /**
-     * todo revoir cf pileje
-     *
      * @param $menuItem
      *
      * @return int|null
