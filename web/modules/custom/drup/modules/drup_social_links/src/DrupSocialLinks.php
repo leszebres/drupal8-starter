@@ -4,15 +4,20 @@ namespace Drupal\drup_social_links;
 
 use Drupal\Core\Config\Config;
 use Drupal\Core\Config\ImmutableConfig;
+use Drupal\drup\DrupPageEntity;
 
 class DrupSocialLinks {
 
     /**
+     * Nom de la configuration
+     *
      * @var string
      */
     protected static $configName = 'drup.social_links';
 
     /**
+     * Retourne les items enregistrés pour la lecture seulement (formatés)
+     *
      * @return array|mixed|null
      */
     public static function getItems() {
@@ -26,9 +31,11 @@ class DrupSocialLinks {
     }
 
     /**
+     * Retourne la configuration des items (lecture ou écriture)
+     *
      * @param bool $editable
      *
-     * @return bool|ImmutableConfig
+     * @return bool|Config|ImmutableConfig
      */
     public static function getConfig($editable = false) {
         $config = $editable ? \Drupal::service('config.factory')->getEditable(self::getConfigName()) : \Drupal::config(self::getConfigName());
@@ -41,6 +48,8 @@ class DrupSocialLinks {
     }
 
     /**
+     * Retourne le nom de la configuration
+     *
      * @return string
      */
     public static function getConfigName() {
@@ -86,32 +95,26 @@ class DrupSocialLinks {
      */
     public static function getShareItems() {
         $items = self::getItems();
-        $config = \Drupal::config('system.site');
-        $request = \Drupal::request();
-        $routeMatch = \Drupal::routeMatch();
-        $pathAlias = \Drupal::service('path.alias_manager')->getAliasByPath($request->getPathInfo());
-
-        $title = urlencode($config->get('name') . ' : ' . \Drupal::service('title_resolver')->getTitle($request, $routeMatch->getRouteObject()));
-        $url = urlencode($request->getSchemeAndHttpHost() . $request->getBaseUrl() . $pathAlias);
 
         if (!empty($items)) {
-            $items = array_filter($items, function ($item) {
-                return $item['share'];
-            });
+            $token = \Drupal::token();
+            $drupPageEntity = DrupPageEntity::loadEntity();
 
-            foreach ($items as $item) {
-                switch ($item['id']) {
-                    case 'facebook':
-                        $item['url'] = 'https://www.facebook.com/sharer/sharer.php?u=' . $url . '&t=' . $title;
-                        break;
+            foreach ($items as $id => $item) {
+                if (!$item['share']) {
+                    unset($items[$id]);
+                    continue;
+                }
 
-                    case 'twitter':
-                        $item['url'] = 'https://twitter.com/share?url=' . $url . '&text=' . $title;
-                        break;
+                $shareUrlTokens = $token->scan($item['share_url']);
+                $replaceOptions = [];
 
-                    case 'linkedin':
-                        $item['url'] ='https://www.linkedin.com/shareArticle?url=' . $url . '&title=' . $title;
-                        break;
+                if ($drupPageEntity->getEntityType() === 'node') {
+                    $replaceOptions['node'] = $drupPageEntity->getEntity();
+                }
+
+                foreach ($shareUrlTokens as $shareUrlTokenGroup => $shareUrlToken) {
+                    $items[$id]['share_url'] = $token->replace($item['share_url'], $replaceOptions);
                 }
             }
         }

@@ -4,6 +4,7 @@ namespace Drupal\drup_social_links\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
 use Drupal\drup_social_links\DrupSocialLinks;
 
 /**
@@ -54,7 +55,17 @@ class DrupSocialLinksForm extends ConfigFormBase {
         $form['drup_social_links'][] = $this->setRow([
             'isNew' => true
         ]);
+
         $form['#attached']['library'][] = 'drup_social_links/form-links';
+
+        $form['token_browser'] = [
+            '#theme' => 'token_tree_link',
+            '#token_types' => [
+                'seo'
+            ],
+            '#global_types' => true,
+            '#show_nested' => false
+        ];
 
         return parent::buildForm($form, $form_state);
     }
