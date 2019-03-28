@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c52b4a78c4eab9fe03563742bfcdb071",
+    "content-hash": "6c7b7ff9140628d16a22ec67c276f788",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2434,7 +2434,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/claro",
-                "reference": "d40bfbbbc806752237f40a061b3a8d9551db08f8"
+                "reference": "c669bf84191c6d17c528f4c3fd07ad7d5f8bf6c6"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -2446,7 +2446,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.x-dev",
-                    "datestamp": "1550170680",
+                    "datestamp": "1552905787",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -2484,7 +2484,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/claro"
             },
-            "time": "2019-03-18T11:06:37+00:00"
+            "time": "2019-03-28T12:25:56+00:00"
         },
         {
             "name": "drupal/config_update",
@@ -3127,15 +3127,21 @@
         },
         {
             "name": "drupal/devel",
-            "version": "dev-2.x",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/devel",
-                "reference": "00fa2de6f9f70ee4b4c32ee0c8021a0596dd565e"
+                "reference": "8.x-2.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/devel-8.x-2.0.zip",
+                "reference": "8.x-2.0",
+                "shasum": "cf5fb816f767f3cac4f2e170ab39e982d5e0698b"
             },
             "require": {
                 "drupal/core": "~8.0",
-                "symfony/var-dumper": "~2.7|^3|^4"
+                "symfony/var-dumper": "~2.7|^3"
             },
             "type": "drupal-module",
             "extra": {
@@ -3143,11 +3149,11 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.0+7-dev",
-                    "datestamp": "1553588286",
+                    "version": "8.x-2.0",
+                    "datestamp": "1548799380",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Dev releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 },
                 "drush": {
@@ -3202,8 +3208,7 @@
                 "source": "http://cgit.drupalcode.org/devel",
                 "issues": "http://drupal.org/project/devel",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
-            },
-            "time": "2019-03-26T17:35:41+00:00"
+            }
         },
         {
             "name": "drupal/drush_language",
@@ -4498,7 +4503,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/paragraphs",
-                "reference": "09049d2e2f7c13a15824b57d3fdf1458e8419e68"
+                "reference": "fe3d6da5fb1a442c78aaf24281a79413259d8ea5"
             },
             "require": {
                 "drupal/core": "~8",
@@ -4526,8 +4531,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.7+1-dev",
-                    "datestamp": "1553609887",
+                    "version": "8.x-1.8+1-dev",
+                    "datestamp": "1553693285",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -4565,7 +4570,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/paragraphs"
             },
-            "time": "2019-03-27T13:27:17+00:00"
+            "time": "2019-03-28T12:51:29+00:00"
         },
         {
             "name": "drupal/pathauto",
@@ -4946,17 +4951,11 @@
         },
         {
             "name": "drupal/swiftmailer",
-            "version": "1.0.0-beta2",
+            "version": "dev-1.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/swiftmailer",
-                "reference": "8.x-1.0-beta2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/swiftmailer-8.x-1.0-beta2.zip",
-                "reference": "8.x-1.0-beta2",
-                "shasum": "a63a91e7816a06bf8e52ac9b5e48a892a1e6b1d4"
+                "reference": "ac44eda78b6d04083ff100b43d4da2580a51698b"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -4970,12 +4969,15 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta2",
-                    "datestamp": "1519655459",
+                    "version": "8.x-1.0-beta2+9-dev",
+                    "datestamp": "1548607084",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
+                },
+                "patches_applied": {
+                    "Support CSS inlining": "https://www.drupal.org/files/issues/2019-02-26/swiftmailer-css_inliner-2843327-71-D8.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -5000,7 +5002,8 @@
             "homepage": "https://www.drupal.org/project/swiftmailer",
             "support": {
                 "source": "http://cgit.drupalcode.org/swiftmailer"
-            }
+            },
+            "time": "2019-01-27T16:36:46+00:00"
         },
         {
             "name": "drupal/taxonomy_multidelete_terms",
@@ -7965,61 +7968,6 @@
             "time": "2019-02-06T07:57:58+00:00"
         },
         {
-            "name": "symfony/polyfill-php72",
-            "version": "v1.11.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "ab50dcf166d5f577978419edd37aa2bb8eabce0c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/ab50dcf166d5f577978419edd37aa2bb8eabce0c",
-                "reference": "ab50dcf166d5f577978419edd37aa2bb8eabce0c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.11-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php72\\": ""
-                },
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill backporting some PHP 7.2+ features to lower PHP versions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "time": "2019-02-06T07:57:58+00:00"
-        },
-        {
             "name": "symfony/process",
             "version": "v3.4.23",
             "source": {
@@ -8444,45 +8392,38 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v4.2.4",
+            "version": "v3.4.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "9f87189ac10b42edf7fb8edc846f1937c6d157cf"
+                "reference": "d34d10236300876d14291e9df85c6ef3d3bb9066"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/9f87189ac10b42edf7fb8edc846f1937c6d157cf",
-                "reference": "9f87189ac10b42edf7fb8edc846f1937c6d157cf",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/d34d10236300876d14291e9df85c6ef3d3bb9066",
+                "reference": "d34d10236300876d14291e9df85c6ef3d3bb9066",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1.3",
-                "symfony/polyfill-mbstring": "~1.0",
-                "symfony/polyfill-php72": "~1.5"
+                "php": "^5.5.9|>=7.0.8",
+                "symfony/polyfill-mbstring": "~1.0"
             },
             "conflict": {
-                "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0",
-                "symfony/console": "<3.4"
+                "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
             },
             "require-dev": {
                 "ext-iconv": "*",
-                "symfony/console": "~3.4|~4.0",
-                "symfony/process": "~3.4|~4.0",
                 "twig/twig": "~1.34|~2.4"
             },
             "suggest": {
                 "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
                 "ext-intl": "To show region name in time zone dump",
-                "symfony/console": "To use the ServerDumpCommand and/or the bin/var-dump-server script"
+                "ext-symfony_debug": ""
             },
-            "bin": [
-                "Resources/bin/var-dump-server"
-            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "3.4-dev"
                 }
             },
             "autoload": {
@@ -8516,7 +8457,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2019-02-23T15:17:42+00:00"
+            "time": "2019-02-23T15:06:07+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -11329,6 +11270,7 @@
         "drupal/redirect": 20,
         "drupal/role_delegation": 20,
         "drupal/simple_sitemap": 20,
+        "drupal/swiftmailer": 20,
         "drupal/taxonomy_multidelete_terms": 20,
         "drupal/url_embed": 15,
         "drupal/views_infinite_scroll": 20,
