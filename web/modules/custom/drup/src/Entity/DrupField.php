@@ -2,7 +2,6 @@
 
 namespace Drupal\drup\Entity;
 
-use Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem;
 use Drupal\field\Entity\FieldConfig;
 
 /**
