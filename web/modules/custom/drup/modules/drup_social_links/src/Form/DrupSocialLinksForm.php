@@ -4,7 +4,6 @@ namespace Drupal\drup_social_links\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Link;
 use Drupal\drup_social_links\DrupSocialLinks;
 
 /**
