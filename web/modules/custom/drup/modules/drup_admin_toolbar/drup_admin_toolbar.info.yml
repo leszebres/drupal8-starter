@@ -1,5 +1,0 @@
-name: 'Drup Admin Toolbar'
-type: module
-description: Permet d'ajouter plusieurs toolbars dans l'admin (édition, utilisateurs, configuration)
-core: 8.x
-package: 'Drup'

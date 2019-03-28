@@ -10,8 +10,7 @@
     text-decoration: underline;
     background-color: transparent; }
   .toolbar-tray-horizontal .toolbar-menu-administration > .toolbar-menu > .menu-item ul.toolbar-menu {
-    -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); }
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); }
   .toolbar-tray-horizontal .toolbar-menu-administration > .toolbar-menu > .menu-item li.menu-item {
     border-left: 0; }
   .toolbar-tray-horizontal .toolbar-menu-administration > .toolbar-menu > .menu-item li.menu-item--expanded {
@@ -146,7 +145,6 @@ body:not(.role--super-admin) .js-form-item-roles-super-admin {
 .horizontal-tabs .horizontal-tab-button {
   padding: 0; }
   .horizontal-tabs .horizontal-tab-button a {
-    -webkit-transition: .3s;
     transition: .3s; }
     .horizontal-tabs .horizontal-tab-button a:after {
       content: "";
@@ -156,7 +154,6 @@ body:not(.role--super-admin) .js-form-item-roles-super-admin {
       z-index: 5;
       width: 100%;
       height: 0;
-      -webkit-transition: height .3s;
       transition: height .3s; }
     .horizontal-tabs .horizontal-tab-button a:hover, .horizontal-tabs .horizontal-tab-button a:focus {
       background: #fff; }
@@ -202,8 +199,7 @@ form.entity-browser-form {
     margin: 0;
     padding: 1em;
     background: #fff;
-    -webkit-box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2); }
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2); }
 
 .form-wrapper .entities-list {
   margin: 0; }
