@@ -4,6 +4,7 @@ namespace Drupal\drup;
 
 use Drupal\Core\Menu\MenuLinkInterface;
 use Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\drup\Entity\ContentEntityBase;
 use Drupal\drup\Entity\Node;
 use Drupal\menu_link_content\Plugin\Menu\MenuLinkContent;
 
@@ -23,7 +24,7 @@ class DrupMenu {
     public static function checkMenuItemTranslation(&$items, $languageId) {
         foreach ($items as $index => &$item) {
             if (($item['original_link'] instanceof MenuLinkInterface) && ($nid = self::getNidFromMenuItem($item)) && ($node = Node::load($nid)) && ($node instanceof Node)) {
-                if (!$node->isTranslated($languageId)) {
+                if (!ContentEntityBase::isAllowed($node, $languageId)) {
                     unset($items[$index]);
                 } else if (($menuLinkEntity = self::loadLinkEntityByLink($item['original_link'])) && !self::checkEntityTranslation($menuLinkEntity, $languageId)) {
                     unset($items[$index]);

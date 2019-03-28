@@ -43,16 +43,16 @@ class DrupEntityAutocompleteMatcher extends EntityAutocompleteMatcher {
             // Loop through the entities and convert them into autocomplete output.
             foreach ($entity_labels as $values) {
                 foreach ($values as $entity_id => $label) {
-                    /** @var \Drupal\Core\Entity\EditorialContentEntityBase $entity **/
+                    /** @var \Drupal\Core\Entity\ContentEntityBase $entity **/
                     $entity = \Drupal::entityTypeManager()->getStorage($target_type)->load($entity_id);
-                    $entity = \Drupal::service('entity.repository')->getTranslationFromContext($entity, $languageId);
+                    $entity = ContentEntityBase::translate($entity, $languageId);
 
                     $type = !empty($entity->type->entity) ? $entity->type->entity->label() : $entity->bundle();
                     $type = ucfirst(t($type));
 
                     $status = '';
-                    if (($entityType = $entity->getEntityType()) && $entityType->id() === 'node') {
-                        if (!$entity->hasTranslation($languageId)) {
+                    if (method_exists($entity, 'isPublished')) {
+                        if (!ContentEntityBase::isAllowed($entity, $languageId)) {
                             continue;
                         }
                         $status = $entity->isPublished() ? 'published' : 'unpublished';
