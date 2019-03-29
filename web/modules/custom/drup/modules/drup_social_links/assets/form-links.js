@@ -9,19 +9,14 @@
             };
             elements.newRow = elements.form.find('tbody > tr:last-child');
             elements.itemId = elements.newRow.find('input.form-item-id');
-            elements.itemOptions = elements.newRow.find('input.form-item-options');
 
             // States
             var states = {
-                addId: false,
-                addOptions: false
+                addId: false
             };
 
             if (elements.itemId.val() === '') {
                 states.addId = true;
-            }
-            if (elements.itemOptions.val() === '') {
-                states.addOptions = true;
             }
 
             // Events
@@ -33,10 +28,6 @@
                     if (states.addId) {
                         elements.itemId.val(title);
                     }
-                    if (states.addOptions) {
-                        elements.itemOptions.val('icon=' + title);
-                    }
-
                 }
             });
         }

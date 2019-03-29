@@ -21,7 +21,7 @@ class DrupSocialLinks {
      * @return array|mixed|null
      */
     public static function getItems() {
-        if (($config = self::getConfig()) && ($items = $config->get('items'))) {
+        if (($config = self::getConfig()) && ($items = $config->get('items')) && !empty($items)) {
             self::formatItems($items);
 
             return $items;
@@ -62,15 +62,21 @@ class DrupSocialLinks {
      * @param $items
      */
     protected static function formatItems(&$items) {
-        foreach ($items as $i => $item) {
-            $items[$i]['link'] = (bool) $item['link'];
-            $items[$i]['share'] = (bool) $item['share'];
+        if (!empty($items)) {
+            foreach ($items as $i => $item) {
+                $items[$i]['link'] = (bool) $item['link'];
+                $items[$i]['share'] = (bool) $item['share'];
 
-            $options = explode(',', $item['options']);
-            $items[$i]['options'] = [];
-            foreach ($options as $option) {
-                list($key, $value) = explode('=', $option);
-                $items[$i]['options'][trim($key)] = trim($value);
+                $options = explode(',', $item['options']);
+                $items[$i]['options'] = [];
+                if (!empty($options)) {
+                    foreach ($options as $option) {
+                        if (!empty($option)) {
+                            list($key, $value) = explode('=', $option);
+                            $items[$i]['options'][trim($key)] = trim($value);
+                        }
+                    }
+                }
             }
         }
     }
