@@ -21,6 +21,21 @@ class Term extends \Drupal\taxonomy\Entity\Term {
     }
 
     /**
+     * @inheritdoc
+     */
+    public static function loadMultiple(array $ids = null) {
+        if ($entities = parent::loadMultiple($ids)) {
+            foreach ($entities as $index => &$entity) {
+                $entity = ContentEntityBase::translate($entity);
+            }
+
+            return $entities;
+        }
+
+        return [];
+    }
+
+    /**
      * @param null $languageId
      *
      * @return bool

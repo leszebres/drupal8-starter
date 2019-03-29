@@ -23,6 +23,21 @@ class Node extends \Drupal\node\Entity\Node {
     }
 
     /**
+     * @inheritdoc
+     */
+    public static function loadMultiple(array $ids = null) {
+        if ($entities = parent::loadMultiple($ids)) {
+            foreach ($entities as $index => &$entity) {
+                $entity = ContentEntityBase::translate($entity);
+            }
+
+            return $entities;
+        }
+
+        return [];
+    }
+
+    /**
      * @param null $languageId
      *
      * @return bool
@@ -70,7 +85,7 @@ class Node extends \Drupal\node\Entity\Node {
         ];
         $drupPageEntity = DrupPageEntity::loadEntity();
 
-        if (!empty($drupPageEntity->getEntity())) {
+        if ($drupPageEntity->getEntity() !== null) {
             foreach ($entities as $type => $filters) {
                 $query = \Drupal::entityQuery($drupPageEntity->getEntityType());
                 $query->condition('status', 1);
