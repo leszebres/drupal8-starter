@@ -5,17 +5,16 @@ namespace Drupal\drup;
 use Drupal\Component\Utility\Xss;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\drup\Entity\DrupField;
+use Drupal\drup\Entity\Node;
 use Drupal\drup\Helper\DrupRequest;
 use Drupal\drup\Helper\DrupString;
 use Drupal\drup\Media\DrupFile;
 use Drupal\drup\Media\DrupMediaImage;
 use Drupal\drup_settings\DrupSettings;
 use Drupal\image\Entity\ImageStyle;
-use Drupal\node\Entity\Node;
 use Drupal\drup\Helper\DrupUrl;
 
 /**
- * todo revoir complètement
  * Class DrupSEO
  *
  * @package Drupal\drup
@@ -118,9 +117,8 @@ abstract class DrupSEO {
             // Node
             $node = $drupField = false;
             if (isset($data['node']) && $data['node'] instanceof Node) {
-                /** @var \Drupal\node\Entity\Node $node */
-                $node = \Drupal::service('entity.repository')->getTranslationFromContext($data['node'], $options['langcode']);
-                $drupField = new DrupField($node);
+                $node = Node::load($data['node']->id());
+                $drupField = $node->drupField();
             }
 
             // Tokens
@@ -128,21 +126,21 @@ abstract class DrupSEO {
                 // Dans un noeud
                 if ($node) {
                     if ($name === 'meta:title') {
-                        $tags = $metatagManager->tagsFromEntity($data['node']);
+                        $tags = $metatagManager->tagsFromEntity($node);
 
                         if (empty($tags['title'])) {
-                            $replacements[$original] = $node->getTitle();
+                            $replacements[$original] = $node->getName();
 
                         } else {
                             $replacements[$original] = $tags['title'];
                         }
 
                     } elseif ($name === 'meta:desc') {
-                        $tags = $metatagManager->tagsFromEntity($data['node']);
+                        $tags = $metatagManager->tagsFromEntity($node);
 
                         if (empty($tags['description'])) {
-                            if ($fieldSubtitle = $drupField->get('subtitle')) {
-                                $description = $fieldSubtitle->value;
+                            if ($fieldSubtitle = $drupField->getValue('subtitle', 'value')) {
+                                $description = $fieldSubtitle;
 
                             } elseif (($fieldDescription = $drupField->get('body_layout')) && \is_array($fieldDescription) && !empty($fieldDescription)) {
                                 foreach ($fieldDescription as $paragraphItem) {
@@ -156,8 +154,8 @@ abstract class DrupSEO {
                                     }
                                 }
 
-                            } elseif ($fieldBody = $drupField->get('body')) {
-                                $description = $fieldBody->value;
+                            } elseif ($fieldBody = $drupField->getValue('body', 'value')) {
+                                $description = $fieldBody;
                             }
 
                             if (!empty($description)) {
