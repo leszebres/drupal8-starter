@@ -1652,15 +1652,17 @@ form textarea:not([readonly]):focus {
 .js input.form-autocomplete {
   background: none; }
 
-.webform-options-display-side-by-side > div {
-  vertical-align: top;
-  margin-right: 1.5em; }
-
 .captcha {
   margin: 24px 0; }
 
 .g-recaptcha > div {
   margin-left: auto; }
+
+.form-item--error-message {
+  padding-top: 4px;
+  color: #d9534f;
+  font-style: italic;
+  font-size: 0.875rem; }
 
 /* Submit
    ========================================================================== */
@@ -1670,6 +1672,10 @@ form textarea:not([readonly]):focus {
 /* ==========================================================================
    WEBFORMS
    ========================================================================== */
+.webform-options-display-side-by-side > div {
+  vertical-align: top;
+  margin-right: 1.5em; }
+
 /* ==========================================================================
    Views Forms exposed
    ========================================================================== */

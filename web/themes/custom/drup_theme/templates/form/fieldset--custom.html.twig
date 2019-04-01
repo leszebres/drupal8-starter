@@ -44,18 +44,22 @@
         <span{{ legend_span.attributes.addClass(legend_span_classes) }}>{{ legend.title }}</span>
     </div>
     <div class="fieldset-wrapper">
-        {% if errors %}
-            <div>
-                {{ errors }}
-            </div>
-        {% endif %}
         {% if prefix %}
             <span class="field-prefix">{{ prefix }}</span>
         {% endif %}
+
         {{ children }}
+
         {% if suffix %}
             <span class="field-suffix">{{ suffix }}</span>
         {% endif %}
+
+        {% if errors %}
+            <div class="form-item--error-message">
+                {{ errors }}
+            </div>
+        {% endif %}
+
         {% if description.content %}
             <div{{ description.attributes.addClass('description') }}>{{ description.content }}</div>
         {% endif %}

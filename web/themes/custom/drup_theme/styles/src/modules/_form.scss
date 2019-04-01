@@ -125,11 +125,6 @@ form {
     background: none;
 }
 
-.webform-options-display-side-by-side > div {
-    vertical-align: top;
-    margin-right: 1.5em;
-}
-
 .captcha {
      margin: $v-align--medium 0;
  }
@@ -137,6 +132,13 @@ form {
     & > div {
         margin-left: auto;
     }
+}
+
+.form-item--error-message {
+    padding-top: 4px;
+    color: $notice--error-color;
+    font-style: italic;
+    font-size: $fontsize--small;
 }
 
 
@@ -155,7 +157,10 @@ form {
 .form--webform {
 
 }
-
+.webform-options-display-side-by-side > div {
+    vertical-align: top;
+    margin-right: 1.5em;
+}
 
 
 /* ==========================================================================
