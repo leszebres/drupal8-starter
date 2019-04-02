@@ -21,8 +21,8 @@ msgstr "J'ai compris"
 msgid "You may have followed a broken link, or tried to view a page that no longer exists."
 msgstr "Vous avez peut-être suivi un mauvais lien, ou essayé d'afficher une page qui n'existe plus."
 
-msgid "If the problem persists, <a href=\"%link\">contact us</a>."
-msgstr "Si le problème persiste, <a href=\"%link\">contactez-nous</a>."
+msgid "If the problem persists, <a href=\":link\">contact us</a>."
+msgstr "Si le problème persiste, <a href=\":link\">contactez-nous</a>."
 
 msgid "Back to the front page"
 msgstr "Retourner à la page d'accueil"
