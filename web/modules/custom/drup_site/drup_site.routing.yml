@@ -1,0 +1,7 @@
+drup_site.media_entity_download:
+  path: '/media/{media}/download'
+  defaults:
+    _controller: '\Drupal\drup\Controller\DrupMediaEntityDownloadController::download'
+    _title: 'Download Media'
+  requirements:
+    _permission: 'access content'
