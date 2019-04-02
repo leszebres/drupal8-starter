@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c7b7ff9140628d16a22ec67c276f788",
+    "content-hash": "e98f95fc0355abf3de670c7f1ef29079",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3857,7 +3857,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/geolocation.git",
-                "reference": "c5f1d073cdbef97dd7d209161483d4b3dd0c5ce7"
+                "reference": "de107206ce3f86a4a6113078789f812fa4a63f85"
             },
             "require": {
                 "drupal/core": "*"
@@ -3879,8 +3879,8 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.0-beta1+197-dev",
-                    "datestamp": "1554118381",
+                    "version": "8.x-2.0-beta1+198-dev",
+                    "datestamp": "1554123181",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -3907,7 +3907,7 @@
                 "source": "http://git.drupal.org/project/geolocation.git",
                 "issues": "https://www.drupal.org/project/issues/geolocation"
             },
-            "time": "2019-04-01T12:29:20+00:00"
+            "time": "2019-04-02T12:21:14+00:00"
         },
         {
             "name": "drupal/imageapi_optimize",
@@ -4503,7 +4503,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/paragraphs.git",
-                "reference": "1a6d5a609c410072b5a2b86fb1c51b42064ab8fc"
+                "reference": "0fafd51621f84a43d2ddb94f2fd14f5168f95a63"
             },
             "require": {
                 "drupal/core": "~8",
@@ -4531,8 +4531,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.8+4-dev",
-                    "datestamp": "1554077281",
+                    "version": "8.x-1.8+5-dev",
+                    "datestamp": "1554102481",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -4570,7 +4570,7 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/paragraphs"
             },
-            "time": "2019-04-01T07:07:48+00:00"
+            "time": "2019-04-02T08:05:06+00:00"
         },
         {
             "name": "drupal/pathauto",
@@ -5001,7 +5001,7 @@
             "description": "Swiftmailer",
             "homepage": "https://www.drupal.org/project/swiftmailer",
             "support": {
-                "source": "https://git.drupalcode.org/project/swiftmailer"
+                "source": "http://cgit.drupalcode.org/swiftmailer"
             },
             "time": "2019-01-27T16:36:46+00:00"
         },

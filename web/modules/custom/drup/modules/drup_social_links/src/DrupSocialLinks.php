@@ -6,6 +6,11 @@ use Drupal\Core\Config\Config;
 use Drupal\Core\Config\ImmutableConfig;
 use Drupal\drup\DrupPageEntity;
 
+/**
+ * Class DrupSocialLinks
+ *
+ * @package Drupal\drup_social_links
+ */
 class DrupSocialLinks {
 
     /**
