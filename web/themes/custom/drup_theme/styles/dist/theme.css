@@ -1086,7 +1086,7 @@ Commande : gulp fonticon
   font-family: Icons;
   font-weight: normal;
   font-style: normal;
-  src: url("../../fonts/icons.woff2?v=1552311403") format("woff2"), url("../../fonts/icons.woff?v=1552311403") format("woff"); }
+  src: url("../../fonts/icons.woff2?v=1554372157") format("woff2"), url("../../fonts/icons.woff?v=1554372157") format("woff"); }
 
 /*
 .icon--angle-left - \EA01
@@ -1096,21 +1096,20 @@ Commande : gulp fonticon
 .icon--close-circle - \EA05
 .icon--edit - \EA06
 .icon--error-circle - \EA07
-.icon--facebook-f - \EA08
-.icon--facebook-messenger - \EA09
-.icon--facebook-square - \EA0A
-.icon--facebook - \EA0B
-.icon--linkedin-in - \EA0C
-.icon--linkedin - \EA0D
-.icon--minus - \EA0E
-.icon--plus - \EA0F
-.icon--search - \EA10
-.icon--twitter-square - \EA11
-.icon--twitter - \EA12
-.icon--warning-circle - \EA13
-.icon--warning - \EA14
-.icon--youtube-square - \EA15
-.icon--youtube - \EA16
+.icon--facebook-messenger - \EA08
+.icon--facebook-square - \EA09
+.icon--facebook - \EA0A
+.icon--linkedin-square - \EA0B
+.icon--linkedin - \EA0C
+.icon--minus - \EA0D
+.icon--plus - \EA0E
+.icon--search - \EA0F
+.icon--twitter-square - \EA10
+.icon--twitter - \EA11
+.icon--warning-circle - \EA12
+.icon--warning - \EA13
+.icon--youtube-square - \EA14
+.icon--youtube - \EA15
 
 Markup: <span class="icon $modifierClass"></span>
 
@@ -1137,50 +1136,47 @@ Styleguide Icons - 1.icon
 .icon--error-circle:before {
   content: "\EA07"; }
 
-.icon--facebook-f:before {
+.icon--facebook-messenger:before {
   content: "\EA08"; }
 
-.icon--facebook-messenger:before {
+.icon--facebook-square:before {
   content: "\EA09"; }
 
-.icon--facebook-square:before {
+.icon--facebook:before {
   content: "\EA0A"; }
 
-.icon--facebook:before {
+.icon--linkedin-square:before {
   content: "\EA0B"; }
 
-.icon--linkedin-in:before {
+.icon--linkedin:before {
   content: "\EA0C"; }
 
-.icon--linkedin:before {
+.icon--minus:before {
   content: "\EA0D"; }
 
-.icon--minus:before {
+.icon--plus:before {
   content: "\EA0E"; }
 
-.icon--plus:before {
+.icon--search:before {
   content: "\EA0F"; }
 
-.icon--search:before {
+.icon--twitter-square:before {
   content: "\EA10"; }
 
-.icon--twitter-square:before {
+.icon--twitter:before {
   content: "\EA11"; }
 
-.icon--twitter:before {
+.icon--warning-circle:before {
   content: "\EA12"; }
 
-.icon--warning-circle:before {
+.icon--warning:before {
   content: "\EA13"; }
 
-.icon--warning:before {
+.icon--youtube-square:before {
   content: "\EA14"; }
 
-.icon--youtube-square:before {
-  content: "\EA15"; }
-
 .icon--youtube:before {
-  content: "\EA16"; }
+  content: "\EA15"; }
 
 /* ==========================================================================
    Icons
@@ -1199,6 +1195,21 @@ Styleguide Icons - 1.icon
 .btn.icon:before,
 p.icon:before {
   margin-right: .6em; }
+
+.nav--icons {
+  position: relative; }
+  .nav--icons:before, .nav--icons:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: cyan; }
+  .nav--icons:before {
+    top: 8px; }
+  .nav--icons:after {
+    bottom: 8px; }
+  .nav--icons .icon:before {
+    font-size: 1.875rem; }
 
 /*
 .title--h1 - H1

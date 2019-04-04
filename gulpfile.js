@@ -3,6 +3,8 @@ const plugins = require('gulp-load-plugins')({
     pattern: ['*'],
     scope: ['devDependencies']
 });
+const timestamp = Math.round(Date.now() / 1000);
+
 
 // Sass
 function sass(pumpCallback) {
@@ -34,9 +36,7 @@ function fonticon(pumpCallback) {
         plugins.iconfont({
             fontName: 'Icons',
             formats: ['woff', 'woff2', 'svg'],
-            centerHorizontally: true,
-            normalize: true,
-            fontHeight: 1000,
+            timestamp: timestamp,
             log: function() {}
         })
             .on('glyphs', function(glyphs, options) {
@@ -48,7 +48,7 @@ function fonticon(pumpCallback) {
                     plugins.gulp.src(packagejson.paths.theme + '/' + packagejson.paths.styles + '/src/configs/_fonticon.twig'),
                     plugins.consolidate('twig', {
                         fontName: options.fontName,
-                        fontVersion: Math.round(Date.now() / 1000),
+                        fontVersion: timestamp,
                         glyphs: glyphs
                     }),
                     plugins.rename('_fonticon.scss'),
