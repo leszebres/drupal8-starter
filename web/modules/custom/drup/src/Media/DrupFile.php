@@ -121,8 +121,9 @@ class DrupFile {
         ], $options);
 
         if (empty($options['url'])) {
-            $theme = \Drupal::theme()->getActiveTheme();
-            $options['url'] = \Drupal::request()->getUriForPath('/' . $theme->getPath() . '/images/logo.png');
+            $themeHandler = \Drupal::service('theme_handler');
+            $defaultTheme = $themeHandler->getDefault();
+            $options['url'] = \Drupal::request()->getUriForPath('/' . $themeHandler->getTheme($defaultTheme)->getPath() . '/images/logo.png');
         }
 
         if (!empty($options['url']) && empty($options['width']) && empty($options['height']) && ($size = getimagesize($options['url']))) {
@@ -149,7 +150,7 @@ class DrupFile {
             '#uri' => $this->fileUri,
             '#attributes' => [],
             '#width' => $this->image->getWidth(),
-            '#height' => $this->image->getHeight(),
+            '#height' => $this->image->getHeight()
         ];
 
         // Render as image style
@@ -158,25 +159,25 @@ class DrupFile {
                 if ($imageStyle instanceof ResponsiveImageStyle) {
                     $rendererOptions += [
                         '#theme' => 'responsive_image',
-                        '#responsive_image_style_id' => $style,
+                        '#responsive_image_style_id' => $style
                     ];
                 }
                 else {
                     $rendererOptions += [
                         '#theme' => 'image_style',
-                        '#style_name' => $style,
+                        '#style_name' => $style
                     ];
                 }
             }
             else {
-                \Drupal::messenger()->addMessage('Le style d\'image ' . $style . ' n\'existe pas', 'error');
+                \Drupal::messenger()->addMessage('Le style d\'image ' . $style . ' n\'existe pas.', 'error');
                 return false;
             }
         }
         // Render original image
         else {
             $rendererOptions += [
-                '#theme' => 'image',
+                '#theme' => 'image'
             ];
         }
 
@@ -203,7 +204,7 @@ class DrupFile {
                 $url = $imageStyle->buildUrl($this->fileUri);
             }
             else {
-                \Drupal::messenger()->addMessage('Le style d\'image ' . $style . ' et de type responsive ou n\'existe pas', 'error');
+                \Drupal::messenger()->addMessage('Le style d\'image ' . $style . ' et de type responsive ou n\'existe pas.', 'error');
             }
         }
         else {
