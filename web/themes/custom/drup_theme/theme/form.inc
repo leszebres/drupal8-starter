@@ -5,9 +5,9 @@
  */
 function drup_theme_theme_suggestions_fieldset_alter(array &$suggestions, array $variables) {
     $element = $variables['element'];
-    
-    // Fielset + legend bugs with flexbox => div/div
-    if (isset($element['#attributes']['class']) && in_array('fieldset-custom', $element['#attributes']['class'])) {
+
+    // Fielset + legend bugs with flexbox => div/div + error message
+    if ((isset($element['#attributes']['class']) && in_array('fieldset-custom', $element['#attributes']['class'], true)) || in_array($element['#type'], ['radios', 'checkboxes'])) {
         $suggestions[] = 'fieldset__custom';
     }
 }
