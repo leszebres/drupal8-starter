@@ -1121,7 +1121,7 @@ Styleguide Icons - 1.icon
 .icon--angle-right:before {
   content: "\EA02"; }
 
-.icon--check-circle:before {
+.icon--check-circle:before, .messages--status:before {
   content: "\EA03"; }
 
 .icon--check:before {
@@ -1133,7 +1133,7 @@ Styleguide Icons - 1.icon
 .icon--edit:before, .btn--block-admin:after {
   content: "\EA06"; }
 
-.icon--error-circle:before {
+.icon--error-circle:before, .messages--error:before {
   content: "\EA07"; }
 
 .icon--facebook-messenger:before {
@@ -1166,7 +1166,7 @@ Styleguide Icons - 1.icon
 .icon--twitter:before {
   content: "\EA11"; }
 
-.icon--warning-circle:before {
+.icon--warning-circle:before, .messages--warning:before {
   content: "\EA12"; }
 
 .icon--warning:before {
@@ -1195,21 +1195,6 @@ Styleguide Icons - 1.icon
 .btn.icon:before,
 p.icon:before {
   margin-right: .6em; }
-
-.nav--icons {
-  position: relative; }
-  .nav--icons:before, .nav--icons:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    background: cyan; }
-  .nav--icons:before {
-    top: 8px; }
-  .nav--icons:after {
-    bottom: 8px; }
-  .nav--icons .icon:before {
-    font-size: 1.875rem; }
 
 /*
 .title--h1 - H1
@@ -1341,7 +1326,7 @@ Styleguide Notices - 1.messages
   z-index: 5;
   width: 100%;
   margin: 0 auto 48px;
-  padding: 60px 30px 24px;
+  padding: 24px 30px;
   color: #333;
   font-size: 1rem;
   border-top: 4px solid #f2653d;
@@ -1354,38 +1339,60 @@ Styleguide Notices - 1.messages
   .messages li {
     list-style: none; }
   .messages:before {
-    content: "";
-    position: absolute;
-    top: 15px;
-    left: 50%;
-    z-index: 5;
-    width: 30px;
-    height: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
-    border-radius: 50%; }
+    width: 1.65em;
+    height: 1.65em;
+    margin: 0 auto .8em;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.15em;
+    text-align: center; }
   .messages .krumo-root {
     text-align: left; }
 
 .messages--status {
   border-top-color: #5cb85c; }
   .messages--status:before {
-    background-color: #5cb85c;
-    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjAiIHk9IjAiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiPgogICAgPHBhdGggc3R5bGU9ImZpbGw6ICNmZmY7IiBkPSJNMjU2LDUwQzE0Mi4yMjksNTAsNTAsMTQyLjIyOSw1MCwyNTZzOTIuMjI5LDIwNiwyMDYsMjA2czIwNi05Mi4yMjksMjA2LTIwNlMzNjkuNzcxLDUwLDI1Niw1MHpNMjIwLjk1MywzNjYuOTU5bC05Ny4zMjYtOTcuMzUybDQxLjQ0LTQxLjQ0OGw1NS44ODQsNTUuODk5bDEyOS4wMTgtMTI5LjAxOGw0MS40NTksNDEuNDMxTDIyMC45NTMsMzY2Ljk1OXoiIC8+Cjwvc3ZnPg=="); }
+    display: inline-block;
+    font-family: Icons;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: block;
+    background-color: #5cb85c; }
 
 .messages--warning {
   border-top-color: #f0ad4e; }
   .messages--warning:before {
-    background-color: #f0ad4e;
-    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjAiIHk9IjAiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiPgogICAgPHBhdGggc3R5bGU9ImZpbGw6ICNmZmY7IiBkPSJNMzQxLjMyOCw1MEgxNzAuNjcyTDUwLDE3MC42NzJ2MTcwLjY1NkwxNzAuNjcyLDQ2MmgxNzAuNjU2TDQ2MiwzNDEuMzI4VjE3MC42NzJMMzQxLjMyOCw1MHpNMjU2LDM5OC45OTljLTE2LjQwNywwLTI5LjcwOC0xMy4zMDItMjkuNzA4LTI5LjcwOGMwLTE2LjQwOCwxMy4zMDEtMjkuNzA4LDI5LjcwOC0yOS43MDhzMjkuNzA4LDEzLjMsMjkuNzA4LDI5LjcwOEMyODUuNzA4LDM4NS42OTcsMjcyLjQwNywzOTguOTk5LDI1NiwzOTguOTk5eiBNMjc1LjUsMzA4Ljc5MWgtMzlsLTIwLTE4NC45OTloNzlMMjc1LjUsMzA4Ljc5MXoiLz4KPC9zdmc+"); }
+    display: inline-block;
+    font-family: Icons;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: block;
+    background-color: #f0ad4e; }
 
 .messages--error {
   border-top-color: #d9534f; }
   .messages--error:before {
-    background-color: #d9534f;
-    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjAiIHk9IjAiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiPgogICAgPHBhdGggc3R5bGU9ImZpbGw6ICNmZmY7IiBkPSJNMzQxLjMyOCw1MEgxNzAuNjcyTDUwLDE3MC42NzJ2MTcwLjY1NkwxNzAuNjcyLDQ2MmgxNzAuNjU2TDQ2MiwzNDEuMzI4VjE3MC42NzJMMzQxLjMyOCw1MHpNMzI0LjI3NiwzNjEuNDA4bC02Ny4yNzUtNjcuMjcxbC02Ny4yNzMsNjcuMjhsLTM2LjEzNi0zNi4xNTVsNjcuMjYxLTY3LjI3MWwtNjcuMjY5LTY3LjI2NWwzNi4xNTYtMzYuMTM1bDY3LjI1Nyw2Ny4yNDlsNjcuMjQ2LTY3LjI1N2wzNi4xNjYsMzYuMTQxbC02Ny4yNTgsNjcuMjYzbDY3LjI2Niw2Ny4yNTdMMzI0LjI3NiwzNjEuNDA4eiIvPgo8L3N2Zz4="); }
+    display: inline-block;
+    font-family: Icons;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: block;
+    background-color: #d9534f; }
 
 /*
 Message pour les navigateurs non optimisés
