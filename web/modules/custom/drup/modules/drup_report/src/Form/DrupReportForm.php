@@ -2,6 +2,7 @@
 
 namespace Drupal\drup_report\Form;
 
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\drup_report\DrupReport;
@@ -29,16 +30,20 @@ class DrupReportForm extends ConfigFormBase {
      * {@inheritdoc}
      */
     public function buildForm(array $form, FormStateInterface $form_state) {
-        $user = \Drupal::currentUser();
-        $config = DrupReport::getConfigValuesByUser($user->id());
+        DrupReport::saveLogTypes();
 
+        $config = $this->config(DrupReport::getConfigName());
+        $user = \Drupal::currentUser();
+        $userId = $user->id();
+
+        // USER
         $form['user_id'] = [
             '#type' => 'hidden',
-            '#value' => $user->id(),
+            '#value' => $userId,
         ];
         $form['user_name'] = [
             '#type' => 'textfield',
-            '#title' => $this->t('User'),
+            '#title' => ucfirst($this->t('user')),
             '#default_value' => $user->getDisplayName(),
             '#attributes' => [
                 'readonly' => 'readonly',
@@ -46,20 +51,17 @@ class DrupReportForm extends ConfigFormBase {
             ],
         ];
 
+        // CONFIGURATION
+        $values = DrupReport::getConfigValuesByUser($userId);
         $form['enable'] = [
             '#type' => 'checkbox',
             '#title' => $this->t('Enable feature'),
-            '#default_value' => !empty($config),
+            '#default_value' => !empty($values),
         ];
-
-        $types = [];
-        foreach (_dblog_get_message_types() as $type) {
-            $types[$type] = t($type);
-        }
 
         $form['config'] = [
             '#type' => 'fieldset',
-            '#title' => $this->t('Configuration'),
+            '#title' => $this->t('Report configuration'),
             '#states' => [
                 'visible' => [
                     ':input[name="enable"]' => ['checked' => true],
@@ -68,29 +70,48 @@ class DrupReportForm extends ConfigFormBase {
         ];
         $form['config']['types'] = [
             '#type' => 'checkboxes',
-            '#title' => $this->t('Types'),
+            '#title' => $this->t('Log types to display'),
             '#description' => $this->t('If none selected, all will be available.'),
-            '#options' => $types,
-            '#default_value' => $config['types'] ?? []
+            '#options' => $config->get('types'),
+            '#default_value' => $values['types'] ?? []
         ];
 
         $form['config']['periodicity'] = [
             '#type' => 'select',
-            '#title' => $this->t('Periodicity'),
+            '#title' => $this->t('Receive notifications'),
             '#options' => [
+                'minute' => $this->t('Minute'),
                 'hour' => $this->t('Hourly'),
                 'day' => $this->t('Daily'),
                 'week' => $this->t('Weekly'),
                 'month' => $this->t('Monthly'),
             ],
-            '#default_value' => $config['periodicity'] ?? null,
+            '#default_value' => $values['periodicity'] ?? 'day',
         ];
+
+        $form['config']['start_date'] = [
+            '#type' => 'datetime',
+            '#title' => $this->t('Starting date'),
+            '#default_value' => isset($values['start_date']) ? (new DrupalDateTime())->setTimestamp($values['start_date']) : new DrupalDateTime()
+        ];
+
+        if (isset($values['date_last_send'])) {
+            $form['config']['date_last_send_info'] = [
+                '#type' => 'textfield',
+                '#title' => $this->t('Last report sent on'),
+                '#default_value' =>(new DrupalDateTime())->setTimestamp($values['date_last_send'])->format('d/m/Y H:i:s'),
+                '#attributes' => [
+                    'readonly' => 'readonly',
+                    'disabled' => 'disabled',
+                ],
+            ];
+        }
 
         $form['config']['email'] = [
             '#type' => 'email',
             '#title' => $this->t('Email override'),
-            '#description' => $this->t('Instead, "@key" will be used', ['@key' => $user->getEmail()]),
-            '#default_value' => $config['email'] ?? null,
+            '#description' => $this->t('Instead, logs will be sent by default to "@key"', ['@key' => $user->getEmail()]),
+            '#default_value' => $values['email'] ?? null,
         ];
 
         return parent::buildForm($form, $form_state);
@@ -103,19 +124,21 @@ class DrupReportForm extends ConfigFormBase {
         $config = $this->config(DrupReport::getConfigName());
         $userId = $form_state->getValue('user_id');
 
-        $userData = [];
+        $formValues = [];
         if ((bool) $form_state->getValue('enable') === true) {
-            $userData = [
-                'types' => array_filter($form_state->getValue('types')),
-                'periodicity' => $form_state->getValue('periodicity'),
-                'email' => $form_state->getValue('email'),
-                'user' => $userId,
+            $formValues = [
+                'user'           => $userId,
+                'types'          => array_filter($form_state->getValue('types')),
+                'periodicity'    => $form_state->getValue('periodicity'),
+                'start_date'     => $form_state->getValue('start_date')->format('U'),
+                'date_last_send' => null,
+                'email'          => $form_state->getValue('email')
             ];
         }
 
-        $data = $config->get('data');
-        $data[$userId] = $userData;
 
+        $data = $config->get('data');
+        $data[$userId] = $formValues;
         $config->set('data', $data)->save();
 
         parent::submitForm($form, $form_state);

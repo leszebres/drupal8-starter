@@ -12,23 +12,7 @@
 
 <tr>
     <td>
-        <table>
-            {#<thead>
-                <tr>
-                    <th>{{ "Type"|t }}</th>
-                    <th>{{ "Date"|t }}</th>
-                    <th>{{ "Message"|t }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for log in data %}
-                    <tr>
-                        <td>{{ log.type|t }}</td>
-                        <td>{{ log.date }}</td>
-                        <td>{{ link(log.title, log.url) }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>#}
+        <table style="word-break: break-all">
             {% for log in data %}
                 <tr>
                     <td>
