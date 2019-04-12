@@ -1,22 +1,24 @@
 <?php
 
 use Drupal\Core\Render\Markup;
+use Drupal\drup\Entity\DrupField;
 
 /**
  * @param array $variables
  */
 function drup_theme_preprocess_paragraph(array &$variables) {
     $paragraph = $variables['paragraph'];
+    $drupField = new DrupField($paragraph);
 
     switch ($paragraph->getType()) {
         // Code html
         case 'html':
-            $variables['content'] = Markup::create($paragraph->get('field_html_code')->value);
+            $variables['content'] = Markup::create($drupField->getValue('html_code', 'value'));
             break;
 
         // Text + image
         case 'text_image':
-            $variables['image_position'] = $paragraph->get('field_image_position')->value;
+            $variables['image_position'] = $drupField->getValue('image_position', 'value');
             $variables['attributes']['class'][] = 'l-' . $variables['image_position'];
             break;
 

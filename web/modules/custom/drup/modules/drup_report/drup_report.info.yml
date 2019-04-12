@@ -7,5 +7,5 @@ package: 'Drup'
 dependencies:
   - drupal:dblog
   - drupal:syslog
-  -
+
 php: 7.2
