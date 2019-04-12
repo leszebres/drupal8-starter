@@ -2,6 +2,8 @@
 
 namespace Drupal\drup\Media;
 
+use Drupal\media\Entity\Media;
+
 /**
  * Class DrupMediaDocument
  *
@@ -12,7 +14,7 @@ class DrupMediaDocument extends DrupMedia {
     /**
      * DrupMediaFile constructor.
      *
-     * @param $medias
+     * @param int|array|Media|Media[] $medias
      * @param null $fileField
      */
     public function __construct($medias, $fileField = null) {

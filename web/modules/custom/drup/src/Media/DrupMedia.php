@@ -17,49 +17,47 @@ class DrupMedia {
      *
      * @var array
      */
-    public $mediasList;
+    protected $mediasList;
 
     /**
      * Data for each medias
      *
      * @var
      */
-    public $mediasData;
+    protected $mediasData;
 
     /**
      * Media type (ex : Image or File)
      *
      * @var
      */
-    public $type;
+    protected $type;
 
     /**
      * Media entity field representing File entity
      *
      * @var
      */
-    public $filesField;
+    protected $filesField;
 
     /**
      * Current language id
      *
      * @var string
      */
-    public $languageId;
+    protected $languageId;
 
     /**
      * DrupMedia constructor.
      *
-     * @param $medias
+     * @param int|array|Media|Media[] $medias
      * @param null $fileField
      */
     public function __construct($medias, $fileField = null) {
-        $this->languageId = \Drupal::languageManager()
-            ->getCurrentLanguage()
-            ->getId();
+        $this->languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
-        $this->mediasList = $this->formatMedias($medias);
         $this->filesField = $this->formatFieldName($fileField);
+        $this->mediasList = $this->formatMedias($medias);
 
         $this->mediasData = $this->getData();
     }
@@ -78,10 +76,8 @@ class DrupMedia {
         }
 
         foreach ($medias as $media) {
-            $entity = ($media instanceof Media) ? $media : $this->loadMedia($media);
-            if ($entity !== null) {
-                $entities[] = \Drupal::service('entity.repository')
-                    ->getTranslationFromContext($entity, $this->languageId);
+            if ($entity = ($media instanceof Media) ? $media : $this->loadMedia($media)) {
+                $entities[] = \Drupal::service('entity.repository')->getTranslationFromContext($entity, $this->languageId);
             }
         }
 
@@ -89,7 +85,8 @@ class DrupMedia {
     }
 
     /**
-     * Get Media's file entities
+     * Get Media's file entities info
+     *
      * @return array
      */
     protected function getData() {
@@ -97,12 +94,13 @@ class DrupMedia {
 
         if (!empty($this->mediasList)) {
             foreach ($this->mediasList as $mediaEntity) {
-
                 if ($mediaEntity->hasField($this->filesField)) {
+
+                    /** @var \Drupal\image\Plugin\Field\FieldType\ImageItem $fileReferenced */
                     $fileReferenced = $mediaEntity->get($this->filesField)->first();
 
                     if (!$fileReferenced->isEmpty() && ($fileData = $fileReferenced->getValue())) {
-                        if (isset($fileData['target_id']) && ($fileEntity = File::load($fileData['target_id']))) {
+                        if (isset($fileData['target_id']) && ($fileEntity = File::load($fileData['target_id'])) && ($fileEntity instanceof File)) {
                             $data[] = (object) [
                                 'mediaEntity' => $mediaEntity,
                                 'fileEntity' => $fileEntity,
@@ -149,6 +147,6 @@ class DrupMedia {
      * @return string
      */
     protected function formatFieldName($fieldName) {
-        return ($fieldName !== null) ? $fieldName : 'field_media_' . $this->type;
+        return $fieldName ?? 'field_media_' . $this->type;
     }
 }

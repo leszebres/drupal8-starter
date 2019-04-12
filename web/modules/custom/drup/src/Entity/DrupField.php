@@ -102,6 +102,24 @@ class DrupField {
     }
 
     /**
+     * @param $field
+     * @param string $type
+     *
+     * @return null|\Drupal\drup\Media\DrupMediaImage|\Drupal\drup\Media\DrupMediaDocument
+     */
+    public function getDrupMedia($field, $type = 'image') {
+        if ($entities = $this->getReferencedEntities($field)) {
+            $className = '\\Drupal\\drup\\Media\\DrupMedia' . ucfirst(strtolower($type));
+
+            if (class_exists($className)) {
+                return new $className($entities);
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * @param $input
      * @param $field
      * @param bool $multiple

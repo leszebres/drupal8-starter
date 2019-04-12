@@ -23,7 +23,9 @@ class DrupFile {
      */
     public $fileUri;
 
-    /** @var \Drupal\Core\Image\Image $image */
+    /**
+     * @var \Drupal\Core\Image\Image $image
+     */
     public $image;
 
     /**
@@ -199,13 +201,8 @@ class DrupFile {
     public function getMediaUrl($style) {
         $url = null;
 
-        if ($style !== null && $this->isValid()) {
-            if ($imageStyle = $this->getImageStyleEntity($style)) {
-                $url = $imageStyle->buildUrl($this->fileUri);
-            }
-            else {
-                \Drupal::messenger()->addMessage('Le style d\'image ' . $style . ' et de type responsive ou n\'existe pas.', 'error');
-            }
+        if ($style !== null && $this->isValid() && ($imageStyle = $this->getImageStyleEntity($style))) {
+            $url = $imageStyle->buildUrl($this->fileUri);
         }
         else {
             $url = file_create_url($this->fileUri);

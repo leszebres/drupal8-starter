@@ -2,8 +2,7 @@
 
 namespace Drupal\drup\Media;
 
-use Drupal\image\Entity\ImageStyle;
-use Drupal\responsive_image\Entity\ResponsiveImageStyle;
+use Drupal\media\Entity\Media;
 
 /**
  * Class DrupMediaImage
@@ -15,7 +14,7 @@ class DrupMediaImage extends DrupMedia {
     /**
      * DrupMediaImage constructor.
      *
-     * @param $medias
+     * @param int|array|Media|Media[] $medias
      * @param null $fileField
      */
     public function __construct($medias, $fileField = null) {
