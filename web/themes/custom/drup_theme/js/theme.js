@@ -95,7 +95,9 @@ var Theme = {};
         spinnerHandler: function () {
             var options = {
                 auto: true,
-                autoPathsExceptions: []
+                autoPathsExceptions: [
+                    'spinner=0'
+                ]
             };
 
             this.spinner = this.elements.body.spinner(options);
