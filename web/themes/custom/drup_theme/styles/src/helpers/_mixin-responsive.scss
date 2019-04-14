@@ -11,7 +11,7 @@
 @mixin media-breakpoint-max($breakpoint) {
     $max: media-breakpoint-get($breakpoint);
     @if $max {
-        @media (max-width: $max) {
+        @media screen and (max-width: $max) {
             @content;
         }
     } @else {
@@ -22,7 +22,7 @@
 @mixin media-breakpoint-min($breakpoint) {
     $min: media-breakpoint-get($breakpoint);
     @if $min {
-        @media (min-width: ($min + 1px)) {
+        @media screen and (min-width: ($min + 1px)) {
             @content;
         }
     } @else {
