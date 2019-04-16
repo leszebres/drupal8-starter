@@ -2,6 +2,7 @@
 
 namespace Drupal\drup\Media;
 
+use Drupal\Core\Render\Markup;
 use Drupal\file\Entity\File;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\responsive_image\Entity\ResponsiveImageStyle;
@@ -40,16 +41,30 @@ class DrupFile {
     }
 
     /**
-     * @param $mediaUrl
+     * @param string $mediaUrl
      *
-     * @return bool|null|string|string[]
+     * @return string|null
      */
     public static function getSVGContent($mediaUrl) {
         $output = null;
 
         if ($mediaContent = @file_get_contents($mediaUrl)) {
-            $mediaContent = preg_replace('/<!--.*?-->/ms', '', $mediaContent);
-            return $mediaContent;
+            $output = preg_replace('/<!--.*?-->/ms', '', $mediaContent);
+        }
+
+        return $output;
+    }
+
+    /**
+     * @param string $mediaUrl
+     *
+     * @return \Drupal\Component\Render\MarkupInterface|null
+     */
+    public static function renderSVG($mediaUrl) {
+        $output = null;
+
+        if ($svgContent = self::getSVGContent($mediaUrl)) {
+            $output = Markup::create($svgContent);
         }
 
         return $output;
