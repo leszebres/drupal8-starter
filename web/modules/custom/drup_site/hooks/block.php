@@ -32,7 +32,7 @@ function drup_site_block_build_alter(array &$build, \Drupal\Core\Block\BlockPlug
  * @param \Drupal\Core\Session\AccountInterface $account
  */
 function drup_site_block_access(\Drupal\block\Entity\Block $block, $operation, \Drupal\Core\Session\AccountInterface $account) {
-    $drupRouteName = \Drupal::service('drup_router.router')->getName();
+    $drupRouteName = \Drupal::service('drup_router')->getName();
     $drupPageEntity = DrupPageEntity::loadEntity();
     $isFront = DrupRequest::isFront();
     $args = DrupRequest::getArgs();

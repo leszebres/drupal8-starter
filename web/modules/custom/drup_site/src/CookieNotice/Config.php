@@ -18,7 +18,7 @@
          * @return array
          */
         public static function set() {
-            $drupRouter = \Drupal::service('drup_router.router');
+            $drupRouter = \Drupal::service('drup_router');
             
             return [
                 // Configuration du bandeau notice

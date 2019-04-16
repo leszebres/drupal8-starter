@@ -11,7 +11,7 @@ use Drupal\drup\Views\DrupViewsView;
  * @param $variables
  */
 function drup_theme_preprocess_views_view(&$variables) {
-    $drupRouter = \Drupal::service('drup_router.router');
+    $drupRouter = \Drupal::service('drup_router');
     $drupRouteName = $drupRouter->getName();
 
     $drupViewsView = new DrupViewsView($variables);

@@ -7,9 +7,11 @@ use Drupal\drup\Entity\Node;
 use Drupal\drup\Entity\Term;
 
 /**
- * Class DrupRouterService.
+ * Class DrupRouter
+ *
+ * @package Drupal\drup_router
  */
-class DrupRouterService {
+class DrupRouter {
 
     /**
      * @var array
@@ -154,7 +156,7 @@ class DrupRouterService {
         $language = $this->getLanguage($language);
         
         if ($entityId === null) {
-            $entityId = $this->entity->id();
+            $entityId = (string) $this->entity->id();
         }
         if ($entityType === null) {
             $entityType = $this->entity->getEntityType();

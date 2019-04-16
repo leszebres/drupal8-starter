@@ -51,8 +51,8 @@ class DrupBreadcrumb implements BreadcrumbBuilderInterface {
      * @link http://kevinquillen.com/drupal/2017/02/16/manually-add-breadcrumb-links-in-drupal-8
      */
     public function build(RouteMatchInterface $route_match) {
-        /** @var \Drupal\drup_router\DrupRouterService $drupRouter **/
-        $drupRouter = \Drupal::service('drup_router.router');
+        /** @var \Drupal\drup_router\DrupRouter $drupRouter **/
+        $drupRouter = \Drupal::service('drup_router');
         $drupField = new DrupField($this->drupPageEntity->getEntity());
 
         $breadcrumbItemsList = $this->buildList();

@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 function drup_theme_preprocess_page(array &$variables) {
     $drupSettings = new DrupSettings();
     $drupPageEntity = DrupPageEntity::loadEntity();
-    $drupRouter = \Drupal::service('drup_router.router');
+    $drupRouter = \Drupal::service('drup_router');
     $drupRouteName = $drupRouter->getName();
     $systemRouteName = DrupRequest::getRouteName();
     $isFront = DrupRequest::isFront();
@@ -90,7 +90,7 @@ function drup_theme_theme_suggestions_page_alter(array &$suggestions, array $var
  */
 function drup_theme_preprocess_page_title(array &$variables) {
 //    $drupPageEntity = DrupPageEntity::loadEntity();
-//    $drupRouter = \Drupal::service('drup_router.router');
+//    $drupRouter = \Drupal::service('drup_router');
 
     $variables['title_attributes'] = new Attribute([
         'class' => ['content-title']

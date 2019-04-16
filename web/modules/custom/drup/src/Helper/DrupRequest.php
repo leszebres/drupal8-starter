@@ -36,7 +36,7 @@ abstract class DrupRequest {
      * @return FormattableMarkup
      */
     public static function get404Content() {
-        $drupRouter = \Drupal::service('drup_router.router');
+        $drupRouter = \Drupal::service('drup_router');
 
         $content404 = '<h2 class="title--h3">' . t('You may have followed a broken link, or tried to view a page that no longer exists.') . '</h2>';
         if ($contact = $drupRouter->getPath('contact')) {

@@ -7,7 +7,7 @@ function drup_theme_preprocess_menu(&$variables) {
     if (isset($variables['menu_name'])) {
         if ($variables['menu_name'] === 'main') {
 //            $currentEntity = DrupCommon::getPageEntity();
-//            $drupRouter = \Drupal::service('drup_router.router');
+//            $drupRouter = \Drupal::service('drup_router');
 //
 //            foreach ($variables['items'] as $index => &$item) {
 //                if ($menuItemNid = DrupCommon::getNidFromMenuItem($item)) {

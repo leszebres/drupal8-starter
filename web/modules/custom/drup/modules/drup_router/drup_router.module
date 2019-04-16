@@ -19,7 +19,7 @@ function drup_router_token_info() {
     ];
 
     $tokensAvailable = [];
-    $drupRouter = \Drupal::service('drup_router.router');
+    $drupRouter = \Drupal::service('drup_router');
     $drupRoutes = $drupRouter->getRoutes();
     if (!empty($drupRoutes)) {
         foreach ($drupRoutes as $index => $drupRoute) {
@@ -54,7 +54,7 @@ function drup_router_tokens($type, $tokens, array $data, array $options, \Drupal
     $replacements = array();
 
     if ($type === $tokenType) {
-        $drupRouter = \Drupal::service('drup_router.router');
+        $drupRouter = \Drupal::service('drup_router');
 
         foreach ($tokens as $name => $original) {
             $routeID = $drupRouter->getID($name);

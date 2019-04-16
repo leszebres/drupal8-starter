@@ -19,7 +19,7 @@ class DrupSiteForm {
      */
     public static function getGDPRMention($type = 'contact')
     {
-        $drupRouter = \Drupal::service('drup_router.router');
+        $drupRouter = \Drupal::service('drup_router');
 
         $text = t('Les informations suivies d\'un astérisque (*) sont nécessaires au traitement de votre demande et sont destinées uniquement à l\'entreprise.');
 
