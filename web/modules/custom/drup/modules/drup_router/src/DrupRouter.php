@@ -21,12 +21,12 @@ class DrupRouter {
     /**
      * @var string
      */
-    protected $languageCurrentId;
+    protected $defaultContext;
 
     /**
      * @var string
      */
-    protected $languageDefaultId;
+    protected $currentLanguageId;
 
     /**
      * @var \Drupal\drup\DrupPageEntity
@@ -38,18 +38,18 @@ class DrupRouter {
      */
     public function __construct() {
         $this->routes = \Drupal::config('drup.routes')->get('routes');
-        $this->languageCurrentId = \Drupal::languageManager()->getCurrentLanguage()->getId();
-        $this->languageDefaultId = \Drupal::languageManager()->getDefaultLanguage()->getId();
+        $this->defaultContext = \Drupal::languageManager()->getDefaultLanguage()->getId();
+        $this->currentLanguageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
         $this->entity = DrupPageEntity::loadEntity();
     }
-    
+
     /**
      * @return array
      */
     public function getRoutes() {
         return $this->routes;
     }
-    
+
     /**
      * Return specific route data by name
      * @param $routeName
@@ -67,80 +67,79 @@ class DrupRouter {
                 }
             }
         }
-        
+
         return null;
     }
-    
+
     /**
      * Get entity id attached to route name
      * @param $routeName
-     * @param null $language
+     * @param null $context
      *
      * @return null
      */
-    public function getId($routeName, $language = null) {
-        $language = $this->getLanguage($language);
-        
+    public function getId($routeName, $context = null) {
+        $context = $this->getContext($context);
+
         if ($route = $this->getRoute($routeName)) {
-            return $route[$language];
+            return (string) !empty($route[$context]) ? $route[$context] : $route[$this->defaultContext];
         }
-        
+
         return null;
     }
 
     /**
      * @param $routeName
-     * @param null $language
      *
-     * @return \Drupal\drup\Entity\Node|\Drupal\drup\Entity\Term|null
+     * @param null $context
+     *
+     * @return \Drupal\Core\Entity\EntityInterface|\Drupal\node\Entity\Node
      */
-    public function getEntity($routeName, $language = null) {
-        $language = $this->getLanguage($language);
-
-        if (($route = $this->getRoute($routeName)) && isset($route[$language])) {
+    public function getEntity($routeName, $context = null) {
+        if (($route = $this->getRoute($routeName)) && $routeEntityId = $this->getId($routeName, $context)) {
             if ($route['targetType'] === 'taxonomy_term') {
-                return Term::load($route[$language]);
+                return Term::load($routeEntityId);
             }
             if ($route['targetType'] === 'node') {
-                return Node::load($route[$language]);
+                return Node::load($routeEntityId);
             }
         }
 
         return null;
     }
-    
+
     /**
      * Get url alias of given route name
+     *
      * @param $routeName
-     * @param null $language
+     *
+     * @param null $context
      *
      * @return null
      */
-    public function getPath($routeName, $language = null) {
-        $language = $this->getLanguage($language);
-        
-        if (($route = $this->getRoute($routeName)) && isset($route[$language])) {
+    public function getPath($routeName, $context = null) {
+        if (($route = $this->getRoute($routeName)) && $routeEntityId = $this->getId($routeName, $context)) {
             $entityPath = ($route['targetType'] === 'taxonomy_term') ? 'taxonomy/term' : $route['targetType'];
-            return \Drupal::service('path.alias_manager')->getAliasByPath('/' . $entityPath . '/' . $route[$language]);
+            return \Drupal::service('path.alias_manager')->getAliasByPath('/' . $entityPath . '/' . $routeEntityId);
         }
-        
+
         return null;
     }
-    
+
     /**
      * Get drupal entity uri of a given route name
+     *
      * @param $routeName
-     * @param null $language
+     *
+     * @param null $context
      *
      * @return null|string
      */
-    public function getUri($routeName, $language = null) {
-        $language = $this->getLanguage($language);
-        
-        if (($route = $this->getRoute($routeName)) && isset($route[$language])) {
-            return 'internal:/' . $route['targetType'] . '/' . $route[$language];
+    public function getUri($routeName, $context = null) {
+        if (($route = $this->getRoute($routeName)) && $routeEntityId = $this->getId($routeName, $context)) {
+            return 'internal:/' . $route['targetType'] . '/' . $routeEntityId;
         }
-        
+
         return null;
     }
 
@@ -148,59 +147,54 @@ class DrupRouter {
      * Return route name attached to a given drupal entity
      * @param null $entityId
      * @param null $entityType
-     * @param null $language
+     * @param null $context
      *
      * @return null
      */
-    public function getName($entityId = null, $entityType = null, $language = null) {
-        $language = $this->getLanguage($language);
-        
+    public function getName($entityId = null, $entityType = null, $context = null) {
         if ($entityId === null) {
             $entityId = (string) $this->entity->id();
         }
         if ($entityType === null) {
             $entityType = $this->entity->getEntityType();
         }
-        
+
         if (!empty($entityId) && !empty($this->routes)) {
             foreach ($this->routes as $route) {
-                if (($route['targetType'] === $entityType) && ($entityId === $route[$language])) {
+                if (($route['targetType'] === $entityType) && ($entityId === $this->getId($route['routeName'], $context))) {
                     return $route['routeName'];
                 }
             }
         }
-        
+
         return null;
     }
 
     /**
      * @param $routeName
-     * @param null $language
+     * @param null $context
      *
      * @return bool
      */
-    public function isRoute($routeName, $language = null) {
-        $language = $this->getLanguage($language);
-        
-        if ($route = $this->getRoute($routeName)) {
-            return (($this->entity->getEntityType() === $route['targetType']) && ($this->entity->id() === $route[$language]));
+    public function isRoute($routeName, $context = null) {
+        if (($route = $this->getRoute($routeName)) && $routeEntityId = $this->getId($routeName, $context)) {
+            return (($this->entity->getEntityType() === $route['targetType']) && ((string) $this->entity->id() === $routeEntityId));
         }
-        
+
         return false;
     }
-    
-    
+
+
     /**
-     * @param null $language
+     * @param null $context
      *
      * @return null|string
      */
-    protected function getLanguage($language = null) {
-        if ($language === null) {
-            //$language = $this->languageCurrent;
-            $language = $this->languageDefaultId; // force main entity
+    protected function getContext($context = null) {
+        if ($context === null) {
+            $context = $this->currentLanguageId;
         }
-        
-        return $language;
+
+        return $context;
     }
 }
