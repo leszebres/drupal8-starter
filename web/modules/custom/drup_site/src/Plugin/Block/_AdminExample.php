@@ -3,13 +3,8 @@
 namespace Drupal\drup_blocks\Plugin\Block;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\drup\DrupCommon;
+use Drupal\drup\Block\DrupBlockAdminBase;
 use Drupal\drup\Media\DrupFile;
-use Drupal\node\Entity\Node;
-
-use Drupal\drup_blocks\DrupBlockAdmin;
-use Drupal\drup_blocks\DrupBlockAdminBase;
-use Drupal\drup\DrupSite;
 
 /**
  * Provides a '_AdminExample' block.

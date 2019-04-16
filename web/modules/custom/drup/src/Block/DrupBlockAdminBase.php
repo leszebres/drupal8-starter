@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\drup_blocks;
+namespace Drupal\drup\Block;
 
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Block\BlockBase;
@@ -12,7 +12,7 @@ use Drupal\drup\Helper\DrupRequest;
 /**
  * Class DrupBlockAdminBase
  *
- * @package Drupal\drup_blocks
+ * @package Drupal\drup\Block
  */
 abstract class DrupBlockAdminBase extends BlockBase {
 
@@ -91,8 +91,7 @@ abstract class DrupBlockAdminBase extends BlockBase {
         if (isset($this->configuration['id'])) {
             $this->blockId = $this->configuration['id'];
 
-            $route = \Drupal::routeMatch()->getRouteObject();
-            $view = \Drupal::service('router.admin_context')->isAdminRoute($route) ? 'admin' : 'front';
+            $view = DrupRequest::isAdminRoute() ? 'admin' : 'front';
             $this->urlContextValue = $this->getUrlContextValue($view);
 
             $this->config = \Drupal::service('config.factory')->getEditable('drup_blocks.admin_values');
@@ -191,7 +190,7 @@ abstract class DrupBlockAdminBase extends BlockBase {
         for ($i = 0; $i < $countItems; $i++) {
             //$itemIndex = 'item_' . $i;
             $itemIndex = $i;
-            $values = isset($this->configValues[$this->ajaxContainer][$itemIndex]) ? $this->configValues[$this->ajaxContainer][$itemIndex] : [];
+            $values = $this->configValues[$this->ajaxContainer][$itemIndex] ?? [];
 
             $form[$this->ajaxContainer][$itemIndex] = [
                 '#type' => 'details',

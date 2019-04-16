@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\drup_blocks;
+namespace Drupal\drup\Block;
 
 /**
  * Class DrupBlock
  *
- * @package Drupal\drup_blocks
+ * @package Drupal\drup\Block
  */
 abstract class DrupBlock {
     

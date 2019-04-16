@@ -1,16 +1,17 @@
 <?php
 
-namespace Drupal\drup_blocks;
+namespace Drupal\drup\Block;
 
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Block\BlockBase;
 
 /**
  * Class DrupBlockBase
- * @package Drupal\drup_blocks
+ *
+ * @package Drupal\drup\Block
  */
 abstract class DrupBlockBase extends BlockBase {
-    
+
     /**
      * @return array|void
      */
@@ -32,7 +33,7 @@ abstract class DrupBlockBase extends BlockBase {
     public function getCacheContexts() {
         return Cache::mergeContexts(parent::getCacheContexts(), DrupBlock::getDefaultCacheContexts());
     }
-    
+
     /**
      * {@inheritdoc}
      */
