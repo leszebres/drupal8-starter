@@ -1,6 +1,5 @@
 <?php
 
-use Drupal\drup\DrupCommon;
 use Drupal\drup\DrupHead;
 use Drupal\drup\DrupSEO;
 

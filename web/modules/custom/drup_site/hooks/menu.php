@@ -1,7 +1,5 @@
 <?php
 
-use Drupal\Core\Language\LanguageInterface;
-use Drupal\drup\DrupCommon;
 use Drupal\drup\DrupMenu;
 
 /**
@@ -44,18 +42,6 @@ function drup_site_menu_links_discovered_alter(&$links) {
         'parent' => 'system.admin',
         'weight' => 50
     ];
-
-
-    //$isSuperAdmin = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id())->hasRole('super_admin');
-    //if (!$isSuperAdmin) {
-    // fonctionne pas !
-    //unset($links['user.admin_permissions']);
-    //unset($links['entity.user_role.collection']);
-    //}
-//    echo '<pre>';
-//    var_dump($links);
-//    echo '</pre>';
-//    die;
 }
 
 /**

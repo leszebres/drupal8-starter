@@ -17,4 +17,6 @@ function drup_site_node_access(NodeInterface $node, $op, AccountInterface $accou
 
         return $access;
     }
+
+    return AccessResult::neutral();
 }

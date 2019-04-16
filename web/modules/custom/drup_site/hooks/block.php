@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains drup_blocks.module.
- */
-
 use Drupal\Core\Access\AccessResult;
 use Drupal\drup\DrupPageEntity;
 use Drupal\drup\Helper\DrupRequest;
@@ -60,9 +55,9 @@ function drup_site_block_access(\Drupal\block\Entity\Block $block, $operation, \
             /**
              * Content after
              */
-            case 'push_newsletter_block':
-                return AccessResult::forbiddenIf($drupRouteName === 'newsletter')->addCacheableDependency($block);
-                break;
+//            case 'push_newsletter_block':
+//                return AccessResult::forbiddenIf($drupRouteName === 'newsletter')->addCacheableDependency($block);
+//                break;
             
         }
     }

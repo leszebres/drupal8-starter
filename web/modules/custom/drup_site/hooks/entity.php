@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\drup\Entity\Term;
+use Drupal\drup\Entity\Node;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
@@ -28,9 +30,9 @@ function drup_site_entity_view_alter(array &$build, EntityInterface $entity, Ent
 function drup_site_entity_type_build(array &$entity_types) {
 //function drup_site_entity_type_alter(array &$entity_types) {
     if (isset($entity_types['node'])) {
-        $entity_types['node']->setClass('Drupal\\drup\\Entity\\Node');
+        $entity_types['node']->setClass(Node::class);
     }
     if (isset($entity_types['taxonomy_term'])) {
-        $entity_types['taxonomy_term']->setClass('Drupal\\drup\\Entity\\Term');
+        $entity_types['taxonomy_term']->setClass(Term::class);
     }
 }
