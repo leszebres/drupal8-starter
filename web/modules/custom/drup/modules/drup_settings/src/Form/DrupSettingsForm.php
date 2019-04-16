@@ -85,6 +85,12 @@ class DrupSettingsForm extends ConfigFormBase {
             '#title' => $this->t('Slogan'),
             '#drup_context' => null
         ];
+        $form[$this->formContainer]['main']['site_information']['site_emails_from'] = [
+            '#type' => 'email',
+            '#title' => $this->t('Send mails with:'),
+            '#required' => true,
+            '#drup_context' => 'und'
+        ];
 
         /* SEO */
         $form[$this->formContainer]['main']['site_seo'] = [

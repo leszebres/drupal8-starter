@@ -82,8 +82,10 @@ msgstr "Modifier le contenu ci-dessous"
 msgid "Specific to each language"
 msgstr "Spécifique à chaque langue"
 
-
 msgid "Common to all languages"
 msgstr "Commun à toutes les langues"
+
+msgid "Send mails with:"
+msgstr "Envoyer les emails avec :"
 
 # CUSTOM
