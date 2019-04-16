@@ -4,7 +4,6 @@ namespace Drupal\drup_settings\Form;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Form\ConfigFormBase;
-use Drupal\drup\Helper\DrupUrl;
 use Drupal\drup\Media\DrupFile;
 use Drupal\drup_settings\DrupSettings;
 use Drupal\drup_social_links\DrupSocialLinks;
@@ -18,6 +17,18 @@ class DrupSettingsForm extends ConfigFormBase {
      * @var DrupSettings
      */
     protected $drupSettings;
+
+    /**
+     * @var string 
+     */
+    protected $formContainer = 'container';
+
+    /**
+     * Stock le contexte (langue) de DrupSettings de chaque form item
+     *
+     * @var array
+     */
+    protected $formItemsContext = [];
 
     /**
      * {@inheritdoc}
@@ -34,15 +45,12 @@ class DrupSettingsForm extends ConfigFormBase {
     }
 
     /**
-     * todo form dans drup_site
      * {@inheritdoc}
      */
     public function buildForm(array $form, FormStateInterface $form_state) {
         $this->drupSettings = new DrupSettings();
 
-        $container = 'container';
-
-        $form[$container] = [
+        $form[$this->formContainer] = [
             '#type' => 'horizontal_tabs',
             '#prefix' => '<div id="drup-settings-wrapper">',
             '#suffix' => '</div>',
@@ -54,80 +62,80 @@ class DrupSettingsForm extends ConfigFormBase {
         /**
          * MAIN SETTINGS
          */
-        $form[$container]['main'] = [
+        $form[$this->formContainer]['main'] = [
             '#type' => 'details',
             '#title' => $this->t('Configuration du site'),
             '#collapsible' => true,
             '#collapsed' => true,
         ];
 
-        $form[$container]['main']['site_information'] = [
+        $form[$this->formContainer]['main']['site_information'] = [
             '#type' => 'details',
             '#title' => $this->t('Site details'),
             '#open' => true,
         ];
-        $form[$container]['main']['site_information']['site_name'] = [
+        $form[$this->formContainer]['main']['site_information']['site_name'] = [
             '#type' => 'textfield',
             '#title' => $this->t('Site name'),
-            '#default_value' => $this->drupSettings->getValue('site_name'),
             '#required' => true,
+            '#drup_context' => null
         ];
-        $form[$container]['main']['site_information']['site_slogan'] = [
+        $form[$this->formContainer]['main']['site_information']['site_slogan'] = [
             '#type' => 'textfield',
             '#title' => $this->t('Slogan'),
-            '#default_value' => $this->drupSettings->getValue('site_slogan'),
+            '#drup_context' => null
         ];
 
         /* SEO */
-        $form[$container]['main']['site_seo'] = [
+        $form[$this->formContainer]['main']['site_seo'] = [
             '#type' => 'details',
             '#title' => $this->t('Référencement global'),
             '#open' => true
         ];
-        $form[$container]['main']['site_seo']['site_logo_alt'] = [
+        $form[$this->formContainer]['main']['site_seo']['site_logo_alt'] = [
             '#type' => 'textfield',
             '#title' => $this->t('Attribut alt du logo'),
-            '#default_value' => $this->drupSettings->getValue('site_logo_alt'),
+            '#drup_context' => null
         ];
-        $form[$container]['main']['site_seo']['site_tag_manager'] = [
+        $form[$this->formContainer]['main']['site_seo']['site_tag_manager'] = [
             '#type' => 'textfield',
             '#title' => $this->t('ID Google Tag Manager'),
-            '#default_value' => $this->drupSettings->getValue('site_tag_manager'),
+            '#drup_context' => null
         ];
 
 
-        $form[$container]['main']['home_seo'] = [
+        $form[$this->formContainer]['main']['home_seo'] = [
             '#type' => 'details',
             '#title' => $this->t('Référencement de la page d\'accueil'),
             '#open' => true,
         ];
-        $form[$container]['main']['home_seo']['home_meta_title'] = [
+        $form[$this->formContainer]['main']['home_seo']['home_meta_title'] = [
             '#type' => 'textfield',
             '#title' => $this->t('Meta Title'),
-            '#default_value' => $this->drupSettings->getValue('home_meta_title'),
+            '#drup_context' => null
         ];
-        $form[$container]['main']['home_seo']['home_meta_desc'] = [
+        $form[$this->formContainer]['main']['home_seo']['home_meta_desc'] = [
             '#type' => 'textfield',
             '#title' => $this->t('Meta Description'),
+            '#drup_context' => null,
             '#maxlength' => 250,
-            '#default_value' => $this->drupSettings->getValue('home_meta_desc'),
         ];
-        $form[$container]['main']['home_seo']['home_h1'] = [
+        $form[$this->formContainer]['main']['home_seo']['home_h1'] = [
             '#type' => 'textfield',
             '#title' => $this->t('Titre principal H1'),
-            '#default_value' => $this->drupSettings->getValue('home_h1'),
+            '#drup_context' => null
         ];
 
 
         $socialNetworks = DrupSocialLinks::getLinkItems();
         if (!empty($socialNetworks)) {
-            $form[$container]['main']['social_networks'] = [
+            $form[$this->formContainer]['main']['social_networks'] = [
                 '#type' => 'details',
                 '#title' => $this->t('URLs des réseaux sociaux'),
                 '#open' => true
             ];
             foreach ($socialNetworks as $network) {
-                $form[$container]['main']['social_networks']['site_social_link_' . $network['id']] = [
+                $form[$this->formContainer]['main']['social_networks']['site_social_link_' . $network['id']] = [
                     '#type' => 'url',
                     '#title' => $network['title'],
                     '#default_value' => $network['link_url']
@@ -135,77 +143,33 @@ class DrupSettingsForm extends ConfigFormBase {
             }
         }
 
-        /**
-         * CONTACT
-         */
-
-        // Same info for every lang
-        $this->drupSettings->setNeutralLang();
-
-        $form[$container]['contact'] = [
-            '#type' => 'details',
-            '#title' => $this->t('Coordonnées'),
-            '#collapsible' => true,
-            '#collapsed' => true,
-        ];
-
-        $form[$container]['contact']['contact_infos'] = [
-            '#type' => 'details',
-            '#title' => t('Informations de contact'),
-            '#open' => true,
-        ];
-        $form[$container]['contact']['contact_infos']['contact_infos_phone_number'] = [
-            '#type' => 'textfield',
-            '#title' => t('N° téléphone'),
-            '#default_value' => $this->drupSettings->getValue('contact_infos_phone_number'),
-        ];
-
-        // Back to current lang
-        $this->drupSettings->setLanguage();
-
-        /**
-         * .....
-         */
-
         return parent::buildForm($form, $form_state);
     }
 
     /**
-     * todo review save fields
-     * {@inheritdoc}
+     * Ajoute les default_value + description des champs automatiquement selon la clé #drup_context
+     * @param $form
+     * @param $form_state
      */
-    public function submitForm(array &$form, FormStateInterface $form_state) {
-        $values = $form_state->getValues();
-        $drupSocialLinksConfig = DrupSocialLinks::getConfig(true);
-        $drupSocialLinksItems = $drupSocialLinksConfig->get('items');
+    protected function populateDefaultValues(&$items, $form_state) {
+        if (is_array($items)) {
+            foreach ($items as $key => &$item) {
+                if (is_array($item) && array_key_exists('#drup_context', $item) && empty($item['#default_value'])) {
+                    $this->drupSettings->setLanguage($item['#drup_context']);
+                    $this->formItemsContext[$key] = $item['#drup_context'];
 
-        foreach ($values as $fieldId => $fieldValue) {
-            if (strpos($fieldId, 'site_social_link_') !== false) {
-                $socialId = str_replace('site_social_link_', '', $fieldId);
+                    $item['#default_value'] = $this->drupSettings->getValue($key);
 
-                if (isset($drupSocialLinksItems[$socialId])) {
-                    $drupSocialLinksItems[$socialId]['link_url'] = $fieldValue;
-                    $drupSocialLinksConfig->set('items', $drupSocialLinksItems);
-                    $drupSocialLinksConfig->save();
+                    $description = '<i>' . $this->t($item['#drup_context'] === 'und' ? 'Common to all languages' : 'Specific to each language') . '</i>';
+                    if (!isset($item['#description'])) {
+                        $item['#description'] = $description;
+                    } else {
+                        $item['#description'] = $description . '<br/>' . $item['#description'];
+                    }
                 }
 
-            } else {
-                if (strpos($fieldId, 'contact_') !== false) {
-                    $this->drupSettings->setNeutralLang();
-                } else {
-                    $this->drupSettings->setLanguage();
-                }
-                $this->drupSettings->set($fieldId, $fieldValue);
-
-                if (!empty($fieldValue) && (strpos($fieldId, 'image') !== false || strpos($fieldId, 'file') !== false)) {
-                    DrupFile::setPermanent($fieldValue);
-                }
+                $this->populateDefaultValues($item, $form_state);
             }
         }
-
-        $this->drupSettings->setLanguage();
-        $this->drupSettings->save();
-
-        parent::submitForm($form, $form_state);
     }
 }

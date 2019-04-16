@@ -77,4 +77,13 @@ msgstr "Configurer ce bloc"
 msgid "Edit content below"
 msgstr "Modifier le contenu ci-dessous"
 
+# DRUP SETTINGS
+
+msgid "Specific to each language"
+msgstr "Spécifique à chaque langue"
+
+
+msgid "Common to all languages"
+msgstr "Commun à toutes les langues"
+
 # CUSTOM
