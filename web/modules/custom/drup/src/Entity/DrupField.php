@@ -2,6 +2,7 @@
 
 namespace Drupal\drup\Entity;
 
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\Entity;
 use Drupal\field\Entity\FieldConfig;
 
@@ -102,7 +103,7 @@ class DrupField {
     }
 
     /**
-     * @param $field
+     * @param string $field
      * @param string $type
      *
      * @return null|\Drupal\drup\Media\DrupMediaImage|\Drupal\drup\Media\DrupMediaDocument
@@ -117,6 +118,36 @@ class DrupField {
         }
 
         return null;
+    }
+
+    /**
+     * @param string $field
+     * @param null $key
+     * @param string $type
+     * @param string $format
+     *
+     * @return array
+     */
+    public function formatDate($field, $key = null, $type = 'medium', $format = '') {
+        $datesFormatted = [];
+
+        if ($fieldsDate = $this->get($field)) {
+            $dateTypes = ['date', 'start_date', 'end_date'];
+
+            if ($key !== null && isset($dateTypes[$key])) {
+                $dateTypes = [$key];
+            }
+
+            foreach ($fieldsDate->getIterator() as $index => $fieldDate) {
+                foreach ($dateTypes as $dateType) {
+                    if ($fieldDate->{$dateType} instanceof DrupalDateTime) {
+                        $datesFormatted[$index][$dateType] = \Drupal::service('date.formatter')->format($fieldDate->{$dateType}->getTimestamp(), $type, $format);
+                    }
+                }
+            }
+        }
+
+        return $datesFormatted;
     }
 
     /**
