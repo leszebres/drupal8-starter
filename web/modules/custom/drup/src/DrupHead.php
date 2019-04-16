@@ -60,17 +60,33 @@ class DrupHead {
                 '#attributes' => [
                     'rel' => 'mask-icon',
                     'href' => $path . '/safari-pinned-tab.svg?v=' . $version,
-                    'color' => $data['color_mask_icon'],
-                ],
+                    'color' => $data['color_mask_icon']
+                ]
             ];
         }
+
+        $metas['shortcut'] = [
+            '#tag' => 'meta',
+            '#attributes' => [
+                'rel' => 'shortcut icon',
+                'href' => $path . '/favicon.ico?v=' . $version,
+            ]
+        ];
+
         if (isset($data['color_msapplication'])) {
             $metas['msapplication-TileColor'] = [
                 '#tag' => 'meta',
                 '#attributes' => [
                     'name' => 'msapplication-TileColor',
-                    'content' => $data['color_msapplication'],
-                ],
+                    'content' => $data['color_msapplication']
+                ]
+            ];
+            $metas['msapplication-config'] = [
+                '#tag' => 'meta',
+                '#attributes' => [
+                    'name' => 'msapplication-config',
+                    'content' => $path . '/browserconfig.xml?v=' . $version
+                ]
             ];
         }
         if (isset($data['color_theme'])) {
