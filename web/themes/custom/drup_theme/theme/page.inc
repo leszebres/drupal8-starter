@@ -4,6 +4,7 @@ use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
 use Drupal\drup\DrupPageEntity;
 use Drupal\drup\DrupSEO;
+use Drupal\drup\Entity\DrupField;
 use Drupal\drup\Entity\Node;
 use Drupal\drup\Helper\DrupRequest;
 use Drupal\drup_settings\DrupSettings;
@@ -89,13 +90,18 @@ function drup_theme_theme_suggestions_page_alter(array &$suggestions, array $var
  * @param array $variables
  */
 function drup_theme_preprocess_page_title(array &$variables) {
-//    $drupPageEntity = DrupPageEntity::loadEntity();
-//    $drupRouter = \Drupal::service('drup_router');
+    $drupPageEntity = DrupPageEntity::loadEntity();
+    $drupRouter = \Drupal::service('drup_router');
 
     $variables['title_attributes'] = new Attribute([
         'class' => ['content-title']
     ]);
     $variables['tag'] = 'h1';
+
+//    if ($entity = $drupPageEntity->getEntity()) {
+//        $drupField = new DrupField($drupPageEntity->getEntity());
+//
+//    }
 }
 
 /**

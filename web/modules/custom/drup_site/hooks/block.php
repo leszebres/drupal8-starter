@@ -5,6 +5,7 @@
  * Contains drup_blocks.module.
  */
 
+use Drupal\Core\Access\AccessResult;
 use Drupal\drup\DrupPageEntity;
 use Drupal\drup\Helper\DrupRequest;
 
@@ -30,6 +31,8 @@ function drup_site_block_build_alter(array &$build, \Drupal\Core\Block\BlockPlug
  * @param \Drupal\block\Entity\Block $block
  * @param $operation
  * @param \Drupal\Core\Session\AccountInterface $account
+ *
+ * @return \Drupal\Core\Access\AccessResult
  */
 function drup_site_block_access(\Drupal\block\Entity\Block $block, $operation, \Drupal\Core\Session\AccountInterface $account) {
     $drupRouteName = \Drupal::service('drup_router')->getName();
@@ -51,15 +54,15 @@ function drup_site_block_access(\Drupal\block\Entity\Block $block, $operation, \
              * Content views
              */
 //            case 'views_block:news-list_all':
-//                return AccessResult::forbiddenIf($currentRoute !== 'news')->addCacheableDependency($block);
+//                return AccessResult::forbiddenIf($drupRouteName !== 'news')->addCacheableDependency($block);
 //                break;
 
             /**
              * Content after
              */
-//            case 'push_newsletter_block':
-//                return AccessResult::forbiddenIf($currentRoute === 'newsletter')->addCacheableDependency($block);
-//                break;
+            case 'push_newsletter_block':
+                return AccessResult::forbiddenIf($drupRouteName === 'newsletter')->addCacheableDependency($block);
+                break;
             
         }
     }
