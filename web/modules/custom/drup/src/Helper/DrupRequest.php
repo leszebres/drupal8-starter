@@ -24,12 +24,18 @@ abstract class DrupRequest {
     }
 
     /**
-     * @return bool
+     * @param \Symfony\Component\Routing\Route|null $route
+     *
+     * @return mixed
      */
-    public static function isAdminRoute() {
+    public static function isAdminRoute(\Symfony\Component\Routing\Route $route = null) {
         $adminContext = \Drupal::service('router.admin_context');
 
-        return $adminContext->isAdminRoute();
+        if ($route === null) {
+            $route = \Drupal::routeMatch()->getRouteObject();
+        }
+
+        return $adminContext->isAdminRoute($route);
     }
 
     /**
