@@ -3,36 +3,47 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.image
-    - field.field.paragraph.image.field_image
-    - paragraphs.paragraphs_type.image
+    - field.field.paragraph.text_image.field_body
+    - field.field.paragraph.text_image.field_image
+    - field.field.paragraph.text_image.field_layout_image
+    - paragraphs.paragraphs_type.text_image
   module:
     - entity_browser
-id: paragraph.image.default
+    - text
+id: paragraph.text_image.default
 targetEntityType: paragraph
-bundle: image
+bundle: text_image
 mode: default
 content:
+  field_body:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   field_image:
-    weight: 0
+    weight: 2
     settings:
       entity_browser: image
       field_widget_display: rendered_entity
       field_widget_edit: true
       field_widget_remove: true
-      field_widget_replace: true
       selection_mode: selection_append
       field_widget_display_settings:
         view_mode: simple
+      field_widget_replace: false
       open: false
     third_party_settings: {  }
     type: entity_browser_entity_reference
     region: content
-  translation:
-    weight: 10
-    region: content
+  field_layout_image:
+    weight: 0
     settings: {  }
     third_party_settings: {  }
+    type: options_buttons
+    region: content
 hidden:
   created: true
   status: true
-  uid: true

@@ -7,7 +7,7 @@ dependencies:
   theme:
     - drup_theme
 id: responsive_content
-label: 'Contenu'
+label: Contenu
 image_style_mappings:
   -
     breakpoint_id: drup_theme.screen

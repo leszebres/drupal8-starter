@@ -21,6 +21,7 @@ dependencies:
   - menu_ui
   - metatag
   - node
+  - options
   - paragraphs
   - path
   - pathauto

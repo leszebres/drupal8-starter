@@ -500,7 +500,7 @@ template {
       margin-left: 10px; }
   .notice--cookie .cookienotice-btn--primary {
     text-transform: uppercase; }
-  @media (max-width: 767px) {
+  @media screen and (max-width: 767px) {
     .notice--cookie {
       flex-direction: column; }
       .notice--cookie .cookienotice-notice-actions {
@@ -543,7 +543,7 @@ template {
     opacity: 1;
     visibility: visible;
     pointer-events: auto; }
-  @media (max-width: 767px) {
+  @media screen and (max-width: 767px) {
     .modal--cookie {
       top: 0;
       left: 0;
@@ -578,7 +578,7 @@ template {
     opacity: 1;
     visibility: visible;
     pointer-events: auto; }
-  @media (max-width: 767px) {
+  @media screen and (max-width: 767px) {
     .cookienotice-modal-overlay {
       display: none; } }
 
@@ -716,7 +716,7 @@ template {
 p.cookienotice-service-all-label {
   margin-bottom: 0; }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .cookienotice-service {
     flex-direction: column;
     justify-content: start;
@@ -905,7 +905,7 @@ table {
   padding-right: 15px;
   flex: 0 0 auto;
   max-width: 100%; }
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     .l-half {
       margin-bottom: 30px;
       padding-left: 15px;
@@ -924,7 +924,7 @@ table {
   padding-right: 15px;
   flex: 0 0 auto;
   max-width: 100%; }
-  @media (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     .l-twothird {
       margin-bottom: 30px;
       padding-left: 15px;
@@ -943,14 +943,14 @@ table {
   padding-right: 15px;
   flex: 0 0 auto;
   max-width: 100%; }
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     .l-third {
       margin-bottom: 30px;
       padding-left: 15px;
       padding-right: 15px;
       flex: 0 0 auto;
       max-width: 50%; } }
-  @media (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     .l-third {
       margin-bottom: 30px;
       padding-left: 15px;
@@ -969,14 +969,14 @@ table {
   padding-right: 15px;
   flex: 0 0 auto;
   max-width: 100%; }
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     .l-quarter {
       margin-bottom: 30px;
       padding-left: 15px;
       padding-right: 15px;
       flex: 0 0 auto;
       max-width: 50%; } }
-  @media (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     .l-quarter {
       margin-bottom: 30px;
       padding-left: 15px;
@@ -1024,7 +1024,7 @@ table {
     padding-right: 15px;
     flex: 0 0 auto;
     max-width: 100%; }
-    @media (min-width: 1024px) {
+    @media screen and (min-width: 1024px) {
       .l-sidebar .content-sidebar {
         flex: 0 0 520px;
         max-width: 520px; } }
@@ -1253,14 +1253,14 @@ h4,
    ========================================================================== */
 .alignleft {
   margin-bottom: 24px; }
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     .alignleft {
       float: left;
       margin: 0 30px 24px 0; } }
 
 .alignright {
   margin-bottom: 24px; }
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     .alignright {
       float: right;
       margin: 0 0 24px 30px; } }
@@ -2013,7 +2013,7 @@ Markup: url()->find(.paragraph--type--text-image)
 
 Styleguide Paragraphs - 40.paragraph--type--text-image
 */
-@media (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .paragraph--type--text-image {
     display: flex;
     flex-wrap: nowrap;
@@ -2022,7 +2022,7 @@ Styleguide Paragraphs - 40.paragraph--type--text-image
       max-width: 440px;
       flex-shrink: 0;
       overflow: hidden; }
-    .paragraph--type--text-image .item-body > div {
+    .paragraph--type--text-image .item-body {
       margin-bottom: -24px; }
     .paragraph--type--text-image.l-left .item-media {
       order: -1; }

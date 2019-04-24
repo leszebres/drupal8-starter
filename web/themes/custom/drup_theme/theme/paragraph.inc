@@ -18,8 +18,9 @@ function drup_theme_preprocess_paragraph(array &$variables) {
 
         // Text + image
         case 'text_image':
-            $variables['image_position'] = $drupField->getValue('image_position', 'value');
-            $variables['attributes']['class'][] = 'l-' . $variables['image_position'];
+            if ($variables['image_position'] = $drupField->getValue('layout_image', 'value')) {
+                $variables['attributes']['class'][] = 'l-' . $variables['image_position'];
+            }
             break;
 
         default:
