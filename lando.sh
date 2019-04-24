@@ -7,9 +7,7 @@
 # @example "sh lando.sh up"
 #
 
-
 exportFolder="./_sql"
-
 
 # Export database with lando
 function dump {
@@ -26,6 +24,7 @@ function up {
     trans
     lando drush locale-update -y
     lando drush cr -y
+    theme_dependencies
     dump
 }
 
@@ -43,6 +42,12 @@ function trans {
     done
 }
 
+# Update drup_theme's node dependencies with yarn
+function theme_dependencies {
+    cd ./web/themes/custom/drup_theme/ && lando yarn upgrade
+}
+
+# Compile dependencies for contrib theme Claro
 function claro {
     cd ./web/themes/contrib/claro/
     lando yarn
@@ -58,6 +63,7 @@ function readUser {
     echo "1) Database export in $exportFolder"
     echo "2) Drupal update (composer, db update, translations, cache rebuild)"
     echo "3) Custom themes translations import"
+    echo "4) Update drup_theme's node dependencies with yarn"
     echo "----------------------------"
 
     read -p "Make your choice : " action
@@ -75,6 +81,8 @@ function readUser {
             up;;
         3)
             trans;;
+        4)
+            theme_dependencies;;
         *)
             echo "Nothing matches :("
             exit 1

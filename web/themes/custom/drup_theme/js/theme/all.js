@@ -33,7 +33,7 @@
                     },
                     interval: 300
                 });
-                this.togglemenu.setDisplay('hover');
+                this.togglemenu.toggleMenu('hover');
             }
         }
     };
