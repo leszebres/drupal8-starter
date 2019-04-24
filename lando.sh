@@ -43,6 +43,15 @@ function trans {
     done
 }
 
+function claro {
+    cd ./web/themes/contrib/claro/
+    lando yarn
+    lando yarn install
+    lando yarn build:js
+    lando yarn build:css
+    cd ./
+}
+
 # Shell prompt
 function readUser {
     echo "----- Welcome :"
