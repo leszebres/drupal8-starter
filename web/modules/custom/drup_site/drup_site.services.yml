@@ -5,6 +5,12 @@ services:
     tags:
       - { name: breadcrumb_builder, priority: 10001 }
 
+  drup_site.twig.phone_number:
+    arguments: ['@renderer']
+    class: Drupal\drup\TwigExtension\PhoneNumber
+    tags:
+      - { name: twig.extension }
+
   # Alter entity autocomplete results
   drup_site.route_subscriber:
     class: Drupal\drup\Routing\DrupRouteSubscriber
