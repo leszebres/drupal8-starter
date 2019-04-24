@@ -11,9 +11,10 @@ Styleguide Buttons - 1.btn
  */
 .btn {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: $btn--padding-vertical $btn--padding-horizontal;
-    vertical-align: middle;
     color: $btn--color;
     @include font(primary);
     font-size: $btn--fontsize;

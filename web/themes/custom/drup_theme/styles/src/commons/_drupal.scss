@@ -202,3 +202,24 @@ pre.sf-dump
     text-align: left;
     z-index: 0;
 }
+
+
+/* ==========================================================================
+   FORM PREVIEW
+   ========================================================================== */
+.node-preview-container {
+    bottom: 0;
+    background-color: $color--primary;
+
+    a {
+        padding: 6px;
+        color: #fff;
+    }
+}
+.node-preview-form-select {
+    margin: 0;
+
+    .js-form-item-view-mode {
+        display: none;
+    }
+}
