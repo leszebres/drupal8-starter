@@ -17,7 +17,9 @@ function sass(pumpCallback) {
             plugins.autoprefixer(packagejson.autoprefixer),
             plugins.postcssPxtorem(packagejson.pxtorem)
         ]),
-        plugins.rename('theme.css'),
+        plugins.rename(function (path) {
+            path.extname = '.css';
+        }),
         plugins.gulp.dest(themePath + '/' + packagejson.paths.styles + '/dist/')
     ], pumpCallback);
 }
