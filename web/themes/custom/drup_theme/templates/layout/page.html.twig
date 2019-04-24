@@ -34,13 +34,27 @@
  * - page.highlighted: Items for the highlighted content region.
  * - page.help: Dynamic help text, mostly for admin pages.
  * - page.content: The main content of the current page.
- * - page.sidebar_first: Items for the first sidebar.
+ * - page.content_sidebar: Items for the first sidebar.
  * - page.sidebar_second: Items for the second sidebar.
  * - page.footer: Items for the footer region.
  * - page.breadcrumb: Items for the breadcrumb region.
  *
  * @see template_preprocess_page()
  * @see html.html.twig
+
+ * NOMENCLATURE :
+ *
+ * main-header
+ * main
+ * -- content-before
+ * -- content
+ * ---- content-header
+ * ---- content-body
+ * ---- content-sidebar
+ * ---- content-footer
+ * -- content-after
+ * main-footer
+ *
  */
 #}
 <div id="page" class="page">
@@ -58,24 +72,24 @@
         {% endif %}
 
         <div class="content row">
-            {% if page.sidebar_first %}
+            {% if page.content_sidebar %}
                 <div class="l-sidebar">
             {% endif %}
                 <div class="content-body">
                     {{ page.content }}
                 </div>
-                {% if page.sidebar_first %}
+                {% if page.content_sidebar %}
                     <aside class="content-sidebar sidebar">
-                        {{ page.sidebar_first }}
+                        {{ page.content_sidebar }}
                     </aside>
                 {% endif %}
-            {% if page.sidebar_first %}
+            {% if page.content_sidebar %}
                 </div>
             {% endif %}
         </div>
 
         {% if page.content_views or page.content_after %}
-            <div class="content-footer">
+            <div class="content-after">
                 {% if (page.content_views) %}
                     <div class="row">
                         {{ page.content_views }}

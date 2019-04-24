@@ -13,11 +13,11 @@ base theme: false
 regions:
   header: Header
   navigation: Navigation
-  content_before: Content before
+  content_before: 'Content before'
   content: Content
-  sidebar_first: 'First sidebar'
-  content_views: Content views
-  content_after: Content after
+  content_sidebar: 'Content sidebar'
+  content_views: 'Content views'
+  content_after: 'Content after'
   footer: Footer
   page_top: 'Page top'
   page_bottom: 'Page bottom'
