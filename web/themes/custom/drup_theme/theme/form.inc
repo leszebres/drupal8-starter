@@ -70,6 +70,13 @@ function drup_theme_preprocess_input(array &$variables) {
             unset($variables['attributes']['size']);
         }
     }
+
+    // btn--[class] on submit
+    if ($variables['theme_hook_original'] === 'input__submit') {
+        $buttonType = $variables['element']['#button_type'] ?? 'primary';
+        $variables['element']['#attributes']['class'][] = $variables['attributes']['class'][] = 'btn';
+        $variables['element']['#attributes']['class'][] = $variables['attributes']['class'][] = 'btn--' . $buttonType;
+    }
 }
 
 /**
