@@ -5,7 +5,7 @@
  * Contains drup_router.module.
  */
 
-Use Drupal\node\Entity\Node;
+use Drupal\drup\Entity\Node;
 
 /**
  * Implements hook_token_info().
@@ -14,13 +14,15 @@ function drup_router_token_info() {
     $tokenType = 'drup_router';
 
     $types[$tokenType] = [
-        'name' => t("Custom Routes"),
-        'description' => t("Get custom routes slugs from DrupRouter module"),
+        'name' => t('Custom Routes'),
+        'description' => t('Get custom routes slugs from DrupRouter module'),
     ];
 
     $tokensAvailable = [];
+
     $drupRouter = \Drupal::service('drup_router');
     $drupRoutes = $drupRouter->getRoutes();
+
     if (!empty($drupRoutes)) {
         foreach ($drupRoutes as $index => $drupRoute) {
             $routeName = $drupRoute['routeName'];
@@ -51,7 +53,7 @@ function drup_router_token_info() {
  */
 function drup_router_tokens($type, $tokens, array $data, array $options, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata) {
     $tokenType = 'drup_router';
-    $replacements = array();
+    $replacements = [];
 
     if ($type === $tokenType) {
         $drupRouter = \Drupal::service('drup_router');

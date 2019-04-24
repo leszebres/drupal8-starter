@@ -1,5 +1,5 @@
 services:
-  drup_settings.variables:
+  drup_settings:
     class: \Drupal\drup_settings\DrupSettings
     arguments: []
   drup_settings.overrider:

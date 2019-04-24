@@ -4,7 +4,6 @@ namespace Drupal\drup_settings\Form;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Form\ConfigFormBase;
-use Drupal\drup\Media\DrupFile;
 use Drupal\drup_settings\DrupSettings;
 use Drupal\drup_social_links\DrupSocialLinks;
 
