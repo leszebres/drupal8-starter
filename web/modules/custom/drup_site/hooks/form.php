@@ -10,7 +10,7 @@ function drup_site_form_alter(&$form, FormStateInterface $form_state, $form_id) 
      * User form : Fix role_delegation module
      * Remove role checkboxes if not permitted
      */
-    if (isset($form['#form_id']) && $form['#form_id'] === 'user_form') {
+    if (isset($form['#form_id']) && in_array($form['#form_id'], ['user_form', 'user_register_form'])) {
         if (isset($form['account']['roles'])) {
             $user = \Drupal::currentUser();
 
