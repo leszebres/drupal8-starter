@@ -7,7 +7,6 @@ version: '8.x-1.0'
 libraries:
   - drup_admin/theme
 
-#base theme: adminimal_theme
 base theme: claro
 
 regions:
