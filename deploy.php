@@ -15,7 +15,7 @@ set('ssh_multiplexing', true);
 /**
  * GIT & DEPLOY
  */
-set('repository', 'XXGITURIXX');
+set('repository', 'XXXXgit@gitlab.comXXXX');
 set('default_stage', 'draft');
 
 
@@ -26,27 +26,28 @@ set('drupal_site', 'default');
 
 add('shared_files', [
     'web/sites/{{drupal_site}}/settings.php',
-    'web/sites/{{drupal_site}}/services.yml',
+    'web/sites/{{drupal_site}}/services.yml'
 ]);
 add('shared_dirs', [
-    'web/sites/{{drupal_site}}/files',
-    'web/vendor',
+    'web/sites/{{drupal_site}}/files'
 ]);
 
 add('writable_dirs', [
-    "web/sites/{{drupal_site}}/files"
+    'web/sites/{{drupal_site}}/files'
 ]);
 
 
 /**
  * TASKS
  */
-server('draft', 'XXDRAFTXX')
-    ->user('www-sync')
-    ->forwardAgent()
-    ->set('branch', 'develop')
+host('draft')
     ->stage('draft')
-    ->set('deploy_path', 'XXPATHXX');
+    ->set('branch', 'develop')
+    ->hostname('hostXXXX')
+    ->user('www-sync')
+    ->set('deploy_path', '/home/www/XXXX')
+    ->set('writable_mode', 'chmod')
+    ->forwardAgent();
 
 
 /**
@@ -56,27 +57,23 @@ server('draft', 'XXDRAFTXX')
 
 desc('Clear cache with Drush');
 task('drush:cr', function () {
-    cd(get('release_path'));
-    run('drush cr -y');
+    run('php {{release_path}}/vendor/bin/drush cr -y');
 });
 
 desc('Update database');
 task('drush:updb', function () {
-    cd(get('release_path'));
-    run('drush updb -y');
+    run('php {{release_path}}/vendor/bin/drush updb -y');
 });
 
 desc('Reload features');
 task('drush:fra', function () {
-    cd(get('release_path'));
-    run('drush fra -y');
+    run('php {{release_path}}/vendor/bin/drush fra -y');
 });
 
 
 after('deploy:symlink', 'drush:updb');
 //after('drush:updb', 'drush:fra');
 after('drush:updb', 'drush:cr');
-//after('deploy:symlink', 'drush:cr');
 
 
 // Composer dependencies
