@@ -1,10 +1,21 @@
+{#
+/**
+ * Bloc XXXX
+ *
+ * Variables :
+ *   - title
+ *   - items[]
+ *
+ * @see drup_site/src/Plugin/Block/_AdminExample.php
+ */
+#}
 <div class="block block--">
     <div class="row">
         {% if title %}
             <h2 class="block-title">{{ title }}</h2>
         {% endif %}
 
-        {% include directory ~ '/templates/partials/block-admin-btn.html.twig' with {} %}
+        {% include directory ~ '/templates/partials/block-admin-btn.html.twig' %}
 
         {% if items %}
 

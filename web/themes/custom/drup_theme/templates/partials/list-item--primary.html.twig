@@ -1,11 +1,13 @@
 {#
-    Partial d'un item de liste
-
-    @vars
-        row.content
-        row.attribute
-
-    @see theme/view.inc
+/**
+ * Partial d'un item de liste
+ *
+ * Variables :
+ *   - row.content
+ *   - row.attribute
+ *
+ * @see theme/view.inc
+ */
 #}
 <li {{ row.attributes }}>
     <a href="{{ row.content.url }}">
