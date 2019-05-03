@@ -438,7 +438,7 @@ template {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25); }
 
 .spinner--overlay.l-spinner .spinner-wrapper-inner {
-  background: no-repeat center #f2653d;
+  background: no-repeat center #003cc5;
   border-radius: 50%; }
 
 .spinner--overlay.l-spinner.is-loading .spinner-wrapper-inner {
@@ -752,7 +752,7 @@ body {
    INLINE
    ========================================================================== */
 a {
-  color: #f2653d;
+  color: #003cc5;
   text-decoration: none;
   transition: .2s; }
   a:not(.btn):hover, a:not(.btn):focus {
@@ -854,8 +854,8 @@ table {
       color: #fff; }
     table thead th,
     table thead td {
-      border: 1px solid #f2653d;
-      background-color: #f2653d; }
+      border: 1px solid #003cc5;
+      background-color: #003cc5; }
   table tbody td {
     border: 1px solid #c0c0c0;
     background-color: #fff; }
@@ -1224,21 +1224,21 @@ h1,
   margin-bottom: 48px;
   font-weight: normal;
   font-family: "Arial", Arial, sans-serif;
-  color: #f2653d;
+  color: #003cc5;
   font-size: 3rem; }
 
 h2,
 .title--h2 {
   font-weight: normal;
   font-family: "Arial", Arial, sans-serif;
-  color: #f2653d;
+  color: #003cc5;
   font-size: 2.25rem; }
 
 h3,
 .title--h3 {
   font-weight: normal;
   font-family: "Arial", Arial, sans-serif;
-  color: #1f2e3c;
+  color: #0036b1;
   font-size: 1.5rem; }
 
 h4,
@@ -1329,7 +1329,7 @@ Styleguide Notices - 1.messages
   padding: 24px 30px;
   color: #333;
   font-size: 1rem;
-  border-top: 4px solid #f2653d;
+  border-top: 4px solid #003cc5;
   text-align: center;
   background: #f3f3f3;
   box-sizing: border-box; }
@@ -1449,8 +1449,8 @@ Styleguide Buttons - 1.btn
   a:focus .btn,
   a:hover .btn {
     color: #fff;
-    border-color: #f2653d;
-    background-color: #f2653d; }
+    border-color: #003cc5;
+    background-color: #003cc5; }
   .btn:focus {
     outline: 0; }
   .btn.is-disabled, .btn:disabled {
@@ -1475,13 +1475,13 @@ Styleguide Buttons - 10.btn--primary
 */
 .btn--primary {
   color: #fff;
-  background-color: #f2653d;
-  border-color: #f2653d; }
+  background-color: #003cc5;
+  border-color: #003cc5; }
   .btn--primary:active, .btn--primary.is-active, .btn--primary:focus, .btn--primary:hover,
   a:focus .btn--primary,
   a:hover .btn--primary {
-    background-color: #1f2e3c;
-    border-color: #1f2e3c; }
+    background-color: #0036b1;
+    border-color: #0036b1; }
 
 /*
 Bouton secondaire :
@@ -1515,12 +1515,12 @@ Styleguide Tags - 1.tag
   position: relative;
   display: inline-block;
   padding: 7px 15px;
-  color: #f2653d;
+  color: #003cc5;
   font-weight: normal;
   font-family: Arial, sans-serif;
   font-size: 0.75rem;
   line-height: 1.1;
-  background: #f2653d;
+  background: #003cc5;
   border-radius: 15px;
   box-sizing: border-box;
   transition: .3s; }
@@ -1578,7 +1578,7 @@ form input:not([readonly]):focus,
 form select:not([readonly]):focus,
 form textarea:not([readonly]):focus {
   outline: 0;
-  border-color: #f2653d; }
+  border-color: #003cc5; }
 
 .form-text,
 .form-number,
@@ -1898,7 +1898,7 @@ Styleguide Navigation - 30.nav--breadcrumb
       bottom: 0px;
       width: 20px;
       height: 1px;
-      background: #f2653d;
+      background: #003cc5;
       -webkit-transform: scaleX(0);
               transform: scaleX(0);
       -webkit-transform-origin: 100% 50%;
@@ -1914,7 +1914,7 @@ Styleguide Navigation - 30.nav--breadcrumb
   .nav--breadcrumb .item-separator {
     margin: 0 .6em 0 .4em;
     font-size: .7em;
-    color: #f2653d; }
+    color: #003cc5; }
   .nav--breadcrumb li:last-of-type {
     font-weight: normal;
     font-family: "Arial", Arial, sans-serif; }
@@ -2059,7 +2059,7 @@ Styleguide Paragraphs - 40.paragraph--type--text-image
       top: 7px;
       left: 0;
       line-height: 16px;
-      color: #f2653d;
+      color: #003cc5;
       font-size: .8em;
       font-weight: bold; }
   .node-body ul:not([class]) {
@@ -2125,10 +2125,10 @@ Styleguide Paragraphs - 40.paragraph--type--text-image
       background-color: #f3f3f3; }
       .tabs--primary li a.is-active,
       .tabs--secondary li a.is-active {
-        color: #f2653d; }
+        color: #003cc5; }
       .tabs--primary li a:hover,
       .tabs--secondary li a:hover {
-        color: #f2653d; }
+        color: #003cc5; }
 
 .tabs--primary {
   border-bottom: 1px solid #c0c0c0;
@@ -2168,7 +2168,7 @@ Styleguide Paragraphs - 40.paragraph--type--text-image
     right: 10px; }
   .ui-dialog .ui-dialog-titlebar {
     border: 0;
-    background-color: #f2653d;
+    background-color: #003cc5;
     color: #fff;
     border-radius: 0; }
   .ui-dialog .ui-dialog-content {
@@ -2203,7 +2203,7 @@ Styleguide Paragraphs - 40.paragraph--type--text-image
   .ui-autocomplete .ui-state-focus,
   .ui-autocomplete .ui-state-active {
     margin: 0;
-    color: #f2653d;
+    color: #003cc5;
     background: none;
     border-color: #c0c0c0; }
 
@@ -2262,7 +2262,7 @@ pre.sf-dump .sf-dump-default {
    ========================================================================== */
 .node-preview-container {
   bottom: 0;
-  background-color: #f2653d; }
+  background-color: #003cc5; }
   .node-preview-container a {
     padding: 6px;
     color: #fff; }
@@ -2310,7 +2310,7 @@ pre.sf-dump .sf-dump-default {
    Background primary
    ========================================================================== */
 .theme-bg-primary {
-  background-color: #f2653d; }
+  background-color: #003cc5; }
   .theme-bg-primary,
   .theme-bg-primary a {
     color: #fff; }
@@ -2319,7 +2319,7 @@ pre.sf-dump .sf-dump-default {
    Background secondary
    ========================================================================== */
 .theme-bg-secondary {
-  background-color: #1f2e3c; }
+  background-color: #0036b1; }
   .theme-bg-secondary,
   .theme-bg-secondary a {
     color: #fff; }

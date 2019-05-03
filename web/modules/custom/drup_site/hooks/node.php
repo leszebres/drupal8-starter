@@ -20,3 +20,22 @@ function drup_site_node_access(NodeInterface $node, $op, AccountInterface $accou
 
     return AccessResult::neutral();
 }
+
+/**
+ * A l'enregistrement d'un nouveau type de contenu, on force les champs metatags à afficher seulement "basic"
+ *
+ * @param object $nodeType \Drupal\node\Entity\NodeType
+ */
+function drup_site_node_type_insert($nodeType) {
+    if (\Drupal::moduleHandler()->moduleExists('metatag')) {
+        $config = \Drupal::service('config.factory')->getEditable('metatag.settings');
+        $entityTypeGroups = $config->get('entity_type_groups');
+
+        $entityTypeGroups['node'][$nodeType->id()] = [
+            'basic' => 'basic'
+        ];
+
+        $config->set('entity_type_groups', $entityTypeGroups);
+        $config->save();
+    }
+}

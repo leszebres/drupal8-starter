@@ -1,9 +1,0 @@
-<?php
-
-
-/**
- * @temp A supprimer une fois les caches vidés
- *
- * @param array $attachments
- */
-function drup_page_attachments_alter(array &$attachments) {}
