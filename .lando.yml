@@ -1,8 +1,6 @@
 ######
-# Drupal 8 1.1
-# @see https://docs.devwithlando.io/tutorials/drupal8.html
-# @see https://github.com/lando/lando/blob/master/examples/drupal8/.lando.yml
-# @see https://docs.devwithlando.io/tutorials/setup-additional-services.html
+# Drupal 8 1.5
+# @link https://docs.devwithlando.io/tutorials/drupal8.html
 ######
 
 
@@ -13,7 +11,7 @@ name: d8-starter
 recipe: drupal8
 config:
   webroot: web
-  php: '7.2'
+  php: '7.3'
   via: apache
   database: mariadb
   xdebug: false
