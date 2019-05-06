@@ -1,3 +1,10 @@
+drup_site.home:
+  path: '/home'
+  defaults:
+    _controller: '\Drupal\drup\Controller\DrupHome::build'
+  requirements:
+    _permission: 'access content'
+
 drup_site.media_entity_download:
   path: '/media/{media}/download'
   defaults:
