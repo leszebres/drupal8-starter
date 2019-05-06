@@ -3,7 +3,7 @@
 namespace Drupal\drup\Entity;
 
 use Drupal\Core\Datetime\DrupalDateTime;
-use Drupal\Core\Entity\Entity;
+use Drupal\Core\Entity\EntityBase;
 use Drupal\field\Entity\FieldConfig;
 
 /**
@@ -24,7 +24,7 @@ class DrupField {
      *
      * @param $entity
      */
-    public function __construct(Entity $entity) {
+    public function __construct(EntityBase $entity) {
         $this->entity = $entity;
     }
 
