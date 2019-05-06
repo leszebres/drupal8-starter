@@ -38,46 +38,46 @@ leaflet:
 togglemenu:
   version: '3.0.0'
   js:
-    node_modules/togglemenu/dist/togglemenu.min.js: {}
-    node_modules/togglemenu/dist/togglemenu-hover.min.js: {}
-    node_modules/togglemenu/dist/togglemenu-push.min.js: {}
+    node_modules/@kevinbaubet/togglemenu/dist/togglemenu.min.js: {}
+    node_modules/@kevinbaubet/togglemenu/dist/togglemenu-hover.min.js: {}
+    node_modules/@kevinbaubet/togglemenu/dist/togglemenu-push.min.js: {}
   dependencies:
   - core/jquery
 
 customform:
   version: '4.7.5'
   js:
-    node_modules/customform/dist/customform.min.js: {}
-    node_modules/customform/dist/customform-check.min.js: {}
-    node_modules/customform/dist/customform-select.min.js: {}
+    node_modules/@kevinbaubet/customform/dist/customform.min.js: {}
+    node_modules/@kevinbaubet/customform/dist/customform-check.min.js: {}
+    node_modules/@kevinbaubet/customform/dist/customform-select.min.js: {}
   dependencies:
   - core/jquery
 
 cookienotice:
   version: '3.0.5'
   js:
-    node_modules/cookienotice/dist/cookienotice.min.js: {}
+    node_modules/@kevinbaubet/cookienotice/dist/cookienotice.min.js: {}
   dependencies:
   - core/jquery
 
 fixer:
-  version: '3.1.0'
+  version: '3.2.1'
   js:
-    node_modules/fixer/dist/fixer.min.js: {}
+    node_modules/@kevinbaubet/fixer/dist/fixer.min.js: {}
   dependencies:
   - core/jquery
 
 spinner:
-  version: '2.3.1'
+  version: '2.3.2'
   js:
-    node_modules/spinner/dist/spinner.min.js: {}
+    node_modules/@kevinbaubet/spinner/dist/spinner.min.js: {}
   dependencies:
   - core/jquery
 
 devicedetect:
   version: '2.1.3'
   js:
-    node_modules/devicedetect/dist/devicedetect.min.js: {}
+    node_modules/@kevinbaubet/devicedetect/dist/devicedetect.min.js: {}
   dependencies:
   - core/jquery
 

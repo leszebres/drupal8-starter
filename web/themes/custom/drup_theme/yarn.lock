@@ -7,15 +7,45 @@
   resolved "https://registry.yarnpkg.com/@fancyapps/fancybox/-/fancybox-3.5.7.tgz#12f8734663ec6eae7f9236b92ca236e6e07fdfd5"
   integrity sha512-rcEtu8t+WnmqIDV/Wfm1yvy/nDdwc7YV25j9HLxGC2/WOsUhk9rcWg2nB8g1BrjRt9zaoADdjHTU6ILYTJzBBg==
 
-"cookienotice@git://github.com/kevinbaubet/cookienotice#3.0.5":
+"@kevinbaubet/cookienotice@^3.0.5":
   version "3.0.5"
-  resolved "git://github.com/kevinbaubet/cookienotice#6f7899ca79598006d42d5227a493dbff069acae7"
+  resolved "https://registry.yarnpkg.com/@kevinbaubet/cookienotice/-/cookienotice-3.0.5.tgz#70ef14de037e81e1629af20441789908f15cbd16"
+  integrity sha512-XMHYuvAStwB095CCkofe6ewRzyy82j8eNDOXv8EmoBbh8cJYvHecoLL4+mjtK4srwKYlNR2jQSo0ulxM2eQ5xA==
   dependencies:
     jquery ">=1.7.0"
 
-"customform@git://github.com/kevinbaubet/customform#4.7.5":
+"@kevinbaubet/customform@^4.7.5":
   version "4.7.5"
-  resolved "git://github.com/kevinbaubet/customform#97ffb5ba96ec2e7941a0663a95c2649164a3b33c"
+  resolved "https://registry.yarnpkg.com/@kevinbaubet/customform/-/customform-4.7.5.tgz#67c43635e09788c9a8e73c85bf1b381446695cf9"
+  integrity sha512-hQVBl694Qt/JB5TBAgVRLXZsPr/RDKhLET1Prvfxu3Cshvc2ww2auRW2qC+AlfNeQn9VTNA+PXbpr8yupHLZVA==
+  dependencies:
+    jquery ">=1.7.0"
+
+"@kevinbaubet/devicedetect@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@kevinbaubet/devicedetect/-/devicedetect-2.1.3.tgz#4069d4ba36482eebde2c3c7475585a1342142993"
+  integrity sha512-9fbrnbCkuj9+rgveu3E0GN6HkkSFszmvLieQTKdnES1+l+3mp7XQg9a3uJp8dFzdQv4yHXcvU7J/LzztEN05Lg==
+  dependencies:
+    jquery ">=1.7.0"
+
+"@kevinbaubet/fixer@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@kevinbaubet/fixer/-/fixer-3.2.1.tgz#7a941e8ba215cf125e7d109d97673b9a24534b89"
+  integrity sha512-pBXmz6l5Vfe5cYG++IYnfcZoxmTrKJC6Z5Td/7l9yI13WhKxiuHToRIHopmnI4gHMsE1s8b+0zTztjeQuO8yQw==
+  dependencies:
+    jquery ">=1.7.0"
+
+"@kevinbaubet/spinner@^2.3.2":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@kevinbaubet/spinner/-/spinner-2.3.2.tgz#ea472642211e4f440ba9a26098ce337d5b6323d7"
+  integrity sha512-7uthlmyIjo6/krYhQi7PBra9t/xwpcQOt49cRko+0okIkkV2U9pBTRcVnvMY6H1ZiJnYSjFKIowDZsuoNQxYfg==
+  dependencies:
+    jquery ">=1.7.0"
+
+"@kevinbaubet/togglemenu@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@kevinbaubet/togglemenu/-/togglemenu-3.0.0.tgz#452ff167bcd9fb4da1f2ccccd0acb8d91d136970"
+  integrity sha512-td+4fuUU/kH6Mkg9VfUiHNV/G3CrgW9mJVVwOI6c+p5vwdkLsRRQzkNPbkh3M9Yyq8CBHBl/S69W8y2OhyEwIw==
   dependencies:
     jquery ">=1.7.0"
 
@@ -24,22 +54,10 @@ desandro-matches-selector@^2.0.0:
   resolved "https://registry.yarnpkg.com/desandro-matches-selector/-/desandro-matches-selector-2.0.2.tgz#717beed4dc13e7d8f3762f707a6d58a6774218e1"
   integrity sha1-cXvu1NwT59jzdi9wem1YpndCGOE=
 
-"devicedetect@git://github.com/kevinbaubet/devicedetect#2.1.3":
-  version "2.1.3"
-  resolved "git://github.com/kevinbaubet/devicedetect#ba682f0e325a7e19353619335130d2bd63fcc63d"
-  dependencies:
-    jquery ">=1.7.0"
-
 ev-emitter@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ev-emitter/-/ev-emitter-1.1.1.tgz#8f18b0ce5c76a5d18017f71c0a795c65b9138f2a"
   integrity sha512-ipiDYhdQSCZ4hSbX4rMW+XzNKMD1prg/sTvoVmSLkuQ1MVlwjJQQA+sW8tMYR3BLUr9KjodFV4pvzunvRhd33Q==
-
-"fixer@git://github.com/kevinbaubet/fixer#3.1.0":
-  version "3.1.0"
-  resolved "git://github.com/kevinbaubet/fixer#249896394b42e6a657629289975caefe976c9820"
-  dependencies:
-    jquery ">=1.7.0"
 
 fizzy-ui-utils@^2.0.0:
   version "2.0.7"
@@ -97,17 +115,5 @@ owl.carousel@2.*:
 "responsive-table@git://github.com/mathieumaingret/responsive-table#1.0.2":
   version "1.0.2"
   resolved "git://github.com/mathieumaingret/responsive-table#2952f9d82ec0e00b0561b7d4ba6cba4cbac751e4"
-  dependencies:
-    jquery ">=1.7.0"
-
-"spinner@git://github.com/kevinbaubet/spinner#2.3.1":
-  version "2.3.1"
-  resolved "git://github.com/kevinbaubet/spinner#ab9594f73bd11871aeec179aba2cb8f8ceb7cffb"
-  dependencies:
-    jquery ">=1.7.0"
-
-"togglemenu@git://github.com/kevinbaubet/togglemenu#3.0.0":
-  version "3.0.0"
-  resolved "git://github.com/kevinbaubet/togglemenu#6ff867a10f32f503cc11b8f0c29c6b9e5c7d727e"
   dependencies:
     jquery ">=1.7.0"
