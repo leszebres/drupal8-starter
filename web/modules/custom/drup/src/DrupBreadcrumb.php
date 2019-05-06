@@ -23,6 +23,16 @@ class DrupBreadcrumb implements BreadcrumbBuilderInterface {
     protected $drupPageEntity;
 
     /**
+     * @var \Drupal\drup_router\DrupRouter
+     */
+    protected $drupRouter;
+
+    /**
+     * @var array
+     */
+    protected $breadcrumbItems;
+
+    /**
      * @return array
      */
     public function buildList() {
@@ -35,9 +45,27 @@ class DrupBreadcrumb implements BreadcrumbBuilderInterface {
     public function applies(RouteMatchInterface $route_match) {
         if (!DrupRequest::isAdminRoute()) {
             $this->drupPageEntity = DrupPageEntity::loadEntity();
+            $this->drupRouter = \Drupal::service('drup_router');
+            $this->breadcrumbItems = [];
+
             $breadcrumbItems = $this->buildList();
 
-            if (!empty($this->drupPageEntity->getBundle()) && isset($breadcrumbItems[$this->drupPageEntity->getEntityType()]) && array_key_exists($this->drupPageEntity->getBundle(), $breadcrumbItems[$this->drupPageEntity->getEntityType()])) {
+            // current page = entité drupal
+            if ($this->drupPageEntity->getEntity() !== null) {
+                // Priorité à drup router si on se trouver sur une route
+                if (!empty($breadcrumbItems['drup_route']) && ($routeName = $this->drupRouter->getName()) && isset($breadcrumbItems['drup_route'][$routeName])) {
+                    $this->breadcrumbItems = $breadcrumbItems['drup_route'][$routeName];
+                    return true;
+                }
+                // Sinon si on est sur une entité
+                if (!empty($this->drupPageEntity->getBundle()) && !empty($this->drupPageEntity->getEntityType()) && isset($breadcrumbItems[$this->drupPageEntity->getEntityType()]) && array_key_exists($this->drupPageEntity->getBundle(), $breadcrumbItems[$this->drupPageEntity->getEntityType()])) {
+                    $this->breadcrumbItems = $breadcrumbItems[$this->drupPageEntity->getEntityType()][$this->drupPageEntity->getBundle()];
+                    return true;
+                }
+            }
+            // Une route système pour finir
+            elseif (isset($breadcrumbItems['system'][DrupRequest::getRouteName()])) {
+                $this->breadcrumbItems = $breadcrumbItems['system'][DrupRequest::getRouteName()];
                 return true;
             }
         }
@@ -51,31 +79,26 @@ class DrupBreadcrumb implements BreadcrumbBuilderInterface {
      * @link http://kevinquillen.com/drupal/2017/02/16/manually-add-breadcrumb-links-in-drupal-8
      */
     public function build(RouteMatchInterface $route_match) {
-        /** @var \Drupal\drup_router\DrupRouter $drupRouter **/
-        $drupRouter = \Drupal::service('drup_router');
-        $drupField = new DrupField($this->drupPageEntity->getEntity());
-
-        $breadcrumbItemsList = $this->buildList();
-        $breadcrumbItems = $breadcrumbItemsList[$this->drupPageEntity->getEntityType()][$this->drupPageEntity->getBundle()];
-
         $breadcrumb = new Breadcrumb();
         $breadcrumb->addCacheContexts(['route']);
         $links = [
             Link::createFromRoute(t('Home'), '<front>')
         ];
 
-        if (!empty($breadcrumbItems)) {
-            foreach ($breadcrumbItems as $id => $type) {
+        if (!empty($this->breadcrumbItems)) {
+            foreach ($this->breadcrumbItems as $id => $type) {
                 switch ($type) {
                     // DrupRouter route
                     case 'drup_route':
-                        if ($entity = $drupRouter->getEntity($id)) {
+                        if ($entity = $this->drupRouter->getEntity($id)) {
                             $links[] = Link::fromTextAndUrl($entity->getName(), $entity->toUrl());
                         }
                         break;
 
                     // entity_reference
                     case 'referenced_entity':
+                        $drupField = new DrupField($this->drupPageEntity->getEntity());
+
                         if ($entities = $drupField->getReferencedEntities($id)) {
                             ksort($entities);
 
@@ -87,6 +110,8 @@ class DrupBreadcrumb implements BreadcrumbBuilderInterface {
 
                     // entity_reference taxonomy term with all parents
                     case 'referenced_taxonomy_term_parents':
+                        $drupField = new DrupField($this->drupPageEntity->getEntity());
+
                         if ($entities = $drupField->getReferencedEntities($id)) {
                             ksort($entities);
 

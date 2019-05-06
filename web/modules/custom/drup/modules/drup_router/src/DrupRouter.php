@@ -93,7 +93,7 @@ class DrupRouter {
      *
      * @param null $context
      *
-     * @return \Drupal\Core\Entity\EntityInterface|\Drupal\node\Entity\Node
+     * @return \Drupal\Core\Entity\EntityInterface|null
      */
     public function getEntity($routeName, $context = null) {
         if (($route = $this->getRoute($routeName)) && $routeEntityId = $this->getId($routeName, $context)) {

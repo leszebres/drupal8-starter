@@ -18,12 +18,16 @@ class DrupSiteBreadcrumb extends DrupBreadcrumb {
      */
     public function buildList() {
         $breadcrumbs = [
-            // ENTITY_TYPE (ex : taxonomy_term, node) => [
-            //     BUNDLE (ex : node_type or vocabulary) => [
+            'drup_route' => [
+                // contact => []
+            ],
+            // ENTITY_TYPE (ex : taxonomy_term, node) | DRUP ROUTE | SYSTEM ROUTE => [
+            //     BUNDLE (ex : node_type or vocabulary) | DRUP ROUTE NAME | SYSTEM ROUTE NAME => [
             //            ID (ex : DrupRouteName, Field id without field_ prefix) => TYPE (drup_route/referenced_entity/referenced_taxonomy_term_parents),
             //            ...
             //     ], ...
             //]
+            //
             'node' => [
                 'page' => [
                     //'contact' => 'drup_route',
@@ -32,6 +36,9 @@ class DrupSiteBreadcrumb extends DrupBreadcrumb {
                 ]
             ],
             'taxonomy_term' => [
+            ],
+            'system' => [
+                // drup_site.home => []
             ]
         ];
 
