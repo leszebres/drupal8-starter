@@ -112,12 +112,16 @@ abstract class DrupSEO {
         if ($type === self::$tokenType) {
             $drupSettings = new DrupSettings();
             $metatagManager = \Drupal::service('metatag.manager');
-            $logo = DrupFile::getLogo();
+
+            $logo = false;
+            if (array_key_exists('logo:url', $tokens) || array_key_exists('logo:width', $tokens) || array_key_exists('logo:height', $tokens) || array_key_exists('logo:type', $tokens)) {
+                $logo = DrupFile::getLogo('png');
+            }
 
             // Node
             $node = $drupField = false;
             if (isset($data['node']) && $data['node'] instanceof Node) {
-                $node = Node::load($data['node']->id());
+                $node = $data['node'];
                 $drupField = $node->drupField();
             }
 
@@ -173,16 +177,16 @@ abstract class DrupSEO {
                 } elseif ($name === 'meta:front:desc' && ($desc = $drupSettings->getValue('home_meta_desc'))) {
                     $replacements[$original] = $desc;
 
-                } elseif ($name === 'logo:url') {
+                } elseif ($name === 'logo:url' && $logo) {
                     $replacements[$original] = $logo->url;
 
-                } elseif ($name === 'logo:width') {
+                } elseif ($name === 'logo:width' && $logo) {
                     $replacements[$original] = $logo->width;
 
-                } elseif ($name === 'logo:height') {
+                } elseif ($name === 'logo:height' && $logo) {
                     $replacements[$original] = $logo->height;
 
-                } elseif ($name === 'logo:type') {
+                } elseif ($name === 'logo:type' && $logo) {
                     $replacements[$original] = $logo->mimetype;
 
                 } elseif ($name === 'thumbnail:url') {

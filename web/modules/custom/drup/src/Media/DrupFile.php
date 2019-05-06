@@ -125,25 +125,26 @@ class DrupFile {
     /**
      * Retourne des informations sur le logo du site
      *
-     * @param array $options Surcharge des éléments retournés
+     * @param string $type='svg' Type de fichier (svg ou png)
+     * @param array  $options    Surcharge des éléments retournés
      *
      * @return object
      */
-    public static function getLogo($options = []) {
+    public static function getLogo($type = 'svg', $options = []) {
         $options = array_merge([
             'url' => null,
             'width' => null,
             'height' => null,
-            'mimetype' => 'image/png'
+            'mimetype' => $type === 'png' ? 'image/png' : 'image/svg+xml'
         ], $options);
 
         if (empty($options['url'])) {
             $themeHandler = \Drupal::service('theme_handler');
             $defaultTheme = $themeHandler->getDefault();
-            $options['url'] = \Drupal::request()->getUriForPath('/' . $themeHandler->getTheme($defaultTheme)->getPath() . '/images/logo.png');
+            $options['url'] = \Drupal::request()->getUriForPath('/' . $themeHandler->getTheme($defaultTheme)->getPath() . '/images/logo.' . $type);
         }
 
-        if (!empty($options['url']) && empty($options['width']) && empty($options['height']) && ($size = getimagesize($options['url']))) {
+        if ($type === 'png' && !empty($options['url']) && empty($options['width']) && empty($options['height']) && ($size = @getimagesize($options['url']))) {
             $options['width'] = $size[0];
             $options['height'] = $size[1];
             $options['mimetype'] = $size['mime'];
