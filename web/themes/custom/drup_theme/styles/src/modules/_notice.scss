@@ -28,16 +28,24 @@ Styleguide Notices - 1.messages
     }
     li {
         list-style: none;
+
+        &:before {
+            content: none;
+        }
+    }
+    ul {
+        margin: 0;
     }
 
     &:before {
-        width: 1.65em;
-        height: 1.65em;
-        margin: 0 auto .8em;
+        display: block;
+        width: 1.8em;
+        height: 1.8em;
+        margin: 0 auto 1em;
+        line-height: 1.8em;
+        font-size: .8em;
+        border: .2em solid $color--text;
         border-radius: 50%;
-        color: #fff;
-        font-size: 1.15em;
-        text-align: center;
     }
 
     .krumo-root {
@@ -49,27 +57,30 @@ Styleguide Notices - 1.messages
     border-top-color: $notice--success-color;
 
     &:before {
-        @include font-icon(check-circle);
+        @include font-icon(check);
         display: block;
-        background-color: $notice--success-color;
+        color: $notice--success-color;
+        border-color: $notice--success-color;
     }
 }
 .messages--warning {
     border-top-color: $notice--warning-color;
 
     &:before {
-        @include font-icon(warning-circle);
+        @include font-icon(warning);
         display: block;
-        background-color: $notice--warning-color;
+        color: $notice--warning-color;
+        border-color: $notice--warning-color;
     }
 }
 .messages--error {
     border-top-color: $notice--error-color;
 
     &:before {
-        @include font-icon(error-circle);
+        @include font-icon(error);
         display: block;
-        background-color: $notice--error-color;
+        color: $notice--error-color;
+        border-color: $notice--error-color;
     }
 }
 

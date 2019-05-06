@@ -13,8 +13,8 @@ Commande : gulp fonticon
     font-family: Icons;
     font-weight: normal;
     font-style: normal;
-    src: url("../../fonts/icons.woff2?v=1554372157") format("woff2"),
-         url("../../fonts/icons.woff?v=1554372157") format("woff");
+    src: url("../../fonts/icons.woff2?v=1557158379") format("woff2"),
+         url("../../fonts/icons.woff?v=1557158379") format("woff");
 }
 
 /*
@@ -22,9 +22,9 @@ Commande : gulp fonticon
 .icon--angle-right - \EA02
 .icon--check-circle - \EA03
 .icon--check - \EA04
-.icon--close-circle - \EA05
+.icon--cross-circle - \EA05
 .icon--edit - \EA06
-.icon--error-circle - \EA07
+.icon--error - \EA07
 .icon--facebook-messenger - \EA08
 .icon--facebook-square - \EA09
 .icon--facebook - \EA0A
@@ -35,10 +35,9 @@ Commande : gulp fonticon
 .icon--search - \EA0F
 .icon--twitter-square - \EA10
 .icon--twitter - \EA11
-.icon--warning-circle - \EA12
-.icon--warning - \EA13
-.icon--youtube-square - \EA14
-.icon--youtube - \EA15
+.icon--warning - \EA12
+.icon--youtube-square - \EA13
+.icon--youtube - \EA14
 
 Markup: <span class="icon $modifierClass"></span>
 
@@ -56,13 +55,13 @@ Styleguide Icons - 1.icon
 .icon--check:before {
     content: "\EA04";
 }
-.icon--close-circle:before {
+.icon--cross-circle:before {
     content: "\EA05";
 }
 .icon--edit:before {
     content: "\EA06";
 }
-.icon--error-circle:before {
+.icon--error:before {
     content: "\EA07";
 }
 .icon--facebook-messenger:before {
@@ -95,15 +94,12 @@ Styleguide Icons - 1.icon
 .icon--twitter:before {
     content: "\EA11";
 }
-.icon--warning-circle:before {
+.icon--warning:before {
     content: "\EA12";
 }
-.icon--warning:before {
+.icon--youtube-square:before {
     content: "\EA13";
 }
-.icon--youtube-square:before {
-    content: "\EA14";
-}
 .icon--youtube:before {
-    content: "\EA15";
+    content: "\EA14";
 }

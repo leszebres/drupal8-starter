@@ -1086,16 +1086,16 @@ Commande : gulp fonticon
   font-family: Icons;
   font-weight: normal;
   font-style: normal;
-  src: url("../../fonts/icons.woff2?v=1554372157") format("woff2"), url("../../fonts/icons.woff?v=1554372157") format("woff"); }
+  src: url("../../fonts/icons.woff2?v=1557158379") format("woff2"), url("../../fonts/icons.woff?v=1557158379") format("woff"); }
 
 /*
 .icon--angle-left - \EA01
 .icon--angle-right - \EA02
 .icon--check-circle - \EA03
 .icon--check - \EA04
-.icon--close-circle - \EA05
+.icon--cross-circle - \EA05
 .icon--edit - \EA06
-.icon--error-circle - \EA07
+.icon--error - \EA07
 .icon--facebook-messenger - \EA08
 .icon--facebook-square - \EA09
 .icon--facebook - \EA0A
@@ -1106,10 +1106,9 @@ Commande : gulp fonticon
 .icon--search - \EA0F
 .icon--twitter-square - \EA10
 .icon--twitter - \EA11
-.icon--warning-circle - \EA12
-.icon--warning - \EA13
-.icon--youtube-square - \EA14
-.icon--youtube - \EA15
+.icon--warning - \EA12
+.icon--youtube-square - \EA13
+.icon--youtube - \EA14
 
 Markup: <span class="icon $modifierClass"></span>
 
@@ -1121,19 +1120,19 @@ Styleguide Icons - 1.icon
 .icon--angle-right:before {
   content: "\EA02"; }
 
-.icon--check-circle:before, .messages--status:before {
+.icon--check-circle:before {
   content: "\EA03"; }
 
-.icon--check:before {
+.icon--check:before, .messages--status:before {
   content: "\EA04"; }
 
-.icon--close-circle:before {
+.icon--cross-circle:before {
   content: "\EA05"; }
 
 .icon--edit:before, .btn--block-admin:after {
   content: "\EA06"; }
 
-.icon--error-circle:before, .messages--error:before {
+.icon--error:before, .messages--error:before {
   content: "\EA07"; }
 
 .icon--facebook-messenger:before {
@@ -1166,17 +1165,14 @@ Styleguide Icons - 1.icon
 .icon--twitter:before {
   content: "\EA11"; }
 
-.icon--warning-circle:before, .messages--warning:before {
+.icon--warning:before, .messages--warning:before {
   content: "\EA12"; }
 
-.icon--warning:before {
+.icon--youtube-square:before {
   content: "\EA13"; }
 
-.icon--youtube-square:before {
-  content: "\EA14"; }
-
 .icon--youtube:before {
-  content: "\EA15"; }
+  content: "\EA14"; }
 
 /* ==========================================================================
    Icons
@@ -1338,14 +1334,19 @@ Styleguide Notices - 1.messages
     text-decoration: underline; }
   .messages li {
     list-style: none; }
+    .messages li:before {
+      content: none; }
+  .messages ul {
+    margin: 0; }
   .messages:before {
-    width: 1.65em;
-    height: 1.65em;
-    margin: 0 auto .8em;
-    border-radius: 50%;
-    color: #fff;
-    font-size: 1.15em;
-    text-align: center; }
+    display: block;
+    width: 1.8em;
+    height: 1.8em;
+    margin: 0 auto 1em;
+    line-height: 1.8em;
+    font-size: .8em;
+    border: 0.2em solid #333;
+    border-radius: 50%; }
   .messages .krumo-root {
     text-align: left; }
 
@@ -1362,7 +1363,8 @@ Styleguide Notices - 1.messages
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     display: block;
-    background-color: #5cb85c; }
+    color: #5cb85c;
+    border-color: #5cb85c; }
 
 .messages--warning {
   border-top-color: #f0ad4e; }
@@ -1377,7 +1379,8 @@ Styleguide Notices - 1.messages
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     display: block;
-    background-color: #f0ad4e; }
+    color: #f0ad4e;
+    border-color: #f0ad4e; }
 
 .messages--error {
   border-top-color: #d9534f; }
@@ -1392,7 +1395,8 @@ Styleguide Notices - 1.messages
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     display: block;
-    background-color: #d9534f; }
+    color: #d9534f;
+    border-color: #d9534f; }
 
 /*
 Message pour les navigateurs non optimisés

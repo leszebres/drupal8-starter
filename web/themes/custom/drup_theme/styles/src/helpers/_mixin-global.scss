@@ -9,7 +9,17 @@
     font-family: $fontVersion, $font--fallback;
 }
 
-@mixin font-icon($icon: null) {
+@mixin font-icon($icon: null, $align: false) {
+    @if ($align != false) {
+        position: relative;
+
+        @if (type_of($align) == 'number') {
+            top: $align;
+        } @else {
+            top: 2px;
+        }
+    }
+
     display: inline-block;
     font-family: Icons;
     font-style: normal;
