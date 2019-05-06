@@ -6,10 +6,13 @@
 #}
 
 {% if items.next %}
-    <nav class="nav nav--pager">
-        <ul {{ attributes }}>
+    <nav class="nav nav--pager load-more">
+        <p class="visually-hidden">{{ 'Pagination'|t }}</p>
+        <ul {{ attributes.addClass('pager-items') }}>
             <li class="pager-item">
-                <a class="{{ btn_classes }}" href="{{ items.next.href }}" title="{{ 'Go to next page'|t }}" rel="next">{{ options.button_text|t }}</a>
+                <a class="{{ btn_classes }}" href="{{ items.next.href }}" title="{{ 'Go to next page'|t }}" rel="next">
+                    <span>{{ options.button_text|t }}</span>
+                </a>
             </li>
         </ul>
     </nav>

@@ -109,6 +109,18 @@ Styleguide Navigation - 40.nav--pager
     a {
         display: inline-block;
     }
+
+    .pager-items {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Load more
+       ========================================================================== */
+    &.load-more {
+
+    }
 }
 
 

@@ -1928,9 +1928,15 @@ Styleguide Navigation - 40.nav--pager
 */
 .nav--pager {
   margin: 24px auto;
-  text-align: center; }
+  text-align: center;
+  /* Load more
+       ========================================================================== */ }
   .nav--pager a {
     display: inline-block; }
+  .nav--pager .pager-items {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
 
 /*
 Social items
