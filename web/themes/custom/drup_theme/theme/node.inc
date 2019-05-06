@@ -19,8 +19,8 @@ function drup_theme_theme_suggestions_node_alter(array &$suggestions, array $var
  * @param array $variables
  */
 function drup_theme_preprocess_node(array &$variables) {
-    $node = Node::load($variables['node']->id());
-    if (!$node instanceof Node) {
+    $node = $variables['node'];
+    if (!$variables['node'] instanceof Node) {
         return;
     }
 
