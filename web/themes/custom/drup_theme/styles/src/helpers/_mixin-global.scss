@@ -37,6 +37,51 @@
 
 
 /* ==========================================================================
+   STATES
+   ========================================================================== */
+
+// Etats des boutons par défaut, et si besoin au hover/focus s'il est disabled
+@mixin btn-states-default($disable_fallback: true) {
+    @if ($disable_fallback) {
+        &,
+        &:disabled,
+        &.is-disabled,
+        &:disabled:hover,
+        &.is-disabled:hover,
+        &:disabled:focus,
+        &.is-disabled:focus {
+            @content;
+        }
+    } @else {
+        & {
+            @content;
+        }
+    }
+}
+
+// Etat des boutons au hover/active/focus, avec fallback sur un lien
+@mixin btn-states-user($link_fallback: true) {
+    @if ($link_fallback) {
+        &:active,
+        &.is-active,
+        &:focus,
+        &:hover,
+        a:focus &,
+        a:hover & {
+            @content;
+        }
+    } @else {
+        &:active,
+        &.is-active,
+        &:focus,
+        &:hover {
+            @content;
+        }
+    }
+}
+
+
+/* ==========================================================================
    VISIBILITY
    ========================================================================== */
 /*

@@ -15,29 +15,28 @@ Styleguide Buttons - 1.btn
     align-items: center;
     justify-content: center;
     padding: $btn--padding-vertical $btn--padding-horizontal;
-    color: $btn--color;
     @include font(primary);
     font-size: $btn--fontsize;
     line-height: $btn--lineheight;
     text-decoration: none;
     text-transform: uppercase;
-    background-color: $btn--background;
-    border: $btn--border-width solid $btn--border-color;
+    border: $btn--border-width solid;
     border-radius: $btn--border-radius;
     cursor: pointer;
     box-sizing: border-box;
     transition: .3s;
 
-    &:active,
-    &.is-active,
-    &:focus,
-    &:hover,
-    a:focus &,
-    a:hover & {
+    @include btn-states-default() {
+        color: $btn--color;
+        border-color: $btn--border-color;
+        background-color: $btn--background;
+    }
+    @include btn-states-user() {
         color: #fff;
         border-color: $color--primary;
         background-color: $color--primary;
     }
+
     &:focus {
         outline: 0;
     }
@@ -78,16 +77,12 @@ Markup: url()->find(.btn--primary)
 Styleguide Buttons - 10.btn--primary
 */
 .btn--primary {
-    color: #fff;
-    background-color: $color--primary;
-    border-color: $color--primary;
-
-    &:active,
-    &.is-active,
-    &:focus,
-    &:hover,
-    a:focus &,
-    a:hover & {
+    @include btn-states-default() {
+        color: #fff;
+        background-color: $color--primary;
+        border-color: $color--primary;
+    }
+    @include btn-states-user() {
         background-color: $color--secondary;
         border-color: $color--secondary;
     }
@@ -103,14 +98,9 @@ Markup: url()->find(.btn--secondary)
 Styleguide Buttons - 15.btn--secondary
 */
 .btn--secondary {
-
-    &:active,
-    &.is-active,
-    &:focus,
-    &:hover,
-    a:focus &,
-    a:hover & {
-
+    @include btn-states-default() {
+    }
+    @include btn-states-user() {
     }
 }
 
@@ -123,14 +113,9 @@ Markup: url()->find(.btn--tertiary)
 Styleguide Buttons - 20.btn--tertiary
 */
 .btn--tertiary {
-
-    &:active,
-    &.is-active,
-    &:focus,
-    &:hover,
-    a:focus &,
-    a:hover & {
-
+    @include btn-states-default() {
+    }
+    @include btn-states-user() {
     }
 }
 
@@ -144,5 +129,8 @@ Markup: url()->find(.btn--link)
 Styleguide Buttons - 30.btn--link
 */
 .btn--link {
-
+    @include btn-states-default() {
+    }
+    @include btn-states-user() {
+    }
 }

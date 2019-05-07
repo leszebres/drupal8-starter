@@ -54,6 +54,9 @@
    TEXT & FONTS
    ========================================================================== */
 /* ==========================================================================
+   STATES
+   ========================================================================== */
+/* ==========================================================================
    VISIBILITY
    ========================================================================== */
 /*
@@ -1434,21 +1437,23 @@ Styleguide Buttons - 1.btn
   align-items: center;
   justify-content: center;
   padding: 15px 32px;
-  color: #333;
   font-weight: normal;
   font-family: "Arial", Arial, sans-serif;
   font-size: 0.875rem;
   line-height: 1.6;
   text-decoration: none;
   text-transform: uppercase;
-  background-color: #f3f3f3;
-  border: 1px solid #c0c0c0;
+  border: 1px solid;
   border-radius: 0;
   cursor: pointer;
   box-sizing: border-box;
   transition: .3s;
   /* Sizes
        ========================================================================== */ }
+  .btn, .btn:disabled, .btn.is-disabled, .btn:disabled:hover, .btn.is-disabled:hover, .btn:disabled:focus, .btn.is-disabled:focus {
+    color: #333;
+    border-color: #c0c0c0;
+    background-color: #f3f3f3; }
   .btn:active, .btn.is-active, .btn:focus, .btn:hover,
   a:focus .btn,
   a:hover .btn {
@@ -1477,15 +1482,16 @@ Markup: url()->find(.btn--primary)
 
 Styleguide Buttons - 10.btn--primary
 */
-.btn--primary {
+.btn--primary, .btn--primary:disabled, .btn--primary.is-disabled, .btn--primary:disabled:hover, .btn--primary.is-disabled:hover, .btn--primary:disabled:focus, .btn--primary.is-disabled:focus {
   color: #fff;
   background-color: #003cc5;
   border-color: #003cc5; }
-  .btn--primary:active, .btn--primary.is-active, .btn--primary:focus, .btn--primary:hover,
-  a:focus .btn--primary,
-  a:hover .btn--primary {
-    background-color: #0036b1;
-    border-color: #0036b1; }
+
+.btn--primary:active, .btn--primary.is-active, .btn--primary:focus, .btn--primary:hover,
+a:focus .btn--primary,
+a:hover .btn--primary {
+  background-color: #0036b1;
+  border-color: #0036b1; }
 
 /*
 Bouton secondaire :
