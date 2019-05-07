@@ -27,8 +27,20 @@ function drup_site_entity_view_alter(array &$build, EntityInterface $entity, Ent
 /**
  * @inheritdoc
  */
+function drup_site_entity_view_mode_alter(&$view_mode, Drupal\Core\Entity\EntityInterface $entity, $context) {
+    // Override view mode of some nodes
+    if ($view_mode === 'full' && $entity->getEntityTypeId() === 'node') {
+        /** @var \Drupal\drup\Entity\Node $entity */
+        /*if ($entity->getType() === 'inspiration' && ($display = \Drupal::request()->query->get('display'))) {
+            $view_mode = $display;
+        }*/
+    }
+}
+
+/**
+ * @inheritdoc
+ */
 function drup_site_entity_type_build(array &$entity_types) {
-//function drup_site_entity_type_alter(array &$entity_types) {
     if (isset($entity_types['node'])) {
         $entity_types['node']->setClass(Node::class);
     }

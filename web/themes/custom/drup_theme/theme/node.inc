@@ -7,11 +7,6 @@ use Drupal\drup\Entity\Node;
  * @param array $variables
  */
 function drup_theme_theme_suggestions_node_alter(array &$suggestions, array $variables) {
-  /*$node = $variables['elements']['#node'];
-
-  if ($variables['elements']['#view_mode'] == "full") {
-
-  }*/
 }
 
 
