@@ -61,6 +61,7 @@ class DrupSiteSettingsForm extends DrupSettingsForm {
 
         // ...
 
+        // Set #default_values for form items with '#drup_context' keys
         $this->populateDefaultValues($form, $form_state);
 
         return $form;
@@ -85,17 +86,19 @@ class DrupSiteSettingsForm extends DrupSettingsForm {
                     $drupSocialLinksConfig->save();
                 }
             } else {
-                // Default values
-                if (array_key_exists($key, $this->formItemsContext)) {
-                    $this->drupSettings->setLanguage($this->formItemsContext[$key]);
-                } else {
-                    $this->drupSettings->setLanguage();
-                }
-                $this->drupSettings->set($key, $value);
+                if (isset($this->formItemsData[$key])) {
+                    // Default values
+                    if ($this->formItemsData[$key]->context !== null) {
+                        $this->drupSettings->setLanguage($this->formItemsData[$key]->context);
+                    } else {
+                        $this->drupSettings->setLanguage();
+                    }
+                    $this->drupSettings->set($key, $value);
 
-                // Files
-                if (!empty($value) && (strpos($key, 'image') !== false || strpos($key, 'file') !== false)) {
-                    DrupFile::setPermanent($value);
+                    // Files
+                    if (in_array($this->formItemsData[$key]->type, ['managed_file'])) {
+                        DrupFile::setPermanent($value);
+                    }
                 }
             }
         }

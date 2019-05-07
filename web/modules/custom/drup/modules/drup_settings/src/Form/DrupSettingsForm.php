@@ -4,8 +4,10 @@ namespace Drupal\drup_settings\Form;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Form\ConfigFormBase;
+use Drupal\drup\DrupSite;
 use Drupal\drup_settings\DrupSettings;
 use Drupal\drup_social_links\DrupSocialLinks;
+use Drupal\user\Entity\User;
 
 /**
  * Class DrupSettingsFrom.
@@ -27,7 +29,7 @@ class DrupSettingsForm extends ConfigFormBase {
      *
      * @var array
      */
-    protected $formItemsContext = [];
+    protected $formItemsData = [];
 
     /**
      * {@inheritdoc}
@@ -143,10 +145,33 @@ class DrupSettingsForm extends ConfigFormBase {
                 $form[$this->formContainer]['main']['social_networks']['site_social_link_' . $network['id']] = [
                     '#type' => 'url',
                     '#title' => $network['title'],
-                    '#default_value' => $network['link_url']
+                    '#default_value' => $network['link_url'],
                 ];
             }
         }
+
+
+        /**
+         * FEATURES
+         */
+        $isSuperAdmin = User::load(\Drupal::currentUser()->id())->hasRole('super_admin');
+        $form[$this->formContainer]['features'] = [
+            '#type' => 'details',
+            '#title' => $this->t('Features'),
+            '#collapsible' => true,
+            '#collapsed' => true,
+            '#disabled' => !$isSuperAdmin
+        ];
+        $form[$this->formContainer]['features']['default_list_image'] = [
+            '#type' => 'entity_autocomplete',
+            '#target_type' => 'media',
+            '#selection_settings' => [
+                'target_bundles' => ['image']
+            ],
+            '#title' => $this->t('Média représentant l\'image par défaut dans les listes de contenus'),
+            '#drup_context' => 'und'
+        ];
+
 
         return parent::buildForm($form, $form_state);
     }
@@ -161,10 +186,20 @@ class DrupSettingsForm extends ConfigFormBase {
             foreach ($items as $key => &$item) {
                 if (is_array($item) && array_key_exists('#drup_context', $item) && empty($item['#default_value'])) {
                     $this->drupSettings->setLanguage($item['#drup_context']);
-                    $this->formItemsContext[$key] = $item['#drup_context'];
 
+                    // Save info about current form item
+                    $this->formItemsData[$key] = (object) [
+                        'context' => $item['#drup_context'],
+                        'type' => $item['#type']
+                    ];
+
+                    // Set default value
                     $item['#default_value'] = $this->drupSettings->getValue($key);
+                    if ($item['#type'] === 'entity_autocomplete') {
+                        $item['#default_value'] = \Drupal::entityTypeManager()->getStorage($item['#target_type'])->load($item['#default_value']);
+                    }
 
+                    // UX description
                     $description = '<i>' . $this->t($item['#drup_context'] === 'und' ? 'Common to all languages' : 'Specific to each language') . '</i>';
                     if (!isset($item['#description'])) {
                         $item['#description'] = $description;
