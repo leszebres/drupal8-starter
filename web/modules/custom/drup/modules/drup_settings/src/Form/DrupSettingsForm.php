@@ -195,7 +195,7 @@ class DrupSettingsForm extends ConfigFormBase {
 
                     // Set default value
                     $item['#default_value'] = $this->drupSettings->getValue($key);
-                    if ($item['#type'] === 'entity_autocomplete') {
+                    if ($item['#default_value'] !== null && $item['#type'] === 'entity_autocomplete') {
                         $item['#default_value'] = \Drupal::entityTypeManager()->getStorage($item['#target_type'])->load($item['#default_value']);
                     }
 
