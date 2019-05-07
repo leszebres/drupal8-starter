@@ -2,6 +2,8 @@
 
 namespace Drupal\drup\TwigExtension;
 
+use Drupal\drup\Helper\DrupString;
+
 /**
  * Class PhoneNumber
  *
@@ -26,8 +28,6 @@ class PhoneNumber extends \Twig_Extension {
      * @return string
      */
     public static function phoneNumber($string) {
-        $string = str_replace([' ', '.'], '', $string);
-        $string = 'tel:' . $string;
-        return $string;
+        return DrupString::formatPhoneNumber($string, 'tel:');
     }
 }

@@ -35,4 +35,30 @@ abstract class DrupString {
 
         return $string;
     }
+
+    /**
+     * Formattage d'un numéro de téléphone
+     *
+     * @param string $phone Numéro
+     * @param null $prefix Préfix du numéro (+33 ou tel:)
+     *
+     * @return string
+     */
+    public static function formatPhoneNumber($phone, $prefix = null) {
+        // Remplacement des caractères spéciaux
+        $phone = str_replace([' ', '.'], '', $phone);
+
+        if (!empty($phone) && $prefix !== null) {
+            // Ajout de l'indicatif région (+33)
+            if (strncmp($prefix, '+', 1) === 0) {
+                $phone = $prefix . substr($phone, 1);
+            }
+            // Ajout du prefix custom (tel:)
+            else {
+                $phone = $prefix . $phone;
+            }
+        }
+
+        return $phone;
+    }
 }

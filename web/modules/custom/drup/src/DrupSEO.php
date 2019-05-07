@@ -2,6 +2,7 @@
 
 namespace Drupal\drup;
 
+use Drupal\Core\Language\LanguageManager;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Url;
 use Drupal\drup\Entity\Node;
@@ -10,6 +11,7 @@ use Drupal\drup\Helper\DrupString;
 use Drupal\drup\Media\DrupFile;
 use Drupal\drup\Media\DrupMediaImage;
 use Drupal\drup_settings\DrupSettings;
+use Drupal\drup_social_links\DrupSocialLinks;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\drup\Helper\DrupUrl;
 
@@ -91,6 +93,33 @@ abstract class DrupSEO {
         $info['types'][self::$tokenType]['thumbnail:height'] = [
             'name' => 'Hauteur de la vignette (px)'
         ];
+
+        // Réseaux sociaux
+        $info['types'][self::$tokenType]['socialnetworks:link:url:comma'] = [
+            'name' => 'URLs des liens vers les réseaux sociaux séparés par une virgule'
+        ];
+
+        // Coordonnées de contact
+        $info['tokens'][self::$tokenType]['contact:phone:internationalized'] = [
+            'name' => 'N° de téléphone international'
+        ];
+        $info['tokens'][self::$tokenType]['contact:address'] = [
+            'name' => 'Adresse'
+        ];
+        $info['tokens'][self::$tokenType]['contact:zipcode'] = [
+            'name' => 'Code postal'
+        ];
+        $info['tokens'][self::$tokenType]['contact:city'] = [
+            'name' => 'Ville'
+        ];
+        $info['tokens'][self::$tokenType]['contact:country'] = [
+            'name' => 'Pays'
+        ];
+
+        // Langues
+        $info['tokens'][self::$tokenType]['language:available:name:comma'] = [
+            'name' => 'Liste des langues (nom) disponibles séparées par une virgule'
+        ];
     }
 
     /**
@@ -110,6 +139,7 @@ abstract class DrupSEO {
 
         if ($type === self::$tokenType) {
             $drupSettings = new DrupSettings();
+            $drupSettingsUnd = new DrupSettings('und');
             $metatagManager = \Drupal::service('metatag.manager');
             $entityRepository = \Drupal::service('entity.repository');
 
@@ -212,6 +242,57 @@ abstract class DrupSEO {
 
                         $replacements[$original] = $imageStyleEffect['data'][str_replace('thumbnail:', '', $name)];
                     }
+                }
+
+                if ($name === 'socialnetworks:link:url:comma') {
+                    $networks = DrupSocialLinks::getLinkItems();
+                    $items = [];
+
+                    if (!empty($networks)) {
+                        foreach ($networks as $network) {
+                            $items[] = $network['link_url'];
+                        }
+                    }
+
+                    $replacements[$original] = implode(',', $items);
+
+                } elseif ($name === 'contact:phone:internationalized' && ($phone = $drupSettingsUnd->getValue('contact_infos_phone_number'))) {
+                    $regionCode = $drupSettingsUnd->getValue('contact_infos_country') === 'FR' ? '+33' : null;
+
+                    $replacements[$original] = DrupString::formatPhoneNumber($phone, $regionCode);
+
+                } elseif ($name === 'language:available:name:comma') {
+                    $languages = \Drupal::LanguageManager()->getLanguages();
+                    $items = [];
+
+                    if (!empty($languages)) {
+                        foreach ($languages as $language) {
+                            if (!$language->isLocked()) {
+                                $items[] = $language->getName();
+                            }
+                        }
+                    }
+
+                    $replacements[$original] = implode(',', $items);
+
+                } elseif ($name === 'contact:address' && ($address = $drupSettingsUnd->getValue('contact_infos_address'))) {
+                     $replacements[$original] = str_replace("\r", ', ', $address);
+
+                } elseif ($name === 'contact:zipcode' && ($zipcode = $drupSettingsUnd->getValue('contact_infos_zipcode'))) {
+                     $replacements[$original] = $zipcode;
+
+                } elseif ($name === 'contact:city' && ($city = $drupSettingsUnd->getValue('contact_infos_city'))) {
+                     $replacements[$original] = $city;
+
+                } elseif ($name === 'contact:country' && ($country = $drupSettingsUnd->getValue('contact_infos_country'))) {
+                     $replacements[$original] = $country;
+                }
+            }
+        } elseif ($type === 'current-page') {
+            // Tokens
+            foreach ($tokens as $name => $original) {
+                if ($name === 'url' && DrupRequest::isFront()) {
+                    $replacements[$original] = \Drupal::request()->getSchemeAndHttpHost();
                 }
             }
         }

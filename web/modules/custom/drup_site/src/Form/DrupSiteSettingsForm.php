@@ -3,6 +3,7 @@
 namespace Drupal\drup_site\Form;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Locale\CountryManager;
 use Drupal\drup\Media\DrupFile;
 use Drupal\drup_settings\Form\DrupSettingsForm;
 use Drupal\drup_social_links\DrupSocialLinks;
@@ -46,12 +47,30 @@ class DrupSiteSettingsForm extends DrupSettingsForm {
         $form[$this->formContainer]['contact']['contact_infos']['contact_infos_address'] = [
             '#type' => 'textarea',
             '#title' => $this->t('Address'),
-            '#drup_context' => 'und',
+            '#rows' => 2,
+            '#drup_context' => 'und'
+        ];
+        $form[$this->formContainer]['contact']['contact_infos']['contact_infos_zipcode'] = [
+            '#type' => 'textfield',
+            '#title' => $this->t('Zip code'),
+            '#size' => 10,
+            '#drup_context' => 'und'
+        ];
+        $form[$this->formContainer]['contact']['contact_infos']['contact_infos_city'] = [
+            '#type' => 'textfield',
+            '#title' => $this->t('City'),
+            '#drup_context' => 'und'
+        ];
+        $form[$this->formContainer]['contact']['contact_infos']['contact_infos_country'] = [
+            '#type' => 'select',
+            '#title' => $this->t('Country'),
+            '#options' => CountryManager::getStandardList(),
+            '#drup_context' => 'und'
         ];
         $form[$this->formContainer]['contact']['contact_infos']['contact_infos_email'] = [
             '#type' => 'textfield',
             '#title' => $this->t('Email'),
-            '#drup_context' => 'und',
+            '#drup_context' => 'und'
         ];
         $form[$this->formContainer]['contact']['contact_infos']['contact_infos_schedule'] = [
             '#type' => 'textarea',
