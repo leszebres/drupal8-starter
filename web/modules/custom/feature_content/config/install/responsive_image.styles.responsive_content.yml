@@ -30,4 +30,4 @@ image_style_mappings:
     image_mapping_type: image_style
     image_mapping: content_half
 breakpoint_group: drup_theme
-fallback_image_style: content_half
+fallback_image_style: content_full
