@@ -60,6 +60,11 @@ task('drush:cr', function () {
     run('php {{release_path}}/vendor/bin/drush cr -y');
 });
 
+desc('Run translations');
+task('drush:langimp', function () {
+    run('php {{release_path}}/vendor/bin/drush langimp {{release_path}}/web/themes/custom/drup_theme/translations/drup_theme-8.x-1.0.fr.po');
+});
+
 desc('Update database');
 task('drush:updb', function () {
     run('php {{release_path}}/vendor/bin/drush updb -y');
@@ -72,8 +77,9 @@ task('drush:fra', function () {
 
 
 after('deploy:symlink', 'drush:updb');
+after('drush:updb', 'drush:langimp');
 //after('drush:updb', 'drush:fra');
-after('drush:updb', 'drush:cr');
+after('drush:langimp', 'drush:cr');
 
 
 // Composer dependencies
