@@ -1,7 +1,7 @@
 .cke_editable {
     padding: $grid--gutter-width;
-    box-sizing: border-box;
     background-color: #fff;
+    box-sizing: border-box;
 }
 
 #skip-link {
@@ -84,7 +84,7 @@
 /* ==========================================================================
    UI MODAL
    ========================================================================== */
-.ui-widget.ui-widget-content {
+/*.ui-widget.ui-widget-content {
     border: 0;
 }
 .ui-dialog {
@@ -109,13 +109,10 @@
             margin-bottom: 0;
         }
     }
-    .ui-dialog-buttonpane {
-        display: none;
-    }
 }
 .ui-widget-overlay {
     background: #000;
-}
+}*/
 
 /* ==========================================================================
    UI AUTOCOMPLETE

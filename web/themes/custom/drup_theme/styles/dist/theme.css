@@ -1047,7 +1047,7 @@ table {
 /* ==========================================================================
    Header
    ========================================================================== */
-.mainHeader {
+.main-header {
   padding-top: 24px;
   padding-bottom: 24px;
   background-color: #f3f3f3; }
@@ -1066,7 +1066,7 @@ table {
 /* ==========================================================================
    Footer
    ========================================================================== */
-.mainFooter {
+.main-footer {
   padding-top: 24px;
   padding-bottom: 24px;
   background-color: #f3f3f3; }
@@ -2110,8 +2110,8 @@ Styleguide Paragraphs - 40.paragraph--type--text-image
    ========================================================================== */
 .cke_editable {
   padding: 30px;
-  box-sizing: border-box;
-  background-color: #fff; }
+  background-color: #fff;
+  box-sizing: border-box; }
 
 #skip-link {
   margin: 0; }
@@ -2173,30 +2173,35 @@ Styleguide Paragraphs - 40.paragraph--type--text-image
 /* ==========================================================================
    UI MODAL
    ========================================================================== */
-.ui-widget.ui-widget-content {
-  border: 0; }
-
-.ui-dialog {
-  z-index: 3000;
-  padding: 0;
-  border: 0; }
-  .ui-dialog .ui-dialog-titlebar-close {
-    right: 10px; }
-  .ui-dialog .ui-dialog-titlebar {
+/*.ui-widget.ui-widget-content {
     border: 0;
-    background-color: #003cc5;
-    color: #fff;
-    border-radius: 0; }
-  .ui-dialog .ui-dialog-content {
-    padding: 30px; }
-    .ui-dialog .ui-dialog-content form {
-      margin-bottom: 0; }
-  .ui-dialog .ui-dialog-buttonpane {
-    display: none; }
+}
+.ui-dialog {
+    z-index: 3000;
+    padding: 0;
+    border: 0;
 
+    .ui-dialog-titlebar-close {
+        right: 10px;
+    }
+
+    .ui-dialog-titlebar {
+        border: 0;
+        background-color: $color--primary;
+        color: #fff;
+        border-radius: 0;
+    }
+    .ui-dialog-content {
+        padding: 30px;
+
+        form {
+            margin-bottom: 0;
+        }
+    }
+}
 .ui-widget-overlay {
-  background: #000; }
-
+    background: #000;
+}*/
 /* ==========================================================================
    UI AUTOCOMPLETE
    ========================================================================== */
