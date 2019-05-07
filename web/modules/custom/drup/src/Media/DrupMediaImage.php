@@ -2,6 +2,7 @@
 
 namespace Drupal\drup\Media;
 
+use Drupal\drup_settings\DrupSettings;
 use Drupal\media\Entity\Media;
 
 /**
@@ -135,5 +136,21 @@ class DrupMediaImage extends DrupMedia {
         }
 
         return $data;
+    }
+
+    /**
+     * Récupère le mid de l'image par défaut dans les listes
+     *
+     * @return int|null
+     */
+    public static function getFallbackId() {
+        $drupSettings = new DrupSettings();
+        $drupSettings->setNeutralLang();
+
+        if ($mediaId = $drupSettings->getValue('default_list_image')) {
+            return (int) $mediaId;
+        }
+
+        return null;
     }
 }
