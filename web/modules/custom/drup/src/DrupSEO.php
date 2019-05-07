@@ -2,9 +2,8 @@
 
 namespace Drupal\drup;
 
-use Drupal\Component\Utility\Xss;
 use Drupal\Core\Render\BubbleableMetadata;
-use Drupal\drup\Entity\DrupField;
+use Drupal\Core\Url;
 use Drupal\drup\Entity\Node;
 use Drupal\drup\Helper\DrupRequest;
 use Drupal\drup\Helper\DrupString;
@@ -112,16 +111,17 @@ abstract class DrupSEO {
         if ($type === self::$tokenType) {
             $drupSettings = new DrupSettings();
             $metatagManager = \Drupal::service('metatag.manager');
+            $entityRepository = \Drupal::service('entity.repository');
 
             $logo = false;
-            if (array_key_exists('logo:url', $tokens) || array_key_exists('logo:width', $tokens) || array_key_exists('logo:height', $tokens) || array_key_exists('logo:type', $tokens)) {
+            if (\array_key_exists('logo:url', $tokens) || \array_key_exists('logo:width', $tokens) || \array_key_exists('logo:height', $tokens) || \array_key_exists('logo:type', $tokens)) {
                 $logo = DrupFile::getLogo('png');
             }
 
             // Node
             $node = $drupField = false;
             if (isset($data['node']) && $data['node'] instanceof Node) {
-                $node = $data['node'];
+                $node = $entityRepository->getTranslationFromContext($data['node'], $options['langcode']);
                 $drupField = $node->drupField();
             }
 
@@ -149,7 +149,7 @@ abstract class DrupSEO {
                             } elseif (($fieldDescription = $drupField->get('body_layout')) && \is_array($fieldDescription) && !empty($fieldDescription)) {
                                 foreach ($fieldDescription as $paragraphItem) {
                                     if ($paragraphItem !== null) {
-                                        $paragraphItem->entity = \Drupal::service('entity.repository')->getTranslationFromContext($paragraphItem->entity, $options['langcode']);
+                                        $paragraphItem->entity = $entityRepository->getTranslationFromContext($paragraphItem->entity, $options['langcode']);
 
                                         if (!empty($paragraphItem->entity) && isset($paragraphItem->entity->field_body)) {
                                             $description = $paragraphItem->entity->field_body->value;
@@ -272,10 +272,15 @@ abstract class DrupSEO {
      */
     public static function addSiteTitle(&$string, $separator = '|') {
         if (strpos($string, $separator) === false) {
+            // Page number
+            if ($page = pager_find_page()) {
+                $string .= ' - ' . t('Page') . ' ' . $page;
+            }
+
+            // Site title
             $string .= ' ' . $separator . ' ' . (new DrupSettings())->getValue('site_name');
         }
     }
-
 
     /**
      * Gestionnaire de pagination
@@ -288,7 +293,7 @@ abstract class DrupSEO {
             $queryString = \Drupal::request()->getQueryString();
             $currentPath = Url::fromRoute('<current>')->toString();
             $currentPage = (int) $variables['current'] - 1;
-            $totalPages = preg_replace('/^.*page=(\d+).*$/', '$1', $variables['items']['last']['href']);
+            $totalPages = isset($variables['items']['last']) ? preg_replace('/^.*page=(\d+).*$/', '$1', $variables['items']['last']['href']) : count($variables['items']['pages']);
 
             // Prev
             if ($currentPage > 0) {
