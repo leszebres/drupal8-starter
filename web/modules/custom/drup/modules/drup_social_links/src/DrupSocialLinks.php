@@ -2,9 +2,8 @@
 
 namespace Drupal\drup_social_links;
 
-use Drupal\Core\Config\Config;
-use Drupal\Core\Config\ImmutableConfig;
 use Drupal\drup\DrupPageEntity;
+use Drupal\language\Config\LanguageConfigOverride;
 
 /**
  * Class DrupSocialLinks
@@ -21,6 +20,32 @@ class DrupSocialLinks {
     protected static $configName = 'drup.social_links';
 
     /**
+     * Retourne le nom de la configuration
+     *
+     * @return string
+     */
+    public static function getConfigName() {
+        return self::$configName;
+    }
+
+    /**
+     * Retourne la configuration de DrupSocialLinks
+     *
+     * @return bool|LanguageConfigOverride
+     */
+    public static function getConfig() {
+        $languageManager = \Drupal::languageManager();
+        $languageId = $languageManager->getCurrentLanguage()->getId();
+        $config = $languageManager->getLanguageConfigOverride($languageId, self::getConfigName());
+
+        if ($config instanceof LanguageConfigOverride) {
+            return $config;
+        }
+
+        return false;
+    }
+
+    /**
      * Retourne les items enregistrés pour la lecture seulement (formatés)
      *
      * @return array|mixed|null
@@ -33,32 +58,6 @@ class DrupSocialLinks {
         }
 
         return [];
-    }
-
-    /**
-     * Retourne la configuration des items (lecture ou écriture)
-     *
-     * @param bool $editable
-     *
-     * @return bool|Config|ImmutableConfig
-     */
-    public static function getConfig($editable = false) {
-        $config = $editable ? \Drupal::service('config.factory')->getEditable(self::getConfigName()) : \Drupal::config(self::getConfigName());
-
-        if (($editable && $config instanceof Config )|| (!$editable && $config instanceof ImmutableConfig)) {
-            return $config;
-        }
-
-        return false;
-    }
-
-    /**
-     * Retourne le nom de la configuration
-     *
-     * @return string
-     */
-    public static function getConfigName() {
-        return self::$configName;
     }
 
     /**

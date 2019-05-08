@@ -4,6 +4,7 @@ namespace Drupal\drup_social_links\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\drup\DrupSEO;
 use Drupal\drup_social_links\DrupSocialLinks;
 
 /**
@@ -29,9 +30,6 @@ class DrupSocialLinksForm extends ConfigFormBase {
      * {@inheritdoc}
      */
     public function buildForm(array $form, FormStateInterface $form_state) {
-        $config = $this->config(DrupSocialLinks::getConfigName());
-        $links = $config->get('items');
-
         $form['drup_social_links'] = [
             '#type' => 'table',
             '#header' => [
@@ -41,16 +39,29 @@ class DrupSocialLinksForm extends ConfigFormBase {
                 $this->t('Id'),
                 $this->t('Link URL'),
                 $this->t('Share URL'),
-                $this->t('Options')
+                $this->t('Options'),
+                $this->t('Weight')
             ],
-            '#empty' => $this->t('No links found')
+            '#empty' => $this->t('No links found'),
+            '#tabledrag' => [
+                [
+                    'action' => 'order',
+                    'relationship' => 'sibling',
+                    'group' => 'form-item-weight'
+                ]
+            ]
         ];
 
-        if (!empty($links)) {
-            foreach ($links as $link) {
-                $form['drup_social_links'][] = $this->setRow($link);
+        if ($config = DrupSocialLinks::getConfig()) {
+            $links = $config->get('items');
+
+            if (!empty($links)) {
+                foreach ($links as $link) {
+                    $form['drup_social_links'][] = $this->setRow($link);
+                }
             }
         }
+
         $form['drup_social_links'][] = $this->setRow([
             'isNew' => true
         ]);
@@ -59,9 +70,7 @@ class DrupSocialLinksForm extends ConfigFormBase {
 
         $form['token_browser'] = [
             '#theme' => 'token_tree_link',
-            '#token_types' => [
-                'seo'
-            ],
+            '#token_types' => [DrupSEO::$tokenType],
             '#global_types' => true,
             '#show_nested' => false
         ];
@@ -77,6 +86,10 @@ class DrupSocialLinksForm extends ConfigFormBase {
     public function setRow($rowValues) {
         $row = [];
         $isNewRow = (isset($rowValues['isNew']) && $rowValues['isNew']);
+
+        if (!$isNewRow) {
+            $row['#attributes']['class'][] = 'draggable';
+        }
 
         $row['link'] = [
             '#type' => 'checkbox',
@@ -95,6 +108,7 @@ class DrupSocialLinksForm extends ConfigFormBase {
             '#title' => $this->t('Title'),
             '#title_display' => !$isNewRow ? 'invisible' : 'before',
             '#default_value' => !$isNewRow ? $rowValues['title'] : null,
+            '#size' => 10,
             '#attributes' => [
                 'class' => ['form-item-title']
             ]
@@ -104,6 +118,7 @@ class DrupSocialLinksForm extends ConfigFormBase {
             '#title' => $this->t('Id'),
             '#title_display' => !$isNewRow ? 'invisible' : 'before',
             '#default_value' => !$isNewRow ? $rowValues['id'] : null,
+            '#size' => 10,
             '#attributes' => [
                 'class' => ['form-item-id']
             ]
@@ -112,13 +127,15 @@ class DrupSocialLinksForm extends ConfigFormBase {
             '#type' => 'textfield',
             '#title' => $this->t('Link URL'),
             '#title_display' => !$isNewRow ? 'invisible' : 'before',
-            '#default_value' => !$isNewRow && !empty($rowValues['link_url']) ? $rowValues['link_url'] : null
+            '#default_value' => !$isNewRow && !empty($rowValues['link_url']) ? $rowValues['link_url'] : null,
+            '#size' => 30
         ];
         $row['share_url'] = [
             '#type' => 'textfield',
             '#title' => $this->t('Share URL'),
             '#title_display' => !$isNewRow ? 'invisible' : 'before',
-            '#default_value' => !$isNewRow && !empty($rowValues['share_url']) ? $rowValues['share_url'] : null
+            '#default_value' => !$isNewRow && !empty($rowValues['share_url']) ? $rowValues['share_url'] : null,
+            '#size' => 30
         ];
         $row['options'] = [
             '#type' => 'textfield',
@@ -126,15 +143,23 @@ class DrupSocialLinksForm extends ConfigFormBase {
             '#title_display' => !$isNewRow ? 'invisible' : 'before',
             '#default_value' => !$isNewRow && !empty($rowValues['options']) ? $rowValues['options'] : null,
             '#placeholder' => $isNewRow ? 'key=value, key2=value2, etc' : null,
+            '#size' => 20,
             '#attributes' => [
                 'class' => ['form-item-options']
             ]
         ];
+        $row['weight'] = [
+            '#type' => 'weight',
+            '#title' => $this->t('Weight'),
+            '#title_display' => 'invisible',
+            '#default_value' => !$isNewRow && !empty($rowValues['weight']) ? $rowValues['weight'] : null,
+            '#attributes' => [
+                'class' => ['form-item-weight']
+            ]
+        ];
 
         foreach ($row as $rowItemId => $rowItem) {
-            $row[$rowItemId]['#size'] = '0';
-
-            if (empty($row[$rowItemId]['#placeholder'])) {
+            if (isset($rowItem['#type']) && $rowItem['#type'] === 'textfield' && empty($row[$rowItemId]['#placeholder'])) {
                 $row[$rowItemId]['#placeholder'] = $rowItem['#title'];
             }
         }
@@ -146,7 +171,7 @@ class DrupSocialLinksForm extends ConfigFormBase {
      * {@inheritdoc}
      */
     public function submitForm(array &$form, FormStateInterface $form_state) {
-        $config = $this->config(DrupSocialLinks::getConfigName());
+        $config = DrupSocialLinks::getConfig();
         $links = $form_state->getValue('drup_social_links');
         $saveLinks = [];
 
