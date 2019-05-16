@@ -62,7 +62,7 @@ function drup_theme_preprocess_page(array &$variables) {
             $path = ($nodesRedirection[$nodeType] === '<front>') ? Url::fromRoute($nodesRedirection[$nodeType])->toString() : $drupRouter->getPath($nodesRedirection[$nodeType]);
             $redirection = new RedirectResponse($path);
             $redirection->send();
-            return;
+            exit;
         }
         
     } elseif (\Drupal::request()->attributes->get('_route') === 'system.404') {

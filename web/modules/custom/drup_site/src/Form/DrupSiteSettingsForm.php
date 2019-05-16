@@ -115,7 +115,7 @@ class DrupSiteSettingsForm extends DrupSettingsForm {
                     $this->drupSettings->set($key, $value);
 
                     // Files
-                    if (in_array($this->formItemsData[$key]->type, ['managed_file'])) {
+                    if (!empty($value) && in_array($this->formItemsData[$key]->type, ['managed_file'])) {
                         DrupFile::setPermanent($value);
                     }
                 }

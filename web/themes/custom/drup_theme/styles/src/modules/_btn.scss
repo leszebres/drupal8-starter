@@ -64,7 +64,7 @@ button {
     }
 
     &.btn {
-        height: $btn--height;
+        min-height: $btn--height;
     }
 }
 
