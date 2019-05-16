@@ -37,6 +37,7 @@
         "drupal/entity_browser": "^2.0",
         "drupal/features": "3.x-dev",
         "drupal/field_group": "3.x-dev",
+        "drupal/gdpr": "^2.0",
         "drupal/geolocation": "2.x-dev",
         "drupal/imageapi_optimize_resmushit": "^1.0",
         "drupal/inline_entity_form": "1.x-dev",
