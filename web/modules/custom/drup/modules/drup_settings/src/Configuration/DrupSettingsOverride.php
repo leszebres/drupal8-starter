@@ -48,6 +48,7 @@ class DrupSettingsOverride implements ConfigFactoryOverrideInterface {
     
         if (in_array('system.site', $names)) {
             $drupSettings = new DrupSettings();
+
             $overrides['system.site'] = [
                 'name' => $drupSettings->getValue('site_name'),
                 'slogan' => $drupSettings->getValue('site_slogan')

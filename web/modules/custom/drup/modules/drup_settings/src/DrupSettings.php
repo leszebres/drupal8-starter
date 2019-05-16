@@ -2,23 +2,52 @@
 
 namespace Drupal\drup_settings;
 
+use Drupal\language\Config\LanguageConfigOverride;
+use Drupal\language\ConfigurableLanguageManager;
+
+
 /**
  * Class DrupSettings
- * Retourne des variables prefixées par la langue courante
  *
  * @package Drupal\drup_settings
  */
 class DrupSettings {
 
     /**
+     * Nom de la configuration
+     *
      * @var string
      */
-    public $languageId;
+    protected static $configName = 'drup.settings';
 
     /**
-     * @var \Drupal\Core\Config\Config
+     * @var string
      */
-    public $config;
+    protected static $languageNeutral = 'und';
+
+    /**
+     * @var ConfigurableLanguageManager
+     */
+    protected $languageManager;
+
+    /**
+     * @var string
+     */
+    protected $languageId;
+
+    /**
+     * @var LanguageConfigOverride
+     */
+    protected $config;
+
+    /**
+     * Retourne le nom de la configuration
+     *
+     * @return string
+     */
+    public static function getConfigName() {
+        return self::$configName;
+    }
 
     /**
      * DrupSettings constructor.
@@ -26,63 +55,90 @@ class DrupSettings {
      * @param null $languageId
      */
     public function __construct($languageId = null) {
+        $this->languageManager = \Drupal::languageManager();
         $this->setLanguage($languageId);
-        $this->config = \Drupal::service('config.factory')->getEditable('system.site');
     }
 
     /**
+     * Applique la config selon la langue courante
+     */
+    protected function setConfig() {
+        $config = $this->languageManager->getLanguageConfigOverride($this->languageId, self::getConfigName());
+
+        if ($config instanceof LanguageConfigOverride) {
+            $this->config = $config;
+        }
+    }
+
+    /**
+     * Retourne la configuration de DrupSettings contextualisée par la langue courante
+     *
+     * @return bool|LanguageConfigOverride
+     */
+    protected function getConfig() {
+        return $this->config;
+    }
+
+
+    /**
+     * Applique une langue
+     *
      * @param null $languageId
      */
     public function setLanguage($languageId = null) {
         if ($languageId === null) {
-            $languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
+            $languageId = $this->languageManager->getCurrentLanguage()->getId();
         }
-
         $this->languageId = $languageId;
+        $this->setConfig();
     }
 
     /**
-     *
+     * Applique une langue à la configuration
      */
     public function setNeutralLang() {
-        $this->languageId = 'und';
+        $this->setLanguage(self::$languageNeutral);
     }
 
     /**
-     * Return prefixed variable name
+     * Formatte le nom d'une config
+     *
      * @param $variable
      *
-     * @return string
+     * @return mixed
      */
     public function getName($variable) {
-        return $this->languageId . '_' . $variable;
+        return $variable;
     }
 
     /**
-     * Return prefixed variable value
+     * Récupère la valeur d'une config
+     *
      * @param $variable
      *
      * @return mixed
      */
     public function getValue($variable) {
-        return $this->config->get($this->getName($variable));
+        return $this->getConfig()->get($this->getName($variable));
     }
 
     /**
-     * Recherche dans la config toutes les variables commençant par un pattern
-     * @param $search
-     * @param bool $trimKeys
+     * Recherche dans la config toutes les variables commençant par un motif
+     *
+     * @param string $search  Motif à cherche (exemple : contact)
+     * @param bool $trimSearch Enlève la valeur de $search des indexes du tableau de résultats (ex : contact_phone => phone)
      *
      * @return array
      */
-    public function searchValues($search, $trimKeys = true) {
+    public function searchValues($search, $trimSearch = true) {
         $values = [];
         $searchValue = $this->getName($search);
 
-        foreach ($this->config->get() as $key => $value) {
-            if (strpos($key, $searchValue) !== false) {
-                if ($trimKeys === true) {
+        foreach ($this->getConfig()->get() as $key => $value) {
+            if (strpos($key, $searchValue) === 0) {
+                if ($trimSearch === true) {
                     $key = str_replace($searchValue, '', $key);
+                    $key = trim($key, '_');
                 }
                 $values[$key] = $value;
             }
@@ -97,7 +153,7 @@ class DrupSettings {
      * @param $value
      */
     public function set($variable, $value) {
-        $this->config->set($this->getName($variable), $value);
+        $this->getConfig()->set($this->getName($variable), $value);
         $this->save();
     }
 

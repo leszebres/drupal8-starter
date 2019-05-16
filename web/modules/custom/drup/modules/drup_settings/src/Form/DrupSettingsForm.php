@@ -4,7 +4,6 @@ namespace Drupal\drup_settings\Form;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Form\ConfigFormBase;
-use Drupal\drup\DrupSite;
 use Drupal\drup_settings\DrupSettings;
 use Drupal\drup_social_links\DrupSocialLinks;
 use Drupal\user\Entity\User;
@@ -42,7 +41,7 @@ class DrupSettingsForm extends ConfigFormBase {
      * {@inheritdoc}
      */
     protected function getEditableConfigNames() {
-        return ['system.site'];
+        return [DrupSettings::getConfigName()];
     }
 
     /**
