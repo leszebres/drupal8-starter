@@ -5,7 +5,7 @@
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "Les zèbres",
+            "name": "Les Zèbres",
             "role": ""
         }
     ],
@@ -17,6 +17,10 @@
         {
             "type": "git",
             "url": "https://github.com/leszebres/swiftmailer"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/leszebres/drup"
         }
     ],
     "require": {
@@ -65,6 +69,7 @@
         "drupal/weight": "3.x-dev",
         "drush/drush": "^9.0.0",
         "leszebres/swiftmailer": "*",
+        "leszebres/drup": "3.*",
         "tijsverkoyen/css-to-inline-styles": "^2.2",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",

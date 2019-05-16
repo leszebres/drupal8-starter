@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "555d618f5050b795af990e21ed1e946e",
+    "content-hash": "ee638c704087570b05fef01eb0783b5a",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -4992,7 +4992,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/simple_sitemap.git",
-                "reference": "48cb53282f2866ff0d0dc67f7228a5dc8f97f42f"
+                "reference": "1a6ceaeb6154d89163f13376134a773d334d9bef"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -5004,8 +5004,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.1+14-dev",
-                    "datestamp": "1557326889",
+                    "version": "8.x-3.1+15-dev",
+                    "datestamp": "1557328385",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -5040,7 +5040,7 @@
                 "issues": "https://drupal.org/project/issues/simple_sitemap",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2019-05-08T15:09:26+00:00"
+            "time": "2019-05-16T15:41:58+00:00"
         },
         {
             "name": "drupal/sitemap",
@@ -6401,6 +6401,46 @@
                 "service"
             ],
             "time": "2017-05-10T09:20:27+00:00"
+        },
+        {
+            "name": "leszebres/drup",
+            "version": "3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leszebres/drup",
+                "reference": "07ebf5adfa6511e616ff6dd0beaec7e10fbdaf11"
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "drupal-module",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Les Zèbres",
+                    "homepage": "https://github.com/leszebres"
+                },
+                {
+                    "name": "Kévin Baubet",
+                    "homepage": "https://github.com/kevinbaubet",
+                    "role": "Creator, Maintainer"
+                },
+                {
+                    "name": "Mathieu Maingret",
+                    "homepage": "https://github.com/mathieumaingret",
+                    "role": "Creator, Maintainer"
+                }
+            ],
+            "homepage": "https://github.com/leszebres/drup",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "issues": "https://github.com/leszebres/drup/issues"
+            },
+            "time": "2019-05-16T15:39:31+00:00"
         },
         {
             "name": "leszebres/swiftmailer",

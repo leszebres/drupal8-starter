@@ -1,5 +1,0 @@
-drup_router.admin_form:
-  title: 'Drup Router'
-  description: 'Routes management'
-  parent: drup.admin_list
-  route_name: 'drup_router.admin_form'

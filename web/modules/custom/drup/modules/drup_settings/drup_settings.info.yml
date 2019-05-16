@@ -1,5 +1,0 @@
-name: 'Drup Settings'
-type: module
-description: 'Add basic settings to Site Information admin page'
-core: 8.x
-package: 'Drup'
