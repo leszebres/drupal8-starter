@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\drup\Plugin\WebformHandler;
+namespace Drupal\drup_site\Plugin\WebformHandler;
 
 use Drupal\webform\Plugin\WebformHandler\EmailWebformHandler;
 use Drupal\webform\WebformSubmissionInterface;

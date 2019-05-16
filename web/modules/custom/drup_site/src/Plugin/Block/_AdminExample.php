@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\drup_blocks\Plugin\Block;
+namespace Drupal\drup_site\Plugin\Block;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\drup\Block\DrupBlockAdminBase;
