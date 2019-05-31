@@ -18,6 +18,9 @@ msgstr "En poursuivant votre navigation sur ce site, vous acceptez l'utilisation
 msgid "I understand"
 msgstr "J'ai compris"
 
+msgid "This website is not optimised for the version of your browser that you are using."
+msgstr "Ce site Internet n'est pas optimisé pour la version de votre navigateur."
+
 msgid "You may have followed a broken link, or tried to view a page that no longer exists."
 msgstr "Vous avez peut-être suivi un mauvais lien, ou essayé d'afficher une page qui n'existe plus."
 

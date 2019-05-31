@@ -84,7 +84,7 @@ var Theme = {};
             self.deviceDetect.onOldBrowser(function () {
                 $('<div>', {
                     'class': 'notice notice--browser',
-                    html: Drupal.t('This website is not optimized for your browser version.')
+                    html: Drupal.t('This website is not optimised for the version of your browser that you are using.')
                 }).appendTo(self.elements.body);
             });
         },
