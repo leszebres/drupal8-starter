@@ -10,29 +10,29 @@ function drup_site_preprocess_menu(&$variables) {
 
     // Unset untranslated menu items
     if (isset($variables['menu_name']) && in_array($variables['menu_name'], ['main', 'secondary', 'footer'])) {
-        $variables['items'] = DrupMenu::checkMenuItemTranslation($variables['items'], $languageId);
+        $variables['items'] = DrupMenu::translate($variables['items'], $languageId);
     }
 }
 
 /**
  * Overrides menu toolbar
+ *
  * @param $links
  */
 function drup_site_menu_links_discovered_alter(&$links) {
-
     // Debug :
     // See table "router" to find route name for admin path
     // ex : /admin/people/permissions <=> user.admin_permissions
 
     // Mediatheque dans "Contenus"
-    $links['drup_admin_toolbar.list_medias'] = [
-        'title' => t('Mediatheque'),
-        'route_name' => 'entity.media.collection',
-        'menu_name' => 'admin',
-        'parent' => 'system.admin_content',
-    ];
+    if (isset($links['admin_toolbar_tools.media_page'])) {
+        $links['admin_toolbar_tools.media_page']['title'] = t('Mediatheque');
+    }
+
     // Suppresion de "Fichiers"
-    unset($links['admin_toolbar_tools.view.files']);
+    if (isset($links['admin_toolbar_tools.view.files'])) {
+        unset($links['admin_toolbar_tools.view.files']);
+    }
 
     // Move DrupSettings in top level
     $links['drup_admin_toolbar.drup_settings'] = [
