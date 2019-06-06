@@ -2,7 +2,7 @@ langcode: fr
 status: true
 dependencies: {  }
 id: front
-label: 'Front page'
+label: 'Page d''accueil'
 tags:
   shortlink: '[site:url]'
   title: '[seo:meta:front:title]'

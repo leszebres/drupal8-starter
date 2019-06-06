@@ -30,13 +30,18 @@ class DrupSiteSettingsForm extends DrupSettingsForm {
             '#type' => 'details',
             '#title' => $this->t('Coordonnées'),
             '#collapsible' => true,
-            '#collapsed' => true,
+            '#collapsed' => true
         ];
 
         $form[$this->formContainer]['contact']['contact_infos'] = [
             '#type' => 'details',
             '#title' => $this->t('Informations de contact'),
-            '#open' => true,
+            '#open' => true
+        ];
+        $form[$this->formContainer]['contact']['contact_infos']['contact_infos_company'] = [
+            '#type' => 'textfield',
+            '#title' => $this->t('Company'),
+            '#drup_context' => 'und'
         ];
         $form[$this->formContainer]['contact']['contact_infos']['contact_infos_phone_number'] = [
             '#type' => 'textfield',
@@ -115,7 +120,7 @@ class DrupSiteSettingsForm extends DrupSettingsForm {
                     $this->drupSettings->set($key, $value);
 
                     // Files
-                    if (!empty($value) && in_array($this->formItemsData[$key]->type, ['managed_file'])) {
+                    if (!empty($value) && $this->formItemsData[$key]->type === 'managed_file') {
                         DrupFile::setPermanent($value);
                     }
                 }

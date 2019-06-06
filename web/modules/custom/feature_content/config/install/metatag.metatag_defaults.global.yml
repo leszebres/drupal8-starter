@@ -12,3 +12,22 @@ tags:
   twitter_cards_page_url: '[current-page:url]'
   twitter_cards_type: summary
   twitter_cards_title: '[seo:meta:title]'
+  schema_organization_logo: 'a:4:{s:5:"@type";s:11:"ImageObject";s:3:"url";s:14:"[seo:logo:url]";s:5:"width";s:16:"[seo:logo:width]";s:6:"height";s:17:"[seo:logo:height]";}'
+  schema_organization_id: organization
+  schema_organization_url: '[site:url]'
+  schema_organization_same_as: '[seo:socialnetworks:link:url:comma]'
+  schema_organization_name: '[contact:company]'
+  schema_organization_type: Corporation
+  schema_organization_telephone: '[seo:contact:phone:internationalized]'
+  schema_organization_contact_point: 'a:5:{s:5:"@type";s:12:"ContactPoint";s:9:"telephone";s:37:"[seo:contact:phone:internationalized]";s:17:"availableLanguage";s:35:"[seo:language:available:name:comma]";s:11:"contactType";s:16:"customer service";s:10:"areaServed";a:2:{s:5:"@type";s:5:"Place";s:7:"address";a:5:{s:5:"@type";s:13:"PostalAddress";s:13:"streetAddress";s:21:"[seo:contact:address]";s:15:"addressLocality";s:18:"[seo:contact:city]";s:10:"postalCode";s:21:"[seo:contact:zipcode]";s:14:"addressCountry";s:21:"[seo:contact:country]";}}}'
+  schema_web_page_is_accessible_for_free: 'True'
+  schema_web_page_publisher: 'a:2:{s:5:"@type";s:12:"Organization";s:3:"@id";s:12:"organization";}'
+  schema_web_page_type: WebPage
+  schema_web_page_breadcrumb: 'Yes'
+  schema_web_page_description: '[seo:meta:desc]'
+  schema_web_page_id: '[current-page:url]'
+  schema_web_site_url: '[site:url]'
+  schema_web_site_publisher: 'a:2:{s:5:"@type";s:12:"Organization";s:3:"@id";s:12:"organization";}'
+  schema_web_site_type: WebSite
+  schema_web_site_id: '[site:url]'
+  schema_web_site_name: '[site:name]'
