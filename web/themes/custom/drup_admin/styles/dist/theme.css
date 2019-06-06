@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * User Role
  */
@@ -38,3 +39,34 @@ body.is-drup-block-admin {
   body.is-drup-block-admin #edit-block-region-wrapper,
   body.is-drup-block-admin #edit-actions .button--danger {
     display: none; }
+
+/* ==========================================================================
+   Mediathèque
+   ========================================================================== */
+.form-wrapper.field--widget-entity-browser-entity-reference .seven-details__description {
+  margin-bottom: 12px; }
+
+.form-wrapper.field--widget-entity-browser-entity-reference .entities-list .rendered-entity {
+  width: 19.66%;
+  margin: 0 0 4px;
+  vertical-align: bottom; }
+  .form-wrapper.field--widget-entity-browser-entity-reference .entities-list .rendered-entity .media--type-image img {
+    display: block;
+    max-width: 100%; }
+  .form-wrapper.field--widget-entity-browser-entity-reference .entities-list .rendered-entity .media--type-image ~ .button {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    background: rgba(0, 0, 0, 0.5);
+    border-color: #555;
+    color: #fff;
+    font-size: 1em;
+    font-weight: normal; }
+    .form-wrapper.field--widget-entity-browser-entity-reference .entities-list .rendered-entity .media--type-image ~ .button:hover {
+      background: #000; }
+    .form-wrapper.field--widget-entity-browser-entity-reference .entities-list .rendered-entity .media--type-image ~ .button + .button {
+      top: auto;
+      left: auto;
+      right: 0;
+      bottom: 29px; }
