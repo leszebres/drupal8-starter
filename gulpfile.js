@@ -64,13 +64,17 @@ function fonticon(pumpCallback) {
 // Compression images
 function images(pumpCallback) {
     return plugins.pump([
-        plugins.gulp.src(packagejson.paths.theme + '/' + packagejson.paths.images + '/**/*.{png,jpg}'),
+        plugins.gulp.src([packagejson.paths.theme + '/' + packagejson.paths.images + '/**/*.{png,jpg,svg}', '!' + packagejson.paths.theme + '/' + packagejson.paths.images + '/svg-sprites/*']),
         plugins.imagemin({
             progressive: true,
             interlaced: true,
             optimizationLevel: 7,
             verbose: true,
-            use: []
+            use: [],
+            svgoPlugins: [
+                {removeViewBox: false},
+                {cleanupIDs: false}
+            ]
         }),
         plugins.gulp.dest(packagejson.paths.theme + '/' + packagejson.paths.images)
     ], pumpCallback);
