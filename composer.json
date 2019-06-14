@@ -30,7 +30,7 @@
         "drupal-composer/drupal-scaffold": "^2.5",
         "drupal/admin_toolbar": "1.x-dev",
         "drupal/adminimal_theme": "1.x-dev",
-        "drupal/advagg": "^3.5",
+        "drupal/advagg": "^4.0",
         "drupal/better_exposed_filters": "3.x-dev",
         "drupal/claro": "1.x-dev",
         "drupal/console": "^1.0.2",
