@@ -43,9 +43,9 @@
     jquery ">=1.7.0"
 
 "@kevinbaubet/togglemenu@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@kevinbaubet/togglemenu/-/togglemenu-3.0.0.tgz#452ff167bcd9fb4da1f2ccccd0acb8d91d136970"
-  integrity sha512-td+4fuUU/kH6Mkg9VfUiHNV/G3CrgW9mJVVwOI6c+p5vwdkLsRRQzkNPbkh3M9Yyq8CBHBl/S69W8y2OhyEwIw==
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@kevinbaubet/togglemenu/-/togglemenu-3.0.1.tgz#93a7c615f74109f0f06a7049acf1e909984eb813"
+  integrity sha512-dQsAk3LHadWWRM12zfbzUg5UgguAAiwEWVTnPJDZV0947xOXWJcks8EXclLD+nsLGzw7usXKo9CU6p3UL9xC9A==
   dependencies:
     jquery ">=1.7.0"
 
