@@ -7,99 +7,87 @@ Commande : gulp fonticon
 */
 
 /* ==========================================================================
-   Font
-   ========================================================================== */
+Font
+========================================================================== */
 @font-face {
-    font-family: Icons;
-    font-weight: normal;
-    font-style: normal;
-    src: url("../../fonts/icons.woff2?v=1557158379") format("woff2"),
-         url("../../fonts/icons.woff?v=1557158379") format("woff");
+font-family: "icons-1560690707";
+font-weight: normal;
+font-style: normal;
+src: url("../../fonts/icons-1560690707.woff2?v=1560690707") format("woff2"),
+url("../../fonts/icons-1560690707.woff?v=1560690707") format("woff");
+}
+
+@function font-icon-name() {
+@return "icons-1560690707";
 }
 
 /*
-.icon--angle-left - \EA01
-.icon--angle-right - \EA02
-.icon--check-circle - \EA03
-.icon--check - \EA04
-.icon--cross-circle - \EA05
-.icon--edit - \EA06
-.icon--error - \EA07
-.icon--facebook-messenger - \EA08
-.icon--facebook-square - \EA09
-.icon--facebook - \EA0A
-.icon--linkedin-square - \EA0B
-.icon--linkedin - \EA0C
-.icon--minus - \EA0D
-.icon--plus - \EA0E
-.icon--search - \EA0F
-.icon--twitter-square - \EA10
-.icon--twitter - \EA11
-.icon--warning - \EA12
-.icon--youtube-square - \EA13
-.icon--youtube - \EA14
+    .icon--angle-left - \EA01
+    .icon--angle-right - \EA02
+    .icon--arrow-bottom - \EA03
+    .icon--arrow-long-left - \EA04
+    .icon--arrow-long-right - \EA05
+    .icon--check - \EA06
+    .icon--close - \EA07
+    .icon--edit - \EA08
+    .icon--error - \EA09
+    .icon--facebook - \EA0A
+    .icon--instagram - \EA0B
+    .icon--minus - \EA0C
+    .icon--plus - \EA0D
+    .icon--twitter - \EA0E
+    .icon--warning - \EA0F
+    .icon--youtube - \EA10
 
 Markup: <span class="icon $modifierClass"></span>
 
 Styleguide Icons - 1.icon
 */
-.icon--angle-left:before {
+    .icon--angle-left:before {
     content: "\EA01";
-}
-.icon--angle-right:before {
+    }
+    .icon--angle-right:before {
     content: "\EA02";
-}
-.icon--check-circle:before {
+    }
+    .icon--arrow-bottom:before {
     content: "\EA03";
-}
-.icon--check:before {
+    }
+    .icon--arrow-long-left:before {
     content: "\EA04";
-}
-.icon--cross-circle:before {
+    }
+    .icon--arrow-long-right:before {
     content: "\EA05";
-}
-.icon--edit:before {
+    }
+    .icon--check:before {
     content: "\EA06";
-}
-.icon--error:before {
+    }
+    .icon--close:before {
     content: "\EA07";
-}
-.icon--facebook-messenger:before {
+    }
+    .icon--edit:before {
     content: "\EA08";
-}
-.icon--facebook-square:before {
+    }
+    .icon--error:before {
     content: "\EA09";
-}
-.icon--facebook:before {
+    }
+    .icon--facebook:before {
     content: "\EA0A";
-}
-.icon--linkedin-square:before {
+    }
+    .icon--instagram:before {
     content: "\EA0B";
-}
-.icon--linkedin:before {
+    }
+    .icon--minus:before {
     content: "\EA0C";
-}
-.icon--minus:before {
+    }
+    .icon--plus:before {
     content: "\EA0D";
-}
-.icon--plus:before {
+    }
+    .icon--twitter:before {
     content: "\EA0E";
-}
-.icon--search:before {
+    }
+    .icon--warning:before {
     content: "\EA0F";
-}
-.icon--twitter-square:before {
+    }
+    .icon--youtube:before {
     content: "\EA10";
-}
-.icon--twitter:before {
-    content: "\EA11";
-}
-.icon--warning:before {
-    content: "\EA12";
-}
-.icon--youtube-square:before {
-    content: "\EA13";
-}
-.icon--youtube:before {
-    content: "\EA14";
-}
+    }

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "autoprefixer": {
-    "browsers": [
+    "`overrideBrowserslist`": [
       "last 1 versions",
       "IE 11"
     ]
@@ -25,19 +25,19 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^9.5.1",
-    "gulp": "^4.0.1",
+    "autoprefixer": "^9.6.0",
+    "gulp": "^4.0.2",
     "gulp-consolidate": "^0.2.0",
     "gulp-iconfont": "^10.0.2",
     "gulp-imagemin": "^5.0.3",
-    "gulp-load-plugins": "^1.5.0",
+    "gulp-load-plugins": "^1.6.0",
     "gulp-pixrem": "^1.0.0",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "postcss-pxtorem": "^4.0.1",
     "pump": "^3.0.0",
-    "twig": "^1.13.2"
+    "twig": "^1.13.3"
   },
   "dependencies": {
     "gettext-parser": "^4.0.0",

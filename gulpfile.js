@@ -36,7 +36,7 @@ function fonticon(pumpCallback) {
     return plugins.pump([
         plugins.gulp.src(packagejson.paths.theme + '/' + packagejson.paths.fonts + '/icons/*.svg'),
         plugins.iconfont({
-            fontName: 'Icons',
+            fontName: 'icons' + '-' + timestamp,
             formats: ['woff', 'woff2', 'svg'],
             timestamp: timestamp,
             log: function() {}

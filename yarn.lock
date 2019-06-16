@@ -297,7 +297,7 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-autoprefixer@^9.5.1:
+autoprefixer@^9.6.0:
   version "9.6.0"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.6.0.tgz#0111c6bde2ad20c6f17995a33fad7cf6854b4c87"
   integrity sha512-kuip9YilBqhirhHEGHaBTZKXL//xxGnzvsD0FtBQa6z+A69qZD6s/BAX9VzDF1i9VKDquTJDQaPLSEhOnL6FvQ==
@@ -1289,9 +1289,9 @@ ecc-jsbn@~0.1.1:
     safer-buffer "^2.1.0"
 
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.150:
-  version "1.3.159"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.159.tgz#4292643c5cb77678821ce01557ba6dd0f562db5e"
-  integrity sha512-bhiEr8/A97GUBcUzNb9MFNhzQOjakbKmEKBEAa6UMY45zG2e8PM63LOgAPXEJE9bQiaQH6nOdYiYf8X821tZjQ==
+  version "1.3.162"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.162.tgz#e006e3a2aeebaf942064a16b24c6dfc864510de1"
+  integrity sha512-/cCwFlLV0lImvAfNsJpEVIZFhJBoutb7L0AHd56K4h8McUqpdkbBvAbMnY/mfNKnCqkX6GZVvQc+BVod4t2EMw==
 
 encoding@^0.1.12:
   version "0.1.12"
@@ -2088,7 +2088,7 @@ gulp-imagemin@^5.0.3:
     imagemin-optipng "^6.0.0"
     imagemin-svgo "^7.0.0"
 
-gulp-load-plugins@^1.5.0:
+gulp-load-plugins@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/gulp-load-plugins/-/gulp-load-plugins-1.6.0.tgz#2d060c42faf481141ef638431572923d8701bd0d"
   integrity sha512-HlCODki0WHJvQIgAsJYOTkyo0c7TsDCetvfhrdGz9JYPL6A4mFRMGmKfoi6JmXjA/vvzg+fkT91c9FBh7rnkyg==
@@ -2229,7 +2229,7 @@ gulp-util@^3.0.6, gulp-util@^3.0.7, gulp-util@~3.0.6:
     through2 "^2.0.0"
     vinyl "^0.5.0"
 
-gulp@^4.0.1:
+gulp@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/gulp/-/gulp-4.0.2.tgz#543651070fd0f6ab0a0650c6a3e6ff5a7cb09caa"
   integrity sha512-dvEs27SCZt2ibF29xYgmnwwCYZxdxhQ/+LFWlbAW8y7jt68L/65402Lz3+CKy0Ov4rOs+NERmDq7YlZaDqUIfA==
@@ -5095,7 +5095,7 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
   integrity sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
 
-twig@^1.13.2:
+twig@^1.13.3:
   version "1.13.3"
   resolved "https://registry.yarnpkg.com/twig/-/twig-1.13.3.tgz#895fe341beb6a3f53051318b90a40e0ab0e28fe9"
   integrity sha512-Kjart2102Kf0IdsEmLonSJKcByU7o9uiJhBde3GhrNHrX4XenT5WSKu4Hpkx+rF6Kyppeyd48BKsCREIOPXd/g==
