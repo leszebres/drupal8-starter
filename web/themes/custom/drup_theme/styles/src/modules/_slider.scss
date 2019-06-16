@@ -16,6 +16,57 @@
     }
 }
 
+.owl-carousel {
+    .owl-dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: $v-align--medium auto;
+
+        .owl-dot {
+            span { $s: 10px;
+                display: block;
+                width: $s;
+                height: $s;
+                margin: $s/2 $s;
+                border-radius: 50%;
+                background-color: $color--primary;
+                transform: scale(1);
+                transition: .2s;
+            }
+
+            &.active {
+                span {
+                    transform: scale(1.4);
+                }
+            }
+        }
+    }
+    .owl-nav {
+        button.owl-prev,
+        button.owl-next {
+            @include make-circle(2em, #fff, $color--primary, 24px);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: .2s;
+
+            &:hover,
+            &:focus {
+            }
+        }
+    }
+
+    .owl-prev {
+        left: $grid--gutter-width;
+    }
+    .owl-next {
+        right: $grid--gutter-width;
+    }
+}
+
+
+
 /*
 Slider HP
 

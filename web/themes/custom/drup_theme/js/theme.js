@@ -2,6 +2,7 @@ var Theme = {};
 
 (function ($, Drupal, drupalSettings) {
     'use strict';
+
     Drupal.Theme = {};
 
     /**
@@ -12,8 +13,9 @@ var Theme = {};
         this.elements = {
             htmlBody: $('html, body'),
             body: $('body'),
-            cookieNotice: $('#cookie-notice'),
-            page: $('#page')
+            page: $('#page'),
+            content: $('#content'),
+            cookieNotice: $('#cookie-notice')
         };
         this.elements.externalLinks = this.elements.page.find('a[href^="http"]');
         this.elements.openInNewWindowLinks = this.elements.page.find('a[href$=".pdf"]');
@@ -232,6 +234,7 @@ var Theme = {};
                 Drupal.Theme.load('all').init();
 
                 Drupal.Theme.autoload({
+                    front: '.is-front'
                     //contact: '.route--contact'
                 });
             }

@@ -18,21 +18,17 @@
     ol:not([class]) {
         ul,
         ol {
-            margin: 15px 0 15px 20px;
+            margin: 15px 0 15px $grid--gutter-inner-width;
         }
         li {
             position: relative;
-            padding-left: 25px;
+            padding-left: $grid--gutter-inner-width;
             margin-bottom: .5em;
 
             &:before {
                 position: absolute;
-                top: $fontsize--default/2 - 1px;
                 left: 0;
-                line-height: $fontsize--default;
                 color: $color--primary;
-                font-size: .8em;
-                font-weight: bold;
             }
         }
     }
@@ -42,9 +38,13 @@
         li {
             list-style: none;
 
-            &:before {
-                content: "■";
-                margin-top: -2px;
+            &:before { $s: 6px;
+                content: "";
+                top: 10px;
+                width: $s;
+                height: $s;
+                border-radius: 50%;
+                background-color: $color--primary;
             }
         }
     }
@@ -61,8 +61,14 @@
         }
     }
 
-    .btn {
-        margin: 0 $grid--gutter-inner-width/2 $grid--gutter-inner-width/2 0;
+    /* Medias
+       ========================================================================== */
+    .item-media {
+        position: relative;
+
+        a {
+            position: relative;
+        }
     }
 }
 
@@ -82,7 +88,23 @@
     h3,
     h4 {
         &:not(:first-child) {
-            margin-top: $v-align*0.75;
+            //margin-top: floor($v-align*0.75);
+            margin-top: $v-align;
         }
+    }
+
+    .btn {
+        margin: 0;
+
+        + .btn {
+            margin-left: $grid--gutter-inner-width/2;
+        }
+    }
+
+    /* Last element
+	  ========================================================================== */
+    > *:last-child,
+    > .inner > *:last-child {
+        margin-bottom: 0;
     }
 }

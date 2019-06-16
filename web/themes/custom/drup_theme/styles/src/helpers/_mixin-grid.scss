@@ -2,7 +2,7 @@
  * $center-v: start/center/end
  * $center-h: start/center/end/around/beween
  */
-@mixin grid-wrapper($gutter: $grid--gutter-width, $center-v: start, $center-h: start) {
+@mixin grid-wrapper($gutter: $grid--gutter-width, $center-v: null, $center-h: null) {
     display: flex;
     flex-wrap: wrap;
 
@@ -11,10 +11,10 @@
         margin-right: -$gutter/2;
     }
 
-    @if ($center-v != 'start') {
+    @if ($center-v != null) {
         align-items: $center-v;
     }
-    @if ($center-h != 'start') {
+    @if ($center-h != null) {
         justify-content: $center-h;
     }
 }

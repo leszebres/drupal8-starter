@@ -39,12 +39,12 @@ Styleguide Notices - 1.messages
 
     &:before {
         display: block;
-        width: 1.8em;
-        height: 1.8em;
+        width: 2em;
+        height: 2em;
         margin: 0 auto 1em;
-        line-height: 1.8em;
+        line-height: 2em;
         font-size: .8em;
-        border: .2em solid $color--text;
+        border: .25em solid $color--text;
         border-radius: 50%;
     }
 

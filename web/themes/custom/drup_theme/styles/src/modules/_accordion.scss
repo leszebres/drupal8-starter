@@ -1,0 +1,57 @@
+// Styleguide Accordéons
+
+.accordion {
+    list-style: none;
+}
+.accordion-item {
+
+    .item-toggle {
+        position: relative;
+        margin: 0;
+        padding: 20px ($grid--gutter-inner-width*2 + 15px) 20px $grid--gutter-inner-width;
+        color: $color--text-darker;
+        @include font(primary, bold);
+        background-color: $color--background;
+        cursor: pointer;
+        transition: .2s;
+
+        &:after {
+            @include font-icon(arrow-bottom);
+            position: absolute;
+            top: 50%;
+            right: $grid--gutter-inner-width;
+            transform: rotateY(0) translateY(-50%);
+            transform-origin: 50% 0;
+            color: $color--primary;
+            transition: .2s;
+        }
+    }
+    .item-content {
+        overflow: hidden;
+        padding: $v-align--medium $grid--gutter-inner-width;
+        background-color: $color--background-secondary;
+
+        table {
+            margin: 0;
+        }
+        p,
+        ul,
+        ol {
+            margin-bottom: $v-align--small;
+        }
+    }
+
+    /* States
+       ========================================================================== */
+    &.is-opened .item-toggle,
+    .item-toggle:hover {
+        color: $color--primary;
+    }
+    &.is-opened {
+        .item-toggle {
+            &:after {
+                transform: rotateX(180deg) translateY(-50%);
+            }
+        }
+    }
+}

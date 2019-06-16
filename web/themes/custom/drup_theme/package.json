@@ -10,10 +10,11 @@
     "@kevinbaubet/fixer": "^3.2.1",
     "@kevinbaubet/spinner": "^2.3.2",
     "@kevinbaubet/togglemenu": "^3.0.0",
+    "@mathieumaingret/responsive-table": "^1.0.3",
+    "@mathieumaingret/smap": "^1.0.0",
     "imagesloaded": "4.*",
     "leaflet": "1.4.*",
     "masonry-layout": "4.*",
-    "owl.carousel": "2.*",
-    "responsive-table": "git://github.com/mathieumaingret/responsive-table#1.0.2"
+    "owl.carousel": "2.*"
   }
 }

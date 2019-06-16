@@ -49,6 +49,23 @@
   dependencies:
     jquery ">=1.7.0"
 
+"@mathieumaingret/responsive-table@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@mathieumaingret/responsive-table/-/responsive-table-1.0.3.tgz#c9b55d781752aa9c6993698a060cc44754095e1d"
+  integrity sha512-Ewg6kbLHfqamdWp04+oJGzK84DGApW9Bj7VOreydpdJNsSOLWiGEFqd7dtRo4D8koCZjeWwb+R2Mbs6BEwXjGw==
+  dependencies:
+    jquery ">=1.7.0"
+
+"@mathieumaingret/smap@^1.0.0":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@mathieumaingret/smap/-/smap-1.0.3.tgz#424604f47af259e995e5ed0453b38ce96cb6a7c1"
+  integrity sha512-c+IayXf9p+A0qwYvq4yaXYxsyAGI5gvYNmWuXYQEGPtNJAbkAgRkxjkOF5oJF8K6N5D/xS0wIOtkPHmYfwmQkg==
+  dependencies:
+    jquery ">=3.3.0"
+    leaflet "1.5.1"
+    leaflet-gesture-handling "^1.1.8"
+    leaflet.markercluster "^1.4.1"
+
 desandro-matches-selector@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/desandro-matches-selector/-/desandro-matches-selector-2.0.2.tgz#717beed4dc13e7d8f3762f707a6d58a6774218e1"
@@ -78,15 +95,30 @@ imagesloaded@4.*:
   dependencies:
     ev-emitter "^1.0.0"
 
-jquery@>=1.7.0, jquery@>=1.8.3:
+jquery@>=1.7.0, jquery@>=1.8.3, jquery@>=3.3.0:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
   integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==
+
+leaflet-gesture-handling@^1.1.8:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/leaflet-gesture-handling/-/leaflet-gesture-handling-1.1.8.tgz#6c0cc434604f514183f69dc98c8d8411b91c7733"
+  integrity sha512-QnKNAqZxaO4nzCsHA9l/vPazF15TILkSaYNoDqMtiVXrsWMWh6fWD4phRuftPC+kvY9OBzVKuTfKlLdhZ/2oIg==
+
+leaflet.markercluster@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/leaflet.markercluster/-/leaflet.markercluster-1.4.1.tgz#b53f2c4f2ca7306ddab1dbb6f1861d5e8aa6c5e5"
+  integrity sha512-ZSEpE/EFApR0bJ1w/dUGwTSUvWlpalKqIzkaYdYB7jaftQA/Y2Jav+eT4CMtEYFj+ZK4mswP13Q2acnPBnhGOw==
 
 leaflet@1.4.*:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.4.0.tgz#d5f56eeb2aa32787c24011e8be4c77e362ae171b"
   integrity sha512-x9j9tGY1+PDLN9pcWTx9/y6C5nezoTMB8BLK5jTakx+H7bPlnbCHfi9Hjg+Qt36sgDz/cb9lrSpNQXmk45Tvhw==
+
+leaflet@1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.5.1.tgz#9afb9d963d66c870066b1342e7a06f92840f46bf"
+  integrity sha512-ekM9KAeG99tYisNBg0IzEywAlp0hYI5XRipsqRXyRTeuU8jcuntilpp+eFf5gaE0xubc9RuSNIVtByEKwqFV0w==
 
 masonry-layout@4.*:
   version "4.2.2"
@@ -111,9 +143,3 @@ owl.carousel@2.*:
   integrity sha512-JaDss9+feAvEW8KZppPSpllfposEzQiW+Ytt/Xm5t/3CTJ7YVmkh6RkWixoA2yXk2boIwedYxOvrrppIGzru9A==
   dependencies:
     jquery ">=1.8.3"
-
-"responsive-table@git://github.com/mathieumaingret/responsive-table#1.0.2":
-  version "1.0.2"
-  resolved "git://github.com/mathieumaingret/responsive-table#2952f9d82ec0e00b0561b7d4ba6cba4cbac751e4"
-  dependencies:
-    jquery ">=1.7.0"

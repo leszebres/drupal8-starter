@@ -74,21 +74,6 @@ $title--lineheight: 1.2;
 
 
 /* ==========================================================================
-   RESPONSIVE
-   ========================================================================== */
-$breakpoints: (
-    "screen": 1279px,
-    "screen-small": 1139px,
-    "tablet": 1023px,
-    "smartphone": 767px,
-    "smartphone-small": 499px
-);
-
-$row--normal: map_get($breakpoints, "screen") + 1px;
-$row--small: map_get($breakpoints, "screen-small") + 1px;
-
-
-/* ==========================================================================
    GRID
    ========================================================================== */
 $grid--columns-nb: 12;
@@ -105,6 +90,21 @@ $v-align--big: $v-align*1.5;
 
 $padding--vertical: 15px;
 $padding--horizontal: 32px;
+
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+$breakpoints: (
+    "screen": 1279px,
+    "screen-small": 1139px,
+    "tablet": 1023px,
+    "smartphone": 767px,
+    "smartphone-small": 499px
+);
+
+$row--normal: map_get($breakpoints, "screen") + 1px;
+$row--small: map_get($breakpoints, "screen-small") + 1px;
 
 
 /* ==========================================================================

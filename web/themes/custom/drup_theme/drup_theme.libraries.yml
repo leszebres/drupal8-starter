@@ -24,15 +24,16 @@ masonry:
   - core/jquery
   - drup_theme/imagesloaded
 
-leaflet:
-  version: '1.4.0'
+owl-carousel:
+  version: '2.3.4'
   js:
-    node_modules/leaflet/dist/leaflet.js: {}
+    node_modules/owl.carousel/dist/owl.carousel.min.js: {}
   css:
     theme:
-      node_modules/leaflet/dist/leaflet.css: {}
+      node_modules/owl.carousel/dist/assets/owl.carousel.min.css: {}
   dependencies:
-  - core/jquery
+    - core/jquery
+
 
 # CUSTOM
 togglemenu:
@@ -84,10 +85,26 @@ devicedetect:
 responsivetable:
   version: '1.0.2'
   js:
-   node_modules/responsive-table/dist/responsive-table.min.js: {}
+    node_modules/@mathieumaingret/responsive-table/dist/responsive-table.min.js: {}
   dependencies:
-  - core/jquery
-  - drup_theme/devicedetect
+    - core/jquery
+    - drup_theme/devicedetect
+
+smap:
+  verson: '1.0.0'
+  css:
+    theme:
+      node_modules/@mathieumaingret/smap/node_modules/leaflet/dist/leaflet.css: {}
+      node_modules/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css: {}
+      node_modules/@mathieumaingret/smap/node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css: {}
+  js:
+    node_modules/@mathieumaingret/smap/node_modules/leaflet/dist/leaflet.js: {}
+    node_modules/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.js: {}
+    node_modules/@mathieumaingret/smap/node_modules/leaflet.markercluster/dist/leaflet.markercluster.js: {}
+    node_modules/@mathieumaingret/smap/dist/smap.min.js: {}
+  dependencies:
+    - core/jquery
+
 
 # THEME
 swiftmailer:
@@ -114,6 +131,7 @@ theme:
   - drup_theme/spinner
   - drup_theme/togglemenu
   - drup_theme/fancybox
+  - drup_theme/owl-carousel
 
 theme-contact:
   version: '0.1'
@@ -121,3 +139,8 @@ theme-contact:
     js/theme/contact.js: {}
   dependencies:
   - drup_theme/customform
+
+theme-front:
+  version: '0.1'
+  js:
+    js/theme/front.js: {}

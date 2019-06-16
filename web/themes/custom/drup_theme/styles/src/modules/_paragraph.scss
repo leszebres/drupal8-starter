@@ -12,8 +12,9 @@ Markup: url()->find(.paragraph--type--text)
 Styleguide Paragraphs - 10.paragraph--type--text
 */
 .paragraph--type--text {
-
+    margin-bottom: $v-align--medium;
 }
+
 
 /*
 Type document
@@ -23,12 +24,7 @@ Markup: url()->find(.paragraph--type--document)
 Styleguide Paragraphs - 20.paragraph--type--document
 */
 .paragraph--type--document {
-    div {
-        display: inline-block;
-    }
-    .file {
-        display: block;
-        margin: 0 $grid--gutter-width $v-align--medium 0;
+    .btn {
     }
 }
 
@@ -67,7 +63,6 @@ Styleguide Paragraphs - 40.paragraph--type--text-image
             overflow: hidden;
         }
         .item-body {
-            margin-bottom: -$v-align--medium;
         }
 
         &.l-left {
