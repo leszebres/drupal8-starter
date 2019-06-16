@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "70ef7482893033e40270ac4faaa096e3",
+    "content-hash": "cd4b66d5a9f04b88a52113de4a5d703a",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2214,8 +2214,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.27+0-dev",
-                    "datestamp": "1558552081",
+                    "version": "8.x-1.27+1-dev",
+                    "datestamp": "1559189284",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -2411,11 +2411,11 @@
         },
         {
             "name": "drupal/better_exposed_filters",
-            "version": "dev-3.x",
+            "version": "dev-4.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/better_exposed_filters.git",
-                "reference": "b2ad83c5510cd8aa3bb5e9819d99280b5287a00a"
+                "reference": "baad339e48e065b2be6626ba80cc95ac34bb7d69"
             },
             "require": {
                 "drupal/core": "*"
@@ -2423,11 +2423,11 @@
             "type": "drupal-module",
             "extra": {
                 "branch-alias": {
-                    "dev-3.x": "3.x-dev"
+                    "dev-4.x": "4.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-alpha6+2-dev",
-                    "datestamp": "1555107485",
+                    "version": "8.x-4.x-dev",
+                    "datestamp": "1558825086",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -2466,7 +2466,7 @@
                 "source": "https://git.drupalcode.org/project/better_exposed_filters",
                 "issues": "https://www.drupal.org/project/issues/better_exposed_filters"
             },
-            "time": "2019-05-25T23:00:46+00:00"
+            "time": "2019-05-25T22:57:06+00:00"
         },
         {
             "name": "drupal/captcha",
@@ -3793,11 +3793,17 @@
         },
         {
             "name": "drupal/field_group",
-            "version": "dev-3.x",
+            "version": "3.0.0-rc1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/field_group.git",
-                "reference": "b245b85f99c48221edf5fb60344dfe53737ae0f9"
+                "reference": "8.x-3.0-rc1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/field_group-8.x-3.0-rc1.zip",
+                "reference": "8.x-3.0-rc1",
+                "shasum": "e291b5468c834a344e9aa6cafd3a76171d473a22"
             },
             "require": {
                 "drupal/core": "*"
@@ -3808,11 +3814,11 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-beta1+54-dev",
-                    "datestamp": "1553812381",
+                    "version": "8.x-3.0-rc1",
+                    "datestamp": "1558647185",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Dev releases are not covered by Drupal security advisories."
+                        "message": "RC releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -3846,8 +3852,7 @@
             "homepage": "https://www.drupal.org/project/field_group",
             "support": {
                 "source": "https://git.drupalcode.org/project/field_group"
-            },
-            "time": "2019-05-23T21:31:25+00:00"
+            }
         },
         {
             "name": "drupal/gdpr",
@@ -4559,6 +4564,49 @@
             "time": "2019-04-15T16:54:12+00:00"
         },
         {
+            "name": "drupal/menu_manipulator",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/menu_manipulator.git",
+                "reference": "0bcd36b0b41c5a98fbefa5dbba690e63d52b2869"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.9+0-dev",
+                    "datestamp": "1559815985",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Matthieu SCARSET",
+                    "homepage": "http://matthieuscarset.com",
+                    "email": "m@matthieuscarset.com"
+                }
+            ],
+            "description": "Improve Drupal 8 menu management and rendering.",
+            "homepage": "https://www.drupal.org/project/menu_manipulator",
+            "support": {
+                "source": "https://git.drupalcode.org/project/menu_manipulator"
+            },
+            "time": "2019-06-06T10:08:41+00:00"
+        },
+        {
             "name": "drupal/message",
             "version": "1.0.0-rc2",
             "source": {
@@ -5067,8 +5115,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta1+1-dev",
-                    "datestamp": "1558513685",
+                    "version": "8.x-1.0-beta1+2-dev",
+                    "datestamp": "1559046488",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -5161,7 +5209,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/simple_sitemap.git",
-                "reference": "30ff838962f7c38cf8af3360bfcb4d05792eb3b4"
+                "reference": "cfd5070dadf9602c3a3f9419280af8d5d65e8a21"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -5173,8 +5221,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.2+4-dev",
-                    "datestamp": "1559933285",
+                    "version": "8.x-3.2+5-dev",
+                    "datestamp": "1560283385",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -5209,7 +5257,7 @@
                 "issues": "https://drupal.org/project/issues/simple_sitemap",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2019-06-11T19:59:01+00:00"
+            "time": "2019-06-14T22:41:07+00:00"
         },
         {
             "name": "drupal/sitemap",
@@ -6700,14 +6748,14 @@
         },
         {
             "name": "leszebres/drup",
-            "version": "3.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leszebres/drup",
-                "reference": "07ebf5adfa6511e616ff6dd0beaec7e10fbdaf11"
+                "reference": "dbcc710af367264584aa3aa595d324a6ff45064a"
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.0"
             },
             "type": "drupal-module",
             "license": [
@@ -6729,6 +6777,7 @@
                     "role": "Creator, Maintainer"
                 }
             ],
+            "description": "Set of modules simplifying the use of Drupal 8",
             "homepage": "https://github.com/leszebres/drup",
             "keywords": [
                 "Drupal"
@@ -6736,7 +6785,7 @@
             "support": {
                 "issues": "https://github.com/leszebres/drup/issues"
             },
-            "time": "2019-05-16T15:39:31+00:00"
+            "time": "2019-06-14T08:21:55+00:00"
         },
         {
             "name": "leszebres/swiftmailer",
@@ -12799,11 +12848,11 @@
         "drupal/claro": 20,
         "drupal/email_registration": 5,
         "drupal/features": 20,
-        "drupal/field_group": 20,
         "drupal/geolocation": 20,
         "drupal/inline_entity_form": 20,
         "drupal/masquerade": 10,
         "drupal/menu_breadcrumb": 20,
+        "drupal/menu_manipulator": 20,
         "drupal/metatag": 20,
         "drupal/paragraphs": 20,
         "drupal/pathauto": 20,

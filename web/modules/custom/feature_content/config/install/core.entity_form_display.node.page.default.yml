@@ -29,10 +29,9 @@ content:
       edit_mode: closed
       closed_mode: summary
       autocollapse: all
-      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
-      default_paragraph_type: text
+      default_paragraph_type: _none
       features:
         duplicate: duplicate
         collapse_edit_all: collapse_edit_all
@@ -89,9 +88,9 @@ content:
     third_party_settings: {  }
   translation:
     weight: 10
-    region: content
     settings: {  }
     third_party_settings: {  }
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 5
