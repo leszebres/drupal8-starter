@@ -96,7 +96,7 @@ class DrupSiteSettingsForm extends DrupSettingsForm {
      */
     public function submitForm(array &$form, FormStateInterface $form_state) {
         $values = $form_state->getValues();
-        $drupSocialLinksConfig = DrupSocialLinks::getConfig(true);
+        $drupSocialLinksConfig = DrupSocialLinks::getConfig();
         $drupSocialLinksItems = $drupSocialLinksConfig->get('items');
 
         foreach ($values as $key => $value) {

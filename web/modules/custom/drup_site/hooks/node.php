@@ -3,13 +3,14 @@
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\drup\Entity\ContentEntityBase;
+use Drupal\drup\Helper\DrupRequest;
 use Drupal\node\NodeInterface;
 
 /**
  * @inheritdoc
  */
 function drup_site_node_access(NodeInterface $node, $op, AccountInterface $account) {
-    if (!\Drupal::service('router.admin_context')->isAdminRoute()) {
+    if (!DrupRequest::isAdminRoute()) {
         // 403 status if node is not translated
         $isAllowed = ContentEntityBase::isAllowed($node);
         $access = $isAllowed ? AccessResult::neutral() : AccessResult::forbidden();
@@ -28,6 +29,7 @@ function drup_site_node_access(NodeInterface $node, $op, AccountInterface $accou
  */
 function drup_site_node_type_insert($nodeType) {
     if (\Drupal::moduleHandler()->moduleExists('metatag')) {
+        /** @var \Drupal\Core\Config\Config $config */
         $config = \Drupal::service('config.factory')->getEditable('metatag.settings');
         $entityTypeGroups = $config->get('entity_type_groups');
 

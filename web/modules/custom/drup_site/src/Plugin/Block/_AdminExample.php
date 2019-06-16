@@ -91,7 +91,7 @@ class _AdminExample extends DrupBlockAdminBase {
         }
 
         $build = $this->mergeBuildParameters([
-            '#theme' => 'drup_blocks_admin_admin_example',
+            '#theme' => 'drup_admin_example',
             '#title' => $this->configValues['title'],
             '#items' => $items
         ]);

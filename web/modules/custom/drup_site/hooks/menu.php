@@ -33,15 +33,6 @@ function drup_site_menu_links_discovered_alter(&$links) {
     if (isset($links['admin_toolbar_tools.view.files'])) {
         unset($links['admin_toolbar_tools.view.files']);
     }
-
-    // Move DrupSettings in top level
-    $links['drup_admin_toolbar.drup_settings'] = [
-        'title' => t('Site configuration'),
-        'route_name' => 'drup_settings.admin_form',
-        'menu_name' => 'admin',
-        'parent' => 'system.admin',
-        'weight' => 50
-    ];
 }
 
 /**
