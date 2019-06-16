@@ -11,6 +11,7 @@ use Drupal\drup\Views\DrupViewsView;
  * @param $variables
  */
 function drup_theme_preprocess_views_view(&$variables) {
+    /** @var \Drupal\drup_router\DrupRouter $drupRouter */
     $drupRouter = \Drupal::service('drup_router');
     $drupRouteName = $drupRouter->getName();
 
@@ -114,7 +115,8 @@ function drup_theme_views_rows_controller__primary($variables) {
     if (!empty($variables['view']->result)) {
         foreach ($variables['view']->result as $id => &$result) {
             $result->_entity = Node::load($result->_entity->id());
-            $result->drupField = $result->_entity->drupField();
+            /** @var \Drupal\drup\Entity\DrupField $drupField */
+            $drupField = $result->drupField = $result->_entity->drupField();
             
             $result->layout = $variables['row_layout'];
             $result->imageStyle = $variables['row_image_style'];
@@ -123,15 +125,14 @@ function drup_theme_views_rows_controller__primary($variables) {
             /** @var \Drupal\Core\Template\Attribute $attributes **/
             $attributes = $variables['rows'][$id]['attributes'];
             $attributes->addClass('list-item');
-    
-            // Media
-            $mediaField = $result->drupField->getValue('thumbnail', 'target_id');
-            if ($mediaField && !empty($result->imageStyle)) {
-                $mediaEntity = new DrupMediaImage($mediaField);
 
-                if ($medias = $mediaEntity->renderMedias($result->imageStyle)) {
-                    $result->media = current($medias);
-                    $attributes->addClass('has-media');
+            /** @var DrupMediaImage $media */
+            if ($media = $result->drupField->getDrupMedia('banner', 'image')) {
+                if (!empty($result->imageStyle)) {
+                    if ($mediaRendered = $media->renderMedias($result->imageStyle)) {
+                        $result->media = current($mediaRendered);
+                        $attributes->addClass('has-media');
+                    }
                 }
             }
     

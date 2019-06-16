@@ -1,20 +1,24 @@
 <?php
 
+use Drupal\drup\DrupPageEntity;
+use Drupal\drup\Helper\DrupUrl;
+
 /**
  * @param $variables
  */
 function drup_theme_preprocess_menu(&$variables) {
     if (isset($variables['menu_name'])) {
         if ($variables['menu_name'] === 'main') {
-//            $currentEntity = DrupCommon::getPageEntity();
+//            $currentEntity = DrupPageEntity::loadEntity();
 //            $drupRouter = \Drupal::service('drup_router');
 //
+//            $regionNid = $drupRouter->getId('rpl');
+//
 //            foreach ($variables['items'] as $index => &$item) {
-//                if ($menuItemNid = DrupCommon::getNidFromMenuItem($item)) {
-//                    if ($menuItemNid === $routeProductsId) {
-//                        if (in_array($currentEntity->bundle, [ProductsHelpers::$bundle, FamiliesHelpers::$bundle])) {
-//                            $item['attributes']['class'] = 'is-current';
-//                        }
+//                // Classess
+//                if ($entity = DrupUrl::loadEntity($item['url'])) {
+//                    if ($entity->bundle() === 'page' && $regionNid === $entity->id()) {
+//                        $item['attributes']['class'] .= ' theme-secondary';
 //                    }
 //                }
 //            }

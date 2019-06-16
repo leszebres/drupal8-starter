@@ -26,13 +26,22 @@ function drup_theme_preprocess_page(array &$variables) {
     $variables['site_name'] = $drupSettings->getValue('site_name');
     $variables['site_slogan'] = $drupSettings->getValue('site_slogan');
 
+    $variables['content_attributes'] = new Attribute([
+        'id' => 'content',
+        'class' => [
+            'content',
+            'row'
+        ]
+    ]);
+
     /**
      * Load librariesw
      */
     $variables['page']['#cache']['contexts'][] = 'url.path'; // sets the cacheability metadata
 
     if ($isFront) {
-    
+        $variables['#attached']['library'][] = 'drup_theme/theme-front';
+
     } else {
         if ($drupRouteName === 'contact') {
             $variables['#attached']['library'][] = 'drup_theme/theme-contact';
@@ -42,10 +51,7 @@ function drup_theme_preprocess_page(array &$variables) {
     /**
      * Node fields
      */
-    $node = null;
-    if (isset($variables['node'])) {
-        $node = $variables['node'];
-    }
+    $node = $variables['node'] ?? null;
     if (is_string($node)) {
         $node = Node::load($node);
     }

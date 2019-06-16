@@ -43,7 +43,7 @@
  * @see html.html.twig
 
  * NOMENCLATURE :
- * 
+ *
  * main-header
  * main
  * -- content-before
@@ -71,10 +71,10 @@
             </div>
         {% endif %}
 
-        <div class="content row">
+        <div {{ content_attributes }}>
             {% if page.content_sidebar %}
-                <div class="l-sidebar">
-            {% endif %}
+            <div class="l-sidebar">
+                {% endif %}
                 <div class="content-body">
                     {{ page.content }}
                 </div>
@@ -83,8 +83,8 @@
                         {{ page.content_sidebar }}
                     </aside>
                 {% endif %}
-            {% if page.content_sidebar %}
-                </div>
+                {% if page.content_sidebar %}
+            </div>
             {% endif %}
         </div>
 

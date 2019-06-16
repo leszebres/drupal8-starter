@@ -10,6 +10,8 @@ function drup_theme_preprocess_paragraph(array &$variables) {
     $paragraph = $variables['paragraph'];
     $drupField = new DrupField($paragraph);
 
+    $variables['attributes']['data-id'] = $paragraph->id();
+
     switch ($paragraph->getType()) {
         // Code html
         case 'html':

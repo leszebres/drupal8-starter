@@ -13,6 +13,8 @@ use Drupal\drup_settings\DrupSettings;
  */
 function drup_theme_preprocess_html(array &$variables) {
     $drupSettings = new DrupSettings();
+
+    /** @var \Drupal\drup_router\DrupRouter $drupRouter */
     $drupRouter = \Drupal::service('drup_router');
     $systemRouteName = DrupRequest::getRouteName();
 

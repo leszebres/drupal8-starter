@@ -27,13 +27,15 @@
                         {{ row.content.body|raw }}
                     </div>
                 {% endif %}
+            </div>
 
+            <footer class="item-footer">
                 {% if row.content.cta %}
-                    <span class="item-cta btn">
+                    <span class="item-cta btn btn--link">
                         {{ row.content.cta }}
                     </span>
                 {% endif %}
-            </div>
+            </footer>
         </article>
     </a>
 </li>

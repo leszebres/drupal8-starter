@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\Component\Utility\Html;
+
 /**
  * @inheritdoc
  */
@@ -14,16 +16,18 @@ function drup_theme_theme_suggestions_field_alter(array &$suggestions, array $va
  * @inheritdoc
  */
 function drup_theme_preprocess_field(array &$variables, $hook) {
-   $fieldName = $variables['element']['#field_name'];
-   
-   if (strpos($fieldName, 'field_image') !== false) {
-       $variables['attributes']['class'][] = 'paragraph-media';
-       $variables['attributes']['class'][] = 'item-media';
-       $variables['attributes']['class'][] = 'media';
-       $variables['attributes']['class'][] = 'l-image';
-   
-   } elseif (strpos($fieldName, 'field_body') !== false) {
-       $variables['attributes']['class'][] = 'paragraph-body';
-       $variables['attributes']['class'][] = 'item-body';
-   }
+    $fieldName = $variables['element']['#field_name'];
+
+    $variables['attributes']['class'][] = Html::cleanCssIdentifier(str_replace('field', 'item', $fieldName));
+
+    if (strpos($fieldName, 'field_image') !== false) {
+        $variables['attributes']['class'][] = 'paragraph-media';
+        $variables['attributes']['class'][] = 'item-media';
+        $variables['attributes']['class'][] = 'media';
+        $variables['attributes']['class'][] = 'l-image';
+
+    } elseif (strpos($fieldName, 'field_body') !== false) {
+        $variables['attributes']['class'][] = 'paragraph-body';
+        $variables['attributes']['class'][] = 'item-body';
+    }
 }

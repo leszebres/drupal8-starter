@@ -1,7 +1,18 @@
 <?php
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
+
+/**
+ * @inheritdoc
+ */
+function drup_theme_preprocess_media(&$variables) {
+    if ($type = $variables['media']->bundle()) {
+        $variables['attributes']['class'][] = 'media';
+        $variables['attributes']['class'][] = 'media--' . Html::cleanCssIdentifier($type);
+    }
+}
 
 /**
  * @inheritdoc
