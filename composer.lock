@@ -2203,7 +2203,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/admin_toolbar.git",
-                "reference": "5f49b89e732233e235910aa99ff530587c6d65b4"
+                "reference": "c39e429a1c524218259a13b3bae85a73e9fe4293"
             },
             "require": {
                 "drupal/core": "*"
@@ -2214,8 +2214,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.27+1-dev",
-                    "datestamp": "1559189284",
+                    "version": "8.x-1.27+3-dev",
+                    "datestamp": "1560970085",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -2271,7 +2271,7 @@
                 "source": "http://cgit.drupalcode.org/admin_toolbar",
                 "issues": "https://www.drupal.org/project/issues/admin_toolbar"
             },
-            "time": "2019-05-30T04:05:46+00:00"
+            "time": "2019-06-19T18:45:48+00:00"
         },
         {
             "name": "drupal/adminimal_theme",
@@ -2588,7 +2588,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/claro.git",
-                "reference": "0b06c1478e0f1dfeeb9fa072b2356615d6225bd6"
+                "reference": "2e9a99c681d66bc2d541808a8fa1ac7273248758"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -2600,7 +2600,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.x-dev",
-                    "datestamp": "1560286384",
+                    "datestamp": "1560928080",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -2640,7 +2640,7 @@
                 "docs": "https://www.drupal.org/docs/8/modules/claro",
                 "issues": "https://www.drupal.org/project/issues/claro"
             },
-            "time": "2019-06-12T16:54:42+00:00"
+            "time": "2019-06-21T09:45:22+00:00"
         },
         {
             "name": "drupal/config_update",
@@ -4569,7 +4569,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/menu_manipulator.git",
-                "reference": "0bcd36b0b41c5a98fbefa5dbba690e63d52b2869"
+                "reference": "c04ad5edbd8cac8d3c58ac0b7e0798585a8304f5"
             },
             "require": {
                 "drupal/core": "*"
@@ -4580,8 +4580,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.9+0-dev",
-                    "datestamp": "1559815985",
+                    "version": "8.x-1.x-dev",
+                    "datestamp": "1560794585",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -4604,7 +4604,7 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/menu_manipulator"
             },
-            "time": "2019-06-06T10:08:41+00:00"
+            "time": "2019-06-17T17:55:31+00:00"
         },
         {
             "name": "drupal/message",
@@ -5115,8 +5115,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta1+2-dev",
-                    "datestamp": "1559046488",
+                    "version": "8.x-1.0-beta1+1-dev",
+                    "datestamp": "1558513685",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -5556,7 +5556,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/upgrade_status.git",
-                "reference": "052de1459325e4970ff251cfcdfd38d465b1dc2f"
+                "reference": "df44b36dd4cf3f64334ca171d0fd714fcc54564f"
             },
             "require": {
                 "drupal/core": "^8.6",
@@ -5619,7 +5619,7 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/upgrade_status"
             },
-            "time": "2019-06-13T23:25:40+00:00"
+            "time": "2019-06-19T14:34:51+00:00"
         },
         {
             "name": "drupal/views_ajax_history",
@@ -6752,7 +6752,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/leszebres/drup",
-                "reference": "dbcc710af367264584aa3aa595d324a6ff45064a"
+                "reference": "349f6a73fcac726b1a42bde80e669f0656a39d2b"
             },
             "require": {
                 "php": ">=7.0"
@@ -6785,7 +6785,7 @@
             "support": {
                 "issues": "https://github.com/leszebres/drup/issues"
             },
-            "time": "2019-06-14T08:21:55+00:00"
+            "time": "2019-06-21T19:39:11+00:00"
         },
         {
             "name": "leszebres/swiftmailer",
@@ -11458,16 +11458,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.42.1",
+            "version": "v1.42.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "671347603760a88b1e7288aaa9378f33687d7edf"
+                "reference": "21707d6ebd05476854805e4f91b836531941bcd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/671347603760a88b1e7288aaa9378f33687d7edf",
-                "reference": "671347603760a88b1e7288aaa9378f33687d7edf",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/21707d6ebd05476854805e4f91b836531941bcd4",
+                "reference": "21707d6ebd05476854805e4f91b836531941bcd4",
                 "shasum": ""
             },
             "require": {
@@ -11520,7 +11520,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-06-04T11:31:08+00:00"
+            "time": "2019-06-18T15:35:16+00:00"
         },
         {
             "name": "typo3/phar-stream-wrapper",
@@ -12249,17 +12249,17 @@
         },
         {
             "name": "drupal/coder",
-            "version": "8.3.4",
+            "version": "8.3.5",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/coder.git",
-                "reference": "0a274321f4930f186d9f246783f0b4d743501cf8"
+                "reference": "35277fc8675b6a2cbb194f8880145a9c85c845c4"
             },
             "require": {
                 "ext-mbstring": "*",
                 "php": ">=5.5.9",
                 "squizlabs/php_codesniffer": "^3.4.1",
-                "symfony/yaml": ">=2.0.0"
+                "symfony/yaml": ">=2.0.5"
             },
             "require-dev": {
                 "phpunit/phpunit": ">=3.7 <6"
@@ -12282,7 +12282,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-05-24T11:44:05+00:00"
+            "time": "2019-06-14T15:06:06+00:00"
         },
         {
             "name": "fabpot/goutte",
