@@ -2,12 +2,10 @@
   "name": "d8-starter",
   "version": "1.0.0",
   "private": true,
-  "autoprefixer": {
-    "`overrideBrowserslist`": [
-      "last 1 versions",
-      "IE 11"
-    ]
-  },
+  "browserslist": [
+    "last 1 versions",
+    "IE 11"
+  ],
   "paths": {
     "theme": "./web/themes/custom/drup_theme",
     "theme_admin": "./web/themes/custom/drup_admin",
@@ -28,8 +26,8 @@
     "autoprefixer": "^9.6.0",
     "gulp": "^4.0.2",
     "gulp-consolidate": "^0.2.0",
-    "gulp-iconfont": "^10.0.2",
-    "gulp-imagemin": "^5.0.3",
+    "gulp-iconfont": "^10.0.3",
+    "gulp-imagemin": "^6.0.0",
     "gulp-load-plugins": "^1.6.0",
     "gulp-pixrem": "^1.0.0",
     "gulp-postcss": "^8.0.0",
@@ -42,6 +40,6 @@
   "dependencies": {
     "gettext-parser": "^4.0.0",
     "map-stream": "^0.0.7",
-    "yarn": "^1.15.2"
+    "yarn": "^1.16.0"
   }
 }

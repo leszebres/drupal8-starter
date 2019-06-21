@@ -2056,7 +2056,7 @@ gulp-consolidate@^0.2.0:
     consolidate "~0.14.0"
     map-stream "0.0.4"
 
-gulp-iconfont@^10.0.2:
+gulp-iconfont@^10.0.3:
   version "10.0.3"
   resolved "https://registry.yarnpkg.com/gulp-iconfont/-/gulp-iconfont-10.0.3.tgz#1ce236adc4e72c7aaccf6908e717156d800d078a"
   integrity sha512-C/+hHq89KoB/J6w/6cQ6+tSClA4K/YZjCPc80sTQ2Q3+bKp2HpxPFWPARJ1TCjbID1r5E3OgJMp6PgNNxCXbtw==
@@ -2070,14 +2070,14 @@ gulp-iconfont@^10.0.2:
     multipipe "^2.0.3"
     streamfilter "^1.0.7"
 
-gulp-imagemin@^5.0.3:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/gulp-imagemin/-/gulp-imagemin-5.0.3.tgz#b8236aff523eebd2d4b552a814a35df07ee710bc"
-  integrity sha512-bKJMix4r6EQPVV2u8sUglw6Rn0PSp6i70pSK2ECN7j0dRy0w/Lz5SBbynY3MfGBZ0cTMZlaUq+6LyKlZgP74Ew==
+gulp-imagemin@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/gulp-imagemin/-/gulp-imagemin-6.0.0.tgz#5d95d72413fddf975ced9f347dfe61128f4fb7ba"
+  integrity sha512-gLTncXROP0UVFE/GXSpfXcotRl0o+7W/Hjuoz9FaHwasdD6K18VTNJjuA8Ks/w3fNwxo6aWRJGYM22mqFoemvw==
   dependencies:
     chalk "^2.4.1"
     fancy-log "^1.3.2"
-    imagemin "^6.0.0"
+    imagemin "^6.1.0"
     plugin-error "^1.0.1"
     plur "^3.0.1"
     pretty-bytes "^5.1.0"
@@ -2433,7 +2433,7 @@ imagemin-svgo@^7.0.0:
     is-svg "^3.0.0"
     svgo "^1.0.5"
 
-imagemin@^6.0.0:
+imagemin@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/imagemin/-/imagemin-6.1.0.tgz#62508b465728fea36c03cdc07d915fe2d8cf9e13"
   integrity sha512-8ryJBL1CN5uSHpiBMX0rJw79C9F9aJqMnjGnrd/1CafegpNuA81RBAAru/jQQEOWlOJJlpRnlcVFF6wq+Ist0A==
@@ -5434,7 +5434,7 @@ yargs@^7.0.0, yargs@^7.1.0:
     y18n "^3.2.1"
     yargs-parser "^5.0.0"
 
-yarn@^1.15.2:
+yarn@^1.16.0:
   version "1.16.0"
   resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.16.0.tgz#5701b58ac555ff91f7b889b7d791b3dc86f8f999"
   integrity sha512-cfemyGlnWKA1zopUUgebTPf8C4WkPIZ+TJmklwcEAJ4u6oWPtJeAzrsamaGGh/+b1XWe8W51yzAImC4AWbWR1g==
