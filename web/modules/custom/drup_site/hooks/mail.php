@@ -9,8 +9,8 @@ function drup_site_mail_alter(&$message) {
     $siteMail = \Drupal::config('system.site')->get('mail');
 
     if ($message['headers']['Sender'] === $siteMail) {
-        $drupSettings = new DrupSettings();
-        $drupSettings->setNeutralLang();
+        /** @var \Drupal\drup_settings\DrupSettings $drupSettings */
+        $drupSettings = \Drupal::service('drup_settings');
 
         if ($from = $drupSettings->getValue('site_emails_from')) {
             $message['from'] = $message['reply-to'] = $message['headers']['Sender'] = $message['headers']['Return-Path'] = $from;
@@ -26,7 +26,8 @@ function drup_site_preprocess_swiftmailer(&$variables) {
     $theme = \Drupal::theme()->getActiveTheme();
     $variables['logo'] = $variables['base_url'] . '/' . $theme->getPath() . '/images/logo-mail.png';
 
-    $drupSettings = new DrupSettings();
+    /** @var \Drupal\drup_settings\DrupSettings $drupSettings */
+    $drupSettings = \Drupal::service('drup_settings');
     $variables['site_name'] = $drupSettings->getValue('site_name');
 
 //    echo '<pre>';

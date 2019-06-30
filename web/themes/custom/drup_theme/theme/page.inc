@@ -15,10 +15,15 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  * Implements hook_preprocess_page() for page.html.twig.
  */
 function drup_theme_preprocess_page(array &$variables) {
-    $drupSettings = new DrupSettings();
+    /** @var \Drupal\drup_settings\DrupSettings $drupSettings */
+    $drupSettings = \Drupal::service('drup_settings');
+
     $drupPageEntity = DrupPageEntity::loadEntity();
+
+    /** @var \Drupal\drup_router\DrupRouter $drupRouter */
     $drupRouter = \Drupal::service('drup_router');
     $drupRouteName = $drupRouter->getName();
+
     $systemRouteName = DrupRequest::getRouteName();
     $isFront = DrupRequest::isFront();
 

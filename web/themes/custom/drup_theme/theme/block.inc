@@ -15,7 +15,9 @@ function drup_theme_preprocess_block(array &$variables) {
     
     // Logo
     if ($pluginId === 'system_branding_block') {
-        $drupSettings = new DrupSettings();
+        /** @var \Drupal\drup_settings\DrupSettings $drupSettings */
+        $drupSettings = \Drupal::service('drup_settings');
+
         $variables['site_alt_logo'] = $drupSettings->getValue('site_logo_alt');
         $variables['home_h1'] = $drupSettings->getValue('home_h1');
         $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();

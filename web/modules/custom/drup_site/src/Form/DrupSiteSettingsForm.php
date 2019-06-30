@@ -95,40 +95,6 @@ class DrupSiteSettingsForm extends DrupSettingsForm {
      * @inheritDoc
      */
     public function submitForm(array &$form, FormStateInterface $form_state) {
-        $values = $form_state->getValues();
-        $drupSocialLinksConfig = DrupSocialLinks::getConfig();
-        $drupSocialLinksItems = $drupSocialLinksConfig->get('items');
-
-        foreach ($values as $key => $value) {
-            // Custom social links
-            if (strpos($key, 'site_social_link_') !== false) {
-                $socialId = str_replace('site_social_link_', '', $key);
-
-                if (isset($drupSocialLinksItems[$socialId])) {
-                    $drupSocialLinksItems[$socialId]['link_url'] = $value;
-                    $drupSocialLinksConfig->set('items', $drupSocialLinksItems);
-                    $drupSocialLinksConfig->save();
-                }
-            } else {
-                if (isset($this->formItemsData[$key])) {
-                    // Default values
-                    if ($this->formItemsData[$key]->context !== null) {
-                        $this->drupSettings->setLanguage($this->formItemsData[$key]->context);
-                    } else {
-                        $this->drupSettings->setLanguage();
-                    }
-                    $this->drupSettings->set($key, $value);
-
-                    // Files
-                    if (!empty($value) && $this->formItemsData[$key]->type === 'managed_file') {
-                        DrupFile::setPermanent($value);
-                    }
-                }
-            }
-        }
-
-        $this->drupSettings->save();
-
         parent::submitForm($form, $form_state);
     }
 }

@@ -12,7 +12,8 @@ use Drupal\drup_settings\DrupSettings;
  * @inheritdoc
  */
 function drup_theme_preprocess_html(array &$variables) {
-    $drupSettings = new DrupSettings();
+    /** @var \Drupal\drup_settings\DrupSettings $drupSettings */
+    $drupSettings = \Drupal::service('drup_settings');
 
     /** @var \Drupal\drup_router\DrupRouter $drupRouter */
     $drupRouter = \Drupal::service('drup_router');
