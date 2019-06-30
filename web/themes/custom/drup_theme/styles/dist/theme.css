@@ -474,14 +474,16 @@ template {
   font-size: 0.875rem;
   color: #fff;
   background: rgba(0, 0, 0, 0.75);
-  transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
   visibility: hidden;
   transition: .3s;
   box-sizing: border-box;
   /* Responsive
        ========================================================================== */ }
   .is-cookienotice-notice-open .notice--cookie {
-    transform: translateY(0);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
     visibility: visible; }
   .notice--cookie p {
     flex-grow: 1;
@@ -517,7 +519,8 @@ template {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate3d(-50%, -50%, 0);
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
   z-index: -1;
   width: 100%;
   max-width: 800px;
@@ -531,7 +534,9 @@ template {
   pointer-events: none;
   overflow: auto;
   box-sizing: border-box;
+  transition: opacity .3s, -webkit-transform .3s;
   transition: opacity .3s, transform .3s;
+  transition: opacity .3s, transform .3s, -webkit-transform .3s;
   /* Responsive
        ========================================================================== */ }
   .modal--cookie p {
@@ -545,12 +550,14 @@ template {
     .modal--cookie {
       top: 0;
       left: 0;
-      transform: none;
+      -webkit-transform: none;
+              transform: none;
       height: 100vh;
       max-height: none;
       border-radius: 0; }
       .is-cookienotice-modal-open .modal--cookie {
-        transform: none; } }
+        -webkit-transform: none;
+                transform: none; } }
 
 /* Overlay
    ========================================================================== */
@@ -607,10 +614,12 @@ template {
     width: 16px;
     height: 2px;
     background: #333;
-    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
     transition: background-color .3s; }
   .cookienotice-modal-close:after {
-    transform: rotate(45deg); }
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg); }
 
 /* Header
    ========================================================================== */
@@ -1033,7 +1042,9 @@ table {
   margin: 0 auto;
   overflow-x: hidden;
   box-sizing: border-box;
-  transition: transform .3s; }
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s; }
 
 /* ==========================================================================
    Header
@@ -1077,10 +1088,10 @@ Commande : gulp fonticon
 Font
 ========================================================================== */
 @font-face {
-  font-family: "icons-1560690707";
+  font-family: "icons-1561892892";
   font-weight: normal;
   font-style: normal;
-  src: url("../../fonts/icons-1560690707.woff2?v=1560690707") format("woff2"), url("../../fonts/icons-1560690707.woff?v=1560690707") format("woff"); }
+  src: url("../../fonts/icons-1561892892.woff2?v=1561892892") format("woff2"), url("../../fonts/icons-1561892892.woff?v=1561892892") format("woff"); }
 
 /*
     .icon--angle-left - \EA01
@@ -1094,11 +1105,12 @@ Font
     .icon--error - \EA09
     .icon--facebook - \EA0A
     .icon--instagram - \EA0B
-    .icon--minus - \EA0C
-    .icon--plus - \EA0D
-    .icon--twitter - \EA0E
-    .icon--warning - \EA0F
-    .icon--youtube - \EA10
+    .icon--linkedin - \EA0C
+    .icon--minus - \EA0D
+    .icon--plus - \EA0E
+    .icon--twitter - \EA0F
+    .icon--warning - \EA10
+    .icon--youtube - \EA11
 
 Markup: <span class="icon $modifierClass"></span>
 
@@ -1137,27 +1149,30 @@ Styleguide Icons - 1.icon
 .icon--instagram:before {
   content: "\EA0B"; }
 
-.icon--minus:before {
+.icon--linkedin:before {
   content: "\EA0C"; }
 
-.icon--plus:before {
+.icon--minus:before {
   content: "\EA0D"; }
 
-.icon--twitter:before {
+.icon--plus:before {
   content: "\EA0E"; }
 
-.icon--warning:before, .messages--warning:before {
+.icon--twitter:before {
   content: "\EA0F"; }
 
-.icon--youtube:before {
+.icon--warning:before, .messages--warning:before {
   content: "\EA10"; }
+
+.icon--youtube:before {
+  content: "\EA11"; }
 
 /* ==========================================================================
    Icons
    ========================================================================== */
 .icon:before {
   display: inline-block;
-  font-family: "icons-1560690707";
+  font-family: "icons-1561892892";
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -1314,7 +1329,7 @@ Styleguide Notices - 1.messages
   border-top-color: #5cb85c; }
   .messages--status:before {
     display: inline-block;
-    font-family: "icons-1560690707";
+    font-family: "icons-1561892892";
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -1330,7 +1345,7 @@ Styleguide Notices - 1.messages
   border-top-color: #f0ad4e; }
   .messages--warning:before {
     display: inline-block;
-    font-family: "icons-1560690707";
+    font-family: "icons-1561892892";
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -1346,7 +1361,7 @@ Styleguide Notices - 1.messages
   border-top-color: #d9534f; }
   .messages--error:before {
     display: inline-block;
-    font-family: "icons-1560690707";
+    font-family: "icons-1561892892";
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -1695,7 +1710,7 @@ form textarea:not([readonly]):focus {
     transition: .2s; }
     .accordion-item .item-toggle:after {
       display: inline-block;
-      font-family: "icons-1560690707";
+      font-family: "icons-1561892892";
       font-style: normal;
       font-weight: normal;
       font-variant: normal;
@@ -1706,8 +1721,10 @@ form textarea:not([readonly]):focus {
       position: absolute;
       top: 50%;
       right: 24px;
-      transform: rotateY(0) translateY(-50%);
-      transform-origin: 50% 0;
+      -webkit-transform: rotateY(0) translateY(-50%);
+              transform: rotateY(0) translateY(-50%);
+      -webkit-transform-origin: 50% 0;
+              transform-origin: 50% 0;
       color: #003cc5;
       transition: .2s; }
   .accordion-item .item-content {
@@ -1724,7 +1741,8 @@ form textarea:not([readonly]):focus {
   .accordion-item .item-toggle:hover {
     color: #003cc5; }
   .accordion-item.is-opened .item-toggle:after {
-    transform: rotateX(180deg) translateY(-50%); }
+    -webkit-transform: rotateX(180deg) translateY(-50%);
+            transform: rotateX(180deg) translateY(-50%); }
 
 .block {
   position: relative;
@@ -1915,12 +1933,18 @@ Styleguide Navigation - 30.nav--breadcrumb
       width: 20px;
       height: 1px;
       background: #003cc5;
-      transform: scaleX(0);
-      transform-origin: 100% 50%;
-      transition: transform .2s ease-out; }
+      -webkit-transform: scaleX(0);
+              transform: scaleX(0);
+      -webkit-transform-origin: 100% 50%;
+              transform-origin: 100% 50%;
+      transition: -webkit-transform .2s ease-out;
+      transition: transform .2s ease-out;
+      transition: transform .2s ease-out, -webkit-transform .2s ease-out; }
     .nav--breadcrumb a:not(.active):hover:after {
-      transform: scaleX(1);
-      transform-origin: 0 50%; }
+      -webkit-transform: scaleX(1);
+              transform: scaleX(1);
+      -webkit-transform-origin: 0 50%;
+              transform-origin: 0 50%; }
   .nav--breadcrumb .item-separator {
     margin: 0 .6em 0 .4em;
     font-size: .7em;
@@ -1994,10 +2018,12 @@ Styleguide Navigation - 55.nav--social-share
     margin: 5px 10px;
     border-radius: 50%;
     background-color: #003cc5;
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
     transition: .2s; }
   .owl-carousel .owl-dots .owl-dot.active span {
-    transform: scale(1.4); }
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4); }
 
 .owl-carousel .owl-nav button.owl-prev,
 .owl-carousel .owl-nav button.owl-next {
@@ -2012,7 +2038,8 @@ Styleguide Navigation - 55.nav--social-share
   box-sizing: border-box;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   transition: .2s; }
   .owl-carousel .owl-nav button.owl-prev:before,
   .owl-carousel .owl-nav button.owl-next:before {
@@ -2256,7 +2283,8 @@ Styleguide Paragraphs - 40.paragraph--type--text-image
    UI AUTOCOMPLETE
    ========================================================================== */
 .ui-autocomplete {
-  transform: translateY(3px);
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
   background-color: #fff;
   max-width: 380px;
   font-size: 0.875rem; }
@@ -2310,7 +2338,7 @@ Styleguide Paragraphs - 40.paragraph--type--text-image
 
 .btn--block-admin:after {
   display: inline-block;
-  font-family: "icons-1560690707";
+  font-family: "icons-1561892892";
   font-style: normal;
   font-weight: normal;
   font-variant: normal;

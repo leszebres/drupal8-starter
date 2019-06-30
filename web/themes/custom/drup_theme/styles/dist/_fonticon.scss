@@ -10,15 +10,15 @@ Commande : gulp fonticon
 Font
 ========================================================================== */
 @font-face {
-font-family: "icons-1560690707";
+font-family: "icons-1561892892";
 font-weight: normal;
 font-style: normal;
-src: url("../../fonts/icons-1560690707.woff2?v=1560690707") format("woff2"),
-url("../../fonts/icons-1560690707.woff?v=1560690707") format("woff");
+src: url("../../fonts/icons-1561892892.woff2?v=1561892892") format("woff2"),
+url("../../fonts/icons-1561892892.woff?v=1561892892") format("woff");
 }
 
 @function font-icon-name() {
-@return "icons-1560690707";
+@return "icons-1561892892";
 }
 
 /*
@@ -33,11 +33,12 @@ url("../../fonts/icons-1560690707.woff?v=1560690707") format("woff");
     .icon--error - \EA09
     .icon--facebook - \EA0A
     .icon--instagram - \EA0B
-    .icon--minus - \EA0C
-    .icon--plus - \EA0D
-    .icon--twitter - \EA0E
-    .icon--warning - \EA0F
-    .icon--youtube - \EA10
+    .icon--linkedin - \EA0C
+    .icon--minus - \EA0D
+    .icon--plus - \EA0E
+    .icon--twitter - \EA0F
+    .icon--warning - \EA10
+    .icon--youtube - \EA11
 
 Markup: <span class="icon $modifierClass"></span>
 
@@ -76,18 +77,21 @@ Styleguide Icons - 1.icon
     .icon--instagram:before {
     content: "\EA0B";
     }
-    .icon--minus:before {
+    .icon--linkedin:before {
     content: "\EA0C";
     }
-    .icon--plus:before {
+    .icon--minus:before {
     content: "\EA0D";
     }
-    .icon--twitter:before {
+    .icon--plus:before {
     content: "\EA0E";
     }
-    .icon--warning:before {
+    .icon--twitter:before {
     content: "\EA0F";
     }
-    .icon--youtube:before {
+    .icon--warning:before {
     content: "\EA10";
+    }
+    .icon--youtube:before {
+    content: "\EA11";
     }

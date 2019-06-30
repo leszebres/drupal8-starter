@@ -14,7 +14,7 @@ function sass(pumpCallback) {
         plugins.gulp.src(themePath + '/' + packagejson.paths.styles + '/src/**/*.scss'),
         plugins.sass(),
         plugins.postcss([
-            plugins.autoprefixer(packagejson.autoprefixer),
+            plugins.autoprefixer(),
             plugins.postcssPxtorem(packagejson.pxtorem)
         ]),
         plugins.rename(function (path) {
@@ -29,6 +29,16 @@ function watchsass() {
     let themePath = process.argv.indexOf('--admin') === -1 ? packagejson.paths.theme : packagejson.paths.theme_admin;
 
     plugins.gulp.watch(themePath + '/' + packagejson.paths.styles + '/src/**/*.scss', plugins.gulp.parallel(sass));
+}
+
+// Supprime les fonts icon générées
+function cleanfonts(pumpCallback) {
+    return plugins.pump([
+        plugins.gulp.src(packagejson.paths.theme + '/' + packagejson.paths.fonts + '/icons-*'),
+        plugins.clean({
+            force: true
+        })
+    ], pumpCallback);
 }
 
 // FontIcon
@@ -82,6 +92,6 @@ function images(pumpCallback) {
 
 // Alias
 exports.sass = sass;
-exports.fonticon = plugins.gulp.series(fonticon, sass);
+exports.fonticon = plugins.gulp.series(cleanfonts, fonticon, sass);
 exports.images = images;
 exports.default = plugins.gulp.series(sass, watchsass);
