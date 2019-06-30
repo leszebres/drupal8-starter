@@ -9,16 +9,28 @@ use Drupal\drup\Helper\DrupUrl;
 function drup_theme_preprocess_menu(&$variables) {
     if (isset($variables['menu_name'])) {
         if ($variables['menu_name'] === 'main') {
-//            $currentEntity = DrupPageEntity::loadEntity();
+//            $currentEntity = DrupPageEntity::loadEntity()->getEntity();
+//            /** @var \Drupal\drup_router\DrupRouter $drupRouter */
 //            $drupRouter = \Drupal::service('drup_router');
 //
-//            $regionNid = $drupRouter->getId('rpl');
+//            //$regionNid = $drupRouter->getId('rpl');
 //
+//            // Applique la classe is-active pour bundle => routeName
+//            $customActiveTrails = [
+//                'news' => 'rpl'
+//            ];
+//            $currentCustomActiveTrail = ($currentEntity !== null && isset($customActiveTrails[$currentEntity->bundle()])) ? $customActiveTrails[$currentEntity->bundle()] : null;
+//
+//            //
 //            foreach ($variables['items'] as $index => &$item) {
-//                // Classess
+//                // Classes
 //                if ($entity = DrupUrl::loadEntity($item['url'])) {
 //                    if ($entity->bundle() === 'page' && $regionNid === $entity->id()) {
-//                        $item['attributes']['class'] .= ' theme-secondary';
+//                        $item['attributes']->addClass('theme-secondary');
+//                    }
+//                    // Custom active trail
+//                    if ($currentCustomActiveTrail !== null && $drupRouter->getId($currentCustomActiveTrail) === $entity->id()) {
+//                        $item['in_active_trail'] = true;
 //                    }
 //                }
 //            }

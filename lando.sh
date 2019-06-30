@@ -11,8 +11,8 @@ exportFolder="./_sql"
 
 # Export database with lando
 function dump {
-    [ -d $exportFolder ] || mkdir -v $exportFolder
-    cd $exportFolder && lando db-export
+    [[ -d ${exportFolder} ]] || mkdir -v ${exportFolder}
+    cd ${exportFolder} && lando db-export
     cd -
 }
 
@@ -45,6 +45,7 @@ function trans {
 # Update drup_theme's node dependencies with yarn
 function theme_dependencies {
     cd ./web/themes/custom/drup_theme/ && lando yarn upgrade
+    cd ./
 }
 
 # Compile dependencies for contrib theme Claro
@@ -68,13 +69,13 @@ function readUser {
 
     read -p "Make your choice : " action
     echo "----------------------------"
-    if [ "action" == "" ]
+    if [[ "action" == "" ]]
     then
         echo "Maybe another time ..."
         exit
     fi
 
-    case $action in
+    case ${action} in
         1)
             dump;;
         2)
@@ -92,7 +93,7 @@ function readUser {
 
 
 argAction=$1
-if [ -z $argAction ];
+if [[ -z ${argAction} ]];
 then
     readUser
 else
