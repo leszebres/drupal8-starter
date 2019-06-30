@@ -7,7 +7,7 @@ function drup_theme_theme_suggestions_fieldset_alter(array &$suggestions, array 
     $element = $variables['element'];
 
     // Fielset + legend bugs with flexbox => div/div + error message
-    if ((isset($element['#attributes']['class']) && in_array('fieldset-custom', $element['#attributes']['class'], true)) || in_array($element['#type'], ['radios', 'checkboxes'])) {
+    if ((isset($element['#attributes']['class']) && in_array('fieldset-custom', $element['#attributes']['class'])) || (isset($element['#type']) && in_array($element['#type'], ['radios', 'checkboxes']))) {
         $suggestions[] = 'fieldset__custom';
     }
 }
@@ -17,6 +17,7 @@ function drup_theme_theme_suggestions_fieldset_alter(array &$suggestions, array 
  */
 function drup_theme_theme_suggestions_input_alter(array &$suggestions, array $variables) {
     $element = $variables['element'];
+
     if (isset($element['#type']) && $element['#type'] === 'submit' && (!isset($element['#button_type']) || (isset($element['#button_type']) && $element['#button_type'] !== 'input'))) {
         $suggestions[] = 'input__submit_custom';
     }
