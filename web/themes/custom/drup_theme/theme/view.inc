@@ -21,19 +21,20 @@ function drup_theme_preprocess_views_view(&$variables) {
     if (empty($variables['rows'])) {
         $variables['empty'] = t('No result match your search.');
     }
-    
-//    switch ($variables['view']->id()) {
-//        case 'store_locators':
-//            $variables['display_total_rows_count'] = \Drupal::translation()->formatPlural(
-//                $variables['view']->total_rows,
-//                '@count result founded.',
-//                '@count results founded.'
-//            );
-//            if (empty($variables['rows'])) {
-//                $variables['empty'] = t('No result match your search.');
-//            }
-//            break;
-//    }
+
+    switch ($variables['view']->id() . '_' . $variables['view']->current_display) {
+        case 'news_list_all':
+        case 'publications_list_all':
+            $variables['display_total_rows_count'] = \Drupal::translation()->formatPlural(
+                $variables['view']->total_rows,
+                '@count result founded.',
+                '@count results founded.'
+            );
+            if (empty($variables['rows'])) {
+                $variables['empty'] = t('No result match your search.');
+            }
+            break;
+    }
 }
 
 /**
@@ -88,9 +89,12 @@ function drup_theme_views_rows_controller($variables) {
     $displayId = $variables['view']->current_display;
 
     // Rows : valeurs par défaut liées au thème
-    $variables['row_layout'] = 'third';
-    $variables['row_image_style'] = 'list_item_primary';
+    $variables['row_layout'] = 'third'; // .list-item.l-XX
+    $variables['rows_partial'] = 'primary'; // .list--XX
+    $variables['row_partial'] = 'primary'; // tpl list item
+    $variables['row_image_style'] = 'item_primary';
     $variables['row_tag_title'] = 'h3';
+    $variables['row_cta'] = t('Read more');
 
     if ($viewId === 'news') {
         switch ($displayId) {
@@ -110,17 +114,18 @@ function drup_theme_views_rows_controller($variables) {
  * @return mixed
  */
 function drup_theme_views_rows_controller__primary($variables) {
-    $variables['rows_attributes']->addClass('list--primary');
+    $variables['rows_attributes']->addClass('list--' . $variables['rows_partial']);
 
     if (!empty($variables['view']->result)) {
         foreach ($variables['view']->result as $id => &$result) {
             $result->_entity = Node::load($result->_entity->id());
             /** @var \Drupal\drup\Entity\DrupField $drupField */
-            $drupField = $result->drupField = $result->_entity->drupField();
-            
+            $result->drupField = $result->_entity->drupField();
+
             $result->layout = $variables['row_layout'];
             $result->imageStyle = $variables['row_image_style'];
             $result->tagTitle = $variables['row_tag_title'];
+            $result->partial = $variables['row_partial'];
 
             /** @var \Drupal\Core\Template\Attribute $attributes **/
             $attributes = $variables['rows'][$id]['attributes'];
@@ -135,6 +140,11 @@ function drup_theme_views_rows_controller__primary($variables) {
                     }
                 }
             }
+
+            // Content
+            $result->title = $result->_entity->getTitle();
+            $result->url = $result->_entity->toUrl();
+            $result->cta = $variables['row_cta'];
     
             // partial
             if (isset($result->partial)) {
@@ -144,11 +154,6 @@ function drup_theme_views_rows_controller__primary($variables) {
             if (!empty($result->layout)) {
                 $attributes->addClass('l-' . $result->layout);
             }
-
-            // Content
-            $result->title = $result->_entity->getTitle();
-            $result->url = $result->_entity->toUrl();
-            $result->cta = t('Read more');
 
             // Add content
             $variables['rows'][$id]['content'] = $result;

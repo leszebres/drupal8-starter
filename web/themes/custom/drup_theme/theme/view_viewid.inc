@@ -1,40 +1,41 @@
 <?php
 
+use Drupal\drup\Helper\DrupString;
+
 /**
  * Vue ""
  */
-//function drup_theme_views_rows_controller__VIEWID($variables) {
-//
-//    return $variables;
-//}
+function drup_theme_views_rows_controller__VIEWID($variables) {
+    //    if (!empty($variables['view']->result)) {
+    //        foreach ($variables['view']->result as $id => &$result) {
+    //            // Subtitle
+    //            if ($subtitle = $result->drupField->getValue('subtitle', 'value')) {
+    //                $result->body = DrupString::truncate($subtitle, 200);
+    //            }
+    //
+    //            // Date
+    //            $result->date = \Drupal::service('date.formatter')->format($result->_entity->getCreatedTime(), 'custom', 'd F Y');
+    //        }
+    //    }
+    //
+    //    return $variables;
+}
 
 /**
  * Vue + Display ""
  */
-//function drup_theme_views_rows_controller__VIEWID__DISPLAYID($variables) {
-//    $aliasManager = \Drupal::service('path.alias_manager');
-//
-//    $variables['block']['title']['value'] = t('Block title');
-//    $variables['rows_attributes']->addClass('list--primary');
-//
+function drup_theme_views_rows_controller__VIEWID__DISPLAYID($variables) {
 //    if (!empty($variables['view']->result)) {
 //        foreach ($variables['view']->result as $id => &$result) {
-//            $node = $result->_entity;
-//            $drupField = new DrupField($node);
+//            // Subtitle
+//            if ($subtitle = $result->drupField->getValue('subtitle', 'value')) {
+//                $result->body = DrupString::truncate($subtitle, 200);
+//            }
 //
-//            // Row attributes
-//            $attributes = $variables['rows'][$id]['attributes'];
-//            $attributes->addClass('list-item');
-//
-//            // Content
-//            $result->title = $node->getTitle();
-//            $result->url = $aliasManager->getAliasByPath('/node/' . $node->id());
-//
-//            // Add content
-//            $variables['rows'][$id]['content'] = $result;
-//            $variables['rows'][$id]['attributes'] = $attributes;
+//            // Date
+//            $result->date = \Drupal::service('date.formatter')->format($result->_entity->getCreatedTime(), 'custom', 'd F Y');
 //        }
 //    }
 //
 //    return $variables;
-//}
+}
