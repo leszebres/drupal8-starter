@@ -70,3 +70,61 @@ body.is-drup-block-admin {
       left: auto;
       right: 0;
       bottom: 29px; }
+
+/* ==========================================================================
+   Claro
+   ========================================================================== */
+.page-wrapper :focus,
+.ui-dialog :focus,
+.is-horizontal .tabs__link:focus,
+.is-horizontal .tabs--primary .tabs__link:focus {
+  box-shadow: none; }
+
+.claro-details__summary:focus::after,
+.claro-details__summary:active::after,
+.collapse-processed > .claro-details__summary .details-title:focus::after {
+  opacity: 0;
+  transition: none; }
+
+.form-element {
+  transition: .2s; }
+
+.messages {
+  margin-bottom: 30px; }
+
+/* ==========================================================================
+   Tabs
+   ========================================================================== */
+.tabs a {
+  transition: .3s; }
+
+.claro-details {
+  padding-bottom: 1px; }
+
+.horizontal-tabs {
+  border: 0; }
+  .horizontal-tabs ul.horizontal-tabs-list {
+    display: flex;
+    background: #f3f4f9;
+    border: 0; }
+    .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button {
+      background: none;
+      border: 0; }
+      .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a {
+        padding: 1rem 2rem;
+        border-radius: 2px 2px 0 0;
+        transition: .3s; }
+        .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button a:hover {
+          background-color: #e6ecf8; }
+      .horizontal-tabs ul.horizontal-tabs-list li.horizontal-tab-button.selected a:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: #0071b8; }
+  .horizontal-tabs .horizontal-tabs-panes .horizontal-tabs-pane {
+    margin-top: 0;
+    padding-top: 1px;
+    padding-bottom: 1px; }

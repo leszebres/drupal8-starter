@@ -4,9 +4,7 @@ namespace Drupal\drup_site\Form;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Locale\CountryManager;
-use Drupal\drup\Media\DrupFile;
 use Drupal\drup_settings\Form\DrupSettingsForm;
-use Drupal\drup_social_links\DrupSocialLinks;
 
 /**
  * Class DrupSiteSettingsForm
@@ -89,12 +87,5 @@ class DrupSiteSettingsForm extends DrupSettingsForm {
         $this->populateDefaultValues($form, $form_state);
 
         return $form;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function submitForm(array &$form, FormStateInterface $form_state) {
-        parent::submitForm($form, $form_state);
     }
 }

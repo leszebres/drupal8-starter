@@ -2,6 +2,10 @@ $color--menu: #333;
 $color--primary: #0071b8;
 $color--primary-ligther: #1f86c7;
 
+$color--background: #fff;
+$color--background-secondary: #f3f4f9;
+$color--background-tertiary: #e6ecf8;
+
 $v-align: 30px;
 $v-align--medium: $v-align/2;
 
@@ -106,6 +110,85 @@ body.is-drup-block-admin {
                     }
                 }
             }
+        }
+    }
+}
+
+
+/* ==========================================================================
+   Claro
+   ========================================================================== */
+.page-wrapper :focus,
+.ui-dialog :focus,
+.is-horizontal .tabs__link:focus,
+.is-horizontal .tabs--primary .tabs__link:focus {
+    box-shadow: none;
+}
+.claro-details__summary:focus::after,
+.claro-details__summary:active::after,
+.collapse-processed > .claro-details__summary .details-title:focus::after {
+    opacity: 0;
+    transition: none;
+}
+.form-element {
+    transition: .2s;
+}
+.messages {
+    margin-bottom: $v-align;
+}
+
+/* ==========================================================================
+   Tabs
+   ========================================================================== */
+.tabs a {
+    transition: .3s;
+}
+.claro-details {
+    padding-bottom: 1px;
+}
+.horizontal-tabs {
+    border: 0;
+
+    // Onglets
+    ul.horizontal-tabs-list {
+        display: flex;
+        background: $color--background-secondary;
+        border: 0;
+
+        li.horizontal-tab-button {
+            background: none;
+            border: 0;
+
+            a {
+                padding: 1rem 2rem;
+                border-radius: 2px 2px 0 0;
+                transition: .3s;
+
+                &:hover {
+                    background-color: $color--background-tertiary;
+                }
+            }
+            &.selected a {
+                &:after {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    height: 2px;
+                    background: $color--primary;
+
+                }
+            }
+        }
+    }
+
+    // Contenu des onglets
+    .horizontal-tabs-panes {
+        .horizontal-tabs-pane {
+            margin-top: 0;
+            padding-top: 1px;
+            padding-bottom: 1px;
         }
     }
 }

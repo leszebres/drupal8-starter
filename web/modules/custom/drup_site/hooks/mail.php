@@ -1,7 +1,5 @@
 <?php
 
-use Drupal\drup_settings\DrupSettings;
-
 /**
  * @inheritdoc
  */
