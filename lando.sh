@@ -83,7 +83,7 @@ function readUser {
         3)
             trans;;
         4)
-            theme_dependencies;;
+            up_theme;;
         *)
             echo "Nothing matches :("
             exit 1
