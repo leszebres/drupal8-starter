@@ -24,7 +24,7 @@ function up {
     trans
     lando drush locale-update -y
     lando drush cr -y
-    theme_dependencies
+    up_theme
     dump
 }
 
@@ -43,7 +43,7 @@ function trans {
 }
 
 # Update drup_theme's node dependencies with yarn
-function theme_dependencies {
+function up_theme {
     cd ./web/themes/custom/drup_theme/ && lando yarn upgrade
     cd ./
 }

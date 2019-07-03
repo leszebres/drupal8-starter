@@ -15,9 +15,9 @@
     jquery ">=1.7.0"
 
 "@kevinbaubet/customform@^4.7.5":
-  version "4.7.5"
-  resolved "https://registry.yarnpkg.com/@kevinbaubet/customform/-/customform-4.7.5.tgz#67c43635e09788c9a8e73c85bf1b381446695cf9"
-  integrity sha512-hQVBl694Qt/JB5TBAgVRLXZsPr/RDKhLET1Prvfxu3Cshvc2ww2auRW2qC+AlfNeQn9VTNA+PXbpr8yupHLZVA==
+  version "4.7.6"
+  resolved "https://registry.yarnpkg.com/@kevinbaubet/customform/-/customform-4.7.6.tgz#5bce0b54d0a1fea341cdbc9035c625512503f152"
+  integrity sha512-7TE4J301tf/9yH1+VisYVtMlFtGg7fs08Kl5UPMwk6JEcicAg45AS5tx3bWCM0hRTmpNfVX/Am6z6yOA+yymfQ==
   dependencies:
     jquery ">=1.7.0"
 
@@ -43,9 +43,9 @@
     jquery ">=1.7.0"
 
 "@kevinbaubet/togglemenu@^3.0.0":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@kevinbaubet/togglemenu/-/togglemenu-3.0.1.tgz#93a7c615f74109f0f06a7049acf1e909984eb813"
-  integrity sha512-dQsAk3LHadWWRM12zfbzUg5UgguAAiwEWVTnPJDZV0947xOXWJcks8EXclLD+nsLGzw7usXKo9CU6p3UL9xC9A==
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@kevinbaubet/togglemenu/-/togglemenu-3.0.2.tgz#512583e4ef3984c1bcdd0f954eabb80b11281794"
+  integrity sha512-x4Rd9YFWqbh+BRYXCeR894ykqCSxHg1jdga6lWhu0U6nYq86zsp89f9My6OecmX9MCqW0Yy03E3BZgwOWeqXow==
   dependencies:
     jquery ">=1.7.0"
 
