@@ -3,10 +3,8 @@
 use Drupal\Core\Template\Attribute;
 use Drupal\Component\Utility\Html;
 use Drupal\drup\DrupHead;
-use Drupal\drup\DrupPageEntity;
 use Drupal\drup\DrupSEO;
 use Drupal\drup\Helper\DrupRequest;
-use Drupal\drup_settings\DrupSettings;
 
 /**
  * @inheritdoc
@@ -33,7 +31,8 @@ function drup_theme_preprocess_html(array &$variables) {
         $variables['attributes']->addClass('is-front');
 
     } else {
-        $drupPageEntity = DrupPageEntity::loadEntity();
+        /** @var \Drupal\drup\DrupPageEntity $drupPageEntity */
+        $drupPageEntity = \Drupal::service('drup_page_entity');
 
         if (($entityType = $drupPageEntity->getEntityType()) && ($bundle = $drupPageEntity->getBundle())) {
             $variables['attributes']->addClass([

@@ -2,7 +2,6 @@
 
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
-use Drupal\drup\DrupPageEntity;
 use Drupal\drup\DrupSEO;
 use Drupal\drup\Entity\DrupField;
 use Drupal\drup\Entity\Node;
@@ -18,7 +17,8 @@ function drup_theme_preprocess_page(array &$variables) {
     /** @var \Drupal\drup_settings\DrupSettings $drupSettings */
     $drupSettings = \Drupal::service('drup_settings');
 
-    $drupPageEntity = DrupPageEntity::loadEntity();
+    /** @var \Drupal\drup\DrupPageEntity $drupPageEntity */
+    $drupPageEntity = \Drupal::service('drup_page_entity');
 
     /** @var \Drupal\drup_router\DrupRouter $drupRouter */
     $drupRouter = \Drupal::service('drup_router');
@@ -101,7 +101,10 @@ function drup_theme_theme_suggestions_page_alter(array &$suggestions, array $var
  * @param array $variables
  */
 function drup_theme_preprocess_page_title(array &$variables) {
-    $drupPageEntity = DrupPageEntity::loadEntity();
+    /** @var \Drupal\drup\DrupPageEntity $drupPageEntity */
+    $drupPageEntity = \Drupal::service('drup_page_entity');
+
+    /** @var \Drupal\drup_router\DrupRouter $drupRouter */
     $drupRouter = \Drupal::service('drup_router');
 
     $variables['title_attributes'] = new Attribute([

@@ -1,7 +1,6 @@
 <?php
 
 use Drupal\Core\Access\AccessResult;
-use Drupal\drup\DrupPageEntity;
 use Drupal\drup\Helper\DrupRequest;
 
 
@@ -30,8 +29,13 @@ function drup_site_block_build_alter(array &$build, \Drupal\Core\Block\BlockPlug
  * @return \Drupal\Core\Access\AccessResult
  */
 function drup_site_block_access(\Drupal\block\Entity\Block $block, $operation, \Drupal\Core\Session\AccountInterface $account) {
+    /** @var \Drupal\drup_router\DrupRouter $drupRouter */
+    $drupRouter = \Drupal::service('drup_router');
     $drupRouteName = \Drupal::service('drup_router')->getName();
-    $drupPageEntity = DrupPageEntity::loadEntity();
+
+    /** @var \Drupal\drup\DrupPageEntity $drupPageEntity */
+    $drupPageEntity = \Drupal::service('drup_page_entity');
+
     $isFront = DrupRequest::isFront();
     $args = DrupRequest::getArgs();
 

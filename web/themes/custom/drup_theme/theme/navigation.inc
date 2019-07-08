@@ -1,6 +1,5 @@
 <?php
 
-use Drupal\drup\DrupPageEntity;
 use Drupal\drup\Helper\DrupUrl;
 
 /**
@@ -9,7 +8,8 @@ use Drupal\drup\Helper\DrupUrl;
 function drup_theme_preprocess_menu(&$variables) {
     if (isset($variables['menu_name'])) {
         if ($variables['menu_name'] === 'main') {
-//            $currentEntity = DrupPageEntity::loadEntity()->getEntity();
+//            /** @var \Drupal\drup\DrupPageEntity $currentEntity */
+//            $currentEntity = \Drupal::service('drup_page_entity');
 //            /** @var \Drupal\drup_router\DrupRouter $drupRouter */
 //            $drupRouter = \Drupal::service('drup_router');
 //

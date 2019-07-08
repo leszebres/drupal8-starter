@@ -1,13 +1,13 @@
 <?php
 
 use Drupal\Core\Url;
-use Drupal\drup\DrupPageEntity;
 
 /**
  * @inheritdoc
  */
 function drup_site_language_switch_links_alter(array &$links, $type, $path) {
-    $drupPageEntity = DrupPageEntity::loadEntity();
+    /** @var \Drupal\drup\DrupPageEntity $drupPageEntity */
+    $drupPageEntity = \Drupal::service('drup_page_entity');
     $entity = $drupPageEntity->getEntity();
 
     foreach ($links as $languageId => &$link) {
