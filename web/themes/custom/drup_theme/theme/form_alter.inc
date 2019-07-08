@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\drup\Views\DrupViews;
 use Drupal\drup_site\DrupSiteForm;
 
 /**
@@ -26,6 +27,15 @@ function drup_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
  * @inheritdoc
  */
 function drup_theme_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+    /** @var \Drupal\views\ViewExecutable $viewExecutable */
+    $viewExecutable = $form_state->get('view');
+    /** @var \Drupal\views\Entity\View $view */
+    $view = $form_state->get('view')->storage;
+
+    // View type + bundle
+    ['type' => $baseEntityType, 'bundle' => $baseEntityBundle] = DrupViews::getBaseEntityInfo($viewExecutable);
+
+
     // Vue Tags : articles dans une thématique/notion clé
     if ($form['#id'] === 'views-exposed-form-healthreview-tags-articles-term') {
 
