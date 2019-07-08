@@ -11,8 +11,8 @@ exportFolder="./_sql"
 
 # Export database with lando
 function dump {
-    [[ -d ${exportFolder} ]] || mkdir -v ${exportFolder}
-    cd ${exportFolder} && lando db-export
+    [ -d $exportFolder ] || mkdir -v $exportFolder
+    cd $exportFolder && lando db-export
     cd -
 }
 
@@ -44,18 +44,15 @@ function trans {
 
 # Update drup_theme's node dependencies with yarn
 function up_theme {
-    cd ./web/themes/custom/drup_theme/ && lando yarn upgrade
-    cd ./
+    lando yarn upgrade ./web/themes/custom/drup_theme
 }
 
 # Compile dependencies for contrib theme Claro
 function claro {
-    cd ./web/themes/contrib/claro/
-    lando yarn
-    lando yarn install
-    lando yarn build:js
-    lando yarn build:css
-    cd ./
+    lando yarn ./web/themes/contrib/claro
+    lando yarn install ./web/themes/contrib/claro
+    lando yarn build:js ./web/themes/contrib/claro
+    lando yarn build:css ./web/themes/contrib/claro
 }
 
 # Shell prompt
@@ -65,17 +62,18 @@ function readUser {
     echo "2) Drupal update (composer, db update, translations, cache rebuild)"
     echo "3) Custom themes translations import"
     echo "4) Update drup_theme's node dependencies with yarn"
+    echo "5) Update claro's node dependencies with yarn"
     echo "----------------------------"
 
     read -p "Make your choice : " action
     echo "----------------------------"
-    if [[ "action" == "" ]]
+    if [ "action" == "" ]
     then
         echo "Maybe another time ..."
         exit
     fi
 
-    case ${action} in
+    case $action in
         1)
             dump;;
         2)
@@ -84,6 +82,8 @@ function readUser {
             trans;;
         4)
             up_theme;;
+        5)
+            claro;;
         *)
             echo "Nothing matches :("
             exit 1
@@ -93,7 +93,7 @@ function readUser {
 
 
 argAction=$1
-if [[ -z ${argAction} ]];
+if [ -z $argAction ];
 then
     readUser
 else
