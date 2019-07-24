@@ -252,6 +252,7 @@ $databases = [];
  * @endcode
  */
 $config_directories = [];
+$config_directories['sync'] = '../config/sync';
 
 /**
  * Settings:
@@ -280,7 +281,7 @@ $config_directories = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '';
+$settings['hash_salt'] = 'SHNfwhIcAkkYm3PTe1BsQDHTQcaktDta05b4541f765b0d3197e388e9caa64bb';
 
 /**
  * Deployment identifier.
@@ -535,6 +536,7 @@ if ($settings['hash_salt']) {
  * about securing private files.
  */
 # $settings['file_private_path'] = '';
+$settings['file_private_path'] = 'sites/default/files/private';
 
 /**
  * Session write interval:
@@ -740,8 +742,8 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  * @see \Drupal\Core\Extension\ExtensionDiscovery::scanDirectory()
  */
 $settings['file_scan_ignore_directories'] = [
-  'node_modules',
-  'bower_components',
+    'node_modules',
+    'bower_components',
 ];
 
 /**
@@ -774,6 +776,16 @@ $settings['entity_update_backup'] = TRUE;
  * Keep this code block at the end of this file to take full effect.
  */
 #
-# if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
-#   include $app_root . '/' . $site_path . '/settings.local.php';
-# }
+if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+  include $app_root . '/' . $site_path . '/settings.local.php';
+}
+
+$databases['default']['default'] = [
+    'database' => 'drupal8',
+    'username' => 'drupal8',
+    'password' => 'drupal8',
+    'prefix' => '',
+    'host' => 'database',
+    'port' => '3306',
+    'driver' => 'mysql',
+];
