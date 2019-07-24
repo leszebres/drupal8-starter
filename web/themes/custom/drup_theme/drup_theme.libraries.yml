@@ -1,6 +1,6 @@
 # CONTRIB
 fancybox:
-  version: '3.5.7'
+  version: '3.x.x'
   css:
     theme:
       node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css: {}
@@ -10,14 +10,14 @@ fancybox:
   - core/jquery
 
 imagesloaded:
-  version: '4.1.4'
+  version: '4.x.x'
   js:
     node_modules/imagesloaded/imagesloaded.pkgd.min.js: {}
   dependencies:
   - core/jquery
 
 masonry:
-  version: '4.2.2'
+  version: '4.x.x'
   js:
     node_modules/masonry-layout/dist/masonry.pkgd.min.js: {}
   dependencies:
@@ -25,7 +25,7 @@ masonry:
   - drup_theme/imagesloaded
 
 owl-carousel:
-  version: '2.3.4'
+  version: '2.x.x'
   js:
     node_modules/owl.carousel/dist/owl.carousel.min.js: {}
   css:
@@ -37,7 +37,7 @@ owl-carousel:
 
 # CUSTOM
 togglemenu:
-  version: '3.0.1'
+  version: '3.x.x'
   js:
     node_modules/@kevinbaubet/togglemenu/dist/togglemenu.min.js: {}
     node_modules/@kevinbaubet/togglemenu/dist/togglemenu-hover.min.js: {}
@@ -46,7 +46,7 @@ togglemenu:
   - core/jquery
 
 customform:
-  version: '4.7.5'
+  version: '4.7.x'
   js:
     node_modules/@kevinbaubet/customform/dist/customform.min.js: {}
     node_modules/@kevinbaubet/customform/dist/customform-check.min.js: {}
@@ -55,35 +55,35 @@ customform:
   - core/jquery
 
 cookienotice:
-  version: '3.0.5'
+  version: '3.x.x'
   js:
     node_modules/@kevinbaubet/cookienotice/dist/cookienotice.min.js: {}
   dependencies:
   - core/jquery
 
 fixer:
-  version: '3.2.1'
+  version: '3.x.x'
   js:
     node_modules/@kevinbaubet/fixer/dist/fixer.min.js: {}
   dependencies:
   - core/jquery
 
 spinner:
-  version: '2.3.2'
+  version: '2.x.x'
   js:
     node_modules/@kevinbaubet/spinner/dist/spinner.min.js: {}
   dependencies:
   - core/jquery
 
 devicedetect:
-  version: '2.1.3'
+  version: '2.x.x'
   js:
     node_modules/@kevinbaubet/devicedetect/dist/devicedetect.min.js: {}
   dependencies:
   - core/jquery
 
 responsivetable:
-  version: '1.0.2'
+  version: '1.x.x'
   js:
     node_modules/@mathieumaingret/responsive-table/dist/responsive-table.min.js: {}
   dependencies:
@@ -91,7 +91,7 @@ responsivetable:
     - drup_theme/devicedetect
 
 smap:
-  verson: '1.0.0'
+  verson: '1.x.x'
   css:
     theme:
       node_modules/@mathieumaingret/smap/node_modules/leaflet/dist/leaflet.css: {}

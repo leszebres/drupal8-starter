@@ -44,12 +44,12 @@ function trans {
 
 # Update drup_theme's node dependencies with yarn
 function up_theme {
-    lando yarn upgrade ./web/themes/custom/drup_theme
+    lando yarn --cwd ./web/themes/custom/drup_theme
 }
 
 # Compile dependencies for contrib theme Claro
 function claro {
-    lando yarn ./web/themes/contrib/claro
+    lando yarn --cwd ./web/themes/contrib/claro
     lando yarn install ./web/themes/contrib/claro
     lando yarn build:js ./web/themes/contrib/claro
     lando yarn build:css ./web/themes/contrib/claro
