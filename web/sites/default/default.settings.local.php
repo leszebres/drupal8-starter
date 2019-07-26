@@ -56,6 +56,7 @@ $config['system.logging']['error_level'] = 'verbose';
  */
 $config['system.performance']['css']['preprocess'] = FALSE;
 $config['system.performance']['js']['preprocess'] = FALSE;
+$config['advagg.settings']['enabled'] = FALSE;
 
 /**
  * Disable the render cache.
