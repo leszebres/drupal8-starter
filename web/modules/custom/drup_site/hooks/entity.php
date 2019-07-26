@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Core\Access\AccessResult;
 use Drupal\drup\Entity\Term;
 use Drupal\drup\Entity\Node;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
@@ -12,7 +13,26 @@ use Drupal\node\NodeInterface;
  * @inheritdoc
  */
 function drup_site_entity_access(EntityInterface $entity, $operation, AccountInterface $account) {
+    if ($operation === 'view') {
+        // Terms
+        if ($entity instanceof Term) {
+            // Accès manuel : mettre le nom machine du vocabulaire
+            $allowedVocabulariesId = [];
 
+            // Accès automatique en fonction de la configuration du sitemap.xml
+            if (\Drupal::moduleHandler()->moduleExists('simple_sitemap')) {
+                /** @var \Drupal\simple_sitemap\Simplesitemap $generator */
+                $generator = \Drupal::service('simple_sitemap.generator');
+                $bundleSettings = (array) $generator->getBundleSettings($entity->getEntityTypeId());
+
+                if (!empty($bundleSettings['index'])) {
+                    $allowedVocabulariesId[] = $entity->getVocabularyId();
+                }
+            }
+
+            return AccessResult::forbiddenIf(!in_array($entity->getVocabularyId(), $allowedVocabulariesId));
+        }
+    }
 }
 
 /**
