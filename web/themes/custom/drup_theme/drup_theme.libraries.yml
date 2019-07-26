@@ -112,7 +112,7 @@ swiftmailer:
     theme:
       styles/dist/mail.css: {}
 
-theme:
+theme-common:
   version: '0.1'
   css:
     theme:
@@ -120,7 +120,6 @@ theme:
       styles/dist/print.css: {weight: 50, media: 'print'}
   js:
     js/theme.js: {}
-    js/theme/all.js: {}
   dependencies:
   - core/jquery
   - core/drupal.ajax
@@ -133,14 +132,9 @@ theme:
   - drup_theme/fancybox
   - drup_theme/owl-carousel
 
-theme-contact:
+theme:
   version: '0.1'
   js:
-    js/theme/contact.js: {}
+    js/theme/all.js: {}
   dependencies:
-  - drup_theme/customform
-
-theme-front:
-  version: '0.1'
-  js:
-    js/theme/front.js: {}
+    - drup_theme/theme-common

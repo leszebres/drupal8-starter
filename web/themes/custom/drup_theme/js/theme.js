@@ -208,35 +208,14 @@ var Theme = {};
      */
     Drupal.behaviors.drupTheme = {
         attach: function (context) {
-            // XHR
-            if (context.body === undefined) {
-                context = $(context);
-
-                if (context.length) {
-                    if (context.is('form')) {
-                        // var formId = context.attr('id');
-
-                        // if (formId.indexOf('form-contact') !== -1) {
-                        //
-                        // }
-                    } else {
-                        // if (context.is('.block--articles-term')) {
-                        //     var thematic = Drupal.Theme.load('thematic');
-                        //     thematic.customFormHandler();
-                        // }
-                    }
-                }
-            }
-            // Ready
-            else {
+            if (context.body !== undefined) {
                 Drupal.Theme = new Theme.Common();
                 Drupal.Theme.init();
                 Drupal.Theme.load('all').init();
 
-                Drupal.Theme.autoload({
-                    front: '.is-front'
-                    //contact: '.route--contact'
-                });
+                // Drupal.Theme.autoload({
+                //     front: '.is-front'
+                // });
             }
         }
     };
