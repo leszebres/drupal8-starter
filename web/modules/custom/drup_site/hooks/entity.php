@@ -7,6 +7,7 @@ use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\drup\DrupHead;
+use Drupal\drup\Helper\DrupRequest;
 use Drupal\node\NodeInterface;
 
 /**
@@ -14,8 +15,10 @@ use Drupal\node\NodeInterface;
  */
 function drup_site_entity_access(EntityInterface $entity, $operation, AccountInterface $account) {
     if ($operation === 'view') {
+        $routeName = DrupRequest::getRouteName();
+
         // Terms
-        if ($entity instanceof Term) {
+        if ($entity instanceof Term && $routeName === 'entity.taxonomy_term.canonical') {
             // Accès manuel : mettre le nom machine du vocabulaire
             $allowedVocabulariesId = [];
 
