@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\drup\DrupSEO;
 use Drupal\drup\Entity\Node;
 use Drupal\drup\Media\DrupMediaImage;
 use Drupal\drup\Views\DrupViewsRows;
@@ -35,6 +36,9 @@ function drup_theme_preprocess_views_view(&$variables) {
             }
             break;
     }
+
+    // Pagination SEO
+    DrupSEO::pagerViewsHandler($variables);
 }
 
 /**
