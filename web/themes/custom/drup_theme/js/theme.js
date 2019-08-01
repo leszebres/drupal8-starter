@@ -111,6 +111,7 @@ var Theme = {};
         cookieNoticeHandler: function () {
             if (this.elements.cookieNotice.length) {
                 this.cookieNotice = this.elements.cookieNotice.cookieNotice({
+                    reload: false,
                     classes: {
                         btnAgree: '{prefix}-agree btn btn--secondary',
                         btnCustomize: '{prefix}-customize btn btn--secondary'
