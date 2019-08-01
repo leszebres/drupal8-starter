@@ -18,8 +18,8 @@ tags:
   schema_organization_same_as: '[seo:socialnetworks:link:url:comma]'
   schema_organization_name: '[seo:contact:company]'
   schema_organization_type: Corporation
-  schema_organization_telephone: '[seo:contact:phone:internationalized]'
-  schema_organization_contact_point: 'a:5:{s:5:"@type";s:12:"ContactPoint";s:9:"telephone";s:37:"[seo:contact:phone:internationalized]";s:17:"availableLanguage";s:35:"[seo:language:available:name:comma]";s:11:"contactType";s:16:"customer service";s:10:"areaServed";a:2:{s:5:"@type";s:5:"Place";s:7:"address";a:5:{s:5:"@type";s:13:"PostalAddress";s:13:"streetAddress";s:21:"[seo:contact:address]";s:15:"addressLocality";s:18:"[seo:contact:city]";s:10:"postalCode";s:21:"[seo:contact:zipcode]";s:14:"addressCountry";s:21:"[seo:contact:country]";}}}'
+  schema_organization_telephone: '[seo:contact:phone:international]'
+  schema_organization_contact_point: 'a:5:{s:5:"@type";s:12:"ContactPoint";s:9:"telephone";s:33:"[seo:contact:phone:international]";s:17:"availableLanguage";s:35:"[seo:language:available:name:comma]";s:11:"contactType";s:16:"customer service";s:10:"areaServed";a:2:{s:5:"@type";s:5:"Place";s:7:"address";a:5:{s:5:"@type";s:13:"PostalAddress";s:13:"streetAddress";s:21:"[seo:contact:address]";s:15:"addressLocality";s:18:"[seo:contact:city]";s:10:"postalCode";s:21:"[seo:contact:zipcode]";s:14:"addressCountry";s:21:"[seo:contact:country]";}}}'
   schema_web_page_is_accessible_for_free: 'True'
   schema_web_page_publisher: 'a:2:{s:5:"@type";s:12:"Organization";s:3:"@id";s:12:"organization";}'
   schema_web_page_type: WebPage
@@ -28,6 +28,7 @@ tags:
   schema_web_page_id: '[current-page:url]'
   schema_web_site_url: '[site:url]'
   schema_web_site_publisher: 'a:2:{s:5:"@type";s:12:"Organization";s:3:"@id";s:12:"organization";}'
+  schema_web_site_potential_action: 'a:3:{s:5:"@type";s:12:"SearchAction";s:11:"query-input";s:24:"[seo:search:query-input]";s:6:"target";a:2:{s:5:"@type";s:10:"EntryPoint";s:11:"urlTemplate";s:18:"[seo:search:query]";}}'
   schema_web_site_type: WebSite
   schema_web_site_id: '[site:url]'
   schema_web_site_name: '[site:name]'
