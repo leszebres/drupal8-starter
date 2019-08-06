@@ -5,9 +5,16 @@ services:
     tags:
       - { name: breadcrumb_builder, priority: 10001 }
 
+  # Twig extensions
   drup_site.twig.phone_number:
     arguments: ['@renderer']
     class: Drupal\drup\TwigExtension\PhoneNumber
+    tags:
+      - { name: twig.extension }
+
+  drup_site.twig.url_title:
+    arguments: ['@renderer']
+    class: Drupal\drup\TwigExtension\UrlTitle
     tags:
       - { name: twig.extension }
 
