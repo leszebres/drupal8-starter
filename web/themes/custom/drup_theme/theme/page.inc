@@ -52,7 +52,7 @@ function drup_theme_preprocess_page(array &$variables) {
             $variables['#attached']['library'][] = 'drup_theme/theme-contact';
         }
     }
-    
+
     /**
      * Node fields
      */
@@ -65,17 +65,8 @@ function drup_theme_preprocess_page(array &$variables) {
         $nodeType = $node->getType();
         $drupField = $node->drupField();
 
-        // Redirect node to their DrupRoute
-        $nodesRedirection =  [
-            'factory' => '<front>'
-        ];
-        if (isset($nodesRedirection[$nodeType])) {
-            $path = ($nodesRedirection[$nodeType] === '<front>') ? Url::fromRoute($nodesRedirection[$nodeType])->toString() : $drupRouter->getPath($nodesRedirection[$nodeType]);
-            $redirection = new RedirectResponse($path);
-            $redirection->send();
-            exit;
-        }
-        
+
+
     } elseif (\Drupal::request()->attributes->get('_route') === 'system.404') {
         $variables['page']['content'] = DrupRequest::get404Content();
     }
@@ -95,7 +86,7 @@ function drup_theme_theme_suggestions_page_alter(array &$suggestions, array $var
 //        }
 //    }
 }
-    
+
 /**
  * Implements hook_preprocess_page_title().
  * @param array $variables
