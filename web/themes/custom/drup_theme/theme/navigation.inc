@@ -42,11 +42,17 @@ function drup_theme_preprocess_menu(&$variables) {
  * @param $variables
  */
 function drup_theme_preprocess_breadcrumb(&$variables) {
-    $request     = \Drupal::request();
-    $route_match = \Drupal::routeMatch();
+    $lastItem = end($variables['breadcrumb']);
 
-    if ($title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject())) {
-        $variables['breadcrumb'][] = ['text' => $title];
+    // Dans les pages système, le dernier item (titre du lien de menu de la page courante) n'est pas
+    // généré par le module Menu breadcrumb, on affiche donc le page title
+    if (!empty($lastItem) && !empty($lastItem['url'])) {
+        $request     = \Drupal::request();
+        $route_match = \Drupal::routeMatch();
+
+        if ($title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject())) {
+            $variables['breadcrumb'][] = ['text' => $title];
+        }
     }
 
     $variables['#cache']['contexts'][] = 'url.path'; // invalid cache
