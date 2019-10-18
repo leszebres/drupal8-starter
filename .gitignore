@@ -1,7 +1,8 @@
 ####### Custom
 node_modules
-_sql
+/_sql
 /web/sites/*/services.yml
+/drush/*
 drupal8.*.gz
 !_dump/drupal8.*.gz
 ####### End custom
