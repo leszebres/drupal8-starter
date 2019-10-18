@@ -3,7 +3,7 @@
 use Drupal\drup\DrupSEO;
 
 /**
- * @inheritdoc
+ * {@inheritdoc}
  */
 function drup_site_token_info() {
     $info = [];

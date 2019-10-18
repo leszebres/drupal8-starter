@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @inheritdoc
+ * {@inheritdoc}
  */
 function drup_site_mail_alter(&$message) {
     $siteMail = \Drupal::config('system.site')->get('mail');
@@ -18,7 +18,7 @@ function drup_site_mail_alter(&$message) {
 }
 
 /**
- * @inheritdoc
+ * {@inheritdoc}
  */
 function drup_site_preprocess_swiftmailer(&$variables) {
     $theme = \Drupal::theme()->getActiveTheme();

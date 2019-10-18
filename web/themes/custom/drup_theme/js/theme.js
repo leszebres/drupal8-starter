@@ -17,7 +17,6 @@ var Theme = {};
             content: $('#content'),
             cookieNotice: $('#cookie-notice')
         };
-        this.elements.externalLinks = this.elements.page.find('a[href^="http"]');
         this.elements.openInNewWindowLinks = this.elements.page.find('a[href$=".pdf"]');
 
         // Variables
@@ -68,7 +67,6 @@ var Theme = {};
             this.deviceDetectHandler();
             this.spinnerHandler();
             this.cookieNoticeHandler();
-            this.externalLinksHandler();
             this.openInNewWindowHandler();
             this.anchorLinksHandler();
             this.drupBlockAdminFallback();
@@ -115,21 +113,6 @@ var Theme = {};
                     classes: {
                         btnAgree: '{prefix}-agree btn btn--secondary',
                         btnCustomize: '{prefix}-customize btn btn--secondary'
-                    }
-                });
-            }
-        },
-
-        /**
-         * Gestionnaire des liens externes
-         */
-        externalLinksHandler: function () {
-            if (this.elements.externalLinks.length) {
-                this.elements.externalLinks.each(function (i, link) {
-                    link = $(link);
-
-                    if (link.attr('href').indexOf(window.location.host) === -1) {
-                        link.attr('target', '_blank');
                     }
                 });
             }

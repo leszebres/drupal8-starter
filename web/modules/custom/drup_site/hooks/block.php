@@ -3,7 +3,6 @@
 use Drupal\Core\Access\AccessResult;
 use Drupal\drup\Helper\DrupRequest;
 
-
 /**
  * Hook build alter
  *

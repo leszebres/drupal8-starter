@@ -3,7 +3,7 @@
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * @inheritdoc
+ * {@inheritdoc}
  */
 function drup_site_form_alter(&$form, FormStateInterface $form_state, $form_id) {
     /**

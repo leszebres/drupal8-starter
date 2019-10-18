@@ -3,7 +3,7 @@
 use Drupal\Core\Url;
 
 /**
- * @inheritdoc
+ * {@inheritdoc}
  */
 function drup_site_language_switch_links_alter(array &$links, $type, $path) {
     /** @var \Drupal\drup\DrupPageEntity $drupPageEntity */

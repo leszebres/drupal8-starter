@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @inheritdoc
+ * {@inheritdoc}
  */
 function drup_site_module_implements_alter(&$implementations, $hook) {
     if ($hook === 'page_attachments_alter') {

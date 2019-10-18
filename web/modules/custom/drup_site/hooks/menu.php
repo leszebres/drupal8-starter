@@ -3,7 +3,7 @@
 use Drupal\drup\DrupMenu;
 
 /**
- * @inheritdoc
+ * {@inheritdoc}
  */
 function drup_site_preprocess_menu(&$variables) {
     $languageId = Drupal::languageManager()->getCurrentLanguage()->getId();

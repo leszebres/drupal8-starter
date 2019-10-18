@@ -7,7 +7,7 @@ use Drupal\drup\Helper\DrupRequest;
 use Drupal\node\NodeInterface;
 
 /**
- * @inheritdoc
+ * {@inheritdoc}
  */
 function drup_site_node_access(NodeInterface $node, $op, AccountInterface $account) {
     if (!DrupRequest::isAdminRoute()) {

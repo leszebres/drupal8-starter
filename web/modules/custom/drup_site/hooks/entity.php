@@ -11,7 +11,7 @@ use Drupal\drup\Helper\DrupRequest;
 use Drupal\node\NodeInterface;
 
 /**
- * @inheritdoc
+ * {@inheritdoc}
  */
 function drup_site_entity_access(EntityInterface $entity, $operation, AccountInterface $account) {
     if ($operation === 'view') {
@@ -39,7 +39,7 @@ function drup_site_entity_access(EntityInterface $entity, $operation, AccountInt
 }
 
 /**
- * @inheritdoc
+ * {@inheritdoc}
  */
 function drup_site_entity_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
     if ($entity Instanceof NodeInterface && $build['#view_mode'] === 'full') {
@@ -48,7 +48,7 @@ function drup_site_entity_view_alter(array &$build, EntityInterface $entity, Ent
 }
 
 /**
- * @inheritdoc
+ * {@inheritdoc}
  */
 function drup_site_entity_view_mode_alter(&$view_mode, Drupal\Core\Entity\EntityInterface $entity, $context) {
     // Override view mode of some nodes
@@ -61,7 +61,7 @@ function drup_site_entity_view_mode_alter(&$view_mode, Drupal\Core\Entity\Entity
 }
 
 /**
- * @inheritdoc
+ * {@inheritdoc}
  */
 function drup_site_entity_type_build(array &$entity_types) {
     if (isset($entity_types['node'])) {
