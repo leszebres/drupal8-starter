@@ -115,20 +115,4 @@ function drup_admin_preprocess_form(array &$variables) {
  */
 function drup_admin_form_alter(&$form, FormStateInterface $form_state, $form_id) {
     $buildInfo = $form_state->getBuildInfo();
-
-    $baseFormIds = ['node_form'];
-    $formatsToFields = [
-        'html_simple' => [
-            'field_subtitle_html',
-            'field_body_more'
-        ]
-    ];
-
-    if (!empty($buildInfo) && isset($buildInfo['base_form_id']) && in_array($buildInfo['base_form_id'], $baseFormIds)) {
-        foreach ($formatsToFields as $format => $fields) {
-            foreach ($fields as $field) {
-                $form[$field]['widget'][0]['#format'] = $format;
-            }
-        }
-    }
 }
