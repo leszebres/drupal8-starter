@@ -21,10 +21,10 @@
   dependencies:
     jquery ">=1.7.0"
 
-"@kevinbaubet/customform@^4.7.0":
-  version "4.7.7"
-  resolved "https://registry.yarnpkg.com/@kevinbaubet/customform/-/customform-4.7.7.tgz#056e468f3ec1f9b7ad0810a50f2bd388e838fea7"
-  integrity sha512-hFfY1PlGrUfu6IpjtC47xPcbfaI4eQ7jg6M5KDdNZ50VwJ2GoxxhP0bStHjDFIxaaZJoQQT1BnsXsI7QzTzbhQ==
+"@kevinbaubet/customform@^4.8.0":
+  version "4.8.3"
+  resolved "https://registry.yarnpkg.com/@kevinbaubet/customform/-/customform-4.8.3.tgz#719bf5e2a75ff2431d0ab21ccdccd63c3904c96f"
+  integrity sha512-4EqkKpJovkp+SCXSaclhiw9g2k8nmoVQGsa40mMKKpoiNTXu9UIz5IZOhwdS30GeBGwzO/4HiMghX0Vh4pwftQ==
   dependencies:
     jquery ">=1.7.0"
 
