@@ -1,3 +1,6 @@
+/* ==========================================================================
+   GLOBAL
+   ========================================================================== */
 .cke_editable {
     padding: $grid--gutter-width;
     background-color: #fff;
@@ -15,133 +18,94 @@
 
 
 /* ==========================================================================
-    TABS PRIMARY + SECONDARY
+   TABS PRIMARY + SECONDARY
    ========================================================================== */
-.tabs--primary,
-.tabs--secondary {
-    margin-bottom: $v-align/2;
-    overflow: hidden;
-    font-size: 14px;
-    @include font(primary);
-    list-style: none;
+.tabs-wrapper {
+    position: fixed;
+    width: $tabs--btn-size*2;
+    height: $tabs--btn-size*2;
+    z-index: $zindex--big + $zindex--small;
+    left: 0;
+    bottom: 0;
+
+    &:focus,
+    &:hover {
+        .tabs--primary {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    .route--user-login &,
+    .route--user-pass & {
+        display: none;
+    }
+}
+
+.tabs--primary-toggle {
+    position: absolute;
+    z-index: $zindex--small;
+    left: $grid--gutter-width;
+    bottom: $grid--gutter-width;
+    padding: $tabs--btn-size/4;
+    width: $tabs--btn-size;
+    height: $tabs--btn-size;
+    background: $color--primary;
+    border-radius: 50%;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 6px rgba(#fff, .15);
+    transition: .2s;
+
+    &:before {
+        @include font-icon(edit);
+        color: #fff;
+        font-size: 20px;
+    }
+}
+
+.tabs--primary {
+    position: absolute;
+    z-index: $zindex--default;
+    bottom: $grid--gutter-width*2;
+    left: $grid--gutter-width*2;
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 0;
+    padding: $v-align--small 0;
+    min-width: 150px;
+    background: $color--background;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(#000, .25);
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
 
     li {
-        float: left;
+        display: block;
+        float: none;
+        width: 100%;
+        margin-bottom: -1px;
+        background: none;
 
         a {
             display: block;
-            padding: 10px 24px;
-            color: $tabs--color;
-            background-color: $tabs--background;
+            padding: 8px $grid--gutter-inner-width;
+            color: $color--text-lighter;
+            line-height: 1.3;
+            background: none;
+            transition: .3s;
 
+            &:focus,
+            &:hover,
             &.is-active {
-                color: $tabs--color-active
+                color: $color--text-darker;
             }
+            &:focus,
             &:hover {
-                color: $tabs--color-active
+                background-color: $color--background-secondary;
             }
         }
-    }
-}
-.tabs--primary {
-    border-bottom: 1px solid $tabs--border;
-    border-radius: 0 $btn--border-radius/2 0 0;
-
-    .is-logged-in & {
-        position: fixed;
-        z-index: $zindex--big + $zindex--small;
-        left: 0;
-        bottom: 0;
-        margin-bottom: 0;
-        border-bottom: 0;
-    }
-
-    li {
-        margin-bottom: -1px;
-
-        a {
-            border: 1px solid $tabs--border;
-
-            &.active {
-                background-color: darken($tabs--background, 6%);
-            }
-        }
-
-        & + li {
-            a {
-                border-left: none;
-            }
-        }
-    }
-}
-.tabs--secondary {
-    float: right;
-    margin-top: -$v-align / 2;
-    border-top: none;
-}
-
-
-/* ==========================================================================
-   UI MODAL
-   ========================================================================== */
-/*.ui-widget.ui-widget-content {
-    border: 0;
-}
-.ui-dialog {
-    z-index: 3000;
-    padding: 0;
-    border: 0;
-
-    .ui-dialog-titlebar-close {
-        right: 10px;
-    }
-
-    .ui-dialog-titlebar {
-        border: 0;
-        background-color: $color--primary;
-        color: #fff;
-        border-radius: 0;
-    }
-    .ui-dialog-content {
-        padding: 30px;
-
-        form {
-            margin-bottom: 0;
-        }
-    }
-}
-.ui-widget-overlay {
-    background: #000;
-}*/
-
-/* ==========================================================================
-   UI AUTOCOMPLETE
-   ========================================================================== */
-.ui-autocomplete {
-    transform: translateY(3px);
-    background-color: #fff;
-    max-width: 380px;
-    font-size: $fontsize--small;
-
-    &.ui-widget-content {
-        border: 1px solid $color--border;
-        border-top: 0;
-    }
-
-    .ui-menu-item-wrapper {
-        padding: 4px 10px;
-        border: 0;
-        border-top: 1px solid $color--border;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    .ui-state-focus,
-    .ui-state-active {
-        margin: 0;
-        color: $color--primary;
-        background: none;
-        border-color: $color--border;
     }
 }
 
@@ -185,10 +149,15 @@
     }
 }
 .btn--block-admin {
+    background-color: transparent;
+    color: $color--primary;
+
     &:after {
         @include font-icon(edit);
+        margin-left: .8em;
     }
 }
+
 
 /* ==========================================================================
    DEBUG DRUPAL

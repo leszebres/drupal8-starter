@@ -14,8 +14,21 @@
  */
 #}
 {% if primary %}
-    <h2 class="sr-only">{{ 'Primary tabs'|t }}</h2>
-    <ul class="tabs tabs--primary clearfix">{{ primary }}</ul>
+    <div class="tabs-wrapper">
+        <h2 class="sr-only">{{ 'Primary tabs'|t }}</h2>
+        {% if edit %}
+        <a href="{{ edit }}" class="tabs--primary-toggle">
+            {% else %}
+            <button class="tabs--primary-toggle">
+                {% endif %}
+                <span class="sr-only">{{ 'Edit'|t }}</span>
+                {% if edit %}
+        </a>
+    {% else %}
+        </button>
+        {% endif %}
+        <ul class="tabs tabs--primary clearfix">{{ primary }}</ul>
+    </div>
 {% endif %}
 {% if secondary %}
     <h2 class="sr-only">{{ 'Secondary tabs'|t }}</h2>

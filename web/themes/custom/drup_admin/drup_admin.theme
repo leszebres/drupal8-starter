@@ -3,7 +3,6 @@
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
 
-
 /**
  * Implements hook_preprocess_HOOK() for html.html.twig.
  */
@@ -115,4 +114,85 @@ function drup_admin_preprocess_form(array &$variables) {
  */
 function drup_admin_form_alter(&$form, FormStateInterface $form_state, $form_id) {
     $buildInfo = $form_state->getBuildInfo();
+
+    $user = \Drupal::currentUser();
+    $isSuperAdmin = in_array('super_admin', $user->getRoles());
+
+    // Désactivation des champs dans les données importées
+    if (isset($form['#fieldgroups']['group_imported_data'])) {
+        foreach ($form['#fieldgroups']['group_imported_data']->children as $child) {
+            $form[$child]['#disabled'] = true;
+        }
+    }
+
+    // Node : Menu
+    if (isset($form['menu'])) {
+        $form['menu']['link']['description']['#access'] = false;
+    }
+
+    // Node : SEO
+    if (isset($form['field_metatags'])) {
+        $form['field_metatags']['widget'][0]['intro_text']['#access'] =
+        $form['field_metatags']['widget'][0]['tokens']['#access'] = false;
+
+        if (isset($form['field_metatags']['widget'][0]['basic'])) {
+            $form['field_metatags']['widget'][0]['basic']['#type'] = 'container';
+
+            $form['field_metatags']['widget'][0]['basic']['title']['#description'] = t('The text to display in the title bar of the web browser. This meta may also be used as the title of the page when a visitor puts it in bookmarks or in a search engine. The site\'s name is automatically added at the end. It is recommended that the title be no greater than 55 - 65 characters long, including spaces.');
+            $form['field_metatags']['widget'][0]['basic']['description']['#description'] = t('A brief and concise summary of the page\'s content, up to 250 characters maximum. The description meta tag may be used by search engines to display a snippet about the page in search results.');
+
+            $form['field_metatags']['widget'][0]['basic']['abstract']['#access'] =
+            $form['field_metatags']['widget'][0]['basic']['keywords']['#access'] = false;
+        }
+    }
+
+    // Node : Sitemap XML
+    if (!$isSuperAdmin && isset($form['simple_sitemap'])) {
+        $form['simple_sitemap']['#access'] = false;
+    }
+
+    // Node : Layout builder
+    if (isset($form['field_layout_builder'])) {
+        $form['field_layout_builder']['widget']['add_more']['#suffix'] = '<span class="paragraphs-dropbutton-suffix">' . $form['field_layout_builder']['widget']['add_more']['#suffix'] . '</span>';
+    }
+
+    // Menu admin
+    if (!$isSuperAdmin) {
+        // Edit menu
+        if ($form_id === 'menu_edit_form') {
+            $form['description']['#access'] = $form['langcode']['#access'] = $form['sitemap_display_name']['#access'] = false;
+        }
+        // Edit menu link item
+        elseif ($form_id === 'menu_link_content_menu_link_content_form') {
+            $form['simple_sitemap']['#access'] = $form['langcode']['#access'] = $form['expanded']['#access'] = $form['description']['#access'] = false;
+        }
+    }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function drup_admin_form_user_form_alter(&$form, FormStateInterface $form_state) {
+    // Fix email_registration_form_user_form_alter() qui cache tout le temps le champ username
+    if ($form['#id'] === 'user-form') {
+        $form['account']['name']['#type'] = 'textfield';
+    }
+}
+
+
+/**
+ * @param                    $form
+ * @param FormStateInterface $form_state
+ * @param                    $form_id
+ */
+function drup_admin_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+    // Vue médias (grille)
+    if ($form['#id'] === 'views-exposed-form-media-library-page' || $form['#id'] === 'views-exposed-form-media-library-widget') {
+        $form['actions']['submit']['#value'] = t('Filter');
+    }
+
+    if ($form['#id'] === 'views-exposed-form-mediatheque-entity-browser-image') {
+        $form['#info']['filter-name']['label'] = t('Name');
+        $form['actions']['submit']['#value'] = t('Filter');
+    }
 }

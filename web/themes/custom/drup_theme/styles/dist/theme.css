@@ -1137,7 +1137,7 @@ Styleguide Icons - 1.icon
 .icon--close:before {
   content: "\EA07"; }
 
-.icon--edit:before, .btn--block-admin:after {
+.icon--edit:before, .tabs--primary-toggle:before, .btn--block-admin:after {
   content: "\EA08"; }
 
 .icon--error:before, .messages--error:before {
@@ -1692,6 +1692,27 @@ form textarea:not([readonly]):focus {
           clip-path: inset(50%);
   border: 0; }
 
+/* ==========================================================================
+   Login
+   ========================================================================== */
+.form--login {
+  /* Responsive
+       ========================================================================== */ }
+  .form--login .form-actions {
+    padding-top: 24px; }
+  .form--login .form-item-reset {
+    margin-top: 24px; }
+    .form--login .form-item-reset a {
+      color: #888686; }
+      .form--login .form-item-reset a:active, .form--login .form-item-reset a.is-active, .form--login .form-item-reset a:focus, .form--login .form-item-reset a:hover,
+      a:focus .form--login .form-item-reset a,
+      a:hover .form--login .form-item-reset a {
+        color: #333; }
+  @media screen and (min-width: 768px) {
+    .form--login {
+      max-width: 300px;
+      margin: 0 auto; } }
+
 .accordion {
   list-style: none; }
 
@@ -2185,6 +2206,9 @@ Styleguide Paragraphs - 40.paragraph--type--text-image
 /* ==========================================================================
    OVERRIDES
    ========================================================================== */
+/* ==========================================================================
+   GLOBAL
+   ========================================================================== */
 .cke_editable {
   padding: 30px;
   background-color: #fff;
@@ -2197,113 +2221,82 @@ Styleguide Paragraphs - 40.paragraph--type--text-image
   display: none; }
 
 /* ==========================================================================
-    TABS PRIMARY + SECONDARY
+   TABS PRIMARY + SECONDARY
    ========================================================================== */
-.tabs--primary,
-.tabs--secondary {
-  margin-bottom: 24px;
-  overflow: hidden;
-  font-size: 0.875rem;
-  font-weight: normal;
-  font-family: "Arial", Arial, sans-serif;
-  list-style: none; }
-  .tabs--primary li,
-  .tabs--secondary li {
-    float: left; }
-    .tabs--primary li a,
-    .tabs--secondary li a {
-      display: block;
-      padding: 10px 24px;
-      color: #888686;
-      background-color: #f3f3f3; }
-      .tabs--primary li a.is-active,
-      .tabs--secondary li a.is-active {
-        color: #003cc5; }
-      .tabs--primary li a:hover,
-      .tabs--secondary li a:hover {
-        color: #003cc5; }
+.tabs-wrapper {
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  z-index: 125;
+  left: 0;
+  bottom: 0; }
+  .tabs-wrapper:focus .tabs--primary, .tabs-wrapper:hover .tabs--primary {
+    opacity: 1;
+    visibility: visible; }
+  .route--user-login .tabs-wrapper,
+  .route--user-pass .tabs-wrapper {
+    display: none; }
+
+.tabs--primary-toggle {
+  position: absolute;
+  z-index: 25;
+  left: 30px;
+  bottom: 30px;
+  padding: 15px;
+  width: 60px;
+  height: 60px;
+  background: #003cc5;
+  border-radius: 50%;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.15);
+  transition: .2s; }
+  .tabs--primary-toggle:before {
+    display: inline-block;
+    font-family: "icons-1561892892";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #fff;
+    font-size: 1.25rem; }
 
 .tabs--primary {
-  border-bottom: 1px solid #c0c0c0;
-  border-radius: 0 0 0 0; }
-  .is-logged-in .tabs--primary {
-    position: fixed;
-    z-index: 125;
-    left: 0;
-    bottom: 0;
-    margin-bottom: 0;
-    border-bottom: 0; }
+  position: absolute;
+  z-index: 5;
+  bottom: 60px;
+  left: 60px;
+  display: flex;
+  flex-direction: column-reverse;
+  margin: 0;
+  padding: 12px 0;
+  min-width: 150px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s; }
   .tabs--primary li {
-    margin-bottom: -1px; }
+    display: block;
+    float: none;
+    width: 100%;
+    margin-bottom: -1px;
+    background: none; }
     .tabs--primary li a {
-      border: 1px solid #c0c0c0; }
-      .tabs--primary li a.active {
-        background-color: #e4e4e4; }
-    .tabs--primary li + li a {
-      border-left: none; }
-
-.tabs--secondary {
-  float: right;
-  margin-top: -24px;
-  border-top: none; }
-
-/* ==========================================================================
-   UI MODAL
-   ========================================================================== */
-/*.ui-widget.ui-widget-content {
-    border: 0;
-}
-.ui-dialog {
-    z-index: 3000;
-    padding: 0;
-    border: 0;
-
-    .ui-dialog-titlebar-close {
-        right: 10px;
-    }
-
-    .ui-dialog-titlebar {
-        border: 0;
-        background-color: $color--primary;
-        color: #fff;
-        border-radius: 0;
-    }
-    .ui-dialog-content {
-        padding: 30px;
-
-        form {
-            margin-bottom: 0;
-        }
-    }
-}
-.ui-widget-overlay {
-    background: #000;
-}*/
-/* ==========================================================================
-   UI AUTOCOMPLETE
-   ========================================================================== */
-.ui-autocomplete {
-  -webkit-transform: translateY(3px);
-          transform: translateY(3px);
-  background-color: #fff;
-  max-width: 380px;
-  font-size: 0.875rem; }
-  .ui-autocomplete.ui-widget-content {
-    border: 1px solid #c0c0c0;
-    border-top: 0; }
-  .ui-autocomplete .ui-menu-item-wrapper {
-    padding: 4px 10px;
-    border: 0;
-    border-top: 1px solid #c0c0c0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; }
-  .ui-autocomplete .ui-state-focus,
-  .ui-autocomplete .ui-state-active {
-    margin: 0;
-    color: #003cc5;
-    background: none;
-    border-color: #c0c0c0; }
+      display: block;
+      padding: 8px 24px;
+      color: #888686;
+      line-height: 1.3;
+      background: none;
+      transition: .3s; }
+      .tabs--primary li a:focus, .tabs--primary li a:hover, .tabs--primary li a.is-active {
+        color: #000; }
+      .tabs--primary li a:focus, .tabs--primary li a:hover {
+        background-color: #f3f3f3; }
 
 /* ==========================================================================
    BLOC ADMIN
@@ -2336,16 +2329,20 @@ Styleguide Paragraphs - 40.paragraph--type--text-image
     margin-left: 30px;
     margin-right: 30px; }
 
-.btn--block-admin:after {
-  display: inline-block;
-  font-family: "icons-1561892892";
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  speak: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+.btn--block-admin {
+  background-color: transparent;
+  color: #003cc5; }
+  .btn--block-admin:after {
+    display: inline-block;
+    font-family: "icons-1561892892";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-left: .8em; }
 
 /* ==========================================================================
    DEBUG DRUPAL

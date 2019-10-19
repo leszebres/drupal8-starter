@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Core\Link;
 use Drupal\drup\Views\DrupViews;
 use Drupal\drup_site\DrupSiteForm;
 
@@ -17,9 +18,23 @@ function drup_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
     }
 
     // LOGIN + PASSWORD
-    elseif (in_array($form_id, ['user_login_form', 'user_pass'])) {
+    elseif (\in_array($form_id, ['user_login_form', 'user_pass'])) {
         $form['#attributes']['class'][] = 'form';
         $form['#attributes']['class'][] = 'form--login';
+
+        // Reset password
+        $form['actions']['reset'] = [
+            '#type' => 'markup',
+            '#markup' => Link::createFromRoute(t($form_id === 'user_pass' ? 'Cancel' : 'Reset password'), 'user.' . ($form_id === 'user_pass' ? 'login' : 'pass'))->toString(),
+            '#prefix' => '<div class="js-form-item form-item js-form-type-markup form-item-reset js-form-item-reset">',
+            '#suffix' => '</div>'
+        ];
+
+        // Remove useless description
+        unset(
+            $form['name']['#description'],
+            $form['pass']['#description']
+        );
     }
 }
 

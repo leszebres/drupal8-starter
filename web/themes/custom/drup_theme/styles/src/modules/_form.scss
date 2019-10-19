@@ -173,3 +173,31 @@ form {
         }
     }
 }
+
+
+/* ==========================================================================
+   Login
+   ========================================================================== */
+.form--login {
+    .form-actions {
+        padding-top: $v-align--medium;
+    }
+    .form-item-reset {
+        margin-top: $v-align--medium;
+
+        a {
+            color: $color--text-lighter;
+
+            @include btn-states-user() {
+                color: $color--text;
+            }
+        }
+    }
+
+    /* Responsive
+       ========================================================================== */
+    @include media-breakpoint-min(smartphone) {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
