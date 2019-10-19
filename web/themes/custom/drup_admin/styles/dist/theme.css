@@ -1,75 +1,65 @@
 @charset "UTF-8";
-/**
- * User Role
- */
-body:not(.role--super-admin) .js-form-item-roles-super-admin {
-  display: none; }
-
-.draggable a.tabledrag-handle {
-  height: auto; }
-
-/**
- * Paragraphs
- */
-.js .field--widget-paragraphs .field-multiple-drag {
-  vertical-align: middle; }
-
 /* ==========================================================================
-   CKEditor
+   Variables
    ========================================================================== */
-form .filter-wrapper {
-  display: none; }
-
 /* ==========================================================================
-   ADMIN BLOCK FROM DRUPBLOCKADMIN
-   ex : /admin/structure/block/manage/factories_list?destination=/pommier&drup-blocks-context=node/6
+   COLORS
    ========================================================================== */
-body.is-drup-block-admin {
-  padding-top: 0 !important; }
-  body.is-drup-block-admin .content-header {
-    margin-top: -4rem;
-    margin-bottom: 1rem; }
-  body.is-drup-block-admin #toolbar-administration,
-  body.is-drup-block-admin .block-local-tasks-block,
-  body.is-drup-block-admin .region-breadcrumb,
-  body.is-drup-block-admin #edit-settings-admin-label,
-  body.is-drup-block-admin .block-form .js-form-item-settings-label,
-  body.is-drup-block-admin .block-form .js-form-item-settings-label-display,
-  body.is-drup-block-admin .block-form .form-type-vertical-tabs,
-  body.is-drup-block-admin #edit-block-region-wrapper,
-  body.is-drup-block-admin #edit-actions .button--danger {
-    display: none; }
-
 /* ==========================================================================
-   Mediathèque
+   TEXT
    ========================================================================== */
-.form-wrapper.field--widget-entity-browser-entity-reference .seven-details__description {
-  margin-bottom: 12px; }
+/* ==========================================================================
+   FONT
+   ========================================================================== */
+/* ==========================================================================
+   TITLE
+   ========================================================================== */
+/* ==========================================================================
+   GRID
+   ========================================================================== */
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+/* ==========================================================================
+   ZINDEX
+   ========================================================================== */
+/* ==========================================================================
+   BTN
+   ========================================================================== */
+/* ==========================================================================
+   INPUT
+   ========================================================================== */
+/* ==========================================================================
+   TAG
+   ========================================================================== */
+/* ==========================================================================
+   TABLE
+   ========================================================================== */
+/* ==========================================================================
+   NOTICE
+   ========================================================================== */
+/* ==========================================================================
+   TABS
+   ========================================================================== */
+/* ==========================================================================
+   SPINNER
+   ========================================================================== */
+/* ==========================================================================
+   CUSTOM
+   ========================================================================== */
+/* ==========================================================================
+   Includes
+   ========================================================================== */
+/* ==========================================================================
+   Layout admin
+   ========================================================================== */
+.layout-region-node-main,
+.layout-region-node-footer {
+  width: 70%; }
 
-.form-wrapper.field--widget-entity-browser-entity-reference .entities-list .rendered-entity {
-  width: 19.66%;
-  margin: 0 0 4px;
-  vertical-align: bottom; }
-  .form-wrapper.field--widget-entity-browser-entity-reference .entities-list .rendered-entity .media--type-image img {
-    display: block;
-    max-width: 100%; }
-  .form-wrapper.field--widget-entity-browser-entity-reference .entities-list .rendered-entity .media--type-image ~ .button {
-    top: auto;
-    right: 0;
-    bottom: 0;
-    left: auto;
-    background: rgba(0, 0, 0, 0.5);
-    border-color: #555;
-    color: #fff;
-    font-size: 1em;
-    font-weight: normal; }
-    .form-wrapper.field--widget-entity-browser-entity-reference .entities-list .rendered-entity .media--type-image ~ .button:hover {
-      background: #000; }
-    .form-wrapper.field--widget-entity-browser-entity-reference .entities-list .rendered-entity .media--type-image ~ .button + .button {
-      top: auto;
-      left: auto;
-      right: 0;
-      bottom: 29px; }
+.layout-region-node-secondary {
+  margin-top: 0;
+  width: 30%; }
 
 /* ==========================================================================
    Claro
@@ -86,11 +76,57 @@ body.is-drup-block-admin {
   opacity: 0;
   transition: none; }
 
-.form-element {
-  transition: .2s; }
-
 .messages {
-  margin-bottom: 30px; }
+  margin-bottom: 32px; }
+
+.claro-details {
+  padding-bottom: 1px; }
+
+.claro-details__summary {
+  text-transform: none; }
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+td {
+  padding: 1rem; }
+
+/* ==========================================================================
+   User
+   ========================================================================== */
+body:not(.role--super-admin) .js-form-item-roles-super-admin {
+  display: none; }
+
+/* ==========================================================================
+   CKEditor
+   ========================================================================== */
+.cke_editable {
+  width: calc(100% - calc(1em - .125rem));
+  background: #fff; }
+
+form .filter-wrapper {
+  display: none; }
+
+.field--widget-paragraphs .field-label h4 {
+  float: left;
+  margin-top: 14px; }
+
+.field--widget-paragraphs .field-label .paragraphs-actions > .button {
+  margin: 10px 0; }
+
+.field--widget-paragraphs .field-multiple-table + .clearfix {
+  display: flex;
+  align-items: center; }
+
+.field--widget-paragraphs .paragraphs-dropbutton-suffix {
+  margin-left: 15px; }
+
+.paragraphs-actions > .button {
+  padding: 6px 14px; }
+
+.paragraphs-dropdown-actions .button {
+  margin: 0;
+  padding: 6px 14px; }
 
 /* ==========================================================================
    Tabs
@@ -128,3 +164,284 @@ body.is-drup-block-admin {
     margin-top: 0;
     padding-top: 1px;
     padding-bottom: 1px; }
+
+/* ==========================================================================
+   Form
+   ========================================================================== */
+.form-element {
+  transition: .2s; }
+
+.form-item,
+.form-actions {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem; }
+  .views-exposed-form .form-item, .views-exposed-form
+  .form-actions {
+    margin: 0.75rem 0.75rem 0 0; }
+
+.field--widget-link-default .form-type-entity-autocomplete label,
+.field--widget-link-default .description {
+  display: none; }
+
+.field--widget-link-default div.form-type-textfield {
+  margin-top: 8px; }
+  .field--widget-link-default div.form-type-textfield label,
+  .field--widget-link-default div.form-type-textfield input {
+    display: inline-block; }
+
+.form-type--managed-file .button {
+  margin-left: .5em;
+  padding: .5em 1em; }
+
+/* Exposés
+   ========================================================================== */
+.views-exposed-form {
+  padding: 12px 24px 24px;
+  border: 1px solid rgba(192, 192, 192, 0.8);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+  .views-exposed-form .form-submit {
+    position: relative;
+    top: -1px; }
+
+form[id^="views-exposed-form-user-admin-people"] #edit-permission {
+  max-width: 300px; }
+
+/* Bulk
+   ========================================================================== */
+form div[id*="bulk-form"] {
+  display: flex;
+  align-items: flex-end; }
+  form div[id*="bulk-form"] .form-submit {
+    position: relative;
+    top: -1px;
+    margin-bottom: 0;
+    margin-left: 1rem; }
+
+form div[id*="media-bulk-form"] .form-submit {
+  margin-bottom: .5rem;
+  margin-left: 0; }
+
+/* Drag&drop
+   ========================================================================== */
+tr.draggable a.tabledrag-handle {
+  margin-left: 0;
+  margin-right: .5em; }
+  tr.draggable a.tabledrag-handle svg {
+    vertical-align: middle; }
+  #edit-drup-site-menu-pushes tr.draggable a.tabledrag-handle {
+    margin-top: 10px; }
+
+tr.draggable .js-indentation svg {
+  display: none; }
+
+.taxonomy-overview-terms tr.draggable .form-item {
+  margin-top: .15rem;
+  margin-bottom: 0; }
+  .taxonomy-overview-terms tr.draggable .form-item.form-type--boolean {
+    margin-left: 0;
+    padding-left: 2rem;
+    overflow: hidden; }
+
+a.tabledrag-handle .handle {
+  background-position: 6px 12px; }
+
+/* Paragraphs
+   ========================================================================== */
+.js .field--widget-paragraphs .field-multiple-drag {
+  vertical-align: middle; }
+
+.horizontal-tabs-pane > .claro-details__wrapper {
+  margin-left: 1rem;
+  margin-right: 1rem; }
+  .layout-region-node-main .horizontal-tabs-pane > .claro-details__wrapper {
+    margin: 0 .5rem; }
+
+.field--widget-paragraphs tr .form-item {
+  margin-top: 0;
+  margin-bottom: 1.5rem; }
+
+.field--widget-paragraphs .paragraphs-subform {
+  margin-right: 1.8rem; }
+
+/* Features
+   ========================================================================== */
+.form-item--conflicts {
+  display: inline-block; }
+
+/* Link / Linkit modale
+   ========================================================================== */
+form.editor-link-dialog .js-form-item-attributes-class,
+form.editor-link-dialog .js-form-item-attributes-id,
+form.editor-link-dialog .js-form-item-attributes-rel {
+  display: none; }
+
+/* ==========================================================================
+   Date picker
+   ========================================================================== */
+.daterangepicker .calendar-table th,
+.daterangepicker .calendar-table td {
+  padding: 0; }
+
+/* ==========================================================================
+   Button
+   ========================================================================== */
+.button {
+  transition: .2s; }
+
+/* ==========================================================================
+   Dropbutton
+   ========================================================================== */
+.dropbutton {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25); }
+  .dropbutton a,
+  .dropbutton .button {
+    display: block;
+    margin: 0;
+    padding: 6px 14px;
+    background: #d8d9e0;
+    border-radius: 2px 0 0 2px;
+    color: #000;
+    font-size: .79rem;
+    font-weight: bold;
+    transition: .2s; }
+    .dropbutton a:hover,
+    .dropbutton .button:hover {
+      text-decoration: none;
+      background-color: #c2c3ca; }
+  .dropbutton .button {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    text-align: left; }
+
+.dropbutton-toggle {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25); }
+  .dropbutton-toggle .dropbutton__toggle {
+    position: relative;
+    background: #d8d9e0;
+    border-radius: 0 2px 2px 0;
+    transition: .2s; }
+    .dropbutton-toggle .dropbutton__toggle:hover {
+      background-color: #c2c3ca; }
+    .dropbutton-toggle .dropbutton__toggle:before, .dropbutton-toggle .dropbutton__toggle:after {
+      content: "";
+      position: absolute;
+      z-index: 5;
+      top: .9em;
+      left: 10px;
+      -webkit-transform: rotate(45deg);
+              transform: rotate(45deg);
+      display: block;
+      width: 8px;
+      height: 3px;
+      background: #000; }
+      .paragraphs-dropbutton-wrapper .dropbutton-toggle .dropbutton__toggle:before, .paragraphs-dropbutton-wrapper .dropbutton-toggle .dropbutton__toggle:after {
+        top: 1.15em; }
+    .dropbutton-toggle .dropbutton__toggle:after {
+      left: 14px;
+      -webkit-transform: rotate(-45deg);
+              transform: rotate(-45deg); }
+
+/* ==========================================================================
+   Media library widget
+   ========================================================================== */
+.media-library-widget .media-library-widget__toggle-weight {
+  display: none; }
+
+.media-library-widget .form-item.form-type--number {
+  margin-bottom: 48px; }
+
+.media-library-view--widget .views-exposed-form {
+  padding-top: 0; }
+  .media-library-view--widget .views-exposed-form .form-actions {
+    position: relative;
+    top: -1px;
+    margin-bottom: 0; }
+
+.media-library-view--widget .views-exposed-form__item {
+  margin-bottom: 0; }
+
+/* ==========================================================================
+   Media library view
+   ========================================================================== */
+.view-media-library .view-filters {
+  width: 100%; }
+
+.view-media-library .views-exposed-form .form-item--name,
+.view-media-library .views-exposed-form .form-item--album {
+  max-width: 178px; }
+
+.view-media-library .form-actions {
+  margin-bottom: 0; }
+
+.media-library-views-form__header {
+  margin-bottom: 24px; }
+  .media-library-views-form__header .form-item {
+    margin-bottom: .5rem; }
+
+.media-library-select-all {
+  margin-bottom: 12px; }
+
+.media-library-item--grid:before {
+  position: static;
+  display: none; }
+
+.media-library-item--grid > .form-wrapper,
+.media-library-item--grid .views-field-rendered-entity {
+  box-shadow: 0 0 1px #c0c0c0; }
+
+.media-library-item--grid .js-click-to-select-checkbox .form-item {
+  margin: 6px; }
+
+.media-library-item--grid .field--name-thumbnail {
+  background: #fff; }
+
+.media-library-item__attributes {
+  bottom: 8px;
+  left: 8px;
+  padding: 10px;
+  max-width: calc(100% - 16px);
+  box-sizing: border-box; }
+
+.media-library-item__name a {
+  margin: 0; }
+  .media-library-item__name a:focus {
+    border: 0; }
+  .media-library-item__name a:hover:after, .media-library-item__name a:focus:after {
+    content: "";
+    position: relative;
+    top: 5px;
+    display: inline-block;
+    margin-left: 5px;
+    width: 16px;
+    height: 16px;
+    background: url("/core/themes/stable/images/core/icons/5181c6/pencil.svg") no-repeat; }
+
+.media-library-selection:empty {
+  margin: 0; }
+
+/* ==========================================================================
+   ADMIN BLOCK FROM DRUPBLOCKADMIN
+   ex : /admin/structure/block/manage/factories_list?destination=/pommier&drup-blocks-context=node/6
+   ========================================================================== */
+body.is-drup-block-admin {
+  padding-top: 0 !important; }
+  body.is-drup-block-admin .content-header {
+    margin-top: -4rem;
+    margin-bottom: 1rem; }
+  body.is-drup-block-admin #toolbar-administration,
+  body.is-drup-block-admin .block-local-tasks-block,
+  body.is-drup-block-admin .region-breadcrumb,
+  body.is-drup-block-admin #edit-settings-admin-label,
+  body.is-drup-block-admin .block-form .js-form-item-settings-label,
+  body.is-drup-block-admin .block-form .js-form-item-settings-label-display,
+  body.is-drup-block-admin .block-form .form-type-vertical-tabs,
+  body.is-drup-block-admin #edit-block-region-wrapper,
+  body.is-drup-block-admin #edit-actions .button--danger {
+    display: none; }
+
+/* ==========================================================================
+   Pagination
+   ========================================================================== */
+.pager a {
+  transition: .2s; }

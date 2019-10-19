@@ -1,0 +1,24 @@
+/* ==========================================================================
+   ADMIN BLOCK FROM DRUPBLOCKADMIN
+   ex : /admin/structure/block/manage/factories_list?destination=/pommier&drup-blocks-context=node/6
+   ========================================================================== */
+body.is-drup-block-admin {
+    padding-top: 0 !important;
+
+    .content-header {
+        margin-top: -4rem;
+        margin-bottom: 1rem;
+    }
+
+    #toolbar-administration,
+    .block-local-tasks-block,
+    .region-breadcrumb,
+    #edit-settings-admin-label,
+    .block-form .js-form-item-settings-label,
+    .block-form .js-form-item-settings-label-display,
+    .block-form .form-type-vertical-tabs,
+    #edit-block-region-wrapper,
+    #edit-actions .button--danger {
+        display: none;
+    }
+}

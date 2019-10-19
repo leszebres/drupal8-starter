@@ -29,7 +29,6 @@
         "cweagans/composer-patches": "^1.6.5",
         "drupal-composer/drupal-scaffold": "^2.5",
         "drupal/admin_toolbar": "^2.0",
-        "drupal/adminimal_theme": "1.x-dev",
         "drupal/advagg": "^4.0",
         "drupal/better_exposed_filters": "4.x-dev",
         "drupal/claro": "^1.0",

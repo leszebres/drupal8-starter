@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "07de8321faf59b2f7359ad513e41efe5",
+    "content-hash": "97f4bf7a019e28832a319383373a3956",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2283,57 +2283,6 @@
                 "source": "http://cgit.drupalcode.org/admin_toolbar",
                 "issues": "https://www.drupal.org/project/issues/admin_toolbar"
             }
-        },
-        {
-            "name": "drupal/adminimal_theme",
-            "version": "dev-1.x",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/adminimal_theme.git",
-                "reference": "a7b4b21201e9c6622b8e9793740105c991cfeb5a"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "type": "drupal-theme",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.4+9-dev",
-                    "datestamp": "1558582985",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Dev releases are not covered by Drupal security advisories."
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "ANDiTKO",
-                    "homepage": "https://www.drupal.org/user/1428124"
-                },
-                {
-                    "name": "andrey.troeglazov",
-                    "homepage": "https://www.drupal.org/user/3145389"
-                },
-                {
-                    "name": "realityloop",
-                    "homepage": "https://www.drupal.org/user/139189"
-                }
-            ],
-            "description": "Drupal administration theme with modern minimalist design.",
-            "homepage": "https://www.drupal.org/project/adminimal_theme",
-            "support": {
-                "source": "https://git.drupalcode.org/project/adminimal_theme",
-                "issues": "https://www.drupal.org/project/issues/adminimal_theme"
-            },
-            "time": "2019-05-23T03:40:55+00:00"
         },
         {
             "name": "drupal/advagg",
@@ -6543,7 +6492,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/leszebres/drup",
-                "reference": "bba2adaef2f8a4b818cbc9abbaba8c0e278deb2a"
+                "reference": "fad36076b9d3c230397e49f59268293614cfd23b"
             },
             "require": {
                 "php": ">=7.2"
@@ -6576,7 +6525,7 @@
             "support": {
                 "issues": "https://github.com/leszebres/drup/issues"
             },
-            "time": "2019-10-18T19:16:23+00:00"
+            "time": "2019-10-18T21:58:36+00:00"
         },
         {
             "name": "leszebres/swiftmailer",
@@ -13066,7 +13015,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "drupal/adminimal_theme": 20,
         "drupal/better_exposed_filters": 20,
         "drupal/editor_advanced_link": 20,
         "drupal/email_registration": 5,

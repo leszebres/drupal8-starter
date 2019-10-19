@@ -1,0 +1,174 @@
+/* ==========================================================================
+   Form
+   ========================================================================== */
+.form-element {
+    transition: .2s;
+}
+
+.form-item,
+.form-actions {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    .views-exposed-form & {
+        margin: 0.75rem 0.75rem 0 0;
+
+    }
+}
+
+
+.field--widget-link-default {
+    .form-type-entity-autocomplete label,
+    .description {
+        display: none;
+    }
+    div.form-type-textfield {
+        margin-top: 8px;
+
+        label,
+        input {
+            display: inline-block;
+        }
+    }
+}
+
+.form-type--managed-file {
+    .button {
+        margin-left: .5em;
+        padding: .5em 1em;
+    }
+}
+
+
+/* Exposés
+   ========================================================================== */
+.views-exposed-form {
+    padding: $v-align--small $grid--gutter-inner-width $v-align--medium;
+    border: 1px solid rgba($color--border, .8);
+    box-shadow: 0 2px 4px rgba(#000, .1);
+
+    .form-submit {
+        position: relative;
+        top: -1px;
+    }
+}
+
+form[id^="views-exposed-form-user-admin-people"] {
+    #edit-permission {
+        max-width: 300px;
+    }
+}
+
+/* Bulk
+   ========================================================================== */
+form {
+    div[id*="bulk-form"] {
+        display: flex;
+        align-items: flex-end;
+
+        .form-submit {
+            position: relative;
+            top: -1px;
+            margin-bottom: 0;
+            margin-left: 1rem;
+        }
+    }
+    div[id*="media-bulk-form"] {
+        .form-submit {
+            margin-bottom: .5rem;
+            margin-left: 0;
+        }
+    }
+}
+
+/* Drag&drop
+   ========================================================================== */
+tr.draggable {
+    a.tabledrag-handle {
+        margin-left: 0;
+        margin-right: .5em;
+
+        svg {
+            vertical-align: middle;
+        }
+        #edit-drup-site-menu-pushes & {
+            margin-top: 10px;
+        }
+    }
+    .js-indentation {
+        svg {
+            display: none;
+        }
+    }
+
+    .form-item {
+        .taxonomy-overview-terms & {
+            margin-top: .15rem;
+            margin-bottom: 0;
+
+            &.form-type--boolean {
+                //margin-left: 3.5rem;
+                margin-left: 0;
+                padding-left: 2rem;
+                overflow: hidden;
+            }
+        }
+    }
+}
+a.tabledrag-handle .handle {
+    background-position: 6px 12px;
+}
+
+/* Paragraphs
+   ========================================================================== */
+.js .field--widget-paragraphs .field-multiple-drag {
+    vertical-align: middle;
+}
+.horizontal-tabs-pane > .claro-details__wrapper {
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    .layout-region-node-main & {
+        margin: 0 .5rem;
+    }
+}
+.field--widget-paragraphs {
+    tr .form-item {
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+    }
+    .paragraphs-subform {
+        margin-right: 1.8rem;
+    }
+}
+
+/* Features
+   ========================================================================== */
+.form-item--conflicts {
+    display: inline-block;
+}
+
+/* Link / Linkit modale
+   ========================================================================== */
+form.editor-link-dialog {
+    .js-form-item-attributes-class,
+    .js-form-item-attributes-id,
+    .js-form-item-attributes-rel {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   Date picker
+   ========================================================================== */
+.form-item--dates-picker {
+
+}
+.daterangepicker {
+    .calendar-table {
+        th,
+        td {
+            padding: 0;
+        }
+    }
+}

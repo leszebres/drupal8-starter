@@ -1,0 +1,104 @@
+/* ==========================================================================
+   Media library widget
+   ========================================================================== */
+.media-library-widget {
+    .media-library-widget__toggle-weight {
+        display: none;
+    }
+    .form-item.form-type--number {
+        margin-bottom: $v-align;
+    }
+}
+.media-library-view--widget {
+    .views-exposed-form {
+        padding-top: 0;
+
+        .form-actions {
+            position: relative;
+            top: -1px;
+            margin-bottom: 0;
+        }
+    }
+    .views-exposed-form__item {
+        margin-bottom: 0;
+    }
+}
+
+/* ==========================================================================
+   Media library view
+   ========================================================================== */
+.view-media-library {
+    .view-filters {
+        width: 100%;
+    }
+    .views-exposed-form {
+        .form-item--name,
+        .form-item--album {
+            max-width: 178px;
+        }
+    }
+    .form-actions {
+        margin-bottom: 0;
+    }
+}
+.media-library-views-form__header {
+    margin-bottom: $v-align--medium;
+
+    .form-item {
+        margin-bottom: .5rem;
+    }
+}
+.media-library-select-all {
+    margin-bottom: $v-align--small;
+}
+.media-library-item--grid {
+    &:before {
+        position: static;
+        display: none;
+    }
+    > .form-wrapper,
+    .views-field-rendered-entity {
+        box-shadow: 0 0 1px $color--border;
+    }
+    .js-click-to-select-checkbox {
+        .form-item {
+            margin: 6px;
+        }
+    }
+    .field--name-thumbnail {
+        background: $color--background;
+    }
+}
+.media-library-item__attributes {
+    bottom: 8px;
+    left: 8px;
+    padding: 10px;
+    max-width: calc(100% - 16px);
+    box-sizing: border-box;
+}
+.media-library-item__name {
+    a {
+        margin: 0;
+
+        &:focus {
+            border: 0;
+        }
+        &:hover,
+        &:focus {
+            &:after {
+                content: "";
+                position: relative;
+                top: 5px;
+                display: inline-block;
+                margin-left: 5px;
+                width: 16px;
+                height: 16px;
+                background: url("/core/themes/stable/images/core/icons/5181c6/pencil.svg") no-repeat;
+            }
+        }
+    }
+}
+
+.media-library-selection:empty {
+    margin: 0;
+}

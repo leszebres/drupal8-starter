@@ -1,0 +1,97 @@
+/* ==========================================================================
+   Layout admin
+   ========================================================================== */
+.layout-region-node-main,
+.layout-region-node-footer {
+    width: 70%;
+}
+.layout-region-node-secondary {
+    margin-top: 0;
+    width: 30%;
+}
+
+/* ==========================================================================
+   Claro
+   ========================================================================== */
+.page-wrapper :focus,
+.ui-dialog :focus,
+.is-horizontal .tabs__link:focus,
+.is-horizontal .tabs--primary .tabs__link:focus {
+    box-shadow: none;
+}
+.claro-details__summary:focus::after,
+.claro-details__summary:active::after,
+.collapse-processed > .claro-details__summary .details-title:focus::after {
+    opacity: 0;
+    transition: none;
+}
+.messages {
+    margin-bottom: $padding--horizontal;
+}
+
+.claro-details {
+    padding-bottom: 1px;
+}
+.claro-details__summary {
+    text-transform: none;
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+td {
+    padding: 1rem;
+}
+
+/* ==========================================================================
+   User
+   ========================================================================== */
+body:not(.role--super-admin) {
+    .js-form-item-roles-super-admin {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   CKEditor
+   ========================================================================== */
+.cke_editable {
+    width: calc(100% - calc(1em - .125rem));
+    background: $color--background;
+}
+
+form {
+    .filter-wrapper {
+        display: none;
+    }
+}
+
+.field--widget-paragraphs {
+    .field-label {
+        h4 {
+            float: left;
+            margin-top: 14px;
+        }
+        .paragraphs-actions > .button {
+            margin: 10px 0;
+        }
+    }
+    .field-multiple-table + .clearfix {
+        display: flex;
+        align-items: center;
+    }
+    .paragraphs-dropbutton-suffix {
+        margin-left: $grid--gutter-width/2;
+    }
+}
+.paragraphs-actions {
+    > .button {
+        padding: 6px 14px;
+    }
+}
+.paragraphs-dropdown-actions {
+    .button {
+        margin: 0;
+        padding: 6px 14px;
+    }
+}
