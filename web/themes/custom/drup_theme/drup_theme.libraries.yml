@@ -1,4 +1,10 @@
 # CONTRIB
+normalize:
+  version: '8.x.x'
+  css:
+    theme:
+      node_modules/normalize.css/normalize.css: {}
+
 fancybox:
   version: '3.x.x'
   css:
@@ -124,6 +130,7 @@ theme-common:
   - core/jquery
   - core/drupal.ajax
   - core/drupalSettings
+  - drup_theme/normalize
   - drup_theme/devicedetect
   - drup_theme/responsivetable
   - drup_theme/cookienotice
