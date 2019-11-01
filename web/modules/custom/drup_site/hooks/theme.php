@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\drup\Helper\DrupTheme;
+
 /**
  * Implements hook_theme().
  */
@@ -12,7 +14,7 @@ function drup_site_theme() {
 //        ],
     ];
 
-//    DrupBlock::format($themes);
+//    DrupTheme::format($themes);
 
     return $themes;
 }
