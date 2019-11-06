@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\block\BlockInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\drup\Entity\Term;
 use Drupal\drup\Entity\Node;
@@ -8,17 +9,19 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\drup\DrupHead;
 use Drupal\drup\Helper\DrupRequest;
+use Drupal\media\MediaInterface;
 use Drupal\node\NodeInterface;
+use Drupal\taxonomy\TermInterface;
 
 /**
  * {@inheritdoc}
  */
 function drup_site_entity_access(EntityInterface $entity, $operation, AccountInterface $account) {
-    if ($operation === 'view') {
-        $routeName = DrupRequest::getRouteName();
+    $routeName = DrupRequest::getRouteName();
 
+    if ($operation === 'view') {
         // Terms
-        if ($entity instanceof Term && $routeName === 'entity.taxonomy_term.canonical') {
+        if ($entity instanceof TermInterface && $routeName === 'entity.taxonomy_term.canonical') {
             // Accès manuel : mettre le nom machine du vocabulaire
             $allowedVocabulariesId = [];
 
@@ -35,6 +38,19 @@ function drup_site_entity_access(EntityInterface $entity, $operation, AccountInt
 
             return AccessResult::forbiddenIf(!in_array($entity->getVocabularyId(), $allowedVocabulariesId));
         }
+
+        // Blocks
+        if ($entity instanceof BlockInterface) {
+            // Médias : Enlève le choix d'affichage (grille/tableau)
+            if ($routeName === 'entity.media.collection' && $entity->id() === 'drup_admin_secondary_local_tasks') {
+                return AccessResult::forbidden();
+            }
+        }
+    }
+
+    // Média : édition d'un média (publié ou non) si l'utilisateur à le droit correspondant au type de média
+    if (($routeName === 'entity.media.collection' || $routeName === 'views.ajax') && ($operation === 'edit' || $operation === 'view') && $entity instanceof MediaInterface) {
+        return AccessResult::allowedIfHasPermission($account, 'edit any ' . $entity->bundle() . ' media');
     }
 }
 

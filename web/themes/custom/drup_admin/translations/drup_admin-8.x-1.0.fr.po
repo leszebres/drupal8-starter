@@ -89,3 +89,93 @@ msgid "Send mails with:"
 msgstr "Envoyer les emails avec :"
 
 # CUSTOM
+
+msgid "Add a new user"
+msgstr "Ajouter un nouvel utilisateur"
+
+msgid "Media"
+msgstr "Média"
+
+msgid "Filter"
+msgstr "Filtrer"
+
+msgid "Role"
+msgstr "Rôle"
+
+msgid "Active"
+msgstr "Actif"
+
+msgid "Blocked"
+msgstr "Bloqué"
+
+msgid "Name or email contains"
+msgstr "Email ou nom d'utilisateur"
+
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+msgid "Member for"
+msgstr "Membre depuis"
+
+msgid "Last access"
+msgstr "Dernier accès"
+
+msgid "Prev"
+msgstr "Précédent"
+
+msgid "Next"
+msgstr "Suivant"
+
+msgid "First"
+msgstr "Premier"
+
+msgid "Last"
+msgstr "Dernier"
+
+msgid "Media type"
+msgstr "Type de média"
+
+msgid "Sort by"
+msgstr "Trier par"
+
+msgid "Newest first"
+msgstr "Récent en premier"
+
+msgid "Name (A-Z)"
+msgstr "Nom (A-Z)"
+
+msgid "Name (Z-A)"
+msgstr "Nom (Z-A)"
+
+msgid "Submit"
+msgstr "Envoyer"
+
+msgid "Page title"
+msgstr "Titre de la page"
+
+msgid "The text to display in the title bar of the web browser. This meta may also be used as the title of the page when a visitor puts it in bookmarks or in a search engine. The site's name is automatically added at the end. It is recommended that the title be no greater than 55 - 65 characters long, including spaces."
+msgstr "Le texte à afficher dans la barre de titre du navigateur. Cette méta peut aussi être utilisée comme titre de la page quand un visiteur met en favoris ou dans un résultat de recherche. Le nom du site est automatiquement ajouté à la fin. Il est recommandé que le titre ne dépasse pas 55 - 65 caractères de long, avec espaces."
+
+msgid "A brief and concise summary of the page's content, up to 250 characters maximum. The description meta tag may be used by search engines to display a snippet about the page in search results."
+msgstr "Un résumé bref et concis du contenu de la page, jusqu'à 250 caractères maximum. La méta description peut être utilisée par les moteurs de recherche pour afficher un extrait de la page dans les résultats de recherche."
+
+msgid "Sitemap display name"
+msgstr "Nom dans l'affichage du plan du site"
+
+msgid "A user-friendly name for the menu that will display on the sitemap."
+msgstr "Un nom facile à comprendre pour le menu qui sera affiché dans le plan du site."
+
+msgid "Edit all"
+msgstr "Tout modifier"
+
+msgid "to %type"
+msgstr "au %type"
+
+msgid "Publish media"
+msgstr "Publier un média"
+
+msgid "Unpublish media"
+msgstr "Dépublier un média"
+
+msgid "Thumbnail"
+msgstr "Miniature"
