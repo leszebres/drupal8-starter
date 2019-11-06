@@ -24,6 +24,7 @@ function up {
     trans
     lando drush locale-update -y
     lando drush cr -y
+    lando yarn
     up_theme
     dump
 }
@@ -45,14 +46,6 @@ function trans {
 # Update drup_theme's node dependencies with yarn
 function up_theme {
     lando yarn --cwd ./web/themes/custom/drup_theme
-}
-
-# Compile dependencies for contrib theme Claro
-function claro {
-    lando yarn --cwd ./web/themes/contrib/claro
-    lando yarn install ./web/themes/contrib/claro
-    lando yarn build:js ./web/themes/contrib/claro
-    lando yarn build:css ./web/themes/contrib/claro
 }
 
 # Shell prompt

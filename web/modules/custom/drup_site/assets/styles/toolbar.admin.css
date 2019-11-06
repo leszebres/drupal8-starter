@@ -1,48 +1,14 @@
-.toolbar-icon-drup-admin-parent:before {
-  background-image: url("/core/misc/icons/787878/wrench.svg");
-}
-
-body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/config"],
-body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/structure/taxonomy/add"],
-body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/structure/menu/add"],
-body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/structure/menu/manage/admin"],
-body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/structure/menu/manage/account"],
-body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/structure/menu/manage/tools"],
-body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/structure/block"],
-body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/people/roles"],
-body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/people/permissions"] {
-  display: none;
-}
-
-body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/structure/menu"] + .toolbar-menu .toolbar-menu,
-body:not(.role--super-admin) .toolbar-menu a[data-drupal-link-system-path="admin/structure/taxonomy"] + .toolbar-menu .toolbar-menu {
-  display: none;
-}
-
-/*
-!* ==========================================================================
+/* ==========================================================================
    Admin Toolbar
-   ========================================================================== *!
-.adminimal.adminimal-admin-toolbar.toolbar-tray-open.toolbar-fixed.toolbar-horizontal,
-.adminimal-admin-toolbar.toolbar-tray-open.toolbar-fixed.toolbar-horizontal {
-    padding-top: 78px !important;
+   ========================================================================== */
+.toolbar-icon-admin-toolbar-tools-media-page::before {
+    background: url("/core/themes/stable/images/core/icons/787878/file.svg");
 }
-.adminimal.adminimal-admin-toolbar.toolbar-tray-open.toolbar-fixed.toolbar-horizontal.toolbar-loading,
-.adminimal-admin-toolbar.toolbar-tray-open.toolbar-fixed.toolbar-horizontal.toolbar-loading {
-     padding-top: 0 !important;
+.toolbar-icon-admin-toolbar-tools-media-page:active::before,
+.toolbar-icon-admin-toolbar-tools-media-page.is-active::before {
+    background-image: url("/core/themes/stable/images/core/icons/000000/file.svg");
 }
-.adminimal-admin-toolbar .toolbar .toolbar-bar {
-    min-height: 39px;
+
+.toolbar-icon-drup-admin-parent:before {
+    background-image: url("/core/themes/stable/images/core/icons/787878/wrench.svg");
 }
-.adminimal-admin-toolbar .toolbar .toolbar-bar .toolbar-tray {
-    box-shadow: none;
-    border: 0;
-}
-.adminimal-admin-toolbar .toolbar .toolbar-bar .toolbar-tray .toolbar-lining > .toolbar-menu > .menu-item {
-    border: 0 !important;
-}
-.adminimal-admin-toolbar .toolbar .toolbar-bar .toolbar-tray .menu-item a.is-active,
-.adminimal-admin-toolbar .toolbar .toolbar-bar .toolbar-tray .menu-item a:focus {
-    color: #fff;
-    background: #333;
-}*/
