@@ -1,11 +1,11 @@
 /* ==========================================================================
    Admin Toolbar
    ========================================================================== */
-.toolbar-icon-admin-toolbar-tools-media-page::before {
+.toolbar-icon-admin-toolbar-tools-extra-linksmedia-page::before {
     background: url("/core/themes/stable/images/core/icons/787878/file.svg");
 }
-.toolbar-icon-admin-toolbar-tools-media-page:active::before,
-.toolbar-icon-admin-toolbar-tools-media-page.is-active::before {
+.toolbar-icon-admin-toolbar-tools-extra-linksmedia-page:active::before,
+.toolbar-icon-admin-toolbar-tools-extra-linksmedia-page.is-active::before {
     background-image: url("/core/themes/stable/images/core/icons/000000/file.svg");
 }
 

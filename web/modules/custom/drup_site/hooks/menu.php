@@ -55,14 +55,16 @@ function drup_site_menu_links_discovered_alter(&$links) {
     // ex : /admin/people/permissions <=> user.admin_permissions
 
     // Item Médias
-    if (isset($links['admin_toolbar_tools.media_page'])) {
-        $links['admin_toolbar_tools.media_page']['parent'] = 'system.admin';
-        $links['admin_toolbar_tools.media_page']['weight'] = '-8';
-        $links['admin_toolbar_tools.add_media']['parent'] = 'admin_toolbar_tools.media_page';
+    if (isset($links['admin_toolbar_tools.extra_links:media_page'])) {
+        $links['admin_toolbar_tools.extra_links:media_page']['parent'] = 'system.admin';
+        $links['admin_toolbar_tools.extra_links:media_page']['weight'] = '-8';
+        $links['admin_toolbar_tools.extra_links:add_media']['parent'] = 'admin_toolbar_tools.extra_links:media_page';
     }
 
     // Suppresion du liens "Fichiers"
-    unset($links['admin_toolbar_tools.view.files']);
+    if (isset($links['admin_toolbar_tools.extra_links:view.files'])) {
+        unset($links['admin_toolbar_tools.extra_links:view.files']);
+    }
 }
 
 /**
