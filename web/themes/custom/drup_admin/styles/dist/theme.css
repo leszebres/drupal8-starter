@@ -435,10 +435,12 @@ body.is-drup-block-admin {
   body.is-drup-block-admin #edit-settings-admin-label,
   body.is-drup-block-admin .block-form .js-form-item-settings-label,
   body.is-drup-block-admin .block-form .js-form-item-settings-label-display,
-  body.is-drup-block-admin .block-form .form-type-vertical-tabs,
+  body.is-drup-block-admin .block-form .js-form-type-vertical-tabs,
   body.is-drup-block-admin #edit-block-region-wrapper,
   body.is-drup-block-admin #edit-actions .button--danger {
     display: none; }
+  body.is-drup-block-admin .content-header {
+    margin-top: 0; }
 
 /* ==========================================================================
    Pagination

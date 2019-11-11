@@ -16,9 +16,13 @@ body.is-drup-block-admin {
     #edit-settings-admin-label,
     .block-form .js-form-item-settings-label,
     .block-form .js-form-item-settings-label-display,
-    .block-form .form-type-vertical-tabs,
+    .block-form .js-form-type-vertical-tabs,
     #edit-block-region-wrapper,
     #edit-actions .button--danger {
         display: none;
+    }
+
+    .content-header {
+        margin-top: 0;
     }
 }

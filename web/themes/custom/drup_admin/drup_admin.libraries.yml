@@ -3,5 +3,7 @@ theme:
   css:
     theme:
       styles/dist/theme.css: {}
+  js:
+    js/admin-theme.js: {}
   dependencies:
     - core/jquery
