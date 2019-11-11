@@ -3,21 +3,24 @@
  * Navigation des liens pour partager sur les réseaux sociaux
  *
  * Variables :
+ *  - title
  *  - items[]
  *
  */
 #}
-<nav class="nav nav--social nav--social-share">
+<div class="nav nav--social-share">
+    {% if title %}
+        <p class="nav-title">{{ title }}</p>
+    {% endif %}
     <ul class="nav-menu">
         {% for item in items %}
-            {% if item.share_url %}
-                <li class="nav-item">
-                    <a href="{{ item.share_url }}" title="{{ 'Share this article on @media'|t({'@media': item.title}) }}" target="_blank">
-                        <span class="sr-only">{{ item.title }}</span>
-                        <span class="icon icon--{{ item.id }}"></span>
-                    </a>
-                </li>
-            {% endif %}
+            <li class="nav-item">
+                <a href="{{ item.share_url }}" title="{{ item.title }}"
+                   class="theme-social-{{ item.id }}-hover" target="_blank">
+                    <span class="icon icon--{{ item.id }}"></span>
+                    <span class="sr-only">{{ item.title }}</span>
+                </a>
+            </li>
         {% endfor %}
     </ul>
-</nav>
+</div>

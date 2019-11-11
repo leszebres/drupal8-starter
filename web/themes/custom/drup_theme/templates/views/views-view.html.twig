@@ -52,13 +52,19 @@
     {{ exposed }}
     {{ attachment_before }}
 
-    <div class="view-header">
-        {% if display_total_rows_count and view.total_rows %}
-            <p class="view-counter">
-                {{ display_total_rows_count }}
-            </p>
-        {% endif %}
-    </div>
+    {% if header_custom_link or display_total_rows_count %}
+        <div class="view-header">
+            {% if header_custom_link %}
+                <div class="view-header-link">
+                    <a {{ header_custom_link }}>{{ header_custom_link.title }}</a>
+                </div>
+            {% endif %}
+
+            {% if display_total_rows_count %}
+                <p class="view-counter title title--h3">{{ display_total_rows_count }}</p>
+            {% endif %}
+        </div>
+    {% endif %}
 
     <div class="view-content">
         {{ rows }}
@@ -67,17 +73,23 @@
             <p class="view-empty">{{ empty }}</p>
         {% endif %}
 
-        <div class="view-pager">
-            {{ pager }}
-        </div>
+        {% if pager %}
+            <div class="view-pager">
+                {{ pager }}
+            </div>
+        {% endif %}
 
         {{ attachment_after }}
         {{ more }}
     </div>
 
-    {% if footer %}
+    {% if footer or footer_link %}
         <footer class="view-footer">
             {{ footer }}
+
+            {% if footer_link and footer_link.uri is not empty %}
+                {{ link(footer_link.cta, footer_link.uri, footer_link.attributes) }}
+            {% endif %}
         </footer>
     {% endif %}
 

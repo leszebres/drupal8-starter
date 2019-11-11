@@ -12,6 +12,7 @@ function drup_theme_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
     if (strpos($form_id, 'webform_submission_') !== false) {
         $form['#attributes']['class'][] = 'form'; // Ne pas remplacer les classes par défaut, elles sont utilisées par webform (conditions)
         $form['#attributes']['class'][] = 'form--webform';
+        $form['#attributes']['class'][] = 'form--' . str_replace('_', '-', $form['#webform_id']);
 
         // RGPD
         DrupSiteForm::setGDPRMention($form);
@@ -48,13 +49,21 @@ function drup_theme_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\Form
     $view = $form_state->get('view')->storage;
 
     // View type + bundle
-    ['type' => $baseEntityType, 'bundle' => $baseEntityBundle] = DrupViews::getBaseEntityInfo($viewExecutable);
+    [
+        'type' => $viewEntityType,
+        'bundle' => $viewEntityBundle,
+        'base_field' => $viewBaseField
+    ] = DrupViews::getBaseEntityInfo($viewExecutable);
 
 
     // Vue Tags : articles dans une thématique/notion clé
     if ($form['#id'] === 'views-exposed-form-healthreview-tags-articles-term') {
 
     }
+
+    // Libraries
+    //$form['#attached']['library'][] = 'drup_theme/form-default-filters';
+    //$form['#attached']['drupalSettings']['form_filters_id'] = $form['#id'];
 
     // Force le bouton submit en balise <input>
     $form['actions']['submit']['#button_type'] = 'input';

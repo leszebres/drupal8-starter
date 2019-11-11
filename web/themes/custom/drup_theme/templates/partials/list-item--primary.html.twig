@@ -10,12 +10,12 @@
  */
 #}
 <li {{ row.attributes }}>
-    <a href="{{ row.content.url }}">
+    <a {{ row.content.link }}>
         <article class="item-wrapper">
             {% if row.content.media %}
-                <div class="item-media l-image">
+                <div class="item-media l-{{ row.content.mediaType }}">
                     {{ row.content.media }}
-                </div>
+                </div>s
             {% endif %}
 
             <div class="item-content">

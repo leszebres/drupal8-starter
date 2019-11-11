@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Core\Template\Attribute;
 use Drupal\drup\DrupSEO;
 use Drupal\drup\Entity\Node;
 use Drupal\drup\Media\DrupMediaImage;
@@ -16,14 +17,19 @@ function drup_theme_preprocess_views_view(&$variables) {
     $drupRouter = \Drupal::service('drup_router');
     $drupRouteName = $drupRouter->getName();
 
+    /** @var \Drupal\drup\DrupPageEntity $drupPageEntity */
+    $drupPageEntity = \Drupal::service('drup_page_entity');
+
     $drupViewsView = new DrupViewsView($variables);
     $variables = $drupViewsView->controller();
+
+    $viewId = $variables['view']->id();
 
     if (empty($variables['rows'])) {
         $variables['empty'] = t('No result match your search.');
     }
 
-    switch ($variables['view']->id() . '_' . $variables['view']->current_display) {
+    switch ($viewId . '_' . $variables['view']->current_display) {
         case 'news_list_all':
         case 'publications_list_all':
             $variables['display_total_rows_count'] = \Drupal::translation()->formatPlural(
@@ -34,8 +40,21 @@ function drup_theme_preprocess_views_view(&$variables) {
             if (empty($variables['rows'])) {
                 $variables['empty'] = t('No result match your search.');
             }
-            break;
+        break;
+
+//        case 'examples':
+//            $variables['title'] = $drupPageEntity->getBundle() === 'news' ? '' : t('Dans l\'actu');
+//            $variables['footer_link'] = [
+//                'cta' => $drupPageEntity->getBundle() === 'news' ? t('Retour aux actualités') : t('Toute l\'actu'),
+//                'uri' => $drupRouter->getUri('news'),
+//                'attributes' => new Attribute([
+//                    'class' => ['btn']
+//                ])
+//            ];
+//            break;
     }
+
+
 
     // Pagination SEO
     DrupSEO::pagerViewsHandler($variables);
@@ -144,15 +163,18 @@ function drup_theme_views_rows_controller__primary($variables) {
                     }
                 }
             }
+            $result->mediaType = 'image';
 
             // Content
             $result->title = $result->_entity->getTitle();
-            $result->url = $result->_entity->toUrl();
+            $result->link = new Attribute([
+                'href' => $result->_entity->toUrl()->toString()
+            ]);
             $result->cta = $variables['row_cta'];
-    
+
             // partial
             if (isset($result->partial)) {
-                $attributes->addClass('l-'.$result->partial);
+                //$attributes->addClass('l-' . $result->partial);
             }
             // Layout
             if (!empty($result->layout)) {
@@ -175,7 +197,7 @@ function drup_theme_views_rows_controller__primary($variables) {
  */
 function drup_theme_preprocess_views_infinite_scroll_pager(&$vars) {
     $vars['btn_classes'] = 'btn';
-    
+
     //if (isset($vars['parameters']['field_localisation_proximity'])) {
     //    $vars['btn_classes'] .= ' btn--link';
     //} else {
